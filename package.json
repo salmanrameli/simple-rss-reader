@@ -1,0 +1,38 @@
+{
+  "name": "electron-react",
+  "version": "0.1.0",
+  "private": true,
+  "main": "main.js",
+  "dependencies": {
+    "axios": "^0.18.0",
+    "feedparser": "^2.2.9",
+    "feedparser-promised": "^2.0.0",
+    "react": "^16.8.6",
+    "react-dom": "^16.8.6",
+    "react-electron-web-view": "^2.0.1",
+    "react-scripts": "2.1.8",
+    "react-spinners": "^0.5.4",
+    "string-to-stream": "^1.1.1"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject",
+    "electron": "electron .",
+    "dev": "nf start -p 3000"
+  },
+  "eslintConfig": {
+    "extends": "react-app"
+  },
+  "browserslist": [
+    ">0.2%",
+    "not dead",
+    "not ie <= 11",
+    "not op_mini all"
+  ],
+  "devDependencies": {
+    "electron": "^4.1.4",
+    "foreman": "^3.0.1"
+  }
+}
