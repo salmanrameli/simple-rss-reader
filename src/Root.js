@@ -1,14 +1,7 @@
 import React, { Component } from 'react';
 import Lists from './Lists';
 import Article from './Article';
-import axios from 'axios';
-import stringToStream from 'string-to-stream'
 import {getFeed} from './getFeed'
-
-const FeedParser = require ("feedparser");
-const request = require ("request");
-const urlTestFeed = "https://www.engadget.com/rss.xml";
-axios.defaults.adapter = require('axios/lib/adapters/http');
 
 class Root extends Component {
 	constructor(props) {
@@ -25,8 +18,6 @@ class Root extends Component {
 
 	componentDidMount() {
 		this.start()
-
-		//window.addEventListener('load', this.start)
 	}
 
 	start() {

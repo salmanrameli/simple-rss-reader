@@ -2,18 +2,13 @@ import FeedParser from 'feedparser'
 import axios from 'axios'
 import stringToStream from 'string-to-stream'
 
-const urlTestFeed = "https://www.theverge.com/rss/index.xml";
+const urlTestFeed = "https://jalopnik.com/rss";
 
 export function getFeed() {
 		var feedparser = new FeedParser();
 
 		return axios.get(`${'https://cors-anywhere.herokuapp.com/'}${urlTestFeed}`, {
-			crossDomain: true,
 			responseType: 'stream',
-			crossOrigin:true,
-			headers: {
-			  'Access-Control-Allow-Origin': '*',
-			},
 		}).then(response => {
 	        stringToStream(response.data).pipe(feedparser)
 		}).then(() => {

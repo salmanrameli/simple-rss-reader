@@ -1,9 +1,9 @@
 const electron = require('electron')
-const {app, BrowserWindow} = require('electron')
+const {app, BrowserWindow, Menu, dialog} = require('electron')
 
 function createWindow () {
 	let screenSize = electron.screen.getPrimaryDisplay().size;   
-	// Create the browser window.     
+	
 	win = new BrowserWindow({
 		width: 1280, 
 		height: 800,
@@ -11,12 +11,11 @@ function createWindow () {
     	'minWidth': 960,
 	}) 
 	       
-	// and load the index.html of the app.     
 	win.loadURL('http://localhost:3000/')
-}      
+}
 
 app.on('ready', () => {
-	createWindow()
+	require('./src/menu')
 
-	//win.webContents.openDevTools()
+	createWindow()
 })

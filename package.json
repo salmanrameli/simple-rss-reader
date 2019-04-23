@@ -5,6 +5,7 @@
   "main": "main.js",
   "dependencies": {
     "axios": "^0.18.0",
+    "electron-json-storage": "^4.1.6",
     "feedparser": "^2.2.9",
     "feedparser-promised": "^2.0.0",
     "react": "^16.8.6",

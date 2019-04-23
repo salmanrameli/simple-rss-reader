@@ -25,7 +25,7 @@ class Lists extends Component {
 		return (
 			<div class="col-md-3 scrollable no-padding-right no-padding-left">
 				{this.state.lists.map((item) => (
-					<div className="card">
+					<div className="card" key={item.link}>
 						<div className="card-body">
 							<h5 className="card-title">{item.title}</h5>
 							<p className="card-text">{item.author}</p>
