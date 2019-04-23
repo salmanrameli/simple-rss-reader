@@ -1,6 +1,10 @@
-const {Menu, dialog} = require('electron')
-const electron = require('electron')
+const { Menu, dialog, BrowserWindow } = require('electron');
+const electron = require('electron');
 const app = electron.app
+
+let openSetting = require('./settingWindow')
+
+let settingWindow = null;
 
 const template = [
 	{
@@ -17,8 +21,13 @@ const template = [
 					}
 					dialog.showMessageBox(focusedWindow, options, function() {})
 				}
-			}}
-		]
+			}
+		}, {
+			label: 'Setting',
+			click() {
+				openSetting.openSetting(settingWindow)
+			}
+		}]
 	},
 	{
 		label: 'Edit',
@@ -101,6 +110,8 @@ if (process.platform === 'darwin') {
 		{ role: 'front' }
 	]
 }
+
+require('./settingWindow')
 
 const menu = Menu.buildFromTemplate(template)
 
