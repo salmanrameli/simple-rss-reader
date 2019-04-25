@@ -1,58 +1,56 @@
 import React, { Component } from 'react';
-import Lists from './Lists';
-import Article from './Article';
-import {getFeed} from './getFeed'
+import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 
-class Root extends Component {
-	constructor(props) {
-		super(props)
+import News from './News'
+import SettingRenderer from './settingRenderer'
 
-		this.state = {
-			lists: [],
-			active_story: ''
-		}
+const routes = [
+    {
+        path: "/News",
+        component: News
+    },
+    {
+        path: "/Setting",
+        component: SettingRenderer
+    }
+];
 
-		this.updateStory = this.updateStory.bind(this)
-		this.start = this.start.bind(this)
-	}
+function RouteWithSubRoutes(route) {
+	return (
+		<Route
+			path={route.path}
+			render={props => (
+				// pass the sub-routes down to keep nesting
+				<route.component {...props} routes={route.routes} />
+			)}
+		/>
+	);
+  }
 
-	componentDidMount() {
-		this.start()
-	}
-
-	start() {
-		getFeed().then(items => {
-			this.setState({
-				lists: items
-			})
-		}).catch(errors => {
-			console.log("errors: " + errors)
-		})
-	}
-
-	updateStory(link) {
-		this.state.lists.filter(story => {
-			if(story.link === link) {
-				this.setState({
-					active_story: story.link
-				});
-			}
-		});
-	}
-
-	render() {
-		return(
+function Root() {
+	return (
+		<Router>
 			<div className="row">
-				<Lists 
-					lists = {this.state.lists}
-					loadStory = {this.updateStory}
-				/>
-				<Article 
-					url = {this.state.active_story}
-				/>
+				<div className="col-md-12 no-padding-right no-padding-left border-bottom">
+					<div className="btn-toolbar with-padding" role="toolbar" aria-label="Button Toolbar">
+						<div className="btn-group mr-2" role="group">
+							<Link to="/News" className="btn btn-secondary">
+								News
+							</Link>
+							<Link to="/Setting" className="btn btn-secondary">
+								Setting
+							</Link>
+						</div>
+					</div>
+				</div>
 			</div>
-		)
-	}
-}
 
-export default Root;
+			{ routes.map((route, i) => (
+				<RouteWithSubRoutes key={i} {...route} />
+			))}
+		</Router>
+
+	);
+  }
+
+  export default Root

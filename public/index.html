@@ -38,12 +38,16 @@
       .no-padding-right {
         padding-right: 0px;
       }
+      .no-padding {
+        padding-left: 0px;
+        padding-right: 0px;
+      }
       .scrollable {
-        height: 100vh;
+        height: 92vh;
         overflow-y: scroll;
       }
       .full-size {
-        min-height: 100vh;
+        min-height: 92vh;
         min-width: 100vh;
       }
       .centered {
@@ -55,16 +59,35 @@
         width: 100px;
         height: 100px;
       }
+      .badge {
+        display: inline-block;
+        max-width: 150px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        vertical-align: middle;
+      }
+      .with-padding {
+        padding: 10px 10px 10px 10px
+      }
+      .padding-top {
+        padding-top: 10px
+      }
+      .padding-bottom {
+        padding-bottom: 10px;
+      }
+      .padding-left {
+        padding-left: 10px
+      }
+      .padding-right {
+        padding-right: 10px
+      }
     </style>
   </head>
   <body>
     <noscript>You need to enable JavaScript to run this app.</noscript>
-    
-    <div id="root">
 
-    </div>
-
-    <div class="container-fluid no-padding-left" id="reactbody">
+    <div class="container-fluid" id="reactbody">
       
     </div>
     <!--

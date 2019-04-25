@@ -29,14 +29,14 @@ class Article extends Component {
 
 	render() {
 		return (
-			<div className="col-md-9 full-size no-padding-left no-padding-right">
+			<div className="col-md-9 no-padding-left no-padding-right">
 				{
 				this.state.display === 'block' ?
 					<WebView 
 						src = {this.state.url}
 						className = 'full-size'
 						style = {{
-							'min-height' : '100vh',
+							'min-height' : '92vh',
 							'min-width' : '100vh',
 						}}
 					/>

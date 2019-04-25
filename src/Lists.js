@@ -5,7 +5,7 @@ class Lists extends Component {
 		super(props)
 
 		this.state = {
-			lists : this.props.lists
+			lists : this.props.lists,
 		}
 
 		this.handleClick = this.handleClick.bind(this);
@@ -24,17 +24,16 @@ class Lists extends Component {
 	render() {
 		return (
 			<div class="col-md-3 scrollable no-padding-right no-padding-left">
-				{this.state.lists.map((item) => (
-					<div className="card" key={item.link}>
-						<div className="card-body">
-							<h5 className="card-title">{item.title}</h5>
-							<p className="card-text">{item.author}</p>
-							<div className="btn-group">
-								<button className="btn btn-primary btn-sm" onClick={() => this.handleClick(item.link)}>Details</button>
-							</div>
-						</div>
-					</div>
-				))}
+				<div class="card">
+					<ul class="list-group list-group-flush">
+					{this.state.lists.map((item) => (
+						<li class="list-group-item" key={item.link} onClick={() => this.handleClick(item.link)}>
+							{item.title} <br></br> 
+							<span class="badge badge-info">{item.author}</span>
+						</li>
+					))}
+					</ul>
+				</div>
 			</div>
 		);
 	}

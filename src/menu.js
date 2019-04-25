@@ -4,8 +4,6 @@ const app = electron.app
 
 let openSetting = require('./settingWindow')
 
-let settingWindow = null;
-
 const template = [
 	{
 		label: 'File',
@@ -21,11 +19,6 @@ const template = [
 					}
 					dialog.showMessageBox(focusedWindow, options, function() {})
 				}
-			}
-		}, {
-			label: 'Setting',
-			click() {
-				openSetting.openSetting(settingWindow)
 			}
 		}]
 	},
