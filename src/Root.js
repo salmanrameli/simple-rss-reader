@@ -32,12 +32,12 @@ function Root() {
 		<Router>
 			<div className="row">
 				<div className="col-md-12 no-padding-right no-padding-left border-bottom">
-					<div className="btn-toolbar with-padding" role="toolbar" aria-label="Button Toolbar">
+					<div className="btn-toolbar toolbar-padding" role="toolbar" aria-label="Button Toolbar">
 						<div className="btn-group mr-2" role="group">
-							<Link to="/News" className="btn btn-secondary">
+							<Link to="/News" className="btn btn-secondary btn-sm">
 								News
 							</Link>
-							<Link to="/Setting" className="btn btn-secondary">
+							<Link to="/Setting" className="btn btn-secondary btn-sm">
 								Setting
 							</Link>
 						</div>

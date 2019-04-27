@@ -36,8 +36,8 @@ class Article extends Component {
 						src = {this.state.url}
 						className = 'full-size'
 						style = {{
-							'min-height' : '92vh',
-							'min-width' : '100vh',
+							'minHeight' : '90vh',
+							'minWidth' : '100vh',
 						}}
 					/>
 					:
