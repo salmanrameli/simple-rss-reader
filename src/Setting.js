@@ -1,33 +1,23 @@
 import React from 'react';
 
 const fs = window.require('fs');
+const jsonfile = window.require('jsonfile')
 
-let ROOT_APP_PATH = fs.realpathSync('.');
-
-let jalopnik = 'https://jalopnik.com/rss'
-let gizmodo = 'https://gizmodo.com/rss'
 let file = 'urlfeed.json'
- 
-let feed = {
-	name: "jalopnik",
-	url: "https://jalopnik.com/rss"
-}
-
-let feed2 = {
-	name: "gizmodo",
-	url: "https://gizmodo.com/rss"
-}
 
 class Setting extends React.Component {
 	constructor(props) {
 		super(props)
 
 		this.state = {
-			urlFeeds: []
+			urlFeeds: [],
+			url: '',
 		}
 
 		this.start = this.start.bind(this)
-		this.writeFile = this.writeFile.bind(this)
+		this.saveNewFeedUrl = this.saveNewFeedUrl.bind(this)
+		this.handleSubmit = this.handleSubmit.bind(this)
+		this.handleUrlEntered = this.handleUrlEntered.bind(this)
 	}
 
 	componentDidMount() {
@@ -35,14 +25,27 @@ class Setting extends React.Component {
 	}
 
 	start = () => {
-		// this.writeFile();
-		this.readFile();
+		this.displayFeedUrls();
 	}
 
-	writeFile = () => {
+	handleUrlEntered = (e) => {
+		this.setState({
+			url: e.target.value
+		})
+	}
+
+	handleSubmit = (e) => {
+		this.saveNewFeedUrl(e.target.newUrlFeed.value)
+	}
+
+	saveNewFeedUrl = (url) => {
 		let data = JSON.parse(fs.readFileSync(file))
 
-		data.feeds.push(feed)
+		let newFeed = {
+			url: url
+		}
+
+		data.feeds.push(newFeed)
 
 		const json = JSON.stringify(data, null, 2)
 
@@ -53,36 +56,49 @@ class Setting extends React.Component {
 		})
 	}
 
-	readFile = () => {
-		let data = JSON.parse(fs.readFileSync(file))
+	displayFeedUrls= () => {
+		let array = []
 
-		for(let i in data.feeds) {
-			console.log(data.feeds[i].url)
-		}
+		jsonfile.readFile(file).then((result) => {
+			for(let i in result.feeds) {
+				array.push(result.feeds[i].url)
+			}
+
+			this.setState({
+				urlFeeds: array
+			})
+		})
 	}
 
 	render() {
 		return (
 			<div className="col-md-12 scrollable with-padding">
+				<div className="page-header">
+					<h1>Setting</h1>
+					<br></br>
+				</div>
 				<div className="card">
 					<div className="card-header">
-						Setting
+						Add New Feed
 					</div>
 					<div className="card-body">
-						<ul>
-							{this.state.urlFeeds.map((url) => (
-								<li>{url}</li>
-							))}
-						</ul>
-						<form id="newFeedForm">
-							<div className="form-group">
-								<label className="control-label" htmlFor="add-url">Url Feed</label>
-								<input className="form-control" type="text" name="add-url" placeholder="www.example.com/rss.xml" />
+						<form id="newFeedForm" onSubmit={this.handleSubmit}>
+							<div className="form-group row">
+								<label className="col-form-label col-sm-1" htmlFor="newUrlFeed">Url:</label>
+								<div className="col-sm-9">
+									<input className="form-control" type="text" name="newUrlFeed" placeholder="https://www.example.com/rss.xml" value={this.state.url} onChange={(e) => this.handleUrlEntered(e)} />
+								</div>
+								<div className="col-sm-2">
+									<button className="btn btn-success btn-block" type="submit">Add Feed</button>
+								</div>
 							</div>
-
-							<button className="btn btn-primary">Add Feed</button>
 						</form>
 					</div>
+					<ul class="list-group list-group-flush">
+						{this.state.urlFeeds.map((url) => (
+							<li class="list-group-item">{url}</li>
+						))}
+					</ul>
 				</div>
 			</div>
 		)
