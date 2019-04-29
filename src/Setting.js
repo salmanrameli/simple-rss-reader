@@ -16,6 +16,7 @@ class Setting extends React.Component {
 
 		this.start = this.start.bind(this)
 		this.saveNewFeedUrl = this.saveNewFeedUrl.bind(this)
+		this.deleteFeedUrl = this.deleteFeedUrl.bind(this)
 		this.handleSubmit = this.handleSubmit.bind(this)
 		this.handleUrlEntered = this.handleUrlEntered.bind(this)
 	}
@@ -56,6 +57,19 @@ class Setting extends React.Component {
 		})
 	}
 
+	deleteFeedUrl = (url) => {
+		let data = JSON.parse(fs.readFileSync(file))
+		let feeds = data.feeds
+
+		data.feeds = feeds.filter((feed) => {
+			return feed.url !== url
+		})
+
+		fs.writeFileSync(file, JSON.stringify(data, null, 2));
+
+		window.location.reload()
+	}
+
 	displayFeedUrls= () => {
 		let array = []
 
@@ -78,10 +92,11 @@ class Setting extends React.Component {
 					<br></br>
 				</div>
 				<div className="card">
-					<div className="card-header">
-						Add New Feed
-					</div>
 					<div className="card-body">
+						<div className="page-header">
+							<h4>Add Feed</h4>
+							<hr></hr>
+						</div>
 						<form id="newFeedForm" onSubmit={this.handleSubmit}>
 							<div className="form-group row">
 								<label className="col-form-label col-sm-1" htmlFor="newUrlFeed">Url:</label>
@@ -94,9 +109,12 @@ class Setting extends React.Component {
 							</div>
 						</form>
 					</div>
-					<ul class="list-group list-group-flush">
+					<ul className="list-group list-group-flush">
 						{this.state.urlFeeds.map((url) => (
-							<li class="list-group-item">{url}</li>
+							<li className="list-group-item" key={url}>
+								{url}
+								<button className="btn btn-danger float-right" onClick={() => this.deleteFeedUrl(url)}><i className="fa fa-trash-o"></i> Delete</button>
+							</li>
 						))}
 					</ul>
 				</div>
