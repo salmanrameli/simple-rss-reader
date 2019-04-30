@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
+import { BrowserRouter as Router, Route, NavLink } from 'react-router-dom';
 
 import News from './News'
 import SettingRenderer from './settingRenderer'
@@ -26,23 +26,6 @@ function RouteWithSubRoutes(route) {
 	);
 }
 
-function removeClass() {
-	document.getElementById("newsButton").classList.remove("active")
-	document.getElementById("settingButton").classList.remove("active")
-}
-
-function onNewsButtonClicked() {
-	removeClass()
-
-	document.getElementById("newsButton").classList.add("active")
-}
-
-function onSettingButtonClicked() {
-	removeClass()
-
-	document.getElementById("settingButton").classList.add("active")
-}
-
 function Root() {
 	return (
 		<Router>
@@ -50,12 +33,12 @@ function Root() {
 				<div className="col-md-12 no-padding-right no-padding-left border-bottom">
 					<div className="btn-toolbar toolbar-padding" role="toolbar" aria-label="Button Toolbar">
 						<div className="btn-group mr-2" role="group" id="button-group">
-							<Link to="/News" className="btn btn-outline-primary btn-sm" id="newsButton" onClick={onNewsButtonClicked}>
+							<NavLink to="/News" className="btn btn-outline-primary btn-sm" id="newsButton" activeClassName="active">
 							<i className="fa fa-newspaper-o"></i> Feeds
-							</Link>
-							<Link to="/Setting" className="btn btn-outline-primary btn-sm" id="settingButton" onClick={onSettingButtonClicked}>
+							</NavLink>
+							<NavLink to="/Setting" className="btn btn-outline-primary btn-sm" id="settingButton" activeClassName="active">
 							<i className="fa fa-wrench"></i> Setting
-							</Link>
+							</NavLink>
 						</div>
 					</div>
 				</div>
@@ -69,4 +52,4 @@ function Root() {
 	);
 }
 
-  export default Root
+export default Root
