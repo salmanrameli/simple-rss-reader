@@ -3,6 +3,10 @@ import Lists from './Lists';
 import Article from './Article';
 import {getFeed} from './getFeed'
 
+const Promise = require('bluebird')
+const jsonfile = window.require('jsonfile')
+const file = 'urlfeed.json'
+
 class News extends Component {
 	constructor(props) {
 		super(props)
@@ -21,12 +25,22 @@ class News extends Component {
 	}
 
 	start() {
-		getFeed().then(items => {
-			this.setState({
-				lists: items
+		let feeds = []
+
+		jsonfile.readFile(file).then((result) => {
+			console.log(result)
+
+			for(let i in result.feeds) {
+				feeds.push(result.feeds[i].url)
+			}
+
+			Promise.map(feeds, (url) => getFeed(url), {concurrency: 4}).then((feeds) => {
+				let merged = [].concat.apply([], feeds)
+	
+				this.setState({
+					lists: merged
+				})
 			})
-		}).catch(errors => {
-			console.log("errors: " + errors)
 		})
 	}
 

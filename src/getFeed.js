@@ -2,43 +2,45 @@ import FeedParser from 'feedparser'
 import axios from 'axios'
 import stringToStream from 'string-to-stream'
 
-const urlTestFeed = "https://jalopnik.com/rss";
+let CORS_URL = 'https://cors-anywhere.herokuapp.com/'
 
-export function getFeed() {
-		var feedparser = new FeedParser();
+export async function getFeed(url) {
+	var feedparser = new FeedParser();
 
-		return axios.get(`${'https://cors-anywhere.herokuapp.com/'}${urlTestFeed}`, {
+	try {
+		const response = await axios.get(`${CORS_URL}${url}`, {
 			responseType: 'stream',
-		}).then(response => {
-	        stringToStream(response.data).pipe(feedparser)
-		}).then(() => {
-			var promise = new Promise((resolve, reject) => {
-		        const items = []
-
-		        feedparser.on('readable', function () {
-					const stream = this
-					let item
-
-					while ((item = stream.read())) {
-						items.push(item)
-					}
-		        })
-
-		        feedparser.on('end', () => {
-		        	resolve(items)
-		        })
-
-		        feedparser.on('error', err => {
-		        	reject(err)
-		        })
-		    })
-
-			return Promise.all([promise]).then(feed => {
-				return feed[0]
-			}).catch(err => {
-				throw err
-			})
-		}).catch(e => {
-			throw new Error()
 		});
+
+		stringToStream(response.data).pipe(feedparser);
+
+		var promise = new Promise((resolve, reject) => {
+			const items = [];
+
+			feedparser.on('readable', function () {
+				const stream = this;
+				let item;
+				while ((item = stream.read())) {
+					items.push(item);
+				}
+			});
+
+			feedparser.on('end', () => {
+				resolve(items);
+			});
+
+			feedparser.on('error', err => {
+				reject(err);
+			});
+		});
+
+		try {
+			const feed = await Promise.all([promise]);
+			return feed[0];
+		} catch (err) {
+			throw err;
+		}
+	} catch (e) {
+		throw new Error();
 	}
+}

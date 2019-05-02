@@ -5,6 +5,7 @@
   "main": "main.js",
   "dependencies": {
     "axios": "^0.18.0",
+    "bluebird": "^3.5.4",
     "electron-json-storage": "^4.1.6",
     "electron-store": "^3.2.0",
     "feedparser": "^2.2.9",

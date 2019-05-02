@@ -1,5 +1,10 @@
 {
   "feeds": [
-    
+    {
+      "url": "https://jalopnik.com/rss"
+    },
+    {
+      "url": "https://gizmodo.com/rss"
+    }
   ]
 }

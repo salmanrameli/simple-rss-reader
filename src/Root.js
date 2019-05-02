@@ -37,7 +37,7 @@ function Root() {
 							<i className="fa fa-newspaper-o"></i> Feeds
 							</NavLink>
 							<NavLink to="/Setting" className="btn btn-outline-primary btn-sm" id="settingButton" activeClassName="active">
-							<i className="fa fa-wrench"></i> Setting
+							<i className="fa fa-wrench"></i>
 							</NavLink>
 						</div>
 					</div>

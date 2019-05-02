@@ -104,7 +104,7 @@ class Setting extends React.Component {
 									<input className="form-control" type="text" name="newUrlFeed" placeholder="https://www.example.com/rss.xml" value={this.state.url} onChange={(e) => this.handleUrlEntered(e)} />
 								</div>
 								<div className="col-sm-2">
-									<button className="btn btn-success btn-block" type="submit">Add Feed</button>
+									<button className="btn btn-success btn-block" type="submit"><i class="fa fa-plus"></i> Add Feed</button>
 								</div>
 							</div>
 						</form>
