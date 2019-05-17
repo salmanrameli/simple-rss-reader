@@ -34,7 +34,8 @@ class Lists extends Component {
 					{this.state.lists.map((item) => (
 						<span className="border-bottom">
 							<li className={`list-group-item ${this.state.activeLink === item.link ? 'active' : ''}`} key={item.link} onClick={() => this.handleClick(item.link)}>
-								{item.title} <br></br> 
+								{item.title}
+								<br></br> 
 								<span className="badge badge-info">{item.author}</span>
 							</li>
 						</span>
