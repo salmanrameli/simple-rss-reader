@@ -9,6 +9,9 @@ class Article extends Component {
 		super(props);
 
 		this.state = {
+			title: props.title,
+			writer: props.writer,
+			date: props.date,
 			story: props.story,
 			display: 'none',
 		};
@@ -16,6 +19,9 @@ class Article extends Component {
 
 	componentWillReceiveProps(nextProps) {
 		this.setState({
+			title: nextProps.title,
+			writer: nextProps.writer,
+			date: nextProps.date,
 			story: nextProps.story,
 			display: 'none'
 		});
@@ -34,7 +40,16 @@ class Article extends Component {
 			<div className="col-md-9 no-padding-left no-padding-right">
 				{
 				this.state.display === 'block' ?
-					ReactHtmlParser(this.state.story)
+					<div className="col-md-12">
+						<div className="pb-2 mt-4 mb-2 border-bottom">
+							<small>{this.state.writer}</small>
+							<h2>{this.state.title}</h2>
+							<small>{this.state.date}</small>
+						</div>
+						<div className="row col-md-12 justify-content-md-center">
+							{ReactHtmlParser(this.state.story)}
+						</div>
+					</div>
 					:
 					<div className = 'centered'>
 						<BarLoader color = {'#36D7B7'} loading = {true} />

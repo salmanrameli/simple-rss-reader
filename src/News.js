@@ -15,6 +15,9 @@ class News extends Component {
 
 		this.state = {
 			lists: [],
+			story_title: '',
+			story_writer: '',
+			story_date: '',
 			active_story: ''
 		}
 
@@ -56,6 +59,9 @@ class News extends Component {
 		this.state.lists.filter(story => {
 			if(story.link === link) {
 				this.setState({
+					story_title: story.title,
+					story_writer: story.author,
+					story_date: story.date,
 					active_story: story.description
 				});
 			}
@@ -70,6 +76,9 @@ class News extends Component {
 					loadStory = {this.updateStory}
 				/>
 				<Article 
+					title = {this.state.story_title}
+					writer = {this.state.story_writer}
+					date = {this.state.story_date}
 					story = {this.state.active_story}
 				/>
 			</div>
