@@ -56,7 +56,7 @@ class News extends Component {
 		this.state.lists.filter(story => {
 			if(story.link === link) {
 				this.setState({
-					active_story: story.link
+					active_story: story.description
 				});
 			}
 		});
@@ -70,7 +70,7 @@ class News extends Component {
 					loadStory = {this.updateStory}
 				/>
 				<Article 
-					url = {this.state.active_story}
+					story = {this.state.active_story}
 				/>
 			</div>
 		)
