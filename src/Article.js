@@ -2,8 +2,6 @@ import React, { Component } from 'react';
 import { BarLoader } from 'react-spinners';
 import ReactHtmlParser from 'react-html-parser';
 
-const WebView = require('react-electron-web-view');
-
 class Article extends Component {
 	constructor(props) {
 		super(props);

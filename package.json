@@ -1,12 +1,53 @@
 {
   "name": "electron-react",
+  "description": "Simple RSS reader based on Electron and ReactJS",
   "version": "0.1.0",
   "private": true,
   "main": "main.js",
+  "homepage": "./",
+  "author": {
+    "name": "Salman Rameli",
+    "email": "salmanrameli@gmail.com"
+  },
+  "build": {
+    "appId": "com.salmanrameli.simple-rss-reader",
+    "productName": "Simple RSS Reader",
+    "copyright": "Copyright © 2019 ${author}",
+    "asar": false,
+    "extends": null,
+    "files": [
+      "build/**/*",
+      "node_modules/**/*",
+      "public/*",
+      "src/*",
+      "electron-wait-react.js",
+      "main.js",
+      "Procfile",
+      "urlfeed.json"
+    ],
+    "directories": {
+      "buildResources": "build",
+      "output": "dist"
+    },
+    "mac": {
+			"icon": "assets/icon.icns",
+			"type": "distribution",
+			"target": [
+				"dmg"
+			],
+			"category": "public.app-category.utilities"
+    },
+    "win": {
+      "target": "nsis",
+      "icon": "assets/icon.ico"
+    }
+  },
   "dependencies": {
     "axios": "^0.18.0",
     "bluebird": "^3.5.4",
+    "cross-env": "^5.2.0",
     "date-and-time": "^0.6.3",
+    "electron-is-dev": "^1.1.0",
     "electron-json-storage": "^4.1.6",
     "electron-store": "^3.2.0",
     "feedparser": "^2.2.9",
@@ -22,12 +63,16 @@
     "string-to-stream": "^1.1.1"
   },
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject",
+    "react-start": "react-scripts start",
+    "react-build": "react-scripts build",
+    "react-test": "react-scripts test --env=jsdom",
+    "react-eject": "react-scripts eject",
+    "electron-build": "electron-builder",
+    "release": "yarn react-build && electron-builder --publish=always",
+    "build": "yarn react-build && yarn electron-build",
     "electron": "electron .",
-    "dev": "nf start -p 3000"
+    "dev": "nf start -p 3000",
+    "start": "concurrently \"cross-env BROWSER=none yarn react-start\" \"wait-on http://localhost:3000 && electron .\""
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -39,7 +84,10 @@
     "not op_mini all"
   ],
   "devDependencies": {
+    "concurrently": "^4.1.0",
     "electron": "^4.1.4",
-    "foreman": "^3.0.1"
+    "foreman": "^3.0.1",
+    "typescript": "^3.5.1",
+    "wait-on": "^3.2.0"
   }
 }
