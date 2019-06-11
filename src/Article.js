@@ -35,7 +35,7 @@ class Article extends Component {
 
 	render() {
 		return (
-			<div className="col-md-9 no-padding-left no-padding-right">
+			<div className="col-md-9 no-padding-left no-padding-right scrollable">
 				{
 				this.state.display === 'block' ?
 					<div className="col-md-12">
@@ -44,7 +44,7 @@ class Article extends Component {
 							<h2>{this.state.title}</h2>
 							<small>{this.state.date}</small>
 						</div>
-						<div className="row col-md-12 justify-content-md-center">
+						<div className="row col-md-12 text-justify">
 							{ReactHtmlParser(this.state.story)}
 						</div>
 					</div>
