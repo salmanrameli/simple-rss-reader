@@ -30,16 +30,12 @@
       "output": "dist"
     },
     "mac": {
-			"icon": "assets/icon.icns",
-			"type": "distribution",
-			"target": [
-				"dmg"
-			],
-			"category": "public.app-category.utilities"
-    },
-    "win": {
-      "target": "nsis",
-      "icon": "assets/icon.ico"
+      "icon": "assets/icon.icns",
+      "type": "distribution",
+      "target": [
+        "dmg"
+      ],
+      "category": "public.app-category.utilities"
     }
   },
   "dependencies": {
@@ -86,6 +82,7 @@
   "devDependencies": {
     "concurrently": "^4.1.0",
     "electron": "^4.1.4",
+    "electron-builder": "^20.43.0",
     "foreman": "^3.0.1",
     "typescript": "^3.5.1",
     "wait-on": "^3.2.0"
