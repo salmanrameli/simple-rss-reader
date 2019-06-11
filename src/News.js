@@ -16,7 +16,7 @@ class News extends Component {
 		this.state = {
 			lists: [],
 			story_title: '',
-			story_writer: '',
+			story_author: '',
 			story_date: '',
 			active_story: ''
 		}
@@ -60,7 +60,7 @@ class News extends Component {
 			if(story.link === link) {
 				this.setState({
 					story_title: story.title,
-					story_writer: story.author,
+					story_author: story.author,
 					story_date: story.date,
 					active_story: story.description
 				});
@@ -77,7 +77,7 @@ class News extends Component {
 				/>
 				<Article 
 					title = {this.state.story_title}
-					writer = {this.state.story_writer}
+					author = {this.state.story_author}
 					date = {this.state.story_date}
 					story = {this.state.active_story}
 				/>

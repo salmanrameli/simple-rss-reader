@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { BarLoader } from 'react-spinners';
 import ReactHtmlParser from 'react-html-parser';
 
 class Article extends Component {
@@ -8,39 +7,36 @@ class Article extends Component {
 
 		this.state = {
 			title: props.title,
-			writer: props.writer,
+			author: props.author,
 			date: props.date,
 			story: props.story,
-			display: 'none',
+			display: 'loading',
 		};
 	}
 
 	componentWillReceiveProps(nextProps) {
 		this.setState({
 			title: nextProps.title,
-			writer: nextProps.writer,
+			author: nextProps.author,
 			date: nextProps.date,
 			story: nextProps.story,
-			display: 'none'
+			display: 'loaded'
 		});
 
 		if(nextProps.story) {
-			setTimeout(() => {
-				this.setState({
-					display: 'block'
-				});
-			}, 4000)
+			this.setState({
+				display: 'block'
+			});
 		}
 	}
 
 	render() {
 		return (
-			<div className="col-md-9 no-padding-left no-padding-right scrollable">
-				{
-				this.state.display === 'block' ?
+			this.state.display === 'block' ?
+				<div className="col-md-9 no-padding-left no-padding-right scrollable">
 					<div className="col-md-12">
 						<div className="pb-2 mt-4 mb-2 border-bottom">
-							<small>{this.state.writer}</small>
+							<small>{this.state.author}</small>
 							<h2>{this.state.title}</h2>
 							<small>{this.state.date}</small>
 						</div>
@@ -48,13 +44,12 @@ class Article extends Component {
 							{ReactHtmlParser(this.state.story)}
 						</div>
 					</div>
-					:
-					<div className = 'centered'>
-						<BarLoader color = {'#36D7B7'} loading = {true} />
-					</div>
-				}
-			</div>
-		)
+				</div>
+				:
+				<div className="col-md-9 centered">
+					<h1 style={{ color: 'lightgray' }}>Article will be shown here</h1>
+				</div>
+			)
 	}
 }
 

@@ -15,11 +15,11 @@ html, body {
     padding-right: 0px;
   }
   .scrollable {
-    height: 90vh;
+    height: 93vh;
     overflow-y: scroll;
   }
   .full-size {
-    min-height: 90vh;
+    min-height: 95vh;
     min-width: 100vh;
   }
   .centered {
@@ -28,7 +28,7 @@ html, body {
     left: 50%;
     margin-top: -50px;
     margin-left: -50px;
-    width: 100px;
+    width: 600px;
     height: 100px;
   }
   .badge {
@@ -43,7 +43,7 @@ html, body {
     padding: 10px 10px 10px 10px
   }
   .toolbar-padding {
-    padding: 30px 10px 10px 10px
+    padding: 8px 10px 8px 10px
   }
   .padding-top {
     padding-top: 10px
