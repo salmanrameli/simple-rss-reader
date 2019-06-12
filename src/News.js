@@ -18,6 +18,7 @@ class News extends Component {
 			story_title: '',
 			story_author: '',
 			story_date: '',
+			story_link: '',
 			active_story: ''
 		}
 
@@ -62,7 +63,8 @@ class News extends Component {
 					story_title: story.title,
 					story_author: story.author,
 					story_date: story.date,
-					active_story: story.description
+					active_story: story.description,
+					story_link: story.link
 				});
 			}
 		});
@@ -80,6 +82,7 @@ class News extends Component {
 					author = {this.state.story_author}
 					date = {this.state.story_date}
 					story = {this.state.active_story}
+					link = {this.state.story_link}
 				/>
 			</div>
 		)

@@ -1,8 +1,10 @@
 const {app, BrowserWindow, Menu, dialog} = require('electron')
 const path = require('path')
 const isDev = require("electron-is-dev");
+const { ipcMain } = require('electron')
 
-let win
+let win = null
+let child = null
 
 function createWindow () {	
 	win = new BrowserWindow({
@@ -10,19 +12,55 @@ function createWindow () {
 		height: 800,
 		'minHeight': 600,
 		'minWidth': 960,
-	}) 
+		show: false
+	})
+
+	const menu = Menu.buildFromTemplate(menubar)
+	Menu.setApplicationMenu(menu)
 	       
 	win.loadURL(
 		isDev ? "http://localhost:3000" : `file://${path.join(__dirname, '../build/index.html')}`
 	)
 
-	const menu = Menu.buildFromTemplate(menubar)
-	Menu.setApplicationMenu(menu)
+	win.once('ready-to-show', () => {
+		win.show()
+	})
 	  
 	win.on('closed', function () {
 		win = null
 	})
 }
+
+ipcMain.on('hello', (event, arg) => {
+	if(child === null) {
+		child = new BrowserWindow({ 
+			parent: win,
+			width: 1024, 
+			height: 768,
+			show: false
+		})
+
+		child.loadURL(arg)
+
+		child.once('ready-to-show', () => {
+			child.show()
+		})
+		  
+		child.on('closed', function () {
+			child = null
+		})
+	} else {
+		child.loadURL(arg)
+
+		child.once('ready-to-show', () => {
+			child.show()
+		})
+		  
+		child.on('closed', function () {
+			child = null
+		})
+	}
+})
 
 app.on('ready', createWindow)
 
