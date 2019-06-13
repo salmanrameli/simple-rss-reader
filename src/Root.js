@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Route, NavLink } from 'react-router-dom';
 
 import News from './News'
 import SettingRenderer from './settingRenderer'
+import img from './icon.png'
 
 const routes = [
     {
@@ -47,6 +48,12 @@ function Root() {
 			{ routes.map((route, i) => (
 				<RouteWithSubRoutes key={i} {...route} />
 			))}
+
+			<div className="row">
+				<div className="col-md-12" style={{ height: '100vh' }}>
+					<img src={img} alt="Logo" className="working-center-image" style={{ height: '512px', width: '512px' }}/>
+				</div>
+			</div>
 		</Router>
 
 	);

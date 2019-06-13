@@ -5,6 +5,7 @@ const { ipcMain } = require('electron')
 
 let win = null
 let child = null
+let modal = null
 
 function createWindow () {	
 	win = new BrowserWindow({
@@ -31,6 +32,16 @@ function createWindow () {
 	})
 }
 
+app.on('ready', createWindow)
+
+app.on('window-all-closed', function () {
+	if (process.platform !== 'darwin') app.quit()
+})
+  
+app.on('activate', function () {
+	if (win === null) createWindow()
+})
+
 ipcMain.on('hello', (event, arg) => {
 	if(child === null) {
 		child = new BrowserWindow({ 
@@ -40,10 +51,23 @@ ipcMain.on('hello', (event, arg) => {
 			show: false
 		})
 
+		modal = new BrowserWindow({
+			parent: win,
+			width: 350, 
+			height: 70,
+			modal: true,
+			show: false
+		})
+
+		modal.loadFile('./public/loading.html')
+		modal.show()
+
 		child.loadURL(arg)
 
 		child.once('ready-to-show', () => {
 			child.show()
+			modal.hide()
+			modal = null
 		})
 		  
 		child.on('closed', function () {
@@ -52,8 +76,13 @@ ipcMain.on('hello', (event, arg) => {
 	} else {
 		child.loadURL(arg)
 
+		modal.loadFile('./public/loading.html')
+		modal.show()
+
 		child.once('ready-to-show', () => {
 			child.show()
+			modal.hide()
+			modal = null
 		})
 		  
 		child.on('closed', function () {
@@ -61,8 +90,6 @@ ipcMain.on('hello', (event, arg) => {
 		})
 	}
 })
-
-app.on('ready', createWindow)
 
 let menubar = [
 	...(process.platform === 'darwin' ? [{

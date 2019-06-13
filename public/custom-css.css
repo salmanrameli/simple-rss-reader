@@ -3,13 +3,14 @@ html, body {
     height: 100%;
     margin: 0;
     padding: 0;
+    overflow: hidden;
   }
   img {
     display: block;
     margin: 0 auto;
   }
   p {
-    margin: 15px 0 0 15px
+    margin: 10px 0 10px 0
   }
   .no-padding-left {
     padding-left: 0px;
@@ -62,4 +63,29 @@ html, body {
   }
   .padding-right {
     padding-right: 10px
+  }
+  .row .col-md-12 img {
+    height: 90%;
+    width: 90%;
+    margin-bottom: 15px
+  }
+  .row .col-md-12 h1 {
+    margin: 10px 0 5px 0
+  }
+  .row .col-md-12 h2 {
+    margin: 10px 0 5px 0
+  }
+  .row .col-md-12 h3 {
+    margin: 10px 0 5px 0
+  }
+  .row .col-md-12 h4 {
+    margin: 10px 0 5px 0
+  }
+  .overflow {
+    overflow: hidden;
+  }
+  .working-center-image {
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
   }

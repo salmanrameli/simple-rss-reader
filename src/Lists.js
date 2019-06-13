@@ -32,8 +32,8 @@ class Lists extends Component {
 				<div className="card">
 					<ul className="list-group list-group-flush">
 					{this.state.lists.map((item) => (
-						<span className="border-bottom">
-							<li className={`list-group-item ${this.state.activeLink === item.link ? 'active' : ''}`} key={item.link} onClick={() => this.handleClick(item.link)}>
+						<span className="border-bottom" key={item.link}>
+							<li className={`list-group-item ${this.state.activeLink === item.link ? 'active' : ''}`} onClick={() => this.handleClick(item.link)}>
 								{item.title}
 								<br></br> 
 								<span className="badge badge-info">{item.author}</span>
