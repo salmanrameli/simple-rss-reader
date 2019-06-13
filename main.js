@@ -109,6 +109,8 @@ let menubar = [
 	{
 	  label: 'File',
 	  submenu: [
+		{ label: 'Return Home', click() { win.loadURL(isDev ? "http://localhost:3000" : `file://${path.join(__dirname, '../build/index.html')}`) } },
+		{ type: 'separator' },
 		process.platform === 'darwin' ? 
 		{ role: 'close' } : { role: 'quit' }
 	  ]
