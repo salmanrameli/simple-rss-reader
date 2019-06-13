@@ -1,9 +1,10 @@
 import React from 'react';
+import bg from './grey.png'
 
 const fs = window.require('fs');
 const jsonfile = window.require('jsonfile')
 
-let file = 'urlfeed.json'
+let file = './src/urlfeed.json'
 
 class Setting extends React.Component {
 	constructor(props) {
@@ -86,7 +87,7 @@ class Setting extends React.Component {
 
 	render() {
 		return (
-			<div className="col-md-12 scrollable with-padding">
+			<div className="col-md-12 scrollable with-padding" style={{ backgroundImage: `url(${bg})`, backgroundRepeat:'repeat' }}>
 				<div className="page-header">
 					<h1>Setting</h1>
 					<br></br>

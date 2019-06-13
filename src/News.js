@@ -5,7 +5,7 @@ import {getFeed} from './getFeed'
 
 const Promise = require('bluebird')
 const jsonfile = window.require('jsonfile')
-const file = 'urlfeed.json'
+const file = './src/urlfeed.json'
 
 let date = require('date-and-time');
 
