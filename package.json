@@ -22,7 +22,8 @@
       "src/*",
       "electron-wait-react.js",
       "main.js",
-      "Procfile"
+      "Procfile",
+      "urlfeed.json"
     ],
     "directories": {
       "buildResources": "build",

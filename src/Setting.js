@@ -2,9 +2,7 @@ import React from 'react';
 import bg from './grey.png'
 
 const fs = window.require('fs');
-const jsonfile = window.require('jsonfile')
-
-let file = './src/urlfeed.json'
+const file = 'urlfeed.json'
 
 class Setting extends React.Component {
 	constructor(props) {
@@ -15,7 +13,6 @@ class Setting extends React.Component {
 			url: '',
 		}
 
-		this.start = this.start.bind(this)
 		this.saveNewFeedUrl = this.saveNewFeedUrl.bind(this)
 		this.deleteFeedUrl = this.deleteFeedUrl.bind(this)
 		this.handleSubmit = this.handleSubmit.bind(this)
@@ -23,10 +20,6 @@ class Setting extends React.Component {
 	}
 
 	componentDidMount() {
-		this.start()
-	}
-
-	start = () => {
 		this.displayFeedUrls();
 	}
 
@@ -74,14 +67,14 @@ class Setting extends React.Component {
 	displayFeedUrls= () => {
 		let array = []
 
-		jsonfile.readFile(file).then((result) => {
-			for(let i in result.feeds) {
-				array.push(result.feeds[i].url)
-			}
+		let urls = JSON.parse(fs.readFileSync(file))
 
-			this.setState({
-				urlFeeds: array
-			})
+		for(let i in urls.feeds) {
+			array.push(urls.feeds[i].url)
+		}
+
+		this.setState({
+			urlFeeds: array
 		})
 	}
 
