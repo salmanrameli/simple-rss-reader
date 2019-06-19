@@ -1,8 +1,11 @@
 import React from 'react';
 import bg from './grey.png'
 
+const path = require('path')
 const fs = window.require('fs');
-const file = 'urlfeed.json'
+const remote = window.require('electron').remote;
+const app = remote.app;
+const file = path.join(app.getPath('userData'), "urlfeed.json")
 
 class Setting extends React.Component {
 	constructor(props) {
@@ -17,6 +20,7 @@ class Setting extends React.Component {
 		this.deleteFeedUrl = this.deleteFeedUrl.bind(this)
 		this.handleSubmit = this.handleSubmit.bind(this)
 		this.handleUrlEntered = this.handleUrlEntered.bind(this)
+		this.findJsonFile = this.findJsonFile.bind(this)
 	}
 
 	componentDidMount() {
@@ -64,10 +68,30 @@ class Setting extends React.Component {
 		window.location.reload()
 	}
 
-	displayFeedUrls= () => {
-		let array = []
+	findJsonFile() {
+		try {
+			fs.readFileSync(file)
+		} catch (error) {
+			console.log("file not found")
 
+			const data = {
+				feeds: []
+			}
+
+			fs.writeFile(path.join(app.getPath('userData'), "urlfeed.json"), JSON.stringify(data), function(error) {
+				if(error) 
+					console.log("data creation failed")
+				else 
+					console.log("data creation succeed")
+			})
+		}
+	}
+
+	displayFeedUrls= () => {
+		this.findJsonFile()
+		
 		let urls = JSON.parse(fs.readFileSync(file))
+		let array = []
 
 		for(let i in urls.feeds) {
 			array.push(urls.feeds[i].url)

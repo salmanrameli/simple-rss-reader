@@ -3,10 +3,13 @@ import Lists from './Lists';
 import Article from './Article';
 import { getFeed } from './getFeed'
 
-const fs = window.require('fs');
 const Promise = require('bluebird')
 const date = require('date-and-time');
-const file = 'urlfeed.json'
+const path = require('path')
+const fs = window.require('fs');
+const remote = window.require('electron').remote;
+const app = remote.app;
+const file = path.join(app.getPath('userData'), "urlfeed.json")
 
 class News extends Component {
 	constructor(props) {
