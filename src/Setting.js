@@ -5,6 +5,7 @@ const path = require('path')
 const fs = window.require('fs');
 const remote = window.require('electron').remote;
 const app = remote.app;
+const applicationDataPath = path.join(app.getPath('appData'), app.getName())
 const file = path.join(app.getPath('userData'), "urlfeed.json")
 
 class Setting extends React.Component {
@@ -16,10 +17,15 @@ class Setting extends React.Component {
 			url: '',
 		}
 
+		this.displayFeedUrls = this.displayFeedUrls.bind(this)
+
+		this.handleUrlEntered = this.handleUrlEntered.bind(this)
+		this.handleSubmit = this.handleSubmit.bind(this)
+
 		this.saveNewFeedUrl = this.saveNewFeedUrl.bind(this)
 		this.deleteFeedUrl = this.deleteFeedUrl.bind(this)
-		this.handleSubmit = this.handleSubmit.bind(this)
-		this.handleUrlEntered = this.handleUrlEntered.bind(this)
+		this.checkAppDataExists = this.checkAppDataExists.bind(this)
+		this.createJsonFile = this.createJsonFile.bind(this)
 		this.findJsonFile = this.findJsonFile.bind(this)
 	}
 
@@ -48,7 +54,7 @@ class Setting extends React.Component {
 
 		const json = JSON.stringify(data, null, 2)
 
-		fs.writeFile(file, json, 'utf8', function(error) {
+		fs.writeFileSync(file, json, 'utf8', function(error) {
 			if(error) {
 				console.log(error)
 			}
@@ -68,28 +74,30 @@ class Setting extends React.Component {
 		window.location.reload()
 	}
 
-	findJsonFile() {
-		try {
-			fs.readFileSync(file)
-		} catch (error) {
-			console.log("file not found")
+	checkAppDataExists() {
+		console.log(applicationDataPath)
 
-			const data = {
-				feeds: []
-			}
+		if(!fs.existsSync(applicationDataPath)) {
+			fs.mkdir(applicationDataPath)
 
-			fs.writeFile(path.join(app.getPath('userData'), "urlfeed.json"), JSON.stringify(data), function(error) {
-				if(error) 
-					console.log("data creation failed")
-				else 
-					console.log("data creation succeed")
-			})
+			console.log("folder creation succeed")
 		}
 	}
 
-	displayFeedUrls= () => {
-		this.findJsonFile()
-		
+	createJsonFile() {
+		const data = {
+			feeds: []
+		}
+
+		fs.writeFileSync(file, JSON.stringify(data), function(error) {
+			if(error) 
+				console.log("data creation failed")
+			else 
+				console.log("data creation succeed")
+		})
+	}
+
+	findJsonFile() {
 		let urls = JSON.parse(fs.readFileSync(file))
 		let array = []
 
@@ -100,6 +108,20 @@ class Setting extends React.Component {
 		this.setState({
 			urlFeeds: array
 		})
+	}
+
+	displayFeedUrls= () => {
+		this.checkAppDataExists()
+
+		try {
+			fs.readFileSync(file)
+		} catch (error) {
+			console.log("file not found")
+
+			this.createJsonFile()
+		} finally {
+			this.findJsonFile()
+		}
 	}
 
 	render() {
