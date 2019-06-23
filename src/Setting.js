@@ -1,6 +1,7 @@
 import React from 'react';
 import bg from './grey.png'
 
+const { shell } = window.require('electron')
 const path = require('path')
 const fs = window.require('fs');
 const remote = window.require('electron').remote;
@@ -27,6 +28,7 @@ class Setting extends React.Component {
 		this.checkAppDataExists = this.checkAppDataExists.bind(this)
 		this.createJsonFile = this.createJsonFile.bind(this)
 		this.findJsonFile = this.findJsonFile.bind(this)
+		this.openInBrowser = this.openInBrowser.bind(this)
 	}
 
 	componentDidMount() {
@@ -45,9 +47,23 @@ class Setting extends React.Component {
 
 	saveNewFeedUrl = (url) => {
 		let data = JSON.parse(fs.readFileSync(file))
+		let https = "https://"
+        let https_url
+
+        if(url.substring(0, 8) !== "https://") {
+            if(url.substring(0, 7) === "http://") {
+                let url_substring = url.substr(7)
+
+                https_url = https.concat(url_substring)
+            } else {
+                https_url = https.concat(url)
+            }
+        } else {
+            https_url = https.concat(url)
+        }
 
 		let newFeed = {
-			url: url
+			url: https_url
 		}
 
 		data.feeds.push(newFeed)
@@ -124,6 +140,10 @@ class Setting extends React.Component {
 		}
 	}
 
+	openInBrowser(url) {
+		shell.openExternal(url)
+	}
+
 	render() {
 		return (
 			<div className="col-md-12 scrollable with-padding" style={{ backgroundImage: `url(${bg})`, backgroundRepeat:'repeat' }}>
@@ -152,7 +172,8 @@ class Setting extends React.Component {
 					<ul className="list-group list-group-flush">
 						{this.state.urlFeeds.map((url) => (
 							<li className="list-group-item" key={url}>
-								{url}
+								<a href="javascript:void(0);" onClick={() => this.openInBrowser(url)}>{url}</a>
+								
 								<button className="btn btn-danger float-right" onClick={() => this.deleteFeedUrl(url)}><i className="fa fa-trash-o"></i> Delete</button>
 							</li>
 						))}
