@@ -89,3 +89,7 @@ html, body {
     top: 50%;
     transform: translateY(-50%);
   }
+  .webview {
+    min-width: 75vw;
+    min-height: 100vh;
+  }

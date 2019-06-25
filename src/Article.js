@@ -3,6 +3,7 @@ import ReactHtmlParser from 'react-html-parser';
 import img from './icon.png'
 
 const { ipcRenderer } = window.require('electron')
+const WebView = require('react-electron-web-view');
 
 class Article extends Component {
 	constructor(props) {
@@ -15,6 +16,7 @@ class Article extends Component {
 			story: props.story,
 			link: props.link,
 			display: 'loading',
+			url: ''
 		};
 
 		this.handleClick = this.handleClick.bind(this)
@@ -38,7 +40,12 @@ class Article extends Component {
 	}
 
 	handleClick(link) {
-		ipcRenderer.send('hello', link)
+		// ipcRenderer.send('hello', link)
+
+		this.setState({
+			display: 'webview',
+			url: link
+		});
 	}
 
 	render() {
@@ -60,9 +67,12 @@ class Article extends Component {
 					</div>
 				</div>
 				:
-				<div className="col-md-9 centered">
-					<img src={img} alt="Logo" className="centered-img" />
-				</div>
+				this.state.display === 'webview' ?
+					<WebView src = {this.state.url} className = 'webview' />
+					:
+					<div className="col-md-9 centered">
+						<img src={img} alt="Logo" className="centered-img" />
+					</div>
 			)
 	}
 }
