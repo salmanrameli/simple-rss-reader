@@ -10,6 +10,13 @@ export async function getFeed(url) {
 	try {
 		const response = await axios.get(`${CORS_URL}${url}`, {
 			responseType: 'stream',
+			crossDomain: true
+		}, {
+			headers: {
+				'Access-Control-Allow-Origin': '*',
+				'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8',
+				'Origin': 'http://localhost:3000'
+			}
 		});
 
 		stringToStream(response.data).pipe(feedparser);

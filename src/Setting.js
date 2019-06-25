@@ -59,7 +59,7 @@ class Setting extends React.Component {
                 https_url = https.concat(url)
             }
         } else {
-            https_url = https.concat(url)
+            https_url = url
         }
 
 		let newFeed = {
