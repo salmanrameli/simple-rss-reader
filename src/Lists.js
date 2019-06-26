@@ -29,19 +29,14 @@ class Lists extends Component {
 	render() {
 		return (
 			<div className="col-md-3 scrollable no-padding-right no-padding-left">
-				<div className="card">
-					<ul className="list-group list-group-flush">
-					{this.state.lists.map((item) => (
-						<span className="border-bottom" key={item.link}>
-							<li className={`list-group-item ${this.state.activeLink === item.link ? 'active' : ''}`} onClick={() => this.handleClick(item.link)}>
-								{item.title}
-								<br></br> 
-								<span className="badge badge-info">{item.author}</span>
-							</li>
-						</span>
-					))}
-					</ul>
-				</div>
+				{this.state.lists.map((item) => (
+					<div className={`card list-group-item ${this.state.activeLink === item.link ? 'active' : ''}`}>
+						<div className="card-body" onClick={() => this.handleClick(item.link)}>
+							<h6>{item.title}</h6>
+							<p className="badge badge-info">{item.author}</p>
+						</div>
+					</div>
+				))}
 			</div>
 		);
 	}
