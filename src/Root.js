@@ -28,10 +28,6 @@ function RouteWithSubRoutes(route) {
 }
 
 class Root extends Component {
-	constructor(props) {
-		super(props)
-	}
-	
 	render() {
 		return (
 			<Router>

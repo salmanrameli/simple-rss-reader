@@ -1,11 +1,8 @@
 const {app, BrowserWindow, Menu} = require('electron')
 const path = require('path')
 const isDev = require("electron-is-dev");
-const { ipcMain } = require('electron')
 
 let win = null
-let child = null
-let modal = null
 
 function createWindow () {	
 	win = new BrowserWindow({
@@ -40,55 +37,6 @@ app.on('window-all-closed', function () {
   
 app.on('activate', function () {
 	if (win === null) createWindow()
-})
-
-ipcMain.on('hello', (event, arg) => {
-	if(child === null) {
-		child = new BrowserWindow({ 
-			parent: win,
-			width: 1024, 
-			height: 768,
-			show: false
-		})
-
-		modal = new BrowserWindow({
-			parent: win,
-			width: 350, 
-			height: 70,
-			modal: true,
-			show: false
-		})
-
-		modal.loadFile('./public/loading.html')
-		modal.show()
-
-		child.loadURL(arg)
-
-		child.once('ready-to-show', () => {
-			child.show()
-			modal.hide()
-			modal = null
-		})
-		  
-		child.on('closed', function () {
-			child = null
-		})
-	} else {
-		child.loadURL(arg)
-
-		modal.loadFile('./public/loading.html')
-		modal.show()
-
-		child.once('ready-to-show', () => {
-			child.show()
-			modal.hide()
-			modal = null
-		})
-		  
-		child.on('closed', function () {
-			child = null
-		})
-	}
 })
 
 let menubar = [
