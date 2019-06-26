@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import ReactHtmlParser from 'react-html-parser';
 import img from './icon.png'
 
-const { ipcRenderer } = window.require('electron')
+const { shell } = window.require('electron')
 const WebView = require('react-electron-web-view');
 
 class Article extends Component {
@@ -20,6 +20,7 @@ class Article extends Component {
 		};
 
 		this.handleClick = this.handleClick.bind(this)
+		this.openInBrowser = this.openInBrowser.bind(this)
 	}
 
 	componentWillReceiveProps(nextProps) {
@@ -39,13 +40,15 @@ class Article extends Component {
 		}
 	}
 
-	handleClick(link) {
-		// ipcRenderer.send('hello', link)
-
+	handleClick(url) {
 		this.setState({
 			display: 'webview',
-			url: link
+			url: url
 		});
+	}
+
+	openInBrowser(url) {
+		shell.openExternal(url)
 	}
 
 	render() {
@@ -56,10 +59,11 @@ class Article extends Component {
 						<div className="pb-2 mt-4 mb-2 border-bottom">
 							<small>{this.state.author}</small>
 							<h2>{this.state.title}</h2>
-							<small>
-								{this.state.date}<br></br>
-								<a href="javascript:void(0);" onClick={() => this.handleClick(this.state.link)}>View article</a>
-							</small>
+							<div className="btn-group" role="group" aria-label="options">
+								<button type="button" className="btn btn-sm btn-link disabled">{this.state.date}</button>
+								<button type="button" className="btn btn-sm btn-link" onClick={() => this.handleClick(this.state.link)}>View Article</button>
+								<button type="button" className="btn btn-sm btn-link" onClick={() => this.openInBrowser(this.state.link)}>Open in Browser</button>
+							</div>
 						</div>
 						<div className="row col-md-12 text-justify">
 							{ReactHtmlParser(this.state.story)}
