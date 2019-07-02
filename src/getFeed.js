@@ -2,31 +2,30 @@ import FeedParser from 'feedparser'
 import axios from 'axios'
 import stringToStream from 'string-to-stream'
 
-let CORS_URL = 'https://cors-anywhere.herokuapp.com/'
+const isDev = window.require("electron-is-dev");
+const CORS_URL = 'https://cors-anywhere.herokuapp.com/'
 
 export async function getFeed(url) {
-	var feedparser = new FeedParser();
+	let feedparser = new FeedParser();
+	let endpoint = null
 
 	try {
-		const response = await axios.get(`${CORS_URL}${url}`, {
-			responseType: 'stream',
-			crossDomain: true
-		}, {
-			headers: {
-				'Access-Control-Allow-Origin': '*',
-				'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8',
-				'Origin': 'http://localhost:3000'
-			}
-		});
+		if(isDev) 
+			endpoint = `${CORS_URL}${url}`
+		else 
+			endpoint = url
+		
+		const response = await axios.get(endpoint);
 
 		stringToStream(response.data).pipe(feedparser);
 
-		var promise = new Promise((resolve, reject) => {
+		let promise = new Promise((resolve, reject) => {
 			const items = [];
 
 			feedparser.on('readable', function () {
 				const stream = this;
 				let item;
+				
 				while ((item = stream.read())) {
 					items.push(item);
 				}
@@ -43,6 +42,7 @@ export async function getFeed(url) {
 
 		try {
 			const feed = await Promise.all([promise]);
+
 			return feed[0];
 		} catch (err) {
 			throw err;
