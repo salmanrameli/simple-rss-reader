@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import ReactHtmlParser from 'react-html-parser';
-import img from './icon.png'
 
 const { shell } = window.require('electron')
 const WebView = require('react-electron-web-view');
@@ -75,7 +74,9 @@ class Article extends Component {
 					<WebView src = {this.state.url} className = 'webview' />
 					:
 					<div className="col-md-9 centered">
-						<img src={img} alt="Logo" className="centered-img" />
+						<div className="centered">
+							<h1 style={{ 'color': 'lightgrey'}}>Article will be shown here</h1>
+						</div>
 					</div>
 			)
 	}
