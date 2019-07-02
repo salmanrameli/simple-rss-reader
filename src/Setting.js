@@ -42,7 +42,11 @@ class Setting extends React.Component {
 	}
 
 	handleSubmit = (e) => {
+		e.preventDefault()
+
 		this.saveNewFeedUrl(e.target.newUrlFeed.value)
+
+		this.displayFeedUrls()
 	}
 
 	saveNewFeedUrl = (url) => {
@@ -77,7 +81,9 @@ class Setting extends React.Component {
 		})
 	}
 
-	deleteFeedUrl = (url) => {
+	deleteFeedUrl = (e, url) => {
+		e.preventDefault()
+
 		let data = JSON.parse(fs.readFileSync(file))
 		let feeds = data.feeds
 
@@ -87,7 +93,7 @@ class Setting extends React.Component {
 
 		fs.writeFileSync(file, JSON.stringify(data, null, 2));
 
-		window.location.reload()
+		this.displayFeedUrls()
 	}
 
 	checkAppDataExists() {
@@ -157,7 +163,7 @@ class Setting extends React.Component {
 							<h4>Add Feed</h4>
 							<hr></hr>
 						</div>
-						<form id="newFeedForm" onSubmit={this.handleSubmit}>
+						<form id="newFeedForm" onSubmit={(e) => this.handleSubmit(e)}>
 							<div className="form-group row">
 								<label className="col-form-label col-sm-1" htmlFor="newUrlFeed">Url:</label>
 								<div className="col-sm-9">
@@ -174,7 +180,7 @@ class Setting extends React.Component {
 							<li className="list-group-item" key={url}>
 								<a href="javascript:void(0);" onClick={() => this.openInBrowser(url)}>{url}</a>
 								
-								<button className="btn btn-danger float-right" onClick={() => this.deleteFeedUrl(url)}><i className="fa fa-trash-o"></i> Delete</button>
+								<button className="btn btn-danger float-right" onClick={(e) => this.deleteFeedUrl(e, url)}><i className="fa fa-trash-o"></i> Delete</button>
 							</li>
 						))}
 					</ul>
