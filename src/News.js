@@ -9,6 +9,7 @@ const path = require('path')
 const fs = window.require('fs');
 const remote = window.require('electron').remote;
 const app = remote.app;
+const applicationDataPath = path.join(app.getPath('appData'), app.getName())
 const file = path.join(app.getPath('userData'), "urlfeed.json")
 
 class News extends Component {
@@ -26,10 +27,45 @@ class News extends Component {
 
 		this.updateStory = this.updateStory.bind(this)
 		this.start = this.start.bind(this)
+		this.checkAppDataExists = this.checkAppDataExists.bind(this)
+		this.createJsonFile = this.createJsonFile.bind(this)
+	}
+
+	checkAppDataExists() {
+		console.log(applicationDataPath)
+
+		if(!fs.existsSync(applicationDataPath)) {
+			fs.mkdir(applicationDataPath)
+
+			console.log("folder creation succeed")
+		}
+	}
+
+	createJsonFile() {
+		const data = {
+			feeds: []
+		}
+
+		fs.writeFileSync(file, JSON.stringify(data), function(error) {
+			if(error) 
+				console.log("data creation failed")
+			else 
+				console.log("data creation succeed")
+		})
 	}
 
 	componentDidMount() {
-		this.start()
+		this.checkAppDataExists()
+
+		try {
+			fs.readFileSync(file)
+		} catch (error) {
+			console.log("file not found")
+
+			this.createJsonFile()
+		} finally {
+			this.start()
+		}
 	}
 
 	start() {
