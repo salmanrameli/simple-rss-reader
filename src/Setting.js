@@ -1,5 +1,4 @@
 import React from 'react';
-import background from './grey.png'
 
 const { shell } = window.require('electron')
 const path = require('path')
@@ -152,7 +151,7 @@ class Setting extends React.Component {
 
 	render() {
 		return (
-			<div className="col-md-12 scrollable with-padding" style={{ backgroundImage: `url(${background})`, backgroundRepeat:'repeat' }}>
+			<div className="col-md-12 scrollable with-padding">
 				<div className="pb-2 mt-4 mb-2">
 					<h1>Setting</h1>
 				</div>
@@ -196,14 +195,6 @@ class Setting extends React.Component {
 						</table>
 					</div>
 				</div>
-				{/* {this.state.urlFeeds.map((url) => (
-					<div className="card" key={url}>
-						<div className="card-body">
-							<a href="javascript:void(0);" onClick={() => this.openInBrowser(url)}>{url}</a>
-							<button className="btn btn-danger float-right" onClick={(e) => this.deleteFeedUrl(e, url)}><i className="fa fa-trash-o"></i> Delete</button>
-						</div>
-					</div>
-				))} */}
 			</div>
 		)
 	}
