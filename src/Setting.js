@@ -1,5 +1,5 @@
 import React from 'react';
-import bg from './grey.png'
+import background from './grey.png'
 
 const { shell } = window.require('electron')
 const path = require('path')
@@ -152,17 +152,12 @@ class Setting extends React.Component {
 
 	render() {
 		return (
-			<div className="col-md-12 scrollable with-padding" style={{ backgroundImage: `url(${bg})`, backgroundRepeat:'repeat' }}>
-				<div className="page-header">
+			<div className="col-md-12 scrollable with-padding" style={{ backgroundImage: `url(${background})`, backgroundRepeat:'repeat' }}>
+				<div className="pb-2 mt-4 mb-2">
 					<h1>Setting</h1>
-					<br></br>
 				</div>
 				<div className="card">
 					<div className="card-body">
-						<div className="page-header">
-							<h4>Add Feed</h4>
-							<hr></hr>
-						</div>
 						<form id="newFeedForm" onSubmit={(e) => this.handleSubmit(e)}>
 							<div className="form-group row">
 								<label className="col-form-label col-sm-1" htmlFor="newUrlFeed">Url:</label>
@@ -175,16 +170,40 @@ class Setting extends React.Component {
 							</div>
 						</form>
 					</div>
-					<ul className="list-group list-group-flush">
-						{this.state.urlFeeds.map((url) => (
-							<li className="list-group-item" key={url}>
-								<a href="javascript:void(0);" onClick={() => this.openInBrowser(url)}>{url}</a>
-								
-								<button className="btn btn-danger float-right" onClick={(e) => this.deleteFeedUrl(e, url)}><i className="fa fa-trash-o"></i> Delete</button>
-							</li>
-						))}
-					</ul>
 				</div>
+				<br></br>
+				<div className="card">
+					<div className="card-body">
+						<div className="pb-1 mb-1">
+								<h4>Feeds you're subscribing to:</h4>
+						</div>
+						<table className="table">
+							<tbody>
+								{this.state.urlFeeds.map((url) => (
+									<tr>
+										<td className="align-middle">
+											<a href="javascript:void(0);" 
+												onClick={() => this.openInBrowser(url)}><span class="align-middle">{url}</span>
+											</a>
+											<button className="btn btn-danger float-right" 
+													onClick={(e) => this.deleteFeedUrl(e, url)}>
+														<i className="fa fa-trash-o"></i> Delete
+												</button>
+										</td>
+									</tr>
+								))}
+							</tbody>
+						</table>
+					</div>
+				</div>
+				{/* {this.state.urlFeeds.map((url) => (
+					<div className="card" key={url}>
+						<div className="card-body">
+							<a href="javascript:void(0);" onClick={() => this.openInBrowser(url)}>{url}</a>
+							<button className="btn btn-danger float-right" onClick={(e) => this.deleteFeedUrl(e, url)}><i className="fa fa-trash-o"></i> Delete</button>
+						</div>
+					</div>
+				))} */}
 			</div>
 		)
 	}
