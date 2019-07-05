@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import Lists from './Lists';
 import Article from './Article';
 import { getFeed } from './getFeed'
+import test from './getFeedFeedly'
 
 const Promise = require('bluebird')
 const date = require('date-and-time');
@@ -32,8 +33,6 @@ class News extends Component {
 	}
 
 	checkAppDataExists() {
-		console.log(applicationDataPath)
-
 		if(!fs.existsSync(applicationDataPath)) {
 			fs.mkdir(applicationDataPath)
 
@@ -75,6 +74,8 @@ class News extends Component {
 		for(let i in urls.feeds) {
 			feeds.push(urls.feeds[i].url)
 		}
+
+		test()
 
 		Promise.map(feeds, (url) => getFeed(url), {concurrency: 4}).then((feeds) => {
 			let merged = [].concat.apply([], feeds)

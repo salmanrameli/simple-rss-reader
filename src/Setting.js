@@ -102,8 +102,6 @@ class Setting extends React.Component {
 	}
 
 	checkAppDataExists() {
-		console.log(applicationDataPath)
-
 		if(!fs.existsSync(applicationDataPath)) {
 			fs.mkdir(applicationDataPath)
 
