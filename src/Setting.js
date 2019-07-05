@@ -43,7 +43,9 @@ class Setting extends React.Component {
 	handleSubmit = (e) => {
 		e.preventDefault()
 
-		this.saveNewFeedUrl(e.target.newUrlFeed.value)
+		if(e.target.newUrlFeed.value !== '') {
+			this.saveNewFeedUrl(e.target.newUrlFeed.value)
+		}
 
 		this.displayFeedUrls()
 	}
@@ -77,6 +79,10 @@ class Setting extends React.Component {
 			if(error) {
 				console.log(error)
 			}
+		})
+
+		this.setState({
+			url: ''
 		})
 	}
 
