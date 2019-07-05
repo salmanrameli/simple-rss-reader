@@ -17,7 +17,7 @@ function createWindow () {
 	Menu.setApplicationMenu(menu)
 	       
 	win.loadURL(
-		isDev ? "http://localhost:3000" : `file://${path.join(__dirname, '/build/index.html')}`
+		isDev ? "http://localhost:8080" : `file://${path.join(__dirname, '/build/index.html')}`
 	)
 
 	win.once('ready-to-show', () => {
@@ -57,7 +57,7 @@ let menubar = [
 	{
 	  label: 'File',
 	  submenu: [
-		{ label: 'Return Home', click() { win.loadURL(isDev ? "http://localhost:3000" : `file://${path.join(__dirname, '/build/index.html')}`) } },
+		{ label: 'Return Home', click() { win.loadURL(isDev ? "http://localhost:8080" : `file://${path.join(__dirname, '/build/index.html')}`) } },
 		{ type: 'separator' },
 		process.platform === 'darwin' ? 
 		{ role: 'close' } : { role: 'quit' }
