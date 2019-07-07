@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import Lists from './Lists';
 import Article from './Article';
 import { getFeed } from './getFeed'
-import test from './getFeedFeedly'
+import getFeedFeedly from './getFeedFeedly'
 
 const Promise = require('bluebird')
 const date = require('date-and-time');
@@ -75,7 +75,7 @@ class News extends Component {
 			feeds.push(urls.feeds[i].url)
 		}
 
-		test()
+		getFeedFeedly()
 
 		Promise.map(feeds, (url) => getFeed(url), {concurrency: 4}).then((feeds) => {
 			let merged = [].concat.apply([], feeds)

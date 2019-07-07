@@ -29,6 +29,15 @@ function createWindow () {
 	})
 }
 
+function createLoginWindow() {
+	let window = new BrowserWindow({
+		width: 600, 
+		height: 800,
+	});
+
+	window.loadURL("https://cloud.feedly.com/v3/auth/auth?response_type=code&client_id=feedlydev&redirect_uri=http%3A%2F%2Flocalhost%3A8080&scope=https%3A%2F%2Fcloud.feedly.com%2Fsubscriptions")
+}
+
 app.on('ready', createWindow)
 
 app.on('window-all-closed', function () {

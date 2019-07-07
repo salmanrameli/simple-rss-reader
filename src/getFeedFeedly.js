@@ -1,12 +1,21 @@
 import {getProfile, getStream, getEntry} from './Constants'
+import {getUserId, getAuthCode} from './UserDetails'
+import Axios from 'axios';
 
-export default function test() {
-    let a = getProfile()
-    console.log(a)
+const authCode = getAuthCode()
+const userId = getUserId()
 
-    let b = getStream('test', true)
-    console.log(b)
-
-    let c = getEntry('PSNTZO8gXFUe+cpCZyApw0vEKWPT4b14D6teBEocIAE=_16bc152bcb4:3a4bf81:561e4df6')
-    console.log(c)
+export default async function getFeedFeedly() {
+    await Axios({
+		method: 'get',
+		url: getStream(userId, false),
+		responseType: 'application/json',
+		headers: {
+			'Authorization': `OAuth ${authCode}`
+		}
+	}).then(function(response) {
+		console.log(response.data)
+	}).catch(function(error) {
+		console.log(error)
+	})
 }
