@@ -14,7 +14,13 @@ export default async function getFeedFeedly() {
 			'Authorization': `OAuth ${authCode}`
 		}
 	}).then(function(response) {
-		console.log(response.data)
+        console.log(response.data)
+        
+        let res = response.data.items
+        
+        for(let i in res) {
+            console.log(res[i].title)
+        }
 	}).catch(function(error) {
 		console.log(error)
 	})
