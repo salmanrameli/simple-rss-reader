@@ -1,6 +1,9 @@
 const {app, BrowserWindow, Menu} = require('electron')
 const path = require('path')
 const isDev = require("electron-is-dev");
+const ipcMain = require('electron').ipcMain
+const Store = require('electron-store');
+const store = new Store();
 
 let win = null
 
@@ -28,6 +31,26 @@ function createWindow () {
 		win = null
 	})
 }
+
+ipcMain.on('asynchronous-message', (event, arg) => {
+	let integrationState = store.get('integrateWithFeedly')
+
+	switch(integrationState) {
+		case false:
+			event.sender.send('asynchronous-reply', 'not integrated')
+			break
+		case true:
+			event.sender.send('asynchronous-reply', 'integrated')
+			break
+		default:
+			event.sender.send('asynchronous-reply', 'init')
+			break
+	}
+})
+
+ipcMain.on('restart', (event, arg) => {
+	console.log(arg) // prints "ping async message 2"
+})
 
 function createLoginWindow() {
 	let window = new BrowserWindow({

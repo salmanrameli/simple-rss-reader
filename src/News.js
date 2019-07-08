@@ -4,6 +4,7 @@ import Article from './Article';
 import { getFeed } from './getFeed'
 import getFeedFeedly from './getFeedFeedly'
 
+const { ipcRenderer } = window.require('electron')
 const Promise = require('bluebird')
 const date = require('date-and-time');
 const path = require('path')
@@ -68,6 +69,8 @@ class News extends Component {
 	}
 
 	start() {
+		ipcRenderer.send('asynchronous-message-2', 'ping async message 2')
+
 		let urls = JSON.parse(fs.readFileSync(file))
 		let feeds = []
 
