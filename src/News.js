@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import Lists from './Lists';
 import Article from './Article';
 import { getFeed } from './getFeed'
-import getFeedFeedly from './getFeedFeedly'
 
 const { ipcRenderer } = window.require('electron')
 const Promise = require('bluebird')
@@ -77,8 +76,6 @@ class News extends Component {
 		for(let i in urls.feeds) {
 			feeds.push(urls.feeds[i].url)
 		}
-
-		getFeedFeedly()
 
 		Promise.map(feeds, (url) => getFeed(url), {concurrency: 4}).then((feeds) => {
 			let merged = [].concat.apply([], feeds)

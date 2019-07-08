@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import * as serviceWorker from './serviceWorker';
 import Root from './Root';
+import FeedlyRoot from './Feedly/FeedlyRoot'
 import Login from './Login'
 
 const { ipcRenderer } = window.require('electron')
@@ -21,7 +22,7 @@ ipcRenderer.on('asynchronous-reply', (event, reply) => {
 			render(Root)
 			break
 		case 'integrated':
-			render(Root)
+			render(FeedlyRoot)
 			break
 		default:
 			render(Login)

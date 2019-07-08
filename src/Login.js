@@ -8,12 +8,16 @@ class Login extends Component {
         super(props)
 
         this.state = {
-            integrateWithFeedly: ''
+            integrateWithFeedly: '',
+            userId: '',
+            authCode: ''
         }
 
         this.stringToBool = this.stringToBool.bind(this)
         this.handleFeedlyIntegration = this.handleFeedlyIntegration.bind(this)
         this.handleIntegrateWithFeedlyChange = this.handleIntegrateWithFeedlyChange.bind(this)
+        this.handleUserIdOnChange = this.handleUserIdOnChange.bind(this)
+        this.handleAuthCodeOnChange = this.handleAuthCodeOnChange.bind(this)
     }
 
     stringToBool(val) {
@@ -22,7 +26,9 @@ class Login extends Component {
 
     componentDidMount() {
         this.setState({
-            integrateWithFeedly: store.get('integrateWithFeedly', false)
+            integrateWithFeedly: store.get('integrateWithFeedly', false),
+            userId: store.get('userId', ''),
+            authCode: store.get('authCode', '')
         })
     }
 
@@ -52,6 +58,18 @@ class Login extends Component {
         this.render()
     }
 
+    handleUserIdOnChange(event) {
+        this.setState({
+            userId: event.target.userId.value
+        })
+    }
+
+    handleAuthCodeOnChange(event) {
+        this.setState({
+            authCode: event.target.authCode.value
+        })
+    }
+
     render() {
         return (
             <div className="row align-items-center full-size">
@@ -69,16 +87,18 @@ class Login extends Component {
                             {this.state.integrateWithFeedly ? 
                                 <div className="card card-body bg-light">
                                     <label for="userId">User ID</label>
-                                    <input type="text" className="form-control" id="userId" name="userId"></input>
+                                    <input type="text" className="form-control" id="userId" name="userId" onChange={e => this.handleUserIdOnChange(e)} value={this.state.userId}></input>
+                                    <br></br>
                                     <label for="authorizationCode">Authorization Code</label>
-                                    <input type="text" className="form-control" id="authorizationCode" name="authorizationCode"></input>
+                                    <textarea rows="5" type="text" className="form-control" id="authorizationCode" name="authorizationCode" onChange={e => this.handleAuthCodeOnChange(e)} value={this.state.authCode}></textarea>
                                 </div>
                             :
                                 <div className="card card-body bg-light">
                                     <label for="userId">User ID</label>
                                     <input type="text" className="form-control" id="userId" disabled></input>
+                                    <br></br>
                                     <label for="authorizationCode">Authorization Code</label>
-                                    <input type="text" className="form-control" id="authorizationCode" disabled></input>
+                                    <textarea rows="5" type="text" className="form-control" id="authorizationCode" disabled></textarea>
                                 </div>
                             }                                
                         </div>
