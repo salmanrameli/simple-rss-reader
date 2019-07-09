@@ -63,13 +63,13 @@ class Login extends Component {
 
     handleUserIdOnChange(event) {
         this.setState({
-            userId: event.target.userId.value
+            userId: event.target.userId
         })
     }
 
     handleAuthCodeOnChange(event) {
         this.setState({
-            authCode: event.target.authCode.value
+            authCode: event.target.authCode
         })
     }
 
