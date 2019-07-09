@@ -97,3 +97,6 @@ html, body {
     margin: 0 0 0 0;
     padding: 0 0 0 0;
   }
+  .frameless-padding {
+    padding-top: 17px
+  }

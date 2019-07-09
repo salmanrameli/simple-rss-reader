@@ -31,7 +31,7 @@ class FeedlyRoot extends Component {
 	render() {
 		return (
 			<Router>
-				<div className="row">
+				<div className="row frameless-padding">
 					<div className="col-md-12 no-padding-right no-padding-left border-bottom">
 						<div className="btn-toolbar toolbar-padding" role="toolbar" aria-label="Button Toolbar">
 							<div className="btn-group mr-2" role="group" id="button-group">

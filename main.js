@@ -13,7 +13,8 @@ function createWindow () {
 		height: 800,
 		'minHeight': 600,
 		'minWidth': 960,
-		show: false
+		show: false,
+		titleBarStyle: 'hidden'
 	})
 
 	const menu = Menu.buildFromTemplate(menubar)
