@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import Lists from './Lists';
 import Article from './Article';
 import {getUserId, getAuthCode} from './UserDetails'
-import {getProfile, getStream, getEntry} from './Constants'
+import {getProfile, getStream, getEntry, markAsRead} from './Constants'
 import Axios from 'axios';
 
 const date = require('date-and-time');
@@ -34,7 +34,7 @@ class News extends Component {
 
 		Axios({
 			method: 'get',
-			url: getStream(userId, false),
+			url: getStream(userId, true),
 			responseType: 'application/json',
 			headers: {
 				'Authorization': `OAuth ${authCode}`
@@ -74,6 +74,29 @@ class News extends Component {
 				}
 			}
 		});
+
+		const authCode = getAuthCode()
+		let bodyFormData = new FormData();
+
+		bodyFormData.set('action', 'markAsRead')
+		bodyFormData.set('type', 'entries')
+		bodyFormData.set('entryIds', id)
+			
+		// Axios({
+		// 	method: 'post',
+		// 	url: markAsRead(),
+		// 	responseType: 'application/json',
+		// 	headers: {
+		// 		'Authorization': `OAuth ${authCode}`
+		// 	},
+		// 	data: {
+		// 		action: 'markAsRead',
+		// 		type: 'entries',
+		// 		entryIds: "[" + id + "]"
+		// 	}
+		// }).then((response) => {}).catch((error) => {
+		// 	console.log(error)
+		// })
 	}
 
 	render() {

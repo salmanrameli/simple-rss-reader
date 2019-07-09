@@ -23,4 +23,11 @@ function getEntry(entryId) {
         return `https://cloud.feedly.com/v3/entries/entriesId=${url}`
 }
 
-export {getProfile, getStream, getEntry}
+function markAsRead() {
+    if(isDev)
+        return `https://cors-anywhere.herokuapp.com/https://cloud.feedly.com/v3/markers`
+    else
+        return `https://cloud.feedly.com/v3/markers`
+}
+
+export {getProfile, getStream, getEntry, markAsRead}
