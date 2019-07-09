@@ -36,7 +36,7 @@ class FeedlyRoot extends Component {
 						<div className="btn-toolbar toolbar-padding" role="toolbar" aria-label="Button Toolbar">
 							<div className="btn-group mr-2" role="group" id="button-group">
 								<NavLink to="/News" className="btn btn-outline-primary btn-sm" id="newsButton" activeClassName="active">
-								<i className="fa fa-newspaper-o"></i> Feeds
+								<i className="far fa-newspaper"></i> Feeds
 								</NavLink>
 								<NavLink to="/Login" className="btn btn-outline-primary btn-sm" id="settingButton" activeClassName="active">
 								<i className="fa fa-wrench"></i>

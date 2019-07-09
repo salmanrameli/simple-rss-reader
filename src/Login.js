@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 
 const Store = window.require('electron-store');
 const store = new Store();
+const { ipcRenderer } = window.require('electron')
 
 class Login extends Component {
     constructor(props) {
@@ -32,7 +33,7 @@ class Login extends Component {
         })
     }
 
-    handleFeedlyIntegration(event) {
+    handleFeedlyIntegration(event) {        
         event.preventDefault()
 
         let integrateWithFeedly = this.stringToBool(event.target.feedlyIntegration.value)
@@ -46,6 +47,8 @@ class Login extends Component {
             store.set('userId', userId)
             store.set('authCode', authorizationCode)
         }
+
+        ipcRenderer.send('feedly-integration', 'feedly integration')
     }
 
     handleIntegrateWithFeedlyChange(event) {

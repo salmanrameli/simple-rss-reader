@@ -48,8 +48,9 @@ ipcMain.on('asynchronous-message', (event, arg) => {
 	}
 })
 
-ipcMain.on('restart', (event, arg) => {
-	console.log(arg) // prints "ping async message 2"
+ipcMain.on('feedly-integration', (event, arg) => {
+	app.relaunch()
+	app.exit(0)
 })
 
 function createLoginWindow() {
