@@ -99,8 +99,8 @@ class FeedlyRoot extends Component {
 								</NavLink>
 							</div>
 							<div className="btn-group mr-2" role="group" id="button-group-2">
-								<button type="button" className={`btn btn-outline-secondary btn-sm ${this.state.isUnreadOnly === true ? "active" : ""}`} onClick={(e) => this.handleOnclick(e, "unread")}>Unread</button>
-								<button type="button" className={`btn btn-outline-secondary btn-sm  ${this.state.isUnreadOnly === true ? "" : "active"}`} onClick={(e) => this.handleOnclick(e, "all")}>All</button>
+								<button type="button" className={`btn btn-outline-dark btn-sm ${this.state.isUnreadOnly === true ? "active" : ""}`} onClick={(e) => this.handleOnclick(e, "unread")}>Unread</button>
+								<button type="button" className={`btn btn-outline-dark btn-sm  ${this.state.isUnreadOnly === true ? "" : "active"}`} onClick={(e) => this.handleOnclick(e, "all")}>All</button>
 							</div>
 						</div>
 					</div>

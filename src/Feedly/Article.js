@@ -86,6 +86,9 @@ class Article extends Component {
 						</div>
 						<div className="row col-md-12 text-justify">
 							{ReactHtmlParser(this.state.story)}
+							<br></br>
+							<br></br>
+							<br></br>
 						</div>
 					</div>
 				</div>
