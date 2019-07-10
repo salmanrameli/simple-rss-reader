@@ -13,13 +13,34 @@ class Lists extends Component {
 			activeLink: ''
 		}
 
-		this.handleClick = this.handleClick.bind(this);
+		this.handleClick = this.handleClick.bind(this)
+		this.markAsRead = this.markAsRead.bind(this)
 	}
 
 	componentWillReceiveProps(nextProps) {
 		this.setState({
 			lists: nextProps.lists
 		});
+	}
+
+	async markAsRead(id) {
+		const authCode = getAuthCode()
+
+		let arrayOfReadEntry = new Array(String(id))
+
+		await Axios({
+			method: 'post',
+			url: markAsRead(),
+			data: {
+				"action": "markAsRead",
+				"type": "entries",
+				"entryIds": arrayOfReadEntry
+			},
+			headers: {
+				"Authorization": authCode,
+				"Content-Type": "application/json"
+			},
+		}).then(response => {}).catch(error => console.log(error))
 	}
 
 	handleClick = (link, id) => {
@@ -29,18 +50,7 @@ class Lists extends Component {
 			activeLink: id
 		})
 
-		const authCode = getAuthCode()
-
-		Axios.post(markAsRead(), {
-			action: 'markAsRead',
-			type: 'entries',
-			entryIds: `[${id}]`
-		}, {
-			headers: {
-				'Authorization': `OAuth ${authCode}`,
-				'Content-Type': 'application/json'
-			},
-		}).then(response => {}).catch(error => console.log(error))
+		this.markAsRead(id)
 	}
 	
 	render() {
