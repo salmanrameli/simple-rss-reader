@@ -50,8 +50,11 @@ ipcMain.on('asynchronous-message', (event, arg) => {
 })
 
 ipcMain.on('feedly-integration', (event, arg) => {
-	app.relaunch()
-	app.exit(0)
+	win.reload()
+})
+
+ipcMain.on('refresh', (event, arg) => {
+	win.reload()
 })
 
 function createLoginWindow() {

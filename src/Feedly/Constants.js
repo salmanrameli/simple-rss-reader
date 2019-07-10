@@ -1,4 +1,8 @@
+import {getUserId} from './UserDetails'
+
 const isDev = window.require("electron-is-dev");
+const Store = window.require('electron-store');
+const store = new Store();
 
 function getProfile() {
     if(isDev)
@@ -7,7 +11,10 @@ function getProfile() {
         return `https://cloud.feedly.com/v3/profile`
 }
 
-function getStream(userId, isUnreadOnly) {
+function getStream() {
+    let userId = getUserId()
+    let isUnreadOnly = store.get('isUnreadOnly', false)
+
     if(isDev)
         return `https://cors-anywhere.herokuapp.com/https://cloud.feedly.com/v3/streams/contents?streamId=user/${userId}/category/global.all&unreadOnly=${isUnreadOnly}`
     else

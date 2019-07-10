@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import Lists from './Lists';
 import Article from './Article';
-import {getUserId, getAuthCode} from './UserDetails'
+import {getAuthCode} from './UserDetails'
 import {getProfile, getStream, getEntry, markAsRead} from './Constants'
 import Axios from 'axios';
 
@@ -30,11 +30,10 @@ class News extends Component {
 
 	start() {
 		const authCode = getAuthCode()
-		const userId = getUserId()
 
 		Axios({
 			method: 'get',
-			url: getStream(userId, true),
+			url: getStream(),
 			responseType: 'application/json',
 			headers: {
 				'Authorization': `OAuth ${authCode}`
