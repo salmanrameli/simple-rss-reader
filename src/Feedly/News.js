@@ -22,6 +22,7 @@ class News extends Component {
 
 		this.updateStory = this.updateStory.bind(this)
 		this.start = this.start.bind(this)
+		this.removeItem = this.removeItem.bind(this)
 	}
 
 	componentDidMount() {
@@ -75,12 +76,21 @@ class News extends Component {
 		});
 	}
 
+	removeItem(item) {
+		this.setState({
+			lists: this.state.lists.filter(function(entry) { 
+				return entry.id !== item 
+			})
+		});
+	}
+
 	render() {
 		return(
 			<div className="row">
 				<Lists 
 					lists = {this.state.lists}
 					loadStory = {this.updateStory}
+					onRemove = {this.removeItem}
 				/>
 				<Article 
 					title = {this.state.story_title}

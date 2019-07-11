@@ -17,9 +17,9 @@ class Lists extends Component {
 		}
 
 		this.stringToBool = this.stringToBool.bind(this)
-		this.handleClick = this.handleClick.bind(this)
 		this.removeEntryFromFeed = this.removeEntryFromFeed.bind(this)
 		this.markAsRead = this.markAsRead.bind(this)
+		this.handleClick = this.handleClick.bind(this)
 	}
 
 	componentDidMount() {
@@ -39,25 +39,7 @@ class Lists extends Component {
 	  }
 
 	removeEntryFromFeed(id) {
-		let oldId = this.state.oldId
-
-		if(this.state.oldId === '') {
-			this.setState({
-				oldId: id
-			})
-		}
-
-		if(oldId !== id) {
-			this.setState({
-				lists: this.state.lists.filter(function(entry) { 
-					return entry.id !== oldId 
-				})
-			});
-
-			this.setState({
-				oldId: id
-			})
-		}
+		return this.props.onRemove(id)
 	}
 
 	async markAsRead(id) {
@@ -81,8 +63,23 @@ class Lists extends Component {
 
 		let isUnreadOnly = this.stringToBool(store.get('isUnreadOnly', false))
 
-		if(isUnreadOnly)
-			this.removeEntryFromFeed(id)
+		if(isUnreadOnly) {
+			let oldId = this.state.oldId
+
+			if(oldId === '') {
+				this.setState({
+					oldId: id
+				})
+			}
+	
+			if(oldId !== id) {
+				this.removeEntryFromFeed(oldId)
+
+				this.setState({
+					oldId: id
+				})
+			}
+		}
 	}
 
 	handleClick = (link, id) => {
@@ -99,15 +96,15 @@ class Lists extends Component {
 		return (
 			<div className="col-md-3 scrollable no-padding-right no-padding-left">
 				{this.state.lists.map((item) => (
-					<div className={`card list-group-item ${this.state.activeLink === item.id ? 'active' : ''}`} key={item.id}>
+					<div className={`card list-group-item ${this.state.activeLink === item.id ? 'active' : ''}`} key={item.id} onClick={() => this.handleClick(item.canonicalUrl, item.id)}>
 						{item.unread === true ? 
-							<div className="card-body" onClick={() => this.handleClick(item.canonicalUrl, item.id)}>
+							<div className="card-body">
 								<h6>{item.title}</h6>
 								<p className="badge badge-light">{item.author}</p>&nbsp;
 								<p className="badge badge-success">Unread Entry</p>
 							</div>
 							:
-							<div className="card-body text-secondary" onClick={() => this.handleClick(item.canonicalUrl, item.id)}>
+							<div className="card-body text-secondary">
 								<h6>{item.title}</h6>
 								<p className="badge badge-light">{item.author}</p>
 							</div>
