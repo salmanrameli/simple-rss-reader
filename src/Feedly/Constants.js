@@ -37,4 +37,11 @@ function markAsRead() {
         return `https://cloud.feedly.com/v3/markers`
 }
 
-export {getProfile, getStream, getEntry, markAsRead}
+function getUnreadCount() {
+    if(isDev)
+        return `https://cors-anywhere.herokuapp.com/https://cloud.feedly.com/v3/markers/counts`
+    else
+        return `https://cloud.feedly.com/v3/markers/counts`
+}
+
+export { getProfile, getStream, getEntry, markAsRead, getUnreadCount }

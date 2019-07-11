@@ -3,6 +3,7 @@ import Axios from 'axios';
 import { getAuthCode } from './UserDetails'
 import { markAsRead } from './Constants'
 
+const { ipcRenderer } = window.require('electron')
 const Store = window.require('electron-store');
 const store = new Store();
 
@@ -90,6 +91,8 @@ class Lists extends Component {
 		})
 
 		this.markAsRead(id)
+
+		ipcRenderer.send('decrease-unread-count')
 	}
 	
 	render() {

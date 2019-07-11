@@ -6,6 +6,7 @@ const Store = require('electron-store');
 const store = new Store();
 
 let win = null
+let unreadCount
 
 function createWindow () {	
 	win = new BrowserWindow({
@@ -19,6 +20,8 @@ function createWindow () {
 
 	const menu = Menu.buildFromTemplate(menubar)
 	Menu.setApplicationMenu(menu)
+
+	unreadCount = 0
 	       
 	win.loadURL(
 		isDev ? "http://localhost:8080" : `file://${path.join(__dirname, '/build/index.html')}`
@@ -31,6 +34,12 @@ function createWindow () {
 	win.on('closed', function () {
 		win = null
 	})
+}
+
+function setBadge(num) {
+	let dock = app.dock
+
+	dock.setBadge('' + num)
 }
 
 ipcMain.on('asynchronous-message', (event, arg) => {
@@ -55,6 +64,16 @@ ipcMain.on('feedly-integration', (event, arg) => {
 
 ipcMain.on('refresh', (event, arg) => {
 	win.reload()
+})
+
+ipcMain.on('unread-count', (event, arg) => {
+	unreadCount = arg
+
+	setBadge(unreadCount)
+})
+
+ipcMain.on('decrease-unread-count', (event, arg) => {
+	setBadge(unreadCount--)
 })
 
 function createLoginWindow() {
@@ -94,6 +113,8 @@ let menubar = [
 	{
 	  label: 'File',
 	  submenu: [
+		{ label: 'Open Feedly Sign-In Window', click() { createLoginWindow() } },
+		{ type: 'separator' },
 		{ label: 'Return Home', click() { win.loadURL(isDev ? "http://localhost:8080" : `file://${path.join(__dirname, '/build/index.html')}`) } },
 		{ type: 'separator' },
 		process.platform === 'darwin' ? 

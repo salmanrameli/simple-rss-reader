@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
 import Lists from './Lists';
 import Article from './Article';
-import { getAuthCode } from './UserDetails'
-import { getStream } from './Constants'
+import { getUserId, getAuthCode } from './UserDetails'
+import { getStream, getUnreadCount } from './Constants'
 import Axios from 'axios';
 
+const { ipcRenderer } = window.require('electron')
 const date = require('date-and-time');
 
 class News extends Component {
@@ -21,12 +22,15 @@ class News extends Component {
 		}
 
 		this.start = this.start.bind(this)
+		this.getUnreadCount = this.getUnreadCount.bind(this)
 		this.updateStory = this.updateStory.bind(this)
 		this.removeItem = this.removeItem.bind(this)
 	}
 
 	componentDidMount() {
 		this.start()
+
+		this.getUnreadCount()
 	}
 
 	start() {
@@ -45,6 +49,27 @@ class News extends Component {
 			this.setState({
 				lists: merged
 			})		
+		}).catch(function(error) {
+			console.log(error)
+		})
+	}
+
+	getUnreadCount() {
+		const authCode = getAuthCode()
+
+		Axios({
+			method: 'get',
+			url: getUnreadCount(),
+			responseType: 'application/json',
+			headers: {
+				'Authorization': `OAuth ${authCode}`
+			}
+		}).then((response) => {
+			let userId = getUserId()
+
+			let unreadCount = response.data.unreadcounts.filter(function(item) { return item.id === `user/${userId}/category/global.all` })
+
+			ipcRenderer.send('unread-count', unreadCount[0].count)
 		}).catch(function(error) {
 			console.log(error)
 		})
