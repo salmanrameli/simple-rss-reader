@@ -78,11 +78,15 @@ ipcMain.on('asynchronous-message', (event, arg) => {
 })
 
 ipcMain.on('feedly-integration', (event, arg) => {
-	win.reload()
+	app.relaunch()
+
+	app.exit(0)
 })
 
 ipcMain.on('refresh', (event, arg) => {
-	win.reload()
+	app.relaunch()
+	
+	app.exit(0)
 })
 
 ipcMain.on('unread-count', (event, arg) => {
