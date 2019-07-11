@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import Lists from './Lists';
 import Article from './Article';
-import {getAuthCode} from './UserDetails'
-import {getProfile, getStream, getEntry, markAsRead} from './Constants'
+import { getAuthCode } from './UserDetails'
+import { getStream } from './Constants'
 import Axios from 'axios';
 
 const date = require('date-and-time');
@@ -20,8 +20,8 @@ class News extends Component {
 			active_story: ''
 		}
 
-		this.updateStory = this.updateStory.bind(this)
 		this.start = this.start.bind(this)
+		this.updateStory = this.updateStory.bind(this)
 		this.removeItem = this.removeItem.bind(this)
 	}
 
