@@ -24,6 +24,7 @@ class News extends Component {
 		this.start = this.start.bind(this)
 		this.getUnreadCount = this.getUnreadCount.bind(this)
 		this.updateStory = this.updateStory.bind(this)
+		this.removeUnreadEntryBadge = this.removeUnreadEntryBadge.bind(this)
 		this.removeItem = this.removeItem.bind(this)
 	}
 
@@ -47,7 +48,12 @@ class News extends Component {
 			let merged = [].concat.apply([], response.data.items)
 
 			this.setState({
-				lists: merged
+				lists: merged.map(entry => {
+					return {
+						...entry,
+						articleIsUnread: true
+					}
+				})
 			})		
 		}).catch(function(error) {
 			console.log(error)
@@ -72,6 +78,15 @@ class News extends Component {
 			ipcRenderer.send('unread-count', unreadCount[0].count)
 		}).catch(function(error) {
 			console.log(error)
+		})
+
+		this.setState({
+			lists: this.state.lists.map(entry => {
+				return {
+					...entry,
+					articleIsUnread: true
+				}
+			})
 		})
 	}
 
@@ -101,12 +116,28 @@ class News extends Component {
 		});
 	}
 
-	removeItem(item) {
+	removeItem(id) {
 		this.setState({
-			lists: this.state.lists.filter(function(entry) { 
-				return entry.id !== item 
+			lists: this.state.lists.filter(function(entry) {
+				return entry.id !== id 
 			})
 		});
+	}
+
+	removeUnreadEntryBadge(id) {
+		let array = this.state.lists
+
+		for(let i in array) {
+			if(array[i].id === String(id)) {
+				if(array[i].unread === true) {
+					array[i].unread = false
+				}
+			}
+		}
+
+		this.setState({
+			lists: array
+		})
 	}
 
 	render() {
@@ -116,6 +147,7 @@ class News extends Component {
 					lists = {this.state.lists}
 					loadStory = {this.updateStory}
 					onRemove = {this.removeItem}
+					removeUnreadEntryBadge = {this.removeUnreadEntryBadge}
 				/>
 				<Article 
 					title = {this.state.story_title}

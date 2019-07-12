@@ -19,6 +19,7 @@ class Lists extends Component {
 
 		this.stringToBool = this.stringToBool.bind(this)
 		this.removeEntryFromFeed = this.removeEntryFromFeed.bind(this)
+		this.removeUnreadEntryBadge = this.removeUnreadEntryBadge.bind(this)
 		this.markAsRead = this.markAsRead.bind(this)
 		this.handleClick = this.handleClick.bind(this)
 	}
@@ -43,6 +44,10 @@ class Lists extends Component {
 		return this.props.onRemove(id)
 	}
 
+	removeUnreadEntryBadge(id) {
+		return this.props.removeUnreadEntryBadge(id)
+	}
+
 	async markAsRead(id) {
 		const authCode = getAuthCode()
 
@@ -60,27 +65,29 @@ class Lists extends Component {
 				"Authorization": authCode,
 				"Content-Type": "application/json"
 			},
-		}).then(response => {}).catch(error => console.log(error))
+		}).then(response => {
+			let isUnreadOnly = this.stringToBool(store.get('isUnreadOnly', false))
 
-		let isUnreadOnly = this.stringToBool(store.get('isUnreadOnly', false))
-
-		if(isUnreadOnly) {
-			let oldId = this.state.oldId
-
-			if(oldId === '') {
-				this.setState({
-					oldId: id
-				})
-			}
+			if(isUnreadOnly) {
+				let oldId = this.state.oldId
 	
-			if(oldId !== id) {
-				this.removeEntryFromFeed(oldId)
-
-				this.setState({
-					oldId: id
-				})
+				if(oldId === '') {
+					this.setState({
+						oldId: id
+					})
+				}
+		
+				if(oldId !== id) {
+					this.removeEntryFromFeed(oldId)
+	
+					this.setState({
+						oldId: id
+					})
+				}
+			} else {
+				this.removeUnreadEntryBadge(id)
 			}
-		}
+		}).catch(error => console.log(error))
 	}
 
 	handleClick = (link, id) => {
@@ -100,7 +107,7 @@ class Lists extends Component {
 			<div className="col-md-3 scrollable no-padding-right no-padding-left">
 				{this.state.lists.map((item) => (
 					<div className={`card list-group-item ${this.state.activeLink === item.id ? 'active' : ''}`} key={item.id} onClick={() => this.handleClick(item.canonicalUrl, item.id)}>
-						<div className="card-body">
+						<div className={`card-body ${item.unread === true ? "text-dark" : "text-secondary"}`}>
 							<h6>{item.title}</h6>
 							<p className="badge badge-light">{item.author}</p>&nbsp;
 							{item.unread === true ? 
