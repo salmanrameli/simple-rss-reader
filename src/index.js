@@ -2,8 +2,9 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import * as serviceWorker from './serviceWorker';
 import Axios from 'axios';
-import Root from './Root';
 import FeedlyRoot from './Feedly/FeedlyRoot'
+import Error from './Error'
+import Root from './Root';
 import Login from './Login'
 import { getAuthCode } from './Feedly/UserDetails'
 import { getProfile } from './Feedly/Constants'
@@ -35,10 +36,20 @@ ipcRenderer.on('asynchronous-reply', (event, reply) => {
 					'Authorization': `OAuth ${authCode}`
 				}
 			}).then((response) => {
-				if(response.status === 200)
-					render(FeedlyRoot)
-				else
-					render(Login)
+				switch(response.status) {
+					case 200: 
+						render(FeedlyRoot) 
+						break
+					case 401: 
+						render(Login)
+						break
+					case 429: 
+						render(Error)
+						break
+					default: 
+						render(Login)
+						break
+				}
 			}).catch(function(error) {
 				console.log(error)
 			})
