@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import Lists from './Lists';
-import Article from './Article';
+import Article from '../Article';
 import { getUserId, getAuthCode } from './UserDetails'
 import { getStream, getUnreadCount } from './Constants'
 import Axios from 'axios';
