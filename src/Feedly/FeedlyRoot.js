@@ -89,7 +89,7 @@ class FeedlyRoot extends Component {
 			<Router>
 				<div className="row frameless-padding bg-light">
 					<div className="col-md-12 no-padding-right no-padding-left border-bottom">
-						<div className="btn-toolbar toolbar-padding" role="toolbar" aria-label="Button Toolbar">
+						<div className="toolbar-padding">
 							<div className="btn-group mr-2" role="group" id="button-group">
 								<NavLink to="/News" className="btn btn-outline-primary btn-sm" id="newsButton" activeClassName="active">
 									<i className="far fa-newspaper"></i> Feeds
@@ -98,7 +98,7 @@ class FeedlyRoot extends Component {
 									<i className="fa fa-wrench"></i>
 								</NavLink>
 							</div>
-							<div className="btn-group mr-2" role="group" id="button-group-2">
+							<div className="btn-group mr-2 float-right" role="group" id="button-group-2">
 								<button type="button" className={`btn btn-outline-dark btn-sm ${this.state.isUnreadOnly === true ? "active" : ""}`} onClick={(e) => this.handleOnclick(e, "unread")}>Unread</button>
 								<button type="button" className={`btn btn-outline-dark btn-sm  ${this.state.isUnreadOnly === true ? "" : "active"}`} onClick={(e) => this.handleOnclick(e, "all")}>All</button>
 							</div>
