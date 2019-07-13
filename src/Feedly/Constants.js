@@ -18,9 +18,9 @@ function getStream() {
     let isUnreadOnly = store.get('isUnreadOnly', false)
 
     if(isDev)
-        return `${cors}https://cloud.feedly.com/v3/streams/contents?streamId=user/${userId}/category/global.all&unreadOnly=${isUnreadOnly}`
+        return `${cors}https://cloud.feedly.com/v3/streams/contents?streamId=user/${userId}/category/global.all&unreadOnly=${isUnreadOnly}&count=180`
     else
-        return `https://cloud.feedly.com/v3/streams/contents?streamId=user/${userId}/category/global.all&unreadOnly=${isUnreadOnly}`
+        return `https://cloud.feedly.com/v3/streams/contents?streamId=user/${userId}/category/global.all&unreadOnly=${isUnreadOnly}&count=180`
 }
 
 function getEntry(entryId) {
