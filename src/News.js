@@ -3,6 +3,7 @@ import Lists from './Lists';
 import Article from './Article';
 import { getFeed } from './getFeed'
 
+const { ipcRenderer } = window.require('electron')
 const Promise = require('bluebird')
 const date = require('date-and-time');
 const path = require('path')
@@ -32,8 +33,6 @@ class News extends Component {
 	}
 
 	checkAppDataExists() {
-		console.log(applicationDataPath)
-
 		if(!fs.existsSync(applicationDataPath)) {
 			fs.mkdir(applicationDataPath)
 
@@ -69,6 +68,8 @@ class News extends Component {
 	}
 
 	start() {
+		ipcRenderer.send('asynchronous-message-2', 'ping async message 2')
+
 		let urls = JSON.parse(fs.readFileSync(file))
 		let feeds = []
 

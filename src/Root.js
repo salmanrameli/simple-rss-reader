@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Route, NavLink } from 'react-router-dom';
 
 import News from './News'
 import SettingRenderer from './settingRenderer'
+import LoginRenderer from './LoginRenderer'
 import img from './icon.png'
 
 const routes = [
@@ -13,7 +14,11 @@ const routes = [
     {
         path: "/Setting",
         component: SettingRenderer
-    }
+	},
+	{
+		path: "/Feedly",
+		component: LoginRenderer
+	}
 ];
 
 function RouteWithSubRoutes(route) {
@@ -31,15 +36,18 @@ class Root extends Component {
 	render() {
 		return (
 			<Router>
-				<div className="row">
+				<div className="row frameless-padding">
 					<div className="col-md-12 no-padding-right no-padding-left border-bottom">
 						<div className="btn-toolbar toolbar-padding" role="toolbar" aria-label="Button Toolbar">
 							<div className="btn-group mr-2" role="group" id="button-group">
 								<NavLink to="/News" className="btn btn-outline-primary btn-sm" id="newsButton" activeClassName="active">
-								<i className="fa fa-newspaper-o"></i> Feeds
+									<i className="far fa-newspaper"></i> Feeds
 								</NavLink>
 								<NavLink to="/Setting" className="btn btn-outline-primary btn-sm" id="settingButton" activeClassName="active">
-								<i className="fa fa-wrench"></i>
+									<i className="fa fa-wrench"></i>
+								</NavLink>
+								<NavLink to="/Feedly" className="btn btn-outline-primary btn-sm" id="loginButton" activeClassName="active">
+									<i class="fas fa-rss-square"></i> Login to Feedly
 								</NavLink>
 							</div>
 						</div>

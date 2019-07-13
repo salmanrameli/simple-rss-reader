@@ -1,8 +1,12 @@
 const {app, BrowserWindow, Menu} = require('electron')
 const path = require('path')
 const isDev = require("electron-is-dev");
+const ipcMain = require('electron').ipcMain
+const Store = require('electron-store');
+const store = new Store();
 
 let win = null
+let unreadCount
 
 function createWindow () {	
 	win = new BrowserWindow({
@@ -10,14 +14,17 @@ function createWindow () {
 		height: 800,
 		'minHeight': 600,
 		'minWidth': 960,
-		show: false
+		show: false,
+		titleBarStyle: 'hidden'
 	})
 
 	const menu = Menu.buildFromTemplate(menubar)
 	Menu.setApplicationMenu(menu)
+
+	unreadCount = 0
 	       
 	win.loadURL(
-		isDev ? "http://localhost:3000" : `file://${path.join(__dirname, '/build/index.html')}`
+		isDev ? "http://localhost:8080" : `file://${path.join(__dirname, '/build/index.html')}`
 	)
 
 	win.once('ready-to-show', () => {
@@ -29,6 +36,21 @@ function createWindow () {
 	})
 }
 
+function createLoginWindow() {
+	let window = new BrowserWindow({
+		width: 600, 
+		height: 800,
+	});
+
+	window.loadURL("https://cloud.feedly.com/v3/auth/auth?response_type=code&client_id=feedlydev&redirect_uri=http%3A%2F%2Flocalhost%3A8080&scope=https%3A%2F%2Fcloud.feedly.com%2Fsubscriptions")
+}
+
+function setBadge(num) {
+	let dock = app.dock
+
+	dock.setBadge('' + num)
+}
+
 app.on('ready', createWindow)
 
 app.on('window-all-closed', function () {
@@ -37,6 +59,44 @@ app.on('window-all-closed', function () {
   
 app.on('activate', function () {
 	if (win === null) createWindow()
+})
+
+ipcMain.on('asynchronous-message', (event, arg) => {
+	let integrationState = store.get('integrateWithFeedly')
+
+	switch(integrationState) {
+		case false:
+			event.sender.send('asynchronous-reply', 'not integrated')
+			break
+		case true:
+			event.sender.send('asynchronous-reply', 'integrated')
+			break
+		default:
+			event.sender.send('asynchronous-reply', 'init')
+			break
+	}
+})
+
+ipcMain.on('feedly-integration', (event, arg) => {
+	app.relaunch()
+
+	app.exit(0)
+})
+
+ipcMain.on('refresh', (event, arg) => {
+	app.relaunch()
+	
+	app.exit(0)
+})
+
+ipcMain.on('unread-count', (event, arg) => {
+	unreadCount = arg
+
+	setBadge(unreadCount)
+})
+
+ipcMain.on('decrease-unread-count', (event, arg) => {
+	setBadge(unreadCount--)
 })
 
 let menubar = [
@@ -57,7 +117,9 @@ let menubar = [
 	{
 	  label: 'File',
 	  submenu: [
-		{ label: 'Return Home', click() { win.loadURL(isDev ? "http://localhost:3000" : `file://${path.join(__dirname, '/build/index.html')}`) } },
+		{ label: 'Open Feedly Sign-In Window', click() { createLoginWindow() } },
+		{ type: 'separator' },
+		{ label: 'Return Home', click() { win.loadURL(isDev ? "http://localhost:8080" : `file://${path.join(__dirname, '/build/index.html')}`) } },
 		{ type: 'separator' },
 		process.platform === 'darwin' ? 
 		{ role: 'close' } : { role: 'quit' }
