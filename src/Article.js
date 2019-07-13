@@ -48,9 +48,7 @@ class Article extends Component {
 				isLoading: true
 			});
 
-			setTimeout(() => {
-				this.showArticle()
-			}, 2000)
+			this.showArticle()
 		}
 	}
 

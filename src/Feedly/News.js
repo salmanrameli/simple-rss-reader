@@ -26,6 +26,7 @@ class News extends Component {
 		this.updateStory = this.updateStory.bind(this)
 		this.removeUnreadEntryBadge = this.removeUnreadEntryBadge.bind(this)
 		this.removeItem = this.removeItem.bind(this)
+		this.markAsUnread = this.markAsUnread.bind(this)
 	}
 
 	componentDidMount() {
@@ -140,6 +141,22 @@ class News extends Component {
 		})
 	}
 
+	markAsUnread(id) {
+		let array = this.state.lists
+
+		for(let i in array) {
+			if(array[i].id === String(id)) {
+				if(array[i].unread === false) {
+					array[i].unread = true
+				}
+			}
+		}
+
+		this.setState({
+			lists: array
+		})
+	}
+
 	render() {
 		return(
 			<div className="row">
@@ -148,6 +165,7 @@ class News extends Component {
 					loadStory = {this.updateStory}
 					onRemove = {this.removeItem}
 					removeUnreadEntryBadge = {this.removeUnreadEntryBadge}
+					markAsUnread = {this.markAsUnread}
 				/>
 				<Article 
 					title = {this.state.story_title}

@@ -58,9 +58,9 @@ function setBadge(num) {
 	if(process.platform === 'darwin') {
 		let dock = app.dock
 
-		let isUnreadOnly = stringToBool(store.get('isUnreadOnly', false))
+		let integrateWithFeedly = stringToBool(store.get('integrateWithFeedly', false))
 	
-		if(isUnreadOnly)
+		if(integrateWithFeedly)
 			dock.setBadge('' + num)
 		else
 			dock.setBadge('')
@@ -109,6 +109,10 @@ ipcMain.on('unread-count', (event, arg) => {
 	unreadCount = arg
 
 	setBadge(unreadCount)
+})
+
+ipcMain.on('increase-unread-count', (event, arg) => {
+	setBadge(unreadCount++)
 })
 
 ipcMain.on('decrease-unread-count', (event, arg) => {
