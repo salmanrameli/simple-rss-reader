@@ -1,6 +1,11 @@
 import React from 'react';
 
+
 class Error extends React.Component {
+    constructor(props) {
+        super(props)
+    }
+
     render() {
         return (
             <div className="row align-items-center full-size">
@@ -8,8 +13,8 @@ class Error extends React.Component {
                     <div class="card text-white bg-danger">
                         <div class="card-header">Error</div>
                         <div class="card-body">
-                            <h5 class="card-title">HTTP Error</h5>
-                            <p class="card-text">An error has happened when contacting Feedly server. Please wait several minutes (or hours) before trying again.</p>
+                            <h5 class="card-title">HTTP Error {this.props.errorCode}: {this.props.errorMessage}</h5>
+                            <p class="card-text">An error has happened when contacting Feedly server.</p>
                         </div>
                     </div>
                 </div>
