@@ -100,3 +100,10 @@ html, body {
   .frameless-padding {
     padding-top: 17px
   }
+  .btn:focus, .btn:active {
+    outline: none !important;
+    box-shadow: none !important;
+  }
+  .draggable {
+    -webkit-app-region: drag;
+}

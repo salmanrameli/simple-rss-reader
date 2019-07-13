@@ -49,6 +49,8 @@ class Lists extends Component {
 	}
 
 	async markAsRead(id) {
+		ipcRenderer.send('decrease-unread-count')
+
 		const authCode = getAuthCode()
 
 		let arrayOfReadEntry = new Array(String(id))
@@ -98,8 +100,6 @@ class Lists extends Component {
 		})
 
 		this.markAsRead(id)
-
-		ipcRenderer.send('decrease-unread-count')
 	}
 	
 	render() {

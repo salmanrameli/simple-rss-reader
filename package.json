@@ -1,7 +1,7 @@
 {
   "name": "RSS",
   "description": "Simple RSS reader based on Electron and ReactJS with partial Feedly support",
-  "version": "0.8.0",
+  "version": "0.8.1",
   "private": true,
   "main": "main.js",
   "homepage": "./",

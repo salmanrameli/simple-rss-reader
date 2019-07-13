@@ -87,14 +87,14 @@ class FeedlyRoot extends Component {
 	render() {
 		return (
 			<Router>
-				<div className="row frameless-padding bg-light">
+				<div className="row frameless-padding bg-light draggable">
 					<div className="col-md-12 no-padding-right no-padding-left border-bottom">
 						<div className="toolbar-padding">
 							<div className="btn-group mr-2" role="group" id="button-group">
-								<NavLink to="/News" className="btn btn-outline-primary btn-sm" id="newsButton" activeClassName="active">
+								<NavLink to="/News" className="btn btn-outline-dark btn-sm" id="newsButton" activeClassName="active">
 									<i className="far fa-newspaper"></i> Feeds
 								</NavLink>
-								<NavLink to="/Login" className="btn btn-outline-primary btn-sm" id="settingButton" activeClassName="active">
+								<NavLink to="/Login" className="btn btn-outline-dark btn-sm" id="settingButton" activeClassName="active">
 									<i className="fa fa-wrench"></i>
 								</NavLink>
 							</div>
