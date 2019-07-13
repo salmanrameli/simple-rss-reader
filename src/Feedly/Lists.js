@@ -38,7 +38,7 @@ class Lists extends Component {
 
 	stringToBool(val) {
 		return (val + '').toLowerCase() === 'true';
-	  }
+	}
 
 	removeEntryFromFeed(id) {
 		return this.props.onRemove(id)
@@ -49,8 +49,6 @@ class Lists extends Component {
 	}
 
 	async markAsRead(id) {
-		ipcRenderer.send('decrease-unread-count')
-
 		const authCode = getAuthCode()
 
 		let arrayOfReadEntry = new Array(String(id))
@@ -77,6 +75,8 @@ class Lists extends Component {
 					this.setState({
 						oldId: id
 					})
+
+					ipcRenderer.send('decrease-unread-count')
 				}
 		
 				if(oldId !== id) {
@@ -85,6 +85,8 @@ class Lists extends Component {
 					this.setState({
 						oldId: id
 					})
+
+					ipcRenderer.send('decrease-unread-count')
 				}
 			} else {
 				this.removeUnreadEntryBadge(id)
@@ -106,8 +108,8 @@ class Lists extends Component {
 		return (
 			<div className="col-md-3 scrollable no-padding-right no-padding-left">
 				{this.state.lists.map((item) => (
-					<div className={`card list-group-item ${this.state.activeLink === item.id ? 'active' : ''}`} key={item.id} onClick={() => this.handleClick(item.canonicalUrl, item.id)}>
-						<div className={`card-body ${item.unread === true ? "text-dark" : "text-secondary"}`}>
+					<div className={`card list-group-item ${this.state.activeLink === item.id ? 'text-white bg-primary' : ''}`} key={item.id} onClick={() => this.handleClick(item.canonicalUrl, item.id)}>
+						<div className={`card-body ${item.unread === true ? "text-dark" : this.state.activeLink === item.id ? 'text-white' : 'text-secondary'}`}>
 							<h6>{item.title}</h6>
 							<p className="badge badge-light">{item.author}</p>&nbsp;
 							{item.unread === true ? 
