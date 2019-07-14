@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
 import Axios from 'axios';
 import { getAuthCode } from './UserDetails'
-import { markAsRead } from './Constants'
+import { markers } from './Constants'
 
 const { ipcRenderer } = window.require('electron')
+const { shell } = window.require('electron')
 const Store = window.require('electron-store');
 const store = new Store();
 
@@ -24,6 +25,7 @@ class Lists extends Component {
 		this.markAsRead = this.markAsRead.bind(this)
 		this.handleMarkAsRead = this.handleMarkAsRead.bind(this)
 		this.handleMarkAsUnread = this.handleMarkAsUnread.bind(this)
+		this.openInBrowser = this.openInBrowser.bind(this)
 	}
 
 	componentDidMount() {
@@ -58,7 +60,7 @@ class Lists extends Component {
 
 		await Axios({
 			method: 'post',
-			url: markAsRead(),
+			url: markers(),
 			data: {
 				"action": "markAsRead",
 				"type": "entries",
@@ -104,7 +106,7 @@ class Lists extends Component {
 
 		await Axios({
 			method: 'post',
-			url: markAsRead(),
+			url: markers(),
 			data: {
 				"action": "keepUnread",
 				"type": "entries",
@@ -134,11 +136,15 @@ class Lists extends Component {
 	handleMarkAsRead = (event, link, id, flag) => {
 		event.preventDefault()
 
-		this.props.loadStory(link, id);
+		if(flag === "open") {
+			this.props.loadStory(link, id);
 
-		this.setState({
-			activeLink: id
-		})
+			this.setState({
+				activeLink: id
+			})
+		} else {
+			this.removeEntryFromFeed(id)
+		}
 
 		this.markAsRead(id)
 	}
@@ -148,13 +154,17 @@ class Lists extends Component {
 
 		this.markAsUnread(id)
 	}
+
+	openInBrowser(url) {
+		shell.openExternal(url)
+	}
 	
 	render() {
 		return (
 			<div className="col-md-3 scrollable no-padding-right no-padding-left">
 				{this.state.lists.map((item) => (
 					<div className={`card list-group-item ${this.state.activeLink === item.id ? 'text-white bg-primary' : ''}`} key={item.id}>
-						<div className={`card-body ${item.unread === true ? "text-dark" : this.state.activeLink === item.id ? 'text-white' : 'text-secondary'}`} onClick={(e) => this.handleMarkAsRead(e, item.canonicalUrl, item.id, 'read')}>
+						<div className={`card-body ${this.state.activeLink === item.id ? "text-white" : item.unread === true ? 'text-dark' : 'text-secondary'}`} onClick={(e) => this.handleMarkAsRead(e, item.canonicalUrl, item.id, 'open')}>
 							<h6>{item.title}</h6>
 							<p className="badge badge-light">{item.author}</p>&nbsp;
 							{item.unread === true ? 
@@ -164,10 +174,18 @@ class Lists extends Component {
 							}
 						</div>
 						{item.unread === true ? 
-							""
+							<div className="card-footer">
+								<div className="btn-group" role="group">
+									<button type="button" className="btn btn-light btn-sm text-dark" onClick={(e) => this.handleMarkAsRead(e, item.canonicalUrl, item.id, 'close')}>Mark as Read</button>
+									<button type="button" className="btn btn-light btn-sm text-dark" onClick={() => this.openInBrowser(item.canonicalUrl)}>Open in Browser</button>
+								</div>
+							</div>
 							: 
 							<div className="card-footer">
-								<button type="button" className="btn btn-link btn-sm text-dark" onClick={(e) => this.handleMarkAsUnread(e, item.id)}>Mark as Unread</button>
+								<div className="btn-group" role="group">
+									<button type="button" className="btn btn-light btn-sm text-dark" onClick={(e) => this.handleMarkAsUnread(e, item.id)}>Mark as Unread</button>
+									<button type="button" className="btn btn-light btn-sm text-dark" onClick={() => this.openInBrowser(item.canonicalUrl)}>Open in Browser</button>
+								</div>
 							</div>
 						}
 					</div>

@@ -31,8 +31,6 @@ class News extends Component {
 
 	componentDidMount() {
 		this.start()
-
-		this.getUnreadCount()
 	}
 
 	start() {
@@ -55,7 +53,9 @@ class News extends Component {
 						articleIsUnread: true
 					}
 				})
-			})		
+			})
+			
+			this.getUnreadCount()
 		}).catch(function(error) {
 			console.log(error)
 		})
@@ -155,6 +155,8 @@ class News extends Component {
 		this.setState({
 			lists: array
 		})
+
+		ipcRenderer.send('increase-unread-count')
 	}
 
 	render() {

@@ -32,7 +32,7 @@ function getEntry(entryId) {
         return `https://cloud.feedly.com/v3/entries/entriesId=${url}`
 }
 
-function markAsRead() {
+function markers() {
     if(isDev)
         return `${cors}https://cloud.feedly.com/v3/markers`
     else
@@ -46,4 +46,4 @@ function getUnreadCount() {
         return `https://cloud.feedly.com/v3/markers/counts`
 }
 
-export { getProfile, getStream, getEntry, markAsRead, getUnreadCount }
+export { getProfile, getStream, getEntry, markers, getUnreadCount }
