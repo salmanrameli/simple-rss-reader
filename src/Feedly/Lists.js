@@ -71,6 +71,8 @@ class Lists extends Component {
 				"Content-Type": "application/json"
 			},
 		}).then(response => {
+			ipcRenderer.send('decrease-unread-count')
+
 			let isUnreadOnly = this.stringToBool(store.get('isUnreadOnly', false))
 
 			if(isUnreadOnly) {
@@ -80,8 +82,6 @@ class Lists extends Component {
 					this.setState({
 						oldId: id
 					})
-
-					ipcRenderer.send('decrease-unread-count')
 				}
 		
 				if(oldId !== id) {
@@ -90,8 +90,6 @@ class Lists extends Component {
 					this.setState({
 						oldId: id
 					})
-
-					ipcRenderer.send('decrease-unread-count')
 
 					return this.props.markAsRead(id)
 				}
@@ -121,6 +119,8 @@ class Lists extends Component {
 				"Content-Type": "application/json"
 			},
 		}).then(response => {
+			ipcRenderer.send('increase-unread-count')
+
 			let oldReadId = this.state.oldReadId
 	
 			if(oldReadId === '') {
@@ -130,8 +130,6 @@ class Lists extends Component {
 			}
 	
 			if(oldReadId !== id) {
-				ipcRenderer.send('increase-unread-count')
-
 				return this.props.markAsUnread(id)
 			}
 		}).catch(error => console.log(error))

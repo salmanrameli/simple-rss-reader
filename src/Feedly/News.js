@@ -156,8 +156,6 @@ class News extends Component {
 		this.setState({
 			lists: array
 		})
-
-		ipcRenderer.send('increase-unread-count')
 	}
 
 	markAsRead(id) {
@@ -174,8 +172,6 @@ class News extends Component {
 		this.setState({
 			lists: array
 		})
-
-		ipcRenderer.send('decrease-unread-count')
 	}
 
 	render() {
