@@ -71,8 +71,6 @@ class Lists extends Component {
 				"Content-Type": "application/json"
 			},
 		}).then(response => {
-			ipcRenderer.send('decrease-unread-count')
-
 			let isUnreadOnly = this.stringToBool(store.get('isUnreadOnly', false))
 
 			if(isUnreadOnly) {
@@ -119,8 +117,6 @@ class Lists extends Component {
 				"Content-Type": "application/json"
 			},
 		}).then(response => {
-			ipcRenderer.send('increase-unread-count')
-
 			let oldReadId = this.state.oldReadId
 	
 			if(oldReadId === '') {
@@ -135,8 +131,9 @@ class Lists extends Component {
 		}).catch(error => console.log(error))
 	}
 
-	handleMarkAsRead = (event, link, id, flag) => {
-		event.preventDefault()
+	handleMarkAsRead = (event, link, id, flag, isUnread) => {
+		if(isUnread === true)
+			ipcRenderer.send('decrease-unread-count')
 
 		if(flag === "open") {
 			this.props.loadStory(link, id);
@@ -152,7 +149,7 @@ class Lists extends Component {
 	}
 
 	handleMarkAsUnread = (event, id) => {
-		event.preventDefault()
+		ipcRenderer.send('increase-unread-count')
 
 		this.markAsUnread(id)
 	}
@@ -166,7 +163,7 @@ class Lists extends Component {
 			<div className="col-md-3 scrollable no-padding-right no-padding-left">
 				{this.state.lists.map((item) => (
 					<div className={`card list-group-item ${this.state.activeLink === item.id ? 'text-white bg-primary' : ''}`} key={item.id}>
-						<div className={`card-body ${this.state.activeLink === item.id ? "text-white" : item.unread === true ? 'text-dark' : 'text-secondary'}`} onClick={(e) => this.handleMarkAsRead(e, item.canonicalUrl, item.id, 'open')}>
+						<div className={`card-body ${this.state.activeLink === item.id ? "text-white" : item.unread === true ? 'text-dark' : 'text-secondary'}`} onClick={(e) => this.handleMarkAsRead(e, item.canonicalUrl, item.id, 'open', item.unread)}>
 							<h6>{item.title}</h6>
 							<p className="badge badge-light">{item.author}</p>&nbsp;
 							{item.unread === true ? 
@@ -178,7 +175,7 @@ class Lists extends Component {
 						{item.unread === true ? 
 							<div className="card-footer">
 								<div className="btn-group" role="group">
-									<button type="button" className="btn btn-light btn-sm text-dark" onClick={(e) => this.handleMarkAsRead(e, item.canonicalUrl, item.id, 'close')}>Mark as Read</button>
+									<button type="button" className="btn btn-light btn-sm text-dark" onClick={(e) => this.handleMarkAsRead(e, item.canonicalUrl, item.id, 'close', true)}>Mark as Read</button>
 									<button type="button" className="btn btn-light btn-sm text-dark" onClick={() => this.openInBrowser(item.canonicalUrl)}>Open in Browser</button>
 								</div>
 							</div>

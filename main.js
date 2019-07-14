@@ -7,6 +7,7 @@ const store = new Store();
 
 let win = null
 let loginWindow = null
+let integrateWithFeedly = stringToBool(store.get('integrateWithFeedly', false))
 let unreadCount
 
 function createWindow () {	
@@ -57,8 +58,6 @@ function stringToBool(val) {
 function setBadge(num) {
 	if(process.platform === 'darwin') {
 		let dock = app.dock
-
-		let integrateWithFeedly = stringToBool(store.get('integrateWithFeedly', false))
 	
 		if(integrateWithFeedly)
 			dock.setBadge('' + num)
@@ -112,11 +111,11 @@ ipcMain.on('unread-count', (event, arg) => {
 })
 
 ipcMain.on('increase-unread-count', (event, arg) => {
-	setBadge(unreadCount++)
+	setBadge(++unreadCount)
 })
 
 ipcMain.on('decrease-unread-count', (event, arg) => {
-	setBadge(unreadCount--)
+	setBadge(--unreadCount)
 })
 
 let menubar = [
