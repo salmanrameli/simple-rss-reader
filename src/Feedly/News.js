@@ -27,6 +27,7 @@ class News extends Component {
 		this.removeUnreadEntryBadge = this.removeUnreadEntryBadge.bind(this)
 		this.removeItem = this.removeItem.bind(this)
 		this.markAsUnread = this.markAsUnread.bind(this)
+		this.markAsRead = this.markAsRead.bind(this)
 	}
 
 	componentDidMount() {
@@ -159,6 +160,24 @@ class News extends Component {
 		ipcRenderer.send('increase-unread-count')
 	}
 
+	markAsRead(id) {
+		let array = this.state.lists
+
+		for(let i in array) {
+			if(array[i].id === String(id)) {
+				if(array[i].unread === true) {
+					array[i].unread = false
+				}
+			}
+		}
+
+		this.setState({
+			lists: array
+		})
+
+		ipcRenderer.send('decrease-unread-count')
+	}
+
 	render() {
 		return(
 			<div className="row">
@@ -168,6 +187,7 @@ class News extends Component {
 					onRemove = {this.removeItem}
 					removeUnreadEntryBadge = {this.removeUnreadEntryBadge}
 					markAsUnread = {this.markAsUnread}
+					markAsRead = {this.markAsRead}
 				/>
 				<Article 
 					title = {this.state.story_title}

@@ -92,9 +92,13 @@ class Lists extends Component {
 					})
 
 					ipcRenderer.send('decrease-unread-count')
+
+					return this.props.markAsRead(id)
 				}
 			} else {
 				this.removeUnreadEntryBadge(id)
+
+				return this.props.markAsRead(id)
 			}
 		}).catch(error => console.log(error))
 	}
