@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { BrowserRouter as Router, Route, NavLink } from 'react-router-dom';
 
 import News from './News'
-import Login from '../Login'
+import FeedlySettingRenderer from './FeedlySettingRenderer'
 import img from '../icon.png'
 
 const { ipcRenderer } = window.require('electron')
@@ -33,8 +33,8 @@ class FeedlyRoot extends Component {
 			component: News
 		},
 		{
-			path: "/Login",
-			component: Login
+			path: "/FeedlySetting",
+			component: FeedlySettingRenderer
 		}
 	];
 
@@ -94,7 +94,7 @@ class FeedlyRoot extends Component {
 								<NavLink to="/News" className="btn btn-outline-dark btn-sm" id="newsButton" activeClassName="active">
 									<i className="far fa-newspaper"></i> Feeds
 								</NavLink>
-								<NavLink to="/Login" className="btn btn-outline-dark btn-sm" id="settingButton" activeClassName="active">
+								<NavLink to="/FeedlySetting" className="btn btn-outline-dark btn-sm" id="settingButton" activeClassName="active">
 									<i className="fa fa-wrench"></i>
 								</NavLink>
 							</div>

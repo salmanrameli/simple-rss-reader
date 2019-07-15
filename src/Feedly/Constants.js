@@ -16,11 +16,18 @@ function getProfile() {
 function getStream() {
     let userId = getUserId()
     let isUnreadOnly = store.get('isUnreadOnly', false)
+    let categoryToStream = store.get('activeCategory', 'all')
+    let apiUrl = ''
+
+    if(categoryToStream === "all")
+        apiUrl = `https://cloud.feedly.com/v3/streams/contents?streamId=user/${userId}/category/global.all&unreadOnly=${isUnreadOnly}&count=180`
+    else 
+        apiUrl = `https://cloud.feedly.com/v3/streams/contents?streamId=${categoryToStream}&unreadOnly=${isUnreadOnly}&count=180`
 
     if(isDev)
-        return `${cors}https://cloud.feedly.com/v3/streams/contents?streamId=user/${userId}/category/global.all&unreadOnly=${isUnreadOnly}&count=180`
+        return `${cors}${apiUrl}`
     else
-        return `https://cloud.feedly.com/v3/streams/contents?streamId=user/${userId}/category/global.all&unreadOnly=${isUnreadOnly}&count=180`
+        return `${apiUrl}`
 }
 
 function getEntry(entryId) {
@@ -46,4 +53,11 @@ function getUnreadCount() {
         return `https://cloud.feedly.com/v3/markers/counts`
 }
 
-export { getProfile, getStream, getEntry, markers, getUnreadCount }
+function getCategories() {
+    if(isDev)
+        return `${cors}https://cloud.feedly.com/v3/categories`
+    else
+        return `https://cloud.feedly.com/v3/categories`
+}
+
+export { getProfile, getStream, getEntry, markers, getUnreadCount, getCategories }
