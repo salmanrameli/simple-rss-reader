@@ -5,6 +5,7 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 * Option to show unread entries only or all entries
 * Mark as read / mark as unread on chosen entry
 * Auto mark as read on opened entry
+* Choose which category to stream
 
 Click [here](https://feedly.com/v3/auth/dev) to get Feedly developer access token.
 
