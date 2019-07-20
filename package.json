@@ -35,6 +35,14 @@
         "dmg"
       ],
       "category": "public.app-category.utilities"
+    },
+    "linux": {
+      "icon": "assets/icon.icns",
+      "executableName": "Simple RSS Reader",
+      "target": [
+        "deb"
+      ],
+      "synopsis": "Simple RSS reader utilising Electron and ReactJS with partial Feedly support"
     }
   },
   "dependencies": {
