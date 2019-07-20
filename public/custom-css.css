@@ -106,4 +106,10 @@ html, body {
   }
   .draggable {
     -webkit-app-region: drag;
-}
+  }
+  .background {
+    background-image: url("bg.jpg");
+    background-repeat: no-repeat;
+    background-position: 50% 50%;
+    background-size: cover;
+  }

@@ -3,7 +3,6 @@ import { BrowserRouter as Router, Route, NavLink } from 'react-router-dom';
 
 import News from './News'
 import FeedlySettingRenderer from './FeedlySettingRenderer'
-import img from '../icon.png'
 
 const { ipcRenderer } = window.require('electron')
 const Store = window.require('electron-store');
@@ -87,20 +86,20 @@ class FeedlyRoot extends Component {
 	render() {
 		return (
 			<Router>
-				<div className="row frameless-padding bg-light draggable">
+				<div className="row frameless-padding draggable" style={{ backgroundColor: '#202429' }}>
 					<div className="col-md-12 no-padding-right no-padding-left border-bottom">
 						<div className="toolbar-padding">
 							<div className="btn-group mr-2" role="group" id="button-group">
-								<NavLink to="/News" className="btn btn-outline-dark btn-sm" id="newsButton" activeClassName="active">
+								<NavLink to="/News" className="btn btn-outline-light btn-sm" id="newsButton" activeClassName="active">
 									<i className="far fa-newspaper"></i> Feeds
 								</NavLink>
-								<NavLink to="/FeedlySetting" className="btn btn-outline-dark btn-sm" id="settingButton" activeClassName="active">
+								<NavLink to="/FeedlySetting" className="btn btn-outline-light btn-sm" id="settingButton" activeClassName="active">
 									<i className="fa fa-wrench"></i>
 								</NavLink>
 							</div>
 							<div className="btn-group mr-2 float-right" role="group" id="button-group-2">
-								<button type="button" className={`btn btn-outline-dark btn-sm ${this.state.isUnreadOnly === true ? "active" : ""}`} onClick={(e) => this.handleOnclick(e, "unread")}>Unread</button>
-								<button type="button" className={`btn btn-outline-dark btn-sm  ${this.state.isUnreadOnly === true ? "" : "active"}`} onClick={(e) => this.handleOnclick(e, "all")}>All</button>
+								<button type="button" className={`btn btn-outline-light btn-sm ${this.state.isUnreadOnly === true ? "active" : ""}`} onClick={(e) => this.handleOnclick(e, "unread")}>Unread</button>
+								<button type="button" className={`btn btn-outline-light btn-sm  ${this.state.isUnreadOnly === true ? "" : "active"}`} onClick={(e) => this.handleOnclick(e, "all")}>All</button>
 							</div>
 						</div>
 					</div>
@@ -110,9 +109,12 @@ class FeedlyRoot extends Component {
 					<this.RouteWithSubRoutes key={i} {...route} />
 				))}
 	
-				<div className="row">
+				<div className="row background">
 					<div className="col-md-12" style={{ height: '100vh' }}>
-						<img src={img} alt="Logo" className="working-center-image" style={{ height: '512px', width: '512px' }}/>
+						<blockquote className="working-center-image blockquote text-center">
+							<h1 style={{color: 'black'}} className="lead">Reading furnishes the mind only with materials of knowledge;<br></br>it is thinking that makes what we read ours.</h1>
+							<footer className="blockquote-footer"><cite title="Source Title">John Locke</cite></footer>
+						</blockquote>
 					</div>
 				</div>
 			</Router>
