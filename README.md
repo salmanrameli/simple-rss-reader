@@ -22,11 +22,11 @@ Click [here](https://feedly.com/v3/auth/dev) to get Feedly developer access toke
 
 #### Feedly Mode
 
-![Feedly Entry](https://raw.githubusercontent.com/salmanrameli/simple-rss-reader/master/Feedly.png)
-
 ![Feedly Article](https://raw.githubusercontent.com/salmanrameli/simple-rss-reader/master/Feedly%20Article.png)
 
-![Feedly All Entry](https://raw.githubusercontent.com/salmanrameli/simple-rss-reader/master/Feedly%20All.png)
+![Feedly All Entry](https://raw.githubusercontent.com/salmanrameli/simple-rss-reader/master/Feedly%20All.png
+
+![Feedly Setting](https://raw.githubusercontent.com/salmanrameli/simple-rss-reader/master/Feedly%20Setting.png)
 
 ## Available Scripts
 
