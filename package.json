@@ -16,6 +16,7 @@
     "asar": false,
     "extends": null,
     "files": [
+      "assets/*",
       "build/**/*",
       "node_modules/**/*",
       "public/*",
@@ -37,7 +38,7 @@
       "category": "public.app-category.utilities"
     },
     "linux": {
-      "icon": "assets/icon.icns",
+      "icon": "assets/512x512.png",
       "executableName": "Simple RSS Reader",
       "target": [
         "deb"

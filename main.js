@@ -17,13 +17,16 @@ function createWindow () {
 		'minHeight': 600,
 		'minWidth': 960,
 		show: false,
-		titleBarStyle: 'hidden'
+		titleBarStyle: 'hidden',
+		icon: path.join(__dirname, '/assets/512x512.png')
 	})
 
 	const menu = Menu.buildFromTemplate(menubar)
 	Menu.setApplicationMenu(menu)
 
 	unreadCount = 0
+
+	win.setIcon(path.join(__dirname, '/assets/512x512.png'));
 	       
 	win.loadURL(
 		isDev ? "http://localhost:8080" : `file://${path.join(__dirname, '/build/index.html')}`
