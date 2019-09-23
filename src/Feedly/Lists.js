@@ -16,7 +16,8 @@ class Lists extends Component {
 			lists : this.props.lists,
 			activeLink: '',
 			oldId: '',
-			oldReadId: ''
+			oldReadId: '',
+			isUnreadOnly: ''
 		}
 
 		this.stringToBool = this.stringToBool.bind(this)
@@ -25,13 +26,15 @@ class Lists extends Component {
 		this.markAsRead = this.markAsRead.bind(this)
 		this.handleMarkAsRead = this.handleMarkAsRead.bind(this)
 		this.handleMarkAsUnread = this.handleMarkAsUnread.bind(this)
+		this.handleRemoveEntryFromFeed = this.handleRemoveEntryFromFeed.bind(this)
 		this.openInBrowser = this.openInBrowser.bind(this)
 	}
 
 	componentDidMount() {
 		this.setState({
 			oldId: '',
-			oldReadId: ''
+			oldReadId: '',
+			isUnreadOnly: store.get('isUnreadOnly', false)
 		})
 	}
 
@@ -53,7 +56,7 @@ class Lists extends Component {
 		return this.props.removeUnreadEntryBadge(id)
 	}
 
-	async markAsRead(id) {
+	async markAsRead(id, flag) {
 		const authCode = getAuthCode()
 
 		let arrayOfReadEntry = new Array(String(id))
@@ -71,31 +74,34 @@ class Lists extends Component {
 				"Content-Type": "application/json"
 			},
 		}).then(response => {
-			let isUnreadOnly = this.stringToBool(store.get('isUnreadOnly', false))
+			let isUnreadOnly = this.stringToBool(this.state.isUnreadOnly)
 
 			if(isUnreadOnly) {
-				let oldId = this.state.oldId
-	
-				if(oldId === '') {
-					this.setState({
-						oldId: id
-					})
-				}
-		
-				if(oldId !== id) {
-					this.removeEntryFromFeed(oldId)
-	
-					this.setState({
-						oldId: id
-					})
+				if(flag) {
+					let oldId = this.state.oldId
 
-					return this.props.markAsRead(id)
+					if(oldId === '') {
+						this.setState({
+							oldId: id
+						})
+					}
+			
+					if(oldId !== id) {
+						this.removeEntryFromFeed(oldId)
+		
+						this.setState({
+							oldId: id
+						})
+					}
+				} else {
+					this.removeUnreadEntryBadge(id)
+					this.removeEntryFromFeed(id)
 				}
 			} else {
 				this.removeUnreadEntryBadge(id)
-
-				return this.props.markAsRead(id)
 			}
+
+			return this.props.markAsRead(id)
 		}).catch(error => console.log(error))
 	}
 
@@ -135,17 +141,19 @@ class Lists extends Component {
 		if(isUnread === true)
 			ipcRenderer.send('decrease-unread-count')
 
-		if(flag === "open") {
+		if(flag) {
 			this.props.loadStory(link, id);
 
 			this.setState({
 				activeLink: id
 			})
-		} else {
-			this.removeEntryFromFeed(id)
 		}
 
-		this.markAsRead(id)
+		this.markAsRead(id, flag)
+	}
+
+	handleRemoveEntryFromFeed(id) {
+		this.removeEntryFromFeed(id)
 	}
 
 	handleMarkAsUnread = (event, id) => {
@@ -163,7 +171,8 @@ class Lists extends Component {
 			<div className="col-md-3 scrollable no-padding-right no-padding-left">
 				{this.state.lists.map((item) => (
 					<div className={`card list-group-item ${this.state.activeLink === item.id ? 'text-white bg-primary' : ''}`} key={item.id}>
-						<div className={`card-body ${this.state.activeLink === item.id ? "text-white" : item.unread === true ? 'text-dark' : 'text-secondary'}`} onClick={(e) => this.handleMarkAsRead(e, item.canonicalUrl, item.id, 'open', item.unread)}>
+						<div className={`card-body ${this.state.activeLink === item.id ? "text-white" : item.unread === true ? 'text-dark' : 'text-secondary'}`} onClick={(e) => this.handleMarkAsRead(e, item.canonicalUrl, item.id, true, item.unread)}>
+							<small>{item.origin.title}</small>
 							<h6>{item.title}</h6>
 							<p className="badge badge-light">{item.author}</p>&nbsp;
 							{item.unread === true ? 
@@ -175,7 +184,7 @@ class Lists extends Component {
 						{item.unread === true ? 
 							<div className="card-footer">
 								<div className="btn-group" role="group">
-									<button type="button" className="btn btn-light btn-sm text-dark" onClick={(e) => this.handleMarkAsRead(e, item.canonicalUrl, item.id, 'close', true)}>Mark as Read</button>
+									<button type="button" className="btn btn-light btn-sm text-dark" onClick={(e) => this.handleMarkAsRead(e, item.canonicalUrl, item.id, false, true)}>Mark as Read</button>
 									<button type="button" className="btn btn-light btn-sm text-dark" onClick={() => this.openInBrowser(item.canonicalUrl)}>Open in Browser</button>
 								</div>
 							</div>
