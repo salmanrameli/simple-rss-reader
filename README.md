@@ -1,3 +1,9 @@
+<p align="center">
+  <img src="https://raw.githubusercontent.com/salmanrameli/simple-rss-reader/master/assets/icon.png">
+  <h1 align="center">Simple RSS Reader</h1>
+</p>
+
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Partial Support for Feedly using developer access token
@@ -9,7 +15,7 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 Click [here](https://feedly.com/v3/auth/dev) to get Feedly developer access token.
 
-*Please note that developer access token is only valid for a month. After that you have to generate new access token.*
+*Please note that developer access token is only valid for a month and limited to just 250 API requests per day. After that you have to generate new access token.*
 
 ## Screenshots
 #### RSS Mode
