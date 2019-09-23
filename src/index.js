@@ -29,43 +29,42 @@ ipcRenderer.on('asynchronous-reply', (event, reply) => {
 			render(Root)
 			break
 		case 'integrated':
-				render(FeedlyRoot)
-			// const authCode = getAuthCode()
+			const authCode = getAuthCode()
 			
-			// Axios({
-			// 	method: 'get',
-			// 	url: getProfile(),
-			// 	responseType: 'application/json',
-			// 	headers: {
-			// 		'Authorization': `OAuth ${authCode}`
-			// 	}
-			// }).then((response) => {
-			// 	switch(response.status) {
-			// 		case 200: 
-			// 			render(FeedlyRoot)
-			// 			break
-			// 		default: 
-			// 			render(Login)
-			// 			break
-			// 	}
-			// }).catch(function(error) {
-			// 	console.log(error.response)
-			// 	errorCode = error.response.status
-			// 	errorMessage = error.response.data.errorMessage
+			Axios({
+				method: 'get',
+				url: getProfile(),
+				responseType: 'application/json',
+				headers: {
+					'Authorization': `OAuth ${authCode}`
+				}
+			}).then((response) => {
+				switch(response.status) {
+					case 200: 
+						render(FeedlyRoot)
+						break
+					default: 
+						render(Login)
+						break
+				}
+			}).catch(function(error) {
+				console.log(error.response)
+				errorCode = error.response.status
+				errorMessage = error.response.data.errorMessage
 
-			// 	switch(error.response.status) {
-			// 		case 401:
-			// 			render(Login)
-			// 			break
-			// 		case 429:
-			// 			render(Error)
-			// 			break
-			// 		default:
-			// 			render(Login)
-			// 			break
-			// 	}
-			// 	console.log(error.response.status + " " + error.response.statusText) // 429 Too Many Requests
-			// })
+				switch(error.response.status) {
+					case 401:
+						render(Login)
+						break
+					case 429:
+						render(Error)
+						break
+					default:
+						render(Login)
+						break
+				}
+				console.log(error.response.status + " " + error.response.statusText) // 429 Too Many Requests
+			})
 			break
 		default:
 			render(Login)
