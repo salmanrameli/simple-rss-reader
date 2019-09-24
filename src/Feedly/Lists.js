@@ -80,6 +80,7 @@ class Lists extends Component {
 			if(isUnreadOnly) {
 				if(flag) {
 					let oldId = this.state.oldId
+					let articleMarkedAsUnread = this.state.articleMarkedAsUnread
 
 					if(oldId === '') {
 						this.setState({
@@ -87,26 +88,20 @@ class Lists extends Component {
 						})
 					}
 			
-					if(oldId !== id) {
-						if(this.state.articleMarkedAsUnread === false) {
-							this.removeEntryFromFeed(oldId)
-
-							this.setState({
-								oldId: id
-							})
-
-							return this.props.markAsRead(id)
-						} else {
+					if(id !== oldId) {
+						if(articleMarkedAsUnread) {
 							this.setState({
 								articleMarkedAsUnread: false
 							})
-
-							this.setState({
-								oldId: id
-							})
-
-							return this.props.markAsRead(id)
+						} else {
+							this.removeEntryFromFeed(oldId)
 						}
+
+						this.setState({
+							oldId: id
+						})
+
+						return this.props.markAsRead(id)
 					}
 				} else {
 					this.removeUnreadEntryBadge(id)
