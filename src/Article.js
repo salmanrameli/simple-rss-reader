@@ -97,7 +97,7 @@ class Article extends Component {
 					<div className="col-md-9 centered">
 						<div className="centered-img">
 							<BarLoader css={override} color={'#36D7B7'} sizeUnit={"px"} size={15} loading={this.state.isLoading} />
-							<h1 style={{ 'color': 'lightgrey', 'text-align': 'center'}}>Article will be shown here</h1>
+							<h1 style={{ 'color': 'lightgrey', 'textAlign': 'center'}}>Article will be shown here</h1>
 						</div>
 					</div>
 			)

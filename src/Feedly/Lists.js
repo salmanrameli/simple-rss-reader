@@ -2,8 +2,8 @@ import React, { Component } from 'react';
 import Axios from 'axios';
 import { getAuthCode } from './UserDetails'
 import { markers } from './Constants'
-import bg from '../bg.jpg'
-import bg2 from '../bg2.png'
+import bg1 from './bg1.jpg'
+import bg2 from './bg2.png'
 
 const { ipcRenderer } = window.require('electron')
 const { shell } = window.require('electron')
@@ -175,7 +175,7 @@ class Lists extends Component {
 			<div className="col-md-3 scrollable no-padding-right no-padding-left" >
 				{this.state.lists.map((item, index) => (
 					<div className={`list-group-item ${this.state.activeLink === item.id ? 'text-white bg-primary' : 'text-dark'}`} key={item.id} >
-						<div className="card" style={ this.state.activeLink === item.id ? {} : {backgroundImage: index % 2 === 0 ? `url(${bg})`: `url(${bg2})`, backgroundRepeat: 'repeat'} }>
+						<div className="card" style={ this.state.activeLink === item.id ? {} : {backgroundImage: index % 2 === 0 ? `url(${bg1})`: `url(${bg2})`, backgroundRepeat: 'repeat'} }>
 							<div className={`card-body ${this.state.activeLink === item.id ? "text-white bg-primary" : item.unread === true ? 'text-dark' : 'text-secondary'}`} onClick={(e) => this.handleMarkAsRead(e, item.canonicalUrl, item.id, true, item.unread)} >
 								<div style={ this.state.activeLink === item.id ? {color: 'white', padding: '15px'} : {color: 'black', padding: '15px', backgroundColor: 'white', border: '1px solid black', opacity: 1} }>
 									<small>{item.origin.title}</small>

@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { getCategories } from './Constants'
 import { getAuthCode } from './UserDetails'
 import Axios from 'axios'
-import bg from '../bg2.png'
+import bg from './bg2.png'
 
 const Store = window.require('electron-store')
 const store = new Store()

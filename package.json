@@ -20,7 +20,7 @@
       "build/**/*",
       "node_modules/**/*",
       "public/*",
-      "src/*",
+      "src/**/*",
       "electron-wait-react.js",
       "main.js",
       "Procfile"
