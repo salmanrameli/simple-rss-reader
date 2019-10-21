@@ -205,8 +205,9 @@ let menubar = [
 	  ]
 	},
 	{
-	  role: 'help',
+	  label: 'help',
 	  submenu: [
+		{ role: 'about' },
 		{
 		  label: 'Learn More',
 		  click: async () => {

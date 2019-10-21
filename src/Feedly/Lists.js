@@ -19,7 +19,8 @@ class Lists extends Component {
 			activeLink: '',
 			oldId: '',
 			oldReadId: '',
-			isUnreadOnly: ''
+			isUnreadOnly: '',
+			articleMarkedAsUnread: false
 		}
 
 		this.stringToBool = this.stringToBool.bind(this)
@@ -28,7 +29,6 @@ class Lists extends Component {
 		this.markAsRead = this.markAsRead.bind(this)
 		this.handleMarkAsRead = this.handleMarkAsRead.bind(this)
 		this.handleMarkAsUnread = this.handleMarkAsUnread.bind(this)
-		this.handleRemoveEntryFromFeed = this.handleRemoveEntryFromFeed.bind(this)
 		this.openInBrowser = this.openInBrowser.bind(this)
 	}
 
@@ -36,7 +36,8 @@ class Lists extends Component {
 		this.setState({
 			oldId: '',
 			oldReadId: '',
-			isUnreadOnly: store.get('isUnreadOnly', false)
+			isUnreadOnly: store.get('isUnreadOnly', false),
+			articleMarkedAsUnread: false
 		})
 	}
 
@@ -81,6 +82,7 @@ class Lists extends Component {
 			if(isUnreadOnly) {
 				if(flag) {
 					let oldId = this.state.oldId
+					let articleMarkedAsUnread = this.state.articleMarkedAsUnread
 
 					if(oldId === '') {
 						this.setState({
@@ -88,22 +90,32 @@ class Lists extends Component {
 						})
 					}
 			
-					if(oldId !== id) {
-						this.removeEntryFromFeed(oldId)
-		
+					if(id !== oldId) {
+						if(articleMarkedAsUnread) {
+							this.setState({
+								articleMarkedAsUnread: false
+							})
+						} else {
+							this.removeEntryFromFeed(oldId)
+						}
+
 						this.setState({
 							oldId: id
 						})
+
+						return this.props.markAsRead(id)
 					}
 				} else {
 					this.removeUnreadEntryBadge(id)
 					this.removeEntryFromFeed(id)
+
+					return this.props.markAsRead(id)
 				}
 			} else {
 				this.removeUnreadEntryBadge(id)
-			}
 
-			return this.props.markAsRead(id)
+				return this.props.markAsRead(id)
+			}
 		}).catch(error => console.log(error))
 	}
 
@@ -125,17 +137,7 @@ class Lists extends Component {
 				"Content-Type": "application/json"
 			},
 		}).then(response => {
-			let oldReadId = this.state.oldReadId
-	
-			if(oldReadId === '') {
-				this.setState({
-					oldReadId: id
-				})
-			}
-	
-			if(oldReadId !== id) {
-				return this.props.markAsUnread(id)
-			}
+			return this.props.markAsUnread(id)
 		}).catch(error => console.log(error))
 	}
 
@@ -154,12 +156,12 @@ class Lists extends Component {
 		this.markAsRead(id, flag)
 	}
 
-	handleRemoveEntryFromFeed(id) {
-		this.removeEntryFromFeed(id)
-	}
-
 	handleMarkAsUnread = (event, id) => {
 		ipcRenderer.send('increase-unread-count')
+
+		this.setState({
+			articleMarkedAsUnread: true
+		})
 
 		this.markAsUnread(id)
 	}
