@@ -19,7 +19,7 @@
       "assets/*",
       "build/**/*",
       "node_modules/**/*",
-      "public/*",
+      "public/**/*",
       "src/**/*",
       "electron-wait-react.js",
       "main.js",

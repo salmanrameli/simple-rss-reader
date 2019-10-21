@@ -113,3 +113,12 @@ html, body {
     background-position: 50% 50%;
     background-size: cover;
   }
+  .bg1 {
+    background-image: url("bg1.jpg")
+  }
+  .bg2 {
+    background-image: url("bg2.png")
+  }
+  .bg3 {
+    background-image: url("bg3.jpg")
+  }

@@ -2,7 +2,6 @@ import React, { Component } from 'react'
 import { getCategories } from './Constants'
 import { getAuthCode } from './UserDetails'
 import Axios from 'axios'
-import bg from './bg2.png'
 
 const Store = window.require('electron-store')
 const store = new Store()
@@ -74,7 +73,7 @@ class FeedlySetting extends Component {
     render() {
         return (
             <div className="row full-size">
-                <div className="col-md-12" style={{ backgroundImage: `url(${bg})`, backgroundRepeat: 'repeat' }}>
+                <div className="col-md-12">
                     <div className="row" style={{padding: '50px 30px 50px 30px'}}>
                         <div className="col-md-12">
                             <div className="card-columns">
