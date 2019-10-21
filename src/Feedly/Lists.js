@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import Axios from 'axios';
 import { getAuthCode } from './UserDetails'
 import { markers } from './Constants'
+import bg from '../bg.jpg'
+import bg2 from '../bg2.png'
 
 const { ipcRenderer } = window.require('electron')
 const { shell } = window.require('electron')
@@ -168,34 +170,38 @@ class Lists extends Component {
 	
 	render() {
 		return (
-			<div className="col-md-3 scrollable no-padding-right no-padding-left">
-				{this.state.lists.map((item) => (
-					<div className={`card list-group-item ${this.state.activeLink === item.id ? 'text-white bg-primary' : ''}`} key={item.id}>
-						<div className={`card-body ${this.state.activeLink === item.id ? "text-white" : item.unread === true ? 'text-dark' : 'text-secondary'}`} onClick={(e) => this.handleMarkAsRead(e, item.canonicalUrl, item.id, true, item.unread)}>
-							<small>{item.origin.title}</small>
-							<h6>{item.title}</h6>
-							<p className="badge badge-light">{item.author}</p>&nbsp;
+			<div className="col-md-3 scrollable no-padding-right no-padding-left" >
+				{this.state.lists.map((item, index) => (
+					<div className={`list-group-item ${this.state.activeLink === item.id ? 'text-white bg-primary' : 'text-dark'}`} key={item.id} >
+						<div className="card" style={ this.state.activeLink === item.id ? {} : {backgroundImage: index % 2 === 0 ? `url(${bg})`: `url(${bg2})`, backgroundRepeat: 'repeat'} }>
+							<div className={`card-body ${this.state.activeLink === item.id ? "text-white bg-primary" : item.unread === true ? 'text-dark' : 'text-secondary'}`} onClick={(e) => this.handleMarkAsRead(e, item.canonicalUrl, item.id, true, item.unread)} >
+								<div style={ this.state.activeLink === item.id ? {color: 'white', padding: '15px'} : {color: 'black', padding: '15px', backgroundColor: 'white', border: '1px solid black', opacity: 1} }>
+									<small>{item.origin.title}</small>
+									<h6>{item.title}</h6>
+									<p className="badge badge-light">{item.author}</p>&nbsp;
+									{item.unread === true ? 
+										<p className="badge badge-success">Unread Entry</p>
+										:
+										""
+									}
+								</div>
+							</div>
 							{item.unread === true ? 
-								<p className="badge badge-success">Unread Entry</p>
-								:
-								""
+								<div className="card-footer">
+									<div className="btn-group" role="group">
+										<button type="button" className="btn btn-light btn-sm text-dark" onClick={(e) => this.handleMarkAsRead(e, item.canonicalUrl, item.id, false, true)}>Mark as Read</button>
+										<button type="button" className="btn btn-light btn-sm text-dark" onClick={() => this.openInBrowser(item.canonicalUrl)}>Open in Browser</button>
+									</div>
+								</div>
+								: 
+								<div className="card-footer">
+									<div className="btn-group" role="group">
+										<button type="button" className="btn btn-light btn-sm text-dark" onClick={(e) => this.handleMarkAsUnread(e, item.id)}>Mark as Unread</button>
+										<button type="button" className="btn btn-light btn-sm text-dark" onClick={() => this.openInBrowser(item.canonicalUrl)}>Open in Browser</button>
+									</div>
+								</div>
 							}
 						</div>
-						{item.unread === true ? 
-							<div className="card-footer">
-								<div className="btn-group" role="group">
-									<button type="button" className="btn btn-light btn-sm text-dark" onClick={(e) => this.handleMarkAsRead(e, item.canonicalUrl, item.id, false, true)}>Mark as Read</button>
-									<button type="button" className="btn btn-light btn-sm text-dark" onClick={() => this.openInBrowser(item.canonicalUrl)}>Open in Browser</button>
-								</div>
-							</div>
-							: 
-							<div className="card-footer">
-								<div className="btn-group" role="group">
-									<button type="button" className="btn btn-light btn-sm text-dark" onClick={(e) => this.handleMarkAsUnread(e, item.id)}>Mark as Unread</button>
-									<button type="button" className="btn btn-light btn-sm text-dark" onClick={() => this.openInBrowser(item.canonicalUrl)}>Open in Browser</button>
-								</div>
-							</div>
-						}
 					</div>
 				))}
 			</div>
