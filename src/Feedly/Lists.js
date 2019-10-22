@@ -172,8 +172,8 @@ class Lists extends Component {
 		return (
 			<div className="col-md-3 scrollable no-padding-right no-padding-left" >
 				{this.state.lists.map((item, index) => (
-					<div className={`list-group-item ${this.state.activeLink === item.id ? 'text-white bg-primary' : 'text-dark'}`} key={item.id} >
-						<div className={`card ${this.state.activeLink === item.id ? '' : index % 3 === 0 ? 'bg1' : index % 3 === 1 ? 'bg2' : 'bg3'}`} >
+					<div className={`list-group-item`} key={item.id} >
+						<div className={`card ${this.state.activeLink === item.id ? 'text-white bg-primary' : index % 3 === 0 ? 'bg1 text-dark' : index % 3 === 1 ? 'bg2 text-dark' : 'bg3 text-dark'}`} >
 							<div className={`card-body ${this.state.activeLink === item.id ? "text-white bg-primary" : item.unread === true ? 'text-dark' : 'text-secondary'}`} onClick={(e) => this.handleMarkAsRead(e, item.canonicalUrl, item.id, true, item.unread)} >
 								<div style={ this.state.activeLink === item.id ? {color: 'white', padding: '10px'} : {color: 'black', padding: '10px', backgroundColor: 'white', border: '2px solid black', opacity: 1} }>
 									<small>{item.origin.title}</small>
