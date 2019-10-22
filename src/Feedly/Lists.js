@@ -175,7 +175,7 @@ class Lists extends Component {
 					<div className={`list-group-item ${this.state.activeLink === item.id ? 'text-white bg-primary' : 'text-dark'}`} key={item.id} >
 						<div className={`card ${this.state.activeLink === item.id ? '' : index % 3 === 0 ? 'bg1' : index % 3 === 1 ? 'bg2' : 'bg3'}`} >
 							<div className={`card-body ${this.state.activeLink === item.id ? "text-white bg-primary" : item.unread === true ? 'text-dark' : 'text-secondary'}`} onClick={(e) => this.handleMarkAsRead(e, item.canonicalUrl, item.id, true, item.unread)} >
-								<div style={ this.state.activeLink === item.id ? {color: 'white', padding: '15px'} : {color: 'black', padding: '15px', backgroundColor: 'white', border: '1px solid black', opacity: 1} }>
+								<div style={ this.state.activeLink === item.id ? {color: 'white', padding: '10px'} : {color: 'black', padding: '10px', backgroundColor: 'white', border: '2px solid black', opacity: 1} }>
 									<small>{item.origin.title}</small>
 									<h6>{item.title}</h6>
 									<p className="badge badge-light">{item.author}</p>&nbsp;
@@ -188,16 +188,20 @@ class Lists extends Component {
 							</div>
 							{item.unread === true ? 
 								<div className="card-footer">
-									<div className="btn-group" role="group">
-										<button type="button" className="btn btn-light btn-sm text-dark" onClick={(e) => this.handleMarkAsRead(e, item.canonicalUrl, item.id, false, true)}>Mark as Read</button>
-										<button type="button" className="btn btn-light btn-sm text-dark" onClick={() => this.openInBrowser(item.canonicalUrl)}>Open in Browser</button>
+									<div className=" text-center">
+										<div className="btn-group" role="group">
+											<button type="button" className="btn btn-light btn-sm text-dark" onClick={(e) => this.handleMarkAsRead(e, item.canonicalUrl, item.id, false, true)}>Mark as Read</button>
+											<button type="button" className="btn btn-light btn-sm text-dark" onClick={() => this.openInBrowser(item.canonicalUrl)}>Open in Browser</button>
+										</div>
 									</div>
 								</div>
 								: 
 								<div className="card-footer">
-									<div className="btn-group" role="group">
-										<button type="button" className="btn btn-light btn-sm text-dark" onClick={(e) => this.handleMarkAsUnread(e, item.id)}>Mark as Unread</button>
-										<button type="button" className="btn btn-light btn-sm text-dark" onClick={() => this.openInBrowser(item.canonicalUrl)}>Open in Browser</button>
+									<div className="text-center">
+										<div className="btn-group" role="group">
+											<button type="button" className="btn btn-light btn-sm text-dark" onClick={(e) => this.handleMarkAsUnread(e, item.id)}>Mark as Unread</button>
+											<button type="button" className="btn btn-light btn-sm text-dark" onClick={() => this.openInBrowser(item.canonicalUrl)}>Open in Browser</button>
+										</div>
 									</div>
 								</div>
 							}
