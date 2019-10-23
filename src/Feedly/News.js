@@ -48,10 +48,11 @@ class News extends Component {
 			let merged = [].concat.apply([], response.data.items)
 
 			this.setState({
-				lists: merged.map(entry => {
+				lists: merged.map((entry, index) => {
 					return {
 						...entry,
-						articleIsUnread: true
+						articleIsUnread: true,
+						indexKey: index
 					}
 				})
 			})
