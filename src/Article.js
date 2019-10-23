@@ -65,8 +65,8 @@ class Article extends Component {
 		});
 	}
 
-	openInBrowser(url) {
-		shell.openExternal(url)
+	async openInBrowser(url) {
+		await shell.openExternal(url)
 	}
 
 	render() {

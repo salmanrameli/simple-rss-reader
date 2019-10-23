@@ -6,16 +6,31 @@ const Store = require('electron-store');
 const store = new Store();
 
 let win = null
+let winWidth = null
+let winHeight = null
 let loginWindow = null
+let winWasResized = false
+
 let integrateWithFeedly = stringToBool(store.get('integrateWithFeedly', false))
 let unreadCount
 
-function createWindow () {	
+function createWindow () {
+	winWidth = store.get('winWidth')
+	winHeight = store.get('winHeight')
+
+	if(winWidth === undefined && winHeight === undefined) {
+		winWidth = 1280
+		winHeight = 800
+	} else {
+		winWidth = parseInt(store.get('winWidth'), 10)
+		winHeight = parseInt(store.get('winHeight'), 10) 
+	}
+
 	win = new BrowserWindow({
-		width: 1280, 
-		height: 800,
-		'minHeight': 600,
+		width: winWidth, 
+		height: winHeight,
 		'minWidth': 960,
+		'minHeight': 600,
 		show: false,
 		titleBarStyle: 'hidden',
 		icon: path.resolve(`${__dirname}/assets/icon.png`)
@@ -37,14 +52,27 @@ function createWindow () {
 	})
 	  
 	win.on('closed', function () {
+		if(winWasResized) {
+			store.set('winWidth', winWidth)
+			store.set('winHeight', winHeight)
+		}
+
 		win = null
+	})
+
+	win.on('resize', function() {
+		winWasResized = true
+
+		let size = win.getSize()
+		winWidth = size[0]
+		winHeight = size[1]
 	})
 }
 
 function createLoginWindow() {
 	loginWindow = new BrowserWindow({
-		width: 600, 
-		height: 800,
+		width: 960, 
+		height: 640,
 	});
 
 	loginWindow.loadURL("https://feedly.com/v3/auth/dev")
