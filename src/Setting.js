@@ -1,6 +1,8 @@
 import React from 'react';
 
 const { shell } = window.require('electron')
+const Store = window.require('electron-store')
+const store = new Store()
 const path = require('path')
 const fs = window.require('fs');
 const remote = window.require('electron').remote;
@@ -15,6 +17,8 @@ class Setting extends React.Component {
 		this.state = {
 			urlFeeds: [],
 			url: '',
+			winWidth: '',
+            winHeight: '',
 		}
 
 		this.displayFeedUrls = this.displayFeedUrls.bind(this)
@@ -27,6 +31,7 @@ class Setting extends React.Component {
 		this.checkAppDataExists = this.checkAppDataExists.bind(this)
 		this.createJsonFile = this.createJsonFile.bind(this)
 		this.findJsonFile = this.findJsonFile.bind(this)
+		this.handleWindowSizeSetting = this.handleWindowSizeSetting.bind(this)
 		this.openInBrowser = this.openInBrowser.bind(this)
 	}
 
@@ -38,6 +43,11 @@ class Setting extends React.Component {
 		this.setState({
 			url: e.target.value
 		})
+
+		this.setState({
+            winWidth: parseInt(store.get('winWidth', 1280)),
+            winHeight: parseInt(store.get('winHeight', 800)),
+        })
 	}
 
 	handleSubmit = (e) => {
@@ -149,6 +159,14 @@ class Setting extends React.Component {
 		}
 	}
 
+	handleWindowSizeSetting(e) {
+        let winWidth = e.target.width.value
+        let winHeight = e.target.height.value
+
+        store.set('winWidth', winWidth)
+        store.set('winHeight', winHeight)
+    }
+
 	openInBrowser(url) {
 		shell.openExternal(url)
 	}
@@ -178,7 +196,7 @@ class Setting extends React.Component {
 				<div className="card">
 					<div className="card-body">
 						<div className="pb-1 mb-1">
-								<h4>Feeds you're subscribing to:</h4>
+								<h5>Feeds you're subscribing to:</h5>
 						</div>
 						<table className="table">
 							<tbody>
@@ -197,6 +215,28 @@ class Setting extends React.Component {
 								))}
 							</tbody>
 						</table>
+					</div>
+				</div>
+				<br></br>
+				<div className="card">
+					<div className="card-header">
+						<h5>Window Size Setting</h5>
+					</div>
+					<div className="card-body">
+						<p><i>Please reopen window to see the changes</i></p>
+						<form id="windowSizeSetting" onSubmit={this.handleWindowSizeSetting}>
+							<div className="form-row">
+								<div className="form-group col-md-6">
+									<label className="form-label" htmlFor="width">Window Width:</label>
+									<input className="form-control form-control-lg" type="text" name="width" placeholder={this.state.winWidth} />
+								</div>
+								<div className="form-group col-md-6">
+									<label className="form-label" htmlFor="height">Window Height:</label>
+									<input className="form-control form-control-lg" type="text" name="height" placeholder={this.state.winHeight} />
+								</div>
+								<button className="btn btn-success float-right" type="submit"><i className="fa fa-bookmark"></i> Save</button>
+							</div>
+						</form>
 					</div>
 				</div>
 			</div>
