@@ -9,8 +9,29 @@ html, body {
     display: block;
     margin: 0 auto;
   }
+  img::after {
+    content: "\A";
+    white-space: pre;
+  }
+  p::before {
+    content: "\A";
+    white-space: pre;
+  }
+  p.badge::before {
+    display: none;
+  }
   p {
-    margin: 10px 0 10px 0
+    margin: 0 0 10px;
+  }
+  small::before {
+    content: "\A";
+    white-space: pre;
+  }
+  small.remove-style::before {
+    display: none;
+  }
+  .remove-style {
+    margin: 10px 0 15px 0;
   }
   .no-padding-left {
     padding-left: 0px;
@@ -121,4 +142,32 @@ html, body {
   }
   .bg3 {
     background-image: url("bg3.jpg")
+  }
+  .bg4 {
+    background-image: url("bg4.jpg")
+  }
+  .bg5 {
+    background-image: url("bg5.jpg")
+  }
+  .h1::after {
+    content: "\A";
+    white-space: pre;
+  }
+  .h2::after {
+    content: "\A";
+    white-space: pre;
+  }
+  .h3::after {
+    content: "\A";
+    white-space: pre;
+  }
+  .em::before {
+    content: "\A";
+    white-space: pre;
+  }
+  .mt-10 {
+    margin-top: 10px;
+  }
+  .mb-15 {
+    margin-bottom: 15px;
   }

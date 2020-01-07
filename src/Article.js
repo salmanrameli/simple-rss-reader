@@ -82,11 +82,8 @@ class Article extends Component {
 								<button type="button" className="btn btn-sm btn-link" onClick={() => this.openInBrowser(this.state.link)}>Open in Browser</button>
 							</div>
 						</div>
-						<div className="row col-md-12 text-justify">
+						<div className="row col-md-12 text-justify mb-5">
 							{ReactHtmlParser(this.state.story)}
-							<br></br>
-							<br></br>
-							<br></br>
 						</div>
 					</div>
 				</div>
