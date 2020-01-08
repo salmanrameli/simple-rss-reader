@@ -149,19 +149,34 @@ html, body {
   .bg5 {
     background-image: url("bg5.jpg")
   }
-  .h1::after {
+  h1::after {
     content: "\A";
     white-space: pre;
   }
-  .h2::after {
+  h2::before {
     content: "\A";
     white-space: pre;
   }
-  .h3::after {
+  h2.clear-before::before {
+    display: none;
+  }
+  h2::after {
     content: "\A";
     white-space: pre;
   }
-  .em::before {
+  h3::before {
+    content: "\A";
+    white-space: pre;
+  }
+  h3::after {
+    content: "\A";
+    white-space: pre;
+  }
+  strong::after {
+    content: "\A";
+    white-space: pre;
+  }
+  em::before {
     content: "\A";
     white-space: pre;
   }
@@ -170,4 +185,24 @@ html, body {
   }
   .mb-15 {
     margin-bottom: 15px;
+  }
+  .cursor-pointer {
+    cursor: pointer;
+  }
+  q {
+    display: none;
+  }
+  hr {
+    display: none;
+  }
+  figure figcaption::after {
+    content: "\A";
+    white-space: pre;
+  }
+  figure figcaption em::after {
+    content: "\A";
+    white-space: pre;
+  }
+  p em::before {
+    display: none;
   }
