@@ -33,7 +33,11 @@ function createWindow () {
 		'minHeight': 600,
 		show: false,
 		titleBarStyle: 'hidden',
-		icon: path.resolve(`${__dirname}/assets/icon.png`)
+		icon: path.resolve(`${__dirname}/assets/icon.png`),
+		webPreferences: {
+			webviewTag: true,
+			nodeIntegration: true
+		}
 	})
 
 	// win.setIcon(path.resolve(`${__dirname}/assets/icon.png`))

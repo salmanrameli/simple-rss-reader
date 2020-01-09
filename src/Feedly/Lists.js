@@ -181,7 +181,7 @@ class Lists extends Component {
 							<div className={`card-body ${this.state.activeLink === item.id ? "text-white bg-primary" : item.unread === true ? 'text-dark' : 'text-secondary'}`} onClick={(e) => this.handleMarkAsRead(e, item.canonicalUrl, item.id, true, item.unread)} >
 								<div style={ this.state.activeLink === item.id ? {color: 'white', padding: '10px'} : {color: 'black', padding: '10px', backgroundColor: 'white', border: '2px solid black', opacity: 1} } className="cursor-pointer">
 									<small className="remove-style">{item.origin.title}</small>
-									<h6 class="mt-10 mb-15">{item.title}</h6>
+									<h6 className="mt-10 mb-15">{item.title}</h6>
 									<p className="badge badge-light">{item.author}</p>&nbsp;
 									{item.unread === true ? 
 										<p className="badge badge-success">Unread Entry</p>
