@@ -46,7 +46,7 @@ class Root extends Component {
 									<i className="fa fa-wrench"></i>
 								</NavLink>
 								<NavLink to="/Feedly" className="btn btn-outline-light btn-sm" id="loginButton" activeClassName="active">
-									<i class="fas fa-rss-square"></i> Login to Feedly
+									<i className="fas fa-rss-square"></i> Login to Feedly
 								</NavLink>
 							</div>
 						</div>

@@ -5,6 +5,7 @@ import { markers } from './Constants'
 
 const { ipcRenderer } = window.require('electron')
 const { shell } = window.require('electron')
+const { clipboard } = window.require('electron')
 const Store = window.require('electron-store');
 const store = new Store();
 
@@ -27,6 +28,7 @@ class Lists extends Component {
 		this.markAsRead = this.markAsRead.bind(this)
 		this.handleMarkAsRead = this.handleMarkAsRead.bind(this)
 		this.handleMarkAsUnread = this.handleMarkAsUnread.bind(this)
+		this.copyUrl = this.copyUrl.bind(this)
 		this.openInBrowser = this.openInBrowser.bind(this)
 	}
 
@@ -164,6 +166,10 @@ class Lists extends Component {
 		this.markAsUnread(id)
 	}
 
+	copyUrl(url) {
+		clipboard.writeText(url, 'url');
+	}
+
 	async openInBrowser(url) {
 		await shell.openExternal(url)
 	}
@@ -182,7 +188,7 @@ class Lists extends Component {
 								<div style={ this.state.activeLink === item.id ? {color: 'white', padding: '10px'} : {color: 'black', padding: '10px', backgroundColor: 'white', border: '2px solid black', opacity: 1} } className="cursor-pointer">
 									<small className="remove-style">{item.origin.title}</small>
 									<h6 className="mt-10 mb-15">{item.title}</h6>
-									<p className="badge badge-light">{item.author}</p>&nbsp;
+									<p className="badge badge-light">{item.author}</p>&nbsp;&nbsp;
 									{item.unread === true ? 
 										<p className="badge badge-success">Unread Entry</p>
 										:
@@ -194,8 +200,9 @@ class Lists extends Component {
 								<div className="card-footer">
 									<div className=" text-center">
 										<div className="btn-group" role="group">
-											<button type="button" className="btn btn-light btn-sm text-dark" onClick={(e) => this.handleMarkAsRead(e, item.canonicalUrl, item.id, false, true)}>Mark as Read</button>
-											<button type="button" className="btn btn-light btn-sm text-dark" onClick={() => this.openInBrowser(item.canonicalUrl)}>Open in Browser</button>
+											<button type="button" className="btn btn-light btn-sm text-dark" onClick={(e) => this.handleMarkAsRead(e, item.canonicalUrl, item.id, false, true)} title="Mark article as read">Mark as Read</button>
+											<button type="button" className="btn btn-light btn-sm text-dark" onClick={() => this.openInBrowser(item.canonicalUrl)} title="Open article in browser">Open in Browser</button>
+											<button type="button" className="btn btn-light btn-sm text-dark" onClick={() => this.copyUrl(item.canonicalUrl)} title="Copy URL address"><i className="fas fa-copy"></i></button>
 										</div>
 									</div>
 								</div>
@@ -203,8 +210,9 @@ class Lists extends Component {
 								<div className="card-footer">
 									<div className="text-center">
 										<div className="btn-group" role="group">
-											<button type="button" className="btn btn-light btn-sm text-dark" onClick={(e) => this.handleMarkAsUnread(e, item.id)}>Mark as Unread</button>
-											<button type="button" className="btn btn-light btn-sm text-dark" onClick={() => this.openInBrowser(item.canonicalUrl)}>Open in Browser</button>
+											<button type="button" className="btn btn-light btn-sm text-dark" onClick={(e) => this.handleMarkAsUnread(e, item.id)} title="Mark article as unread">Mark as Unread</button>
+											<button type="button" className="btn btn-light btn-sm text-dark" onClick={() => this.openInBrowser(item.canonicalUrl)} title="Open article in browser">Open in Browser</button>
+											<button type="button" className="btn btn-light btn-sm text-dark" onClick={() => this.copyUrl(item.canonicalUrl)} title="Copy URL address"><i className="fas fa-copy"></i></button>
 										</div>
 									</div>
 								</div>
