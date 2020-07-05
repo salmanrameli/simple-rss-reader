@@ -6,10 +6,8 @@ import FeedlyRoot from './Feedly/FeedlyRoot'
 import Error from './Error'
 import Root from './Root';
 import Login from './Login'
-import { getAuthCode } from './Feedly/UserDetails'
+import { getAuthCode, getFeedlyIntegration } from './Feedly/UserDetails'
 import { getProfile } from './Feedly/Constants'
-
-const { ipcRenderer } = window.require('electron')
 
 let errorCode = ''
 let errorMessage = ''
@@ -21,56 +19,55 @@ const render = (Component) => {
 	);
 };
 
-ipcRenderer.send('asynchronous-message', 'ping')
+const feedlyIntegration = getFeedlyIntegration()
 
-ipcRenderer.on('asynchronous-reply', (event, reply) => {
-	switch(reply) {
-		case 'not integrated':
-			render(Root)
-			break
-		case 'integrated':
-			const authCode = getAuthCode()
-			
-			Axios({
-				method: 'get',
-				url: getProfile(),
-				responseType: 'application/json',
-				headers: {
-					'Authorization': `OAuth ${authCode}`
-				}
-			}).then((response) => {
-				switch(response.status) {
-					case 200: 
-						render(FeedlyRoot)
-						break
-					default: 
-						render(Login)
-						break
-				}
-			}).catch(function(error) {
-				console.log(error.response)
-				errorCode = error.response.status
-				errorMessage = error.response.data.errorMessage
+switch(feedlyIntegration) {
+	case false:
+		render(Root)
+		break
+	case true:
+		const authCode = getAuthCode()
+		
+		Axios({
+			method: 'get',
+			url: getProfile(),
+			responseType: 'application/json',
+			headers: {
+				'Authorization': `OAuth ${authCode}`
+			},
+			timeout: 5000,
+		}).then((response) => {
+			switch(response.status) {
+				case 200: 
+					render(FeedlyRoot)
+					break
+				default: 
+					render(Login)
+					break
+			}
+		}).catch(function(error) {
+			errorCode = error.response.status
+			errorMessage = error.response.data.errorMessage
 
-				switch(error.response.status) {
-					case 401:
-						render(Login)
-						break
-					case 429:
-						render(Error)
-						break
-					default:
-						render(Login)
-						break
-				}
-				console.log(error.response.status + " " + error.response.statusText) // 429 Too Many Requests
-			})
-			break
-		default:
-			render(Login)
-			break
-	}
-})
+			switch(error.response.status) {
+				case 401:
+					render(Login)
+					break
+				case 429:
+					render(Error)
+					break
+				default:
+					render(Login)
+					break
+			}
 
+			console.log(error.response.status + " " + error.response.statusText) // 429 Too Many Requests
+		})
+
+		break
+	default:
+		render(Login)
+		break
+}
 
 serviceWorker.unregister();

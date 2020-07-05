@@ -1,6 +1,5 @@
 import React from 'react';
 
-
 class Error extends React.Component {
     constructor(props) {
         super(props)
@@ -14,7 +13,7 @@ class Error extends React.Component {
                         <div class="card-header">Error</div>
                         <div class="card-body">
                             <h5 class="card-title">HTTP Error {this.props.errorCode}: {this.props.errorMessage}</h5>
-                            <p class="card-text">An error has happened when contacting Feedly server.</p>
+                            <p class="card-text">An error has happened when connecting to Feedly server. Please try again later.</p>
                         </div>
                     </div>
                 </div>

@@ -1,4 +1,5 @@
-const {app, BrowserWindow, Menu} = require('electron')
+const { app, BrowserWindow, Menu } = require('electron')
+const Axios = require('axios');
 const path = require('path')
 const isDev = require("electron-is-dev");
 const ipcMain = require('electron').ipcMain
@@ -6,15 +7,23 @@ const Store = require('electron-store');
 const store = new Store();
 
 let win = null
+let loginWindow = null
+let loadingWindow = null
+let errorWindow = null
+
 let winWidth = null
 let winHeight = null
-let loginWindow = null
 let winWasResized = false
 
-let integrateWithFeedly = stringToBool(store.get('integrateWithFeedly', false))
 let unreadCount
 
-function createWindow () {
+let integrateWithFeedly = stringToBool(store.get('integrateWithFeedly', false))
+
+function init() {
+	createLoadingWindow(createWindow)
+}
+
+function createWindow() {
 	winWidth = store.get('winWidth')
 	winHeight = store.get('winHeight')
 
@@ -40,8 +49,6 @@ function createWindow () {
 		}
 	})
 
-	// win.setIcon(path.resolve(`${__dirname}/assets/icon.png`))
-
 	const menu = Menu.buildFromTemplate(menubar)
 	Menu.setApplicationMenu(menu)
 
@@ -53,6 +60,9 @@ function createWindow () {
 
 	win.once('ready-to-show', () => {
 		win.show()
+
+		loadingWindow.hide()
+		loadingWindow.close()
 	})
 	  
 	win.on('closed', function () {
@@ -70,6 +80,67 @@ function createWindow () {
 		let size = win.getSize()
 		winWidth = size[0]
 		winHeight = size[1]
+	})
+}
+
+function createLoadingWindow(callback) {
+	loadingWindow = new BrowserWindow({
+		width: 250, 
+		height: 250,
+		frame: false,
+		titleBarStyle: 'hidden',
+		center: true,
+		closable: false,
+		maximizable: false,
+		minimizable: false,
+	});
+
+	loadingWindow.loadURL(
+		`file://${path.join(__dirname, '/build/loading.html')}`
+	)
+
+	loadingWindow.show()
+
+	const authCode = store.get('authCode')
+
+	Axios({
+		method: 'get',
+		url: `https://cloud.feedly.com/v3/profile`,
+		responseType: 'application/json',
+		headers: {
+			'Authorization': `OAuth ${authCode}`,
+		},
+		timeout: 5000,
+	}).then(response => {
+		createWindow()
+	}).catch(function(error) {
+		createErrorWindow()
+	})
+}
+
+function createErrorWindow() {
+	errorWindow = new BrowserWindow({
+		width: 800, 
+		height: 275,
+		frame: false,
+		titleBarStyle: 'hidden',
+		center: true,
+		maximizable: false,
+		minimizable: false,
+		resizable: false
+	});
+
+	errorWindow.loadURL(
+		`file://${path.join(__dirname, '/build/error.html')}`
+	)
+
+	errorWindow.show()
+
+	loadingWindow.hide()
+	loadingWindow.close()
+
+	errorWindow.on('closed', function () {
+		errorWindow = null
 	})
 }
 
@@ -101,30 +172,14 @@ function setBadge(num) {
 	}
 }
 
-app.on('ready', createWindow)
+app.on('ready', init)
 
 app.on('window-all-closed', function () {
 	if (process.platform !== 'darwin') app.quit()
 })
   
 app.on('activate', function () {
-	if (win === null) createWindow()
-})
-
-ipcMain.on('asynchronous-message', (event, arg) => {
-	let integrationState = store.get('integrateWithFeedly')
-
-	switch(integrationState) {
-		case false:
-			event.sender.send('asynchronous-reply', 'not integrated')
-			break
-		case true:
-			event.sender.send('asynchronous-reply', 'integrated')
-			break
-		default:
-			event.sender.send('asynchronous-reply', 'init')
-			break
-	}
+	if (loadingWindow === null) createLoadingWindow()
 })
 
 ipcMain.on('feedly-integration', (event, arg) => {
@@ -237,7 +292,7 @@ let menubar = [
 	  ]
 	},
 	{
-	  label: 'help',
+	  label: 'Help',
 	  submenu: [
 		{ role: 'about' },
 		{

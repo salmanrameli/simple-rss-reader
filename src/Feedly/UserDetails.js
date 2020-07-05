@@ -9,4 +9,8 @@ function getAuthCode() {
     return store.get('authCode')
 }
 
-export { getUserId, getAuthCode }
+function getFeedlyIntegration() {
+    return store.get('integrateWithFeedly')
+}
+
+export { getUserId, getAuthCode, getFeedlyIntegration }
