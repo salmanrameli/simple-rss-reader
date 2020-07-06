@@ -96,7 +96,7 @@ function createLoadingWindow(callback) {
 	});
 
 	loadingWindow.loadURL(
-		`file://${path.join(__dirname, '/build/loading.html')}`
+		isDev ? `file://${path.join(__dirname, '/public/loading.html')}` : `file://${path.join(__dirname, '/build/loading.html')}`
 	)
 
 	loadingWindow.show()
@@ -105,11 +105,8 @@ function createLoadingWindow(callback) {
 
 	Axios({
 		method: 'get',
-		url: `https://cloud.feedly.com/v3/profile`,
+		url: `https://dog.ceo/api/breeds/image/random`,
 		responseType: 'application/json',
-		headers: {
-			'Authorization': `OAuth ${authCode}`,
-		},
 		timeout: 5000,
 	}).then(response => {
 		createWindow()
@@ -131,7 +128,8 @@ function createErrorWindow() {
 	});
 
 	errorWindow.loadURL(
-		`file://${path.join(__dirname, '/build/error.html')}`
+		isDev ? `file://${path.join(__dirname, '/public/error.html')}` : `file://${path.join(__dirname, '/build/error.html')}`
+		
 	)
 
 	errorWindow.show()

@@ -46,22 +46,24 @@ switch(feedlyIntegration) {
 					break
 			}
 		}).catch(function(error) {
-			errorCode = error.response.status
-			errorMessage = error.response.data.errorMessage
-
-			switch(error.response.status) {
-				case 401:
-					render(Login)
-					break
-				case 429:
-					render(Error)
-					break
-				default:
-					render(Login)
-					break
+			if(typeof error.response !== "undefined") {
+				errorCode = error.response.status
+				errorMessage = error.response.data.errorMessage
+	
+				switch(error.response.status) {
+					case 401:
+						render(Login)
+						break
+					case 429: //too many requests
+						render(Error)
+						break
+					default:
+						render(Error)
+						break
+				}
+			} else {
+				render(Error)
 			}
-
-			console.log(error.response.status + " " + error.response.statusText) // 429 Too Many Requests
 		})
 
 		break

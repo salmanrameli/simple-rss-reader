@@ -189,7 +189,7 @@ class Lists extends Component {
 									<small className="remove-style">{item.origin.title}</small>
 									<h6 className="mt-10 mb-15">{item.title}</h6>
 									<p className="badge badge-light">{item.author}</p>&nbsp;&nbsp;
-									{item.unread === true ? 
+										{item.unread === true ?
 										<p className="badge badge-success">Unread Entry</p>
 										:
 										""

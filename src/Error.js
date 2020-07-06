@@ -8,14 +8,16 @@ class Error extends React.Component {
     render() {
         return (
             <div className="row align-items-center full-size">
-                <div className="col-md-8 offset-md-2">
-                    <div class="card text-white bg-danger">
-                        <div class="card-header">Error</div>
-                        <div class="card-body">
-                            <h5 class="card-title">HTTP Error {this.props.errorCode}: {this.props.errorMessage}</h5>
-                            <p class="card-text">An error has happened when connecting to Feedly server. Please try again later.</p>
-                        </div>
-                    </div>
+                <div id="error">
+                    <div id="box"></div>
+                    <h3>Whoops</h3>
+                    <p>We're having problems <span>connecting to the internet</span> right now</p>
+                    <p>Please try again later</p>
+                    {this.props.errorCode === '' ? 
+                        ''
+                    : 
+                        <p>The error is {this.props.errorCode}: {this.props.errorMessage}</p>
+                    }
                 </div>
             </div>
         )
