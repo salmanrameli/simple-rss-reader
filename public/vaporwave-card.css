@@ -1,16 +1,29 @@
+@font-face {
+    font-family: BMWHelvetica_Bold;
+    src: url('./BMWHelvetica-Bold.otf')
+  }
+.list-group-item:first-child {
+    border-top: 5px solid transparent;
+}
 .list-group-item {
-    border: 5px solid transparent;
+    border-right: 5px solid transparent;
+    border-left: 5px solid transparent;
+    border-top: 2.5px solid transparent;
+    border-bottom: 2.5px solid transparent;
     border-image: linear-gradient(to left, #00ffff, #d53a9d);
     border-image-slice: 1;
 }
+.list-group-item:last-child {
+    border-bottom: 5px solid transparent;
+}
 .card {
     background: #fff;
-    border-radius: 4px;
     display: flex;
     flex-direction: column;
     overflow: hidden;
     box-shadow: 0px 0px 6px rgba(148,208,255,0.5);
-  }
+    border: 0;
+}
 .card header {
     position: relative;
     padding-top: 100px;
@@ -18,7 +31,10 @@
     overflow: hidden;
     perspective: 400px;
 }
-.card header::before {
+.bg-primary {
+    background-image: linear-gradient(to left, #00f5f5, #d53a9d);
+}
+/* .card header::before {
     content: '';
     position: absolute;
     top: -5%;
@@ -29,13 +45,153 @@
     background-size: cover;
     mix-blend-mode: multiply;
     animation: swing 4s alternate ease-in-out infinite;
+} */
+.card .vw1 header::before {
+    content: '';
+    position: absolute;
+    top: -5%;
+    left: -5%;
+    width: 110%;
+    height: 110%;
+    background-size: cover;
+    mix-blend-mode: multiply;
+    animation: swing 4s alternate ease-in-out infinite;
+    background: url('./bg/1.jpg') bottom;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.card .vw2 header::before {
+    content: '';
+    position: absolute;
+    top: -5%;
+    left: -5%;
+    width: 110%;
+    height: 110%;
+    background-size: cover;
+    mix-blend-mode: multiply;
+    animation: swing 4s alternate ease-in-out infinite;
+    background: url('./bg/2.jpg') bottom;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.card .vw3 header::before {
+    content: '';
+    position: absolute;
+    top: -5%;
+    left: -5%;
+    width: 110%;
+    height: 110%;
+    background-size: cover;
+    mix-blend-mode: multiply;
+    animation: swing 4s alternate ease-in-out infinite;
+    background: url('./bg/3.jpeg') bottom;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.card .vw4 header::before {
+    content: '';
+    position: absolute;
+    top: -5%;
+    left: -5%;
+    width: 110%;
+    height: 110%;
+    background-size: cover;
+    mix-blend-mode: multiply;
+    animation: swing 4s alternate ease-in-out infinite;
+    background: url('./bg/4.jpeg') bottom;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.card .vw5 header::before {
+    content: '';
+    position: absolute;
+    top: -5%;
+    left: -5%;
+    width: 110%;
+    height: 110%;
+    background-size: cover;
+    mix-blend-mode: multiply;
+    animation: swing 4s alternate ease-in-out infinite;
+    background: url('./bg/5.jpg') bottom;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.card .vw6 header::before {
+    content: '';
+    position: absolute;
+    top: -5%;
+    left: -5%;
+    width: 110%;
+    height: 110%;
+    background-size: cover;
+    mix-blend-mode: multiply;
+    animation: swing 4s alternate ease-in-out infinite;
+    background: url('./bg/6.jpg') bottom;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.card .vw7 header::before {
+    content: '';
+    position: absolute;
+    top: -5%;
+    left: -5%;
+    width: 110%;
+    height: 110%;
+    background-size: cover;
+    mix-blend-mode: multiply;
+    animation: swing 4s alternate ease-in-out infinite;
+    background: url('./bg/7.jpeg') bottom;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.card .vw8 header::before {
+    content: '';
+    position: absolute;
+    top: -5%;
+    left: -5%;
+    width: 110%;
+    height: 110%;
+    background-size: cover;
+    mix-blend-mode: multiply;
+    animation: swing 4s alternate ease-in-out infinite;
+    background: url('./bg/8.jpg') bottom;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.card .vw9 header::before {
+    content: '';
+    position: absolute;
+    top: -5%;
+    left: -5%;
+    width: 110%;
+    height: 110%;
+    background-size: cover;
+    mix-blend-mode: multiply;
+    animation: swing 4s alternate ease-in-out infinite;
+    background: url('./bg/9.jpg') bottom;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.card .vw10 header::before {
+    content: '';
+    position: absolute;
+    top: -5%;
+    left: -5%;
+    width: 110%;
+    height: 110%;
+    background-size: cover;
+    mix-blend-mode: multiply;
+    animation: swing 4s alternate ease-in-out infinite;
+    background: url('./bg/10.jpg') bottom;
+    background-repeat: no-repeat;
+    background-size: cover;
 }
 .card header h2 {
     position: relative;
     top: 3px;
-    padding-left: 0.5em;
+    padding-left: 5px;
     margin: 0;
-    font-family: 'Kanit', sans-serif;
+    font-family: BMWHelvetica_Bold, 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     font-size: 2em;
     text-transform: uppercase;
     line-height: 0.82em;
@@ -61,6 +217,12 @@
 }
 .card .desc {
     padding: 1rem;
+    display: inline-block;
+    max-width: 180px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    vertical-align: middle;
 }
 .card .actions {
     display: flex;

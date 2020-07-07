@@ -35,7 +35,7 @@ switch(feedlyIntegration) {
 			headers: {
 				'Authorization': `OAuth ${authCode}`
 			},
-			timeout: 5000,
+			timeout: 30000,
 		}).then((response) => {
 			switch(response.status) {
 				case 200: 
