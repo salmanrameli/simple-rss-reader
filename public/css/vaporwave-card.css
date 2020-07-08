@@ -16,6 +16,15 @@
 .list-group-item:last-child {
     border-bottom: 5px solid transparent;
 }
+.border-gradient {
+    padding: 5px 5px;
+    border-right: 5px solid transparent;
+    border-left: 5px solid transparent;
+    border-top: 5px solid transparent;
+    border-bottom: 5px solid transparent;
+    border-image: linear-gradient(to left, #00ffff, #d53a9d);
+    border-image-slice: 1;
+}
 .card {
     background: #fff;
     display: flex;
@@ -33,6 +42,17 @@
 }
 .bg-primary {
     background-image: linear-gradient(to left, #00f5f5, #d53a9d);
+}
+.article-title {
+    top: 3px;
+    padding-left: 5px;
+    margin: 0;
+    font-family: BMWHelvetica_Bold, 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 3em;
+    text-transform: uppercase;
+    line-height: 0.82em;
+    letter-spacing: -0.0357em;
+    color: black;
 }
 /* .card header::before {
     content: '';
@@ -241,6 +261,14 @@
 }
 .text-unread-entry {
     border-top: solid 3px white;
+}
+button:focus {
+    outline: none;
+    box-shadow: none;
+}
+.no-focus {
+    outline: none;
+    box-shadow: none;
 }
 @-moz-keyframes swing {
     0% {

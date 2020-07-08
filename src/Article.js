@@ -72,10 +72,10 @@ class Article extends Component {
 	render() {
 		return (
 			this.state.display === 'loaded' ?
-				<div className="col-md-9 no-padding-left no-padding-right scrollable">
-					<div className="col-md-12">
-						<div className="pb-2 mt-4 mb-2 border-bottom">
-							<h2 className="clear-before">{this.state.title}</h2>
+				<div className="col-md-9 no-padding-left no-padding-right scrollable pt-3 pr-3 pb-3 pl-3">
+					<div className="col-md-12 border-gradient">
+						<div className="pb-2 mt-4 mb-2">
+							<h2 className="clear-before article-title mb-3">{this.state.title}</h2>
 							<div className="btn-group" role="group" aria-label="options">
 								<button type="button" className="btn btn-sm btn-link disabled">By {this.state.author} on {this.state.date}</button>
 								<button type="button" className="btn btn-sm btn-link" onClick={() => this.handleClick(this.state.link)}>View Article</button>
