@@ -43,7 +43,8 @@ class News extends Component {
 			responseType: 'application/json',
 			headers: {
 				'Authorization': `OAuth ${authCode}`
-			}
+			},
+			timeout: 10000
 		}).then((response) => {
 			let merged = [].concat.apply([], response.data.items)
 			let randomNumber = Math.floor((Math.random() * 10) + 1)
@@ -61,6 +62,8 @@ class News extends Component {
 			this.getUnreadCount()
 		}).catch(function(error) {
 			console.log(error)
+
+			alert(error)
 		})
 	}
 
@@ -73,7 +76,8 @@ class News extends Component {
 			responseType: 'application/json',
 			headers: {
 				'Authorization': `OAuth ${authCode}`
-			}
+			},
+			timeout: 10000
 		}).then((response) => {
 			let userId = getUserId()
 

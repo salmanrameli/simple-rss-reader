@@ -59,7 +59,7 @@ class Lists extends Component {
 		return this.props.removeUnreadEntryBadge(id)
 	}
 
-	async markAsRead(id, flag) {
+	async markAsRead(id, flag, isUnread) {
 		const authCode = getAuthCode()
 
 		let arrayOfReadEntry = new Array(String(id))
@@ -76,7 +76,11 @@ class Lists extends Component {
 				"Authorization": authCode,
 				"Content-Type": "application/json"
 			},
+			timeout: 10000
 		}).then(response => {
+			if(isUnread === true)
+				ipcRenderer.send('decrease-unread-count')
+
 			let isUnreadOnly = this.stringToBool(this.state.isUnreadOnly)
 
 			if(isUnreadOnly) {
@@ -136,15 +140,15 @@ class Lists extends Component {
 				"Authorization": authCode,
 				"Content-Type": "application/json"
 			},
+			timeout: 10000
 		}).then(response => {
+			ipcRenderer.send('increase-unread-count')
+
 			return this.props.markAsUnread(id)
 		}).catch(error => console.log(error))
 	}
 
 	handleMarkAsRead = (event, link, id, flag, isUnread) => {
-		if(isUnread === true)
-			ipcRenderer.send('decrease-unread-count')
-
 		if(flag) {
 			this.props.loadStory(link, id);
 
@@ -153,12 +157,10 @@ class Lists extends Component {
 			})
 		}
 
-		this.markAsRead(id, flag)
+		this.markAsRead(id, flag, isUnread)
 	}
 
 	handleMarkAsUnread = (event, id) => {
-		ipcRenderer.send('increase-unread-count')
-
 		this.setState({
 			articleMarkedAsUnread: true
 		})
@@ -180,7 +182,7 @@ class Lists extends Component {
 				{this.state.lists.map(item => (
 					<div className={`list-group-item`} key={item.id} >
 						<div className={`card ${this.state.activeLink === item.id ? "text-white bg-primary" : item.unread === true ? 'text-dark' : 'text-secondary'}`} onClick={(e) => this.handleMarkAsRead(e, item.canonicalUrl, item.id, true, item.unread)}>
-							<div className={`${item.indexKey % 10 === 0 ? 'vw1' : 
+							<div className={`${ item.indexKey % 10 === 0 ? 'vw1' : 
 												item.indexKey % 10 === 1 ? 'vw2' : 
 												item.indexKey % 10 === 2 ? 'vw3' : 
 												item.indexKey % 10 === 3 ? 'vw4' :

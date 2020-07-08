@@ -36,6 +36,8 @@ class FeedlySetting extends Component {
             winWidth: parseInt(store.get('winWidth', 1280)),
             winHeight: parseInt(store.get('winHeight', 800)),
         })
+
+        ipcRenderer.send('reset-unread-count', 'null')
     }
 
     logout() {        
@@ -53,7 +55,8 @@ class FeedlySetting extends Component {
 			responseType: 'application/json',
 			headers: {
 				'Authorization': `OAuth ${authCode}`
-			}
+            },
+            timeout: 10000
 		}).then((response) => {
             this.setState({
                 categories: response.data

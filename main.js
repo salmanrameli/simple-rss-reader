@@ -107,7 +107,7 @@ function createLoadingWindow(callback) {
 		method: 'get',
 		url: `https://dog.ceo/api/breeds/image/random`,
 		responseType: 'application/json',
-		timeout: 5000,
+		timeout: 10000,
 	}).then(response => {
 		createWindow()
 	}).catch(function(error) {
@@ -196,6 +196,10 @@ ipcMain.on('unread-count', (event, arg) => {
 	unreadCount = arg
 
 	setBadge(unreadCount)
+})
+
+ipcMain.on('reset-unread-count', (event, arg) => {
+	dock.setBadge('')
 })
 
 ipcMain.on('increase-unread-count', (event, arg) => {
