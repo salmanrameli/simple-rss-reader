@@ -1,6 +1,6 @@
 @font-face {
     font-family: BMWHelvetica_Bold;
-    src: url('./BMWHelvetica-Bold.otf')
+    src: url('../fonts/BMWHelvetica-Bold.otf')
   }
 .list-group-item:first-child {
     border-top: 5px solid transparent;
@@ -56,7 +56,7 @@
     background-size: cover;
     mix-blend-mode: multiply;
     animation: swing 4s alternate ease-in-out infinite;
-    background: url('./bg/1.jpg') bottom;
+    background: url('../bg/vaporwave/1.jpg') bottom;
     background-repeat: no-repeat;
     background-size: cover;
 }
@@ -70,7 +70,7 @@
     background-size: cover;
     mix-blend-mode: multiply;
     animation: swing 4s alternate ease-in-out infinite;
-    background: url('./bg/2.jpg') bottom;
+    background: url('../bg/vaporwave/2.jpg') bottom;
     background-repeat: no-repeat;
     background-size: cover;
 }
@@ -84,7 +84,7 @@
     background-size: cover;
     mix-blend-mode: multiply;
     animation: swing 4s alternate ease-in-out infinite;
-    background: url('./bg/3.jpeg') bottom;
+    background: url('../bg/vaporwave/3.jpeg') bottom;
     background-repeat: no-repeat;
     background-size: cover;
 }
@@ -98,7 +98,7 @@
     background-size: cover;
     mix-blend-mode: multiply;
     animation: swing 4s alternate ease-in-out infinite;
-    background: url('./bg/4.jpeg') bottom;
+    background: url('../bg/vaporwave/4.jpg') bottom;
     background-repeat: no-repeat;
     background-size: cover;
 }
@@ -112,7 +112,7 @@
     background-size: cover;
     mix-blend-mode: multiply;
     animation: swing 4s alternate ease-in-out infinite;
-    background: url('./bg/5.jpg') bottom;
+    background: url('../bg/vaporwave/5.jpeg') bottom;
     background-repeat: no-repeat;
     background-size: cover;
 }
@@ -126,7 +126,7 @@
     background-size: cover;
     mix-blend-mode: multiply;
     animation: swing 4s alternate ease-in-out infinite;
-    background: url('./bg/6.jpg') bottom;
+    background: url('../bg/vaporwave/6.jpg') bottom;
     background-repeat: no-repeat;
     background-size: cover;
 }
@@ -140,7 +140,7 @@
     background-size: cover;
     mix-blend-mode: multiply;
     animation: swing 4s alternate ease-in-out infinite;
-    background: url('./bg/7.jpeg') bottom;
+    background: url('../bg/vaporwave/7.jpg') bottom;
     background-repeat: no-repeat;
     background-size: cover;
 }
@@ -154,7 +154,7 @@
     background-size: cover;
     mix-blend-mode: multiply;
     animation: swing 4s alternate ease-in-out infinite;
-    background: url('./bg/8.jpg') bottom;
+    background: url('../bg/vaporwave/8.jpg') bottom;
     background-repeat: no-repeat;
     background-size: cover;
 }
@@ -168,7 +168,7 @@
     background-size: cover;
     mix-blend-mode: multiply;
     animation: swing 4s alternate ease-in-out infinite;
-    background: url('./bg/9.jpg') bottom;
+    background: url('../bg/vaporwave/9.jpg') bottom;
     background-repeat: no-repeat;
     background-size: cover;
 }
@@ -182,7 +182,7 @@
     background-size: cover;
     mix-blend-mode: multiply;
     animation: swing 4s alternate ease-in-out infinite;
-    background: url('./bg/10.jpg') bottom;
+    background: url('../bg/vaporwave/10.jpeg') bottom;
     background-repeat: no-repeat;
     background-size: cover;
 }

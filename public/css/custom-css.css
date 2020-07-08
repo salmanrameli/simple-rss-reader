@@ -1,6 +1,6 @@
 @font-face {
   font-family: IBM_Plex_Mono;
-  src: url('./IBMPlexMono-Regular.ttf')
+  src: url('../fonts/IBMPlexMono-Regular.ttf')
 }
 html, body {
     width: 100%;
@@ -134,25 +134,25 @@ html, body {
     -webkit-app-region: drag;
   }
   .background {
-    background-image: url("bg.jpg");
+    background-image: url("../bg.jpg");
     background-repeat: no-repeat;
     background-position: 50% 50%;
     background-size: cover;
   }
   .bg1 {
-    background-image: url("bg1.png")
+    background-image: url("../bg/memphis/bg1.png")
   }
   .bg2 {
-    background-image: url("bg2.png")
+    background-image: url("../bg/memphis/bg2.png")
   }
   .bg3 {
-    background-image: url("bg3.jpg")
+    background-image: url("../bg/memphis/bg3.jpg")
   }
   .bg4 {
-    background-image: url("bg4.jpg")
+    background-image: url("../bg/memphis/bg4.jpg")
   }
   .bg5 {
-    background-image: url("bg5.jpg")
+    background-image: url("../bg/memphis/bg5.jpg")
   }
   h1::after {
     content: "\A";
