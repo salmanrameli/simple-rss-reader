@@ -178,7 +178,7 @@ class Lists extends Component {
 	
 	render() {
 		return (
-			<div className="col-md-3 scrollable no-padding-right no-padding-left" >
+			<div className="col-md-3 scrollable no-padding-right" >
 				{this.state.lists.map(item => (
 					<div className={`list-group-item`} key={item.id} >
 						<div className={`card ${this.state.activeLink === item.id ? "text-white bg-primary" : item.unread === true ? 'text-dark' : 'text-secondary'}`}>

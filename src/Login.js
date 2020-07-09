@@ -75,38 +75,50 @@ class Login extends Component {
 
     render() {
         return (
-            <div className="row align-items-center full-size">
-                <div className="col-md-8 offset-md-2">
-                    <form id="windowSizeSetting" onSubmit={this.handleFeedlyIntegration}>
-                        <div className="form-group">
-                            <input className="form-check-input" type="radio" name="feedlyIntegration" id="feedlyIntegrationFalse" value="false" checked={this.state.integrateWithFeedly === false} onChange={this.handleIntegrateWithFeedlyChange} />
-                            <label className="form-check-label" htmlFor="feedlyIntegrationFalse">Don't integrate with Feedly</label>
-                        </div>
-                        <div className="form-group">
-                            <input className="form-check-input" type="radio" name="feedlyIntegration" id="feedlyIntegrationTrue" value="true" checked={this.state.integrateWithFeedly === true} onChange={this.handleIntegrateWithFeedlyChange} />
-                            <label className="form-check-label" htmlFor="feedlyIntegrationTrue">Yes, with this credentials:</label>
-                            <br></br>
-                            <br></br>
-                            {this.state.integrateWithFeedly ? 
-                                <div className="card card-body bg-light">
-                                    <label for="userId">User ID</label>
-                                    <input type="text" className="form-control" id="userId" name="userId" onChange={e => this.handleUserIdOnChange(e)} value={this.state.userId}></input>
-                                    <br></br>
-                                    <label for="authorizationCode">Authorization Code</label>
-                                    <textarea rows="5" type="text" className="form-control" id="authorizationCode" name="authorizationCode" onChange={e => this.handleAuthCodeOnChange(e)} value={this.state.authCode}></textarea>
+            <div className="row align-items-center full-size" style={{ minHeight: '100vh' }}>
+                <div className="col-md-12" style={{ minHeight: '100vh'}}>
+                    <div class="card" style={{ boxShadow: 'none'}}>
+                        <div class="bg-setting">
+                            <header>
+                                <h2 style={{ fontSize: '4em' }}><span>Feedly</span><span>Integration</span></h2>
+                                <div class="title">
+                                    <span class="en">Setting</span>
                                 </div>
-                            :
-                                <div className="card card-body bg-light">
-                                    <label for="userId">User ID</label>
-                                    <input type="text" className="form-control" id="userId" disabled></input>
-                                    <br></br>
-                                    <label for="authorizationCode">Authorization Code</label>
-                                    <textarea rows="5" type="text" className="form-control" id="authorizationCode" disabled></textarea>
-                                </div>
-                            }                                
+                            </header>
+                            <div class="pt-5 pr-5 pl-5">
+                                <form id="windowSizeSetting" onSubmit={this.handleFeedlyIntegration}>
+                                    <div className="form-group">
+                                        <input className="form-check-input" type="radio" name="feedlyIntegration" id="feedlyIntegrationFalse" value="false" checked={this.state.integrateWithFeedly === false} onChange={this.handleIntegrateWithFeedlyChange} />
+                                        <label className="form-check-label" htmlFor="feedlyIntegrationFalse">Don't integrate with Feedly</label>
+                                    </div>
+                                    <div className="form-group">
+                                        <input className="form-check-input" type="radio" name="feedlyIntegration" id="feedlyIntegrationTrue" value="true" checked={this.state.integrateWithFeedly === true} onChange={this.handleIntegrateWithFeedlyChange} />
+                                        <label className="form-check-label" htmlFor="feedlyIntegrationTrue">Yes, with this credentials:</label>
+                                        <br></br>
+                                        <br></br>
+                                        {this.state.integrateWithFeedly ? 
+                                            <div className="card card-body bg-light">
+                                                <label for="userId">User ID</label>
+                                                <input type="text" className="form-control" id="userId" name="userId" onChange={e => this.handleUserIdOnChange(e)} value={this.state.userId}></input>
+                                                <br></br>
+                                                <label for="authorizationCode">Authorization Code</label>
+                                                <textarea rows="5" type="text" className="form-control" id="authorizationCode" name="authorizationCode" onChange={e => this.handleAuthCodeOnChange(e)} value={this.state.authCode}></textarea>
+                                            </div>
+                                            :
+                                            <div className="card card-body bg-light">
+                                                <label for="userId">User ID</label>
+                                                <input type="text" className="form-control" id="userId" disabled></input>
+                                                <br></br>
+                                                <label for="authorizationCode">Authorization Code</label>
+                                                <textarea rows="5" type="text" className="form-control" id="authorizationCode" disabled></textarea>
+                                            </div>
+                                        }                                
+                                    </div>
+                                    <button type="submit" className="btn btn-outline-success float-right"><i className="fas fa-check"></i> Save</button>
+                                </form>
+                            </div>
                         </div>
-                        <button type="submit" className="btn btn-outline-success float-right"><i className="fas fa-check"></i> Save</button>
-                    </form>
+                    </div>
                 </div>
             </div>
         )

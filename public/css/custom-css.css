@@ -10,6 +10,10 @@ html, body {
     overflow: hidden;
     font-family: IBM_Plex_Mono, monospace;
   }
+  .container-fluid {
+    padding-right: 0;
+    padding-left: 0;
+  }
   img {
     display: block;
     margin: 0 auto;

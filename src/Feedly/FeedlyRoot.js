@@ -86,7 +86,7 @@ class FeedlyRoot extends Component {
 	render() {
 		return (
 			<Router>
-				<div className="row frameless-padding draggable" style={{ backgroundColor: '#202429' }}>
+				<div className="row frameless-padding draggable" style={{ backgroundColor: '#202429', paddingRight: '15px', paddingLeft: '15px' }}>
 					<div className="col-md-12 no-padding-right no-padding-left border-bottom">
 						<div className="toolbar-padding">
 							<div className="btn-group mr-2" role="group" id="button-group">
@@ -109,7 +109,7 @@ class FeedlyRoot extends Component {
 					<this.RouteWithSubRoutes key={i} {...route} />
 				))}
 	
-				<div className="row background">
+				<div className="row background" style={{ paddingRight: '15px', paddingLeft: '15px' }}>
 					<div className="col-md-12" style={{ height: '100vh' }}>
 						<blockquote className="working-center-image blockquote text-center">
 							<h1 style={{color: 'black'}} className="lead">Reading furnishes the mind only with materials of knowledge;<br></br>it is thinking that makes what we read ours.</h1>
