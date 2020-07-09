@@ -77,7 +77,7 @@ class Login extends Component {
         return (
             <div className="row align-items-center full-size" style={{ minHeight: '100vh' }}>
                 <div className="col-md-12" style={{ minHeight: '100vh'}}>
-                    <div class="card" style={{ boxShadow: 'none'}}>
+                    <div class="card">
                         <div class="bg-setting">
                             <header>
                                 <h2 style={{ fontSize: '4em' }}><span>Feedly</span><span>Integration</span></h2>
