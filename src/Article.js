@@ -92,10 +92,6 @@ class Article extends Component {
 									</button>
 								</span>
 							</h2>
-							{/* <div className="btn-group" role="group" aria-label="options">
-								<button type="button" className="btn btn-sm btn-link">View Article</button>
-								<button type="button" className="btn btn-sm btn-link">Open in Browser</button>
-							</div> */}
 						</div>
 						<div className="row col-md-12 text-justify mb-3 pr-4 pl-4">
 							{ReactHtmlParser(this.state.story)}

@@ -206,10 +206,10 @@ class Lists extends Component {
 										</div>
 									</header>
 									<div className="row">
-										<div className="col-8" onClick={(e) => this.handleMarkAsRead(e, item.canonicalUrl, item.id, true, item.unread)}>
+										<div className="col-6 col-md-7 col-lg-8" onClick={(e) => this.handleMarkAsRead(e, item.canonicalUrl, item.id, true, item.unread)}>
 											<div className="desc">{item.author}</div>
 										</div>
-										<div className="col-4">
+										<div className="col-6 col-md-5 col-lg-4">
 											<div className="desc float-right">
 												<div className="actions float-right">
 													{item.unread === true ?
