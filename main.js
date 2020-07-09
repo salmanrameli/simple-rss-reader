@@ -199,7 +199,11 @@ ipcMain.on('unread-count', (event, arg) => {
 })
 
 ipcMain.on('reset-unread-count', (event, arg) => {
-	dock.setBadge('')
+	if(process.platform === 'darwin') {
+		let dock = app.dock
+	
+		dock.setBadge('')
+	}
 })
 
 ipcMain.on('increase-unread-count', (event, arg) => {

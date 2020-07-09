@@ -100,7 +100,8 @@ class News extends Component {
 
 	updateStory(link, id) {
 		this.state.lists.filter(story => {
-			let publishedDate = date.format(new Date(story.published), 'YYYY/MM/DD HH:mm:ss')
+			let publishedDate = new Date(story.published)
+			publishedDate = publishedDate.toLocaleString('en-GB', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' })
 
 			if(story.id === id) {
 				if(story.content && story.content.content) {
