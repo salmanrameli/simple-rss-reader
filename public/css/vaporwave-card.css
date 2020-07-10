@@ -81,7 +81,7 @@
     mix-blend-mode: multiply;
     animation: swing 4s alternate ease-in-out infinite;
 } */
-.card .bg-setting header::before {
+.card .bg-login header::before {
     content: '';
     position: absolute;
     top: -5%;
