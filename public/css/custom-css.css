@@ -14,6 +14,13 @@ html, body {
     padding-right: 0;
     padding-left: 0;
   }
+  .active {
+    background-color: #4c4c4cb5;
+    color: black;
+  }
+  .text a:hover {
+    text-decoration: none;
+  }
   img {
     display: block;
     margin: 0 auto;
@@ -128,7 +135,7 @@ html, body {
     padding: 0 0 0 0;
   }
   .frameless-padding {
-    padding-top: 17px
+    padding-top: 0
   }
   .btn:focus, .btn:active {
     outline: none !important;
@@ -215,3 +222,15 @@ html, body {
   p em::before {
     display: none;
   }
+  .toolbar-button > button {
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: var(--spacing);
+    margin: 0;
+    overflow: hidden;
+    background-color: transparent;
+    color: #fff;
+    border-right: black;
+}

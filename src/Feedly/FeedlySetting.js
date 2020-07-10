@@ -91,17 +91,22 @@ class FeedlySetting extends Component {
 
     render() {
         return (
-            <div className="row full-size">
-                <div className="col-md-12">
-                    <div className="row" style={{padding: '50px 30px 50px 30px'}}>
-                        <div className="col-md-12">
-                            <div className="card-columns">
-                                <div className="card">
-                                    <div className="card-header">
-                                        <h5>Your categories to stream:</h5>
-                                    </div>
-                                    <div className="card-body overflow-auto">
-                                        <div className="overflow-auto p-3 mb-3 mb-md-0 mr-md-3 bg-light" style={{maxHeight: '100px'}}>
+            <div className="row align-items-center full-size" style={{ minHeight: '100vh' }}>
+                <div className="col-md-12" style={{ minHeight: '100vh'}}>
+                    <div className="card">
+                        <div className="bg-setting">
+                            <header>
+                                <h2 style={{ fontSize: '4em' }}><span>Application</span><span>Setting</span></h2>
+                                <div className="title">
+                                    <span className="en">Setting</span>
+                                </div>
+                            </header>
+                            <div className="pt-5 pr-5 pl-5">
+                                <div className="row">
+                                    <div className="col-4">
+                                        <div className="border-gradient" style={{ height: '100%', padding: '15px' }}>
+                                            <p><i>Feedly categories to stream</i></p>
+                                            <br></br>
                                             <form>
                                                 <div className="form-check">
                                                     <input className="form-check-input" type="radio" name="exampleRadios" id="all" value="all" checked={this.state.activeCategory === "all"} onChange={e => this.handleCategoryToStreamChange(e)} />
@@ -120,32 +125,33 @@ class FeedlySetting extends Component {
                                             </form>
                                         </div>
                                     </div>
-                                </div>
-                                <div className="card">
-                                    <div className="card-header">
-                                        <h5>Window Size Setting</h5>
-                                    </div>
-                                    <div className="card-body">
-                                        <p><i>Please reopen window to see the changes</i></p>
-                                        <form id="windowSizeSetting" onSubmit={this.handleWindowSizeSetting}>
-                                            <div className="form-row">
-                                                <div className="form-group col-md-6">
-                                                    <label className="form-label" htmlFor="width">Window Width:</label>
-                                                    <input className="form-control form-control-lg" type="text" name="width" placeholder={this.state.winWidth} />
+                                    <div className="col-4">
+                                        <div className="border-gradient" style={{ height: '100%', padding: '15px' }}>
+                                            <form id="windowSizeSetting" onSubmit={this.handleWindowSizeSetting}>
+                                                <div className="form-row">
+                                                    <div className="form-group col-md-6">
+                                                        <label className="form-label" htmlFor="width">Window Width:</label>
+                                                        <input className="form-control form-control-lg" type="text" name="width" placeholder={this.state.winWidth} />
+                                                    </div>
+                                                    <div className="form-group col-md-6">
+                                                        <label className="form-label" htmlFor="height">Window Height:</label>
+                                                        <input className="form-control form-control-lg" type="text" name="height" placeholder={this.state.winHeight} />
+                                                    </div>
+                                                    <div className="form-group col-12">
+                                                        <p><i>Please reopen window to see the changes</i></p>
+                                                    </div>
+                                                    <button className="btn btn-success float-right" type="submit"><i className="fa fa-bookmark"></i> Save</button>
                                                 </div>
-                                                <div className="form-group col-md-6">
-                                                    <label className="form-label" htmlFor="height">Window Height:</label>
-                                                    <input className="form-control form-control-lg" type="text" name="height" placeholder={this.state.winHeight} />
-                                                </div>
-                                                <button className="btn btn-success float-right" type="submit"><i className="fa fa-bookmark"></i> Save</button>
-                                            </div>
-                                        </form>
+                                            </form>
+                                        </div>
                                     </div>
-                                </div>
-                                <div className="card card-body">
-                                    <form onSubmit={this.logout}>
-                                        <button type="submit" className="btn btn-outline-danger btn-block">Logout from Feedly &nbsp;<i className="fas fa-sign-out-alt"></i></button>
-                                    </form>
+                                    <div className="col-4">
+                                        <div className="border-gradient" style={{ height: '100%', padding: '15px' }}>
+                                            <form onSubmit={this.logout}>
+                                                <button type="submit" className="btn btn-outline-danger btn-block">Logout from Feedly &nbsp;<i className="fas fa-sign-out-alt"></i></button>
+                                            </form>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>

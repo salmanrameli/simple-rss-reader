@@ -87,21 +87,53 @@ class FeedlyRoot extends Component {
 		return (
 			<Router>
 				<div className="row frameless-padding draggable" style={{ backgroundColor: '#202429', paddingRight: '15px', paddingLeft: '15px' }}>
-					<div className="col-md-12 no-padding-right no-padding-left border-bottom">
-						<div className="toolbar-padding">
-							<div className="btn-group mr-2" role="group" id="button-group">
-								<NavLink to="/News" className="btn btn-outline-light btn-sm" id="newsButton" activeClassName="active">
-									<i className="far fa-newspaper"></i> Feeds
-								</NavLink>
-								<NavLink to="/FeedlySetting" className="btn btn-outline-light btn-sm" id="settingButton" activeClassName="active">
-									<i className="fa fa-wrench"></i>
-								</NavLink>
+					<div className="col-md-12 no-padding-right no-padding-left">
+						<div id="desktop-app-toolbar">
+							<div className="toolbar-button push-pull-button">
+								<button className="button-component" type="button">
+									<div className="text">
+										<NavLink to="/News" id="newsButton" activeClassName="menu-active" style={{ color: 'white' }}>
+											<i className="far fa-newspaper"></i> Feeds
+										</NavLink>
+									</div>
+								</button>
 							</div>
-							<div className="btn-group mr-2 float-right" role="group" id="button-group-2">
-								<button type="button" className={`btn btn-outline-light btn-sm ${this.state.isUnreadOnly === true ? "active" : ""}`} onClick={(e) => this.handleOnclick(e, "unread")}>Unread</button>
-								<button type="button" className={`btn btn-outline-light btn-sm  ${this.state.isUnreadOnly === true ? "" : "active"}`} onClick={(e) => this.handleOnclick(e, "all")}>All</button>
+							<div className="toolbar-button push-pull-button">
+								<button className="button-component" type="button">
+									<div className="text">
+										<NavLink to="/FeedlySetting" id="settingButton" activeClassName="menu-active" style={{ color: 'white' }}>
+											<i className="fa fa-wrench"></i>
+										</NavLink>
+									</div>
+								</button>
 							</div>
+							<div className={`toolbar-button push-pull-button ml-auto ${this.state.isUnreadOnly === true ? "active" : ""}`}>
+								<button className="button-component" type="button">
+									<div className="text">
+										<a style={{ color: 'white' }}>Unread</a>
+									</div>
+								</button>
+							</div>
+							<div className={`toolbar-button push-pull-button ${this.state.isUnreadOnly === true ? "" : "active"}`}>
+								<button className="button-component" type="button">
+									<div className="text">
+										<a style={{ color: 'white' }}>All</a>
+									</div>
+								</button>
+							</div>
+						</div>				
+						{/* <div className="btn-group mr-2" role="group" id="button-group">
+							<NavLink to="/News" className="btn btn-outline-light btn-sm" id="newsButton" activeClassName="active">
+								<i className="far fa-newspaper"></i> Feeds
+							</NavLink>
+							<NavLink to="/FeedlySetting" className="btn btn-outline-light btn-sm" id="settingButton" activeClassName="active">
+								<i className="fa fa-wrench"></i>
+							</NavLink>
 						</div>
+						<div className="btn-group mr-2 float-right" role="group" id="button-group-2">
+							<button type="button" className={`btn btn-outline-light btn-sm ${this.state.isUnreadOnly === true ? "active" : ""}`} onClick={(e) => this.handleOnclick(e, "unread")}>Unread</button>
+							<button type="button" className={`btn btn-outline-light btn-sm  ${this.state.isUnreadOnly === true ? "" : "active"}`} onClick={(e) => this.handleOnclick(e, "all")}>All</button>
+						</div> */}
 					</div>
 				</div>
 	

@@ -101,8 +101,6 @@ function createLoadingWindow(callback) {
 
 	loadingWindow.show()
 
-	const authCode = store.get('authCode')
-
 	Axios({
 		method: 'get',
 		url: `https://dog.ceo/api/breeds/image/random`,
@@ -129,7 +127,6 @@ function createErrorWindow() {
 
 	errorWindow.loadURL(
 		isDev ? `file://${path.join(__dirname, '/public/error.html')}` : `file://${path.join(__dirname, '/build/error.html')}`
-		
 	)
 
 	errorWindow.show()
@@ -139,6 +136,8 @@ function createErrorWindow() {
 
 	errorWindow.on('closed', function () {
 		errorWindow = null
+
+		app.quit()
 	})
 }
 
@@ -173,7 +172,7 @@ function setBadge(num) {
 app.on('ready', init)
 
 app.on('window-all-closed', function () {
-	if (process.platform !== 'darwin') app.quit()
+	app.quit()
 })
   
 app.on('activate', function () {

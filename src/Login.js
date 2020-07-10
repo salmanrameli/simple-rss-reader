@@ -77,15 +77,15 @@ class Login extends Component {
         return (
             <div className="row align-items-center full-size" style={{ minHeight: '100vh' }}>
                 <div className="col-md-12" style={{ minHeight: '100vh'}}>
-                    <div class="card">
-                        <div class="bg-setting">
+                    <div className="card">
+                        <div className="bg-login">
                             <header>
                                 <h2 style={{ fontSize: '4em' }}><span>Feedly</span><span>Integration</span></h2>
-                                <div class="title">
-                                    <span class="en">Setting</span>
+                                <div className="title">
+                                    <span className="en">Setting</span>
                                 </div>
                             </header>
-                            <div class="pt-5 pr-5 pl-5">
+                            <div className="pt-5 pr-5 pl-5">
                                 <form id="windowSizeSetting" onSubmit={this.handleFeedlyIntegration}>
                                     <div className="form-group">
                                         <input className="form-check-input" type="radio" name="feedlyIntegration" id="feedlyIntegrationFalse" value="false" checked={this.state.integrateWithFeedly === false} onChange={this.handleIntegrateWithFeedlyChange} />
