@@ -45,7 +45,8 @@ function createWindow() {
 		icon: path.resolve(`${__dirname}/assets/icon.png`),
 		webPreferences: {
 			webviewTag: true,
-			nodeIntegration: true
+			nodeIntegration: true,
+			enableRemoteModule: true
 		}
 	})
 
@@ -63,6 +64,8 @@ function createWindow() {
 
 		loadingWindow.hide()
 		loadingWindow.close()
+
+		loadingWindow = null
 	})
 	  
 	win.on('closed', function () {
@@ -72,6 +75,8 @@ function createWindow() {
 		}
 
 		win = null
+
+		if(loadingWindow != null) loadingWindow = null
 	})
 
 	win.on('resize', function() {
@@ -176,7 +181,7 @@ app.on('window-all-closed', function () {
 })
   
 app.on('activate', function () {
-	if (loadingWindow === null) createLoadingWindow()
+	if(loadingWindow === null && win === null) createLoadingWindow()
 })
 
 ipcMain.on('feedly-integration', (event, arg) => {
