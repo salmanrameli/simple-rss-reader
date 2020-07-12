@@ -6,7 +6,6 @@ import { getStream, getUnreadCount } from './Constants'
 import Axios from 'axios';
 
 const { ipcRenderer } = window.require('electron')
-const date = require('date-and-time');
 
 class News extends Component {
 	constructor(props) {
