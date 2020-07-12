@@ -24,12 +24,14 @@
   color: #fff;
   background-color: #24292e; 
 }
-
 .toolbar-button {
   min-width: 0;
   position: relative; 
+  transition: 0.5s;
 }
-
+.toolbar-button:hover {
+  background-color: #4c4c4cb5;
+}
 .toolbar-button > button {
   position: relative;
   display: flex;
@@ -48,7 +50,6 @@
   border-radius: 0;
   text-align: left;
 }
-
 .toolbar-button > button > .text {
   display: flex;
   flex-direction: column;
@@ -57,12 +58,8 @@
   margin: 0 10px;
   position: relative;
 }
-
 .toolbar-button > button:not(:disabled):hover {
-  color: #fff;
   border-color: #000000;
-  background-color: #4c4c4cb5;
-  /* background-image: linear-gradient(to left, #00f5f5, #d53a9d); */
 }
 /**
  * Enable end-of-line text truncation when text overflows
@@ -82,8 +79,4 @@
   color: #24292e;;
   background-color: #fafbfc;
   height: 100%;
-}
-.button-component:not(:disabled):hover {
-  border-color: #d1d5da;;
-  background-color: #fff;
 }

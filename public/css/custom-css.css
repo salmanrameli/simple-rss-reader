@@ -2,13 +2,17 @@
   font-family: IBM_Plex_Mono;
   src: url('../fonts/IBMPlexMono-Regular.ttf')
 }
+@font-face {
+  font-family: NotoSans_JP_Light;
+  src: url('../fonts/NotoSansJP-Light.otf')
+}
 html, body {
     width: 100%;
     height: 100%;
     margin: 0;
     padding: 0;
     overflow: hidden;
-    font-family: IBM_Plex_Mono, monospace;
+    font-family: NotoSans_JP_Light, 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   }
   .container-fluid {
     padding-right: 0;
@@ -23,6 +27,9 @@ html, body {
   }
   #desktop-app-toolbar a:hover {
     text-decoration: none;
+  }
+  .font-monospace {
+    font-family: IBM_Plex_Mono, monospace;
   }
   img {
     display: block;
