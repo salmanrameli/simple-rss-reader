@@ -97,8 +97,8 @@ class FeedlySetting extends Component {
                         <div className="bg-setting">
                             <header>
                                 <h2 style={{ fontSize: '4em' }}><span>Application</span><span>Setting</span></h2>
-                                <div className="icon">
-                                    
+                                <div className="title">
+                                    <span className="en">Setting</span>
                                 </div>
                             </header>
                             <div className="pt-5 pr-5 pl-5">
