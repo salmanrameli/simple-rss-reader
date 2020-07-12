@@ -21,6 +21,9 @@ html, body {
   .text a:hover {
     text-decoration: none;
   }
+  #desktop-app-toolbar a:hover {
+    text-decoration: none;
+  }
   img {
     display: block;
     margin: 0 auto;

@@ -89,7 +89,7 @@ class FeedlyRoot extends Component {
 				<div className="row frameless-padding draggable" style={{ backgroundColor: '#202429', paddingRight: '15px', paddingLeft: '15px' }}>
 					<div className="col-md-12 no-padding-right no-padding-left">
 						<div id="desktop-app-toolbar">
-							<div className="toolbar-button push-pull-button">
+							<NavLink to="/News" id="newsButton" className="toolbar-button push-pull-button" activeClassName="bg-primary" style={{ color: 'white' }}>
 								<button className="button-component" type="button">
 									<div className="text">
 										<NavLink to="/News" id="newsButton" activeClassName="menu-active" style={{ color: 'white' }}>
@@ -97,8 +97,8 @@ class FeedlyRoot extends Component {
 										</NavLink>
 									</div>
 								</button>
-							</div>
-							<div className="toolbar-button push-pull-button">
+							</NavLink>
+							<NavLink to="/FeedlySetting" id="settingButton" className="toolbar-button push-pull-button" activeClassName="bg-primary" style={{ color: 'white' }}>
 								<button className="button-component" type="button">
 									<div className="text">
 										<NavLink to="/FeedlySetting" id="settingButton" activeClassName="menu-active" style={{ color: 'white' }}>
@@ -106,7 +106,7 @@ class FeedlyRoot extends Component {
 										</NavLink>
 									</div>
 								</button>
-							</div>
+							</NavLink>
 							<div className={`toolbar-button push-pull-button ml-auto ${this.state.isUnreadOnly === true ? "active" : ""}`}>
 								<button className="button-component" type="button">
 									<div className="text">
