@@ -77,6 +77,8 @@ function createWindow() {
 		win = null
 
 		if(loadingWindow != null) loadingWindow = null
+
+		app.exit(0)
 	})
 
 	win.on('resize', function() {
@@ -177,7 +179,7 @@ function setBadge(num) {
 app.on('ready', init)
 
 app.on('window-all-closed', function () {
-	app.quit()
+	app.exit(0)
 })
   
 app.on('activate', function () {
