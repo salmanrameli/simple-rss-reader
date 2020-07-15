@@ -202,10 +202,10 @@ html, body {
     content: "\A";
     white-space: pre;
   }
-  em::before {
+  /* em::before {
     content: "\A";
     white-space: pre;
-  }
+  } */
   .mt-10 {
     margin-top: 10px;
   }
@@ -221,14 +221,14 @@ html, body {
   hr {
     display: none;
   }
-  figure figcaption::after {
+  /* figure figcaption::after {
     content: "\A";
     white-space: pre;
   }
   figure figcaption em::after {
     content: "\A";
     white-space: pre;
-  }
+  } */
   p em::before {
     display: none;
   }
