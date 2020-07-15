@@ -2,6 +2,18 @@
     font-family: BMWHelvetica_Bold;
     src: url('../fonts/BMWHelvetica-Bold.otf')
   }
+  .feedly-integration {
+    font-size: 4em;
+    font-family: BMWHelvetica_Bold;
+    top: 3px;
+    padding-left: 5px;
+    margin: 0;
+    font-family: BMWHelvetica_Bold, 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    text-transform: uppercase;
+    line-height: 0.82em;
+    letter-spacing: -0.0357em;
+    color: black;
+  }
 .list-group-item:first-child {
     border-top: 6px solid transparent;
 }

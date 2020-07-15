@@ -78,15 +78,19 @@ class Login extends Component {
             <div className="row align-items-center full-size" style={{ minHeight: '100vh' }}>
                 <div className="col-md-12" style={{ minHeight: '100vh'}}>
                     <div className="card">
-                        <div className="bg-login">
-                            <header>
-                                <h2 style={{ fontSize: '4em' }}><span>Feedly</span><span>Integration</span></h2>
-                                <div className="title">
-                                    <span className="en">Setting</span>
+                        <div className="row">
+                            <div className="col-3">
+                                <div className="bg-login">
+                                    <header style={{ height: '100vh' }}>
+                                        <div className="title">
+                                            Setting
+                                        </div>
+                                    </header>
                                 </div>
-                            </header>
-                            <div className="pt-5 pr-5 pl-5">
-                                <form id="windowSizeSetting" onSubmit={this.handleFeedlyIntegration}>
+                            </div>
+                            <div className="col-9">
+                                <h2 className="feedly-integration">Feedly<br></br>Integration</h2>
+                                <form id="windowSizeSetting" style={{ margin: '5% 15px' }} onSubmit={this.handleFeedlyIntegration}>
                                     <div className="form-group">
                                         <input className="form-check-input" type="radio" name="feedlyIntegration" id="feedlyIntegrationFalse" value="false" checked={this.state.integrateWithFeedly === false} onChange={this.handleIntegrateWithFeedlyChange} />
                                         <label className="form-check-label" htmlFor="feedlyIntegrationFalse">Don't integrate with Feedly</label>
