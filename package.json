@@ -57,7 +57,7 @@
     "electron-store": "^5.2.0",
     "feedparser": "^2.2.10",
     "jsonfile": "^6.0.1",
-    "lodash": "^4.17.15",
+    "lodash": "^4.17.19",
     "lodash.template": "^4.5.0",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
