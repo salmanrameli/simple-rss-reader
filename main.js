@@ -187,15 +187,11 @@ app.on('activate', function () {
 })
 
 ipcMain.on('feedly-integration', (event, arg) => {
-	app.relaunch()
-
-	app.exit(0)
+	win.reload()
 })
 
 ipcMain.on('refresh', (event, arg) => {
-	app.relaunch()
-	
-	app.exit(0)
+	win.reload()
 })
 
 ipcMain.on('unread-count', (event, arg) => {
