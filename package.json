@@ -27,6 +27,7 @@
     ],
     "directories": {
       "buildResources": "build",
+      "app": "build",
       "output": "dist"
     },
     "mac": {
