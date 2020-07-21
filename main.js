@@ -144,7 +144,7 @@ function createErrorWindow() {
 	errorWindow.on('closed', function () {
 		errorWindow = null
 
-		app.quit()
+		app.exit(0)
 	})
 }
 
@@ -191,7 +191,15 @@ ipcMain.on('feedly-integration', (event, arg) => {
 })
 
 ipcMain.on('refresh', (event, arg) => {
-	win.reload()
+	if(process.platform === 'darwin') {
+		let dock = app.dock
+	
+		dock.setBadge('')
+	}
+	
+	win.loadURL(
+		isDev ? "http://localhost:8080" : `file://${path.join(__dirname, '/build/index.html')}`
+	)
 })
 
 ipcMain.on('unread-count', (event, arg) => {
