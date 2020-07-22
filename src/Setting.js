@@ -173,7 +173,7 @@ class Setting extends React.Component {
 
 	render() {
 		return (
-			<div className="col-md-12 scrollable with-padding">
+			<div className="col-md-12 scrollable with-padding" style={{ padding: '30px' }}>
 				<div className="pb-2 mt-4 mb-2">
 					<h1>Setting</h1>
 				</div>

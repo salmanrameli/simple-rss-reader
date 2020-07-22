@@ -1,0 +1,358 @@
+@font-face {
+    font-family: BMWHelvetica_Bold;
+    src: url('../fonts/BMWHelvetica-Bold.otf')
+  }
+  .feedly-integration {
+    font-size: 4em;
+    font-family: BMWHelvetica_Bold;
+    top: 3px;
+    padding-left: 5px;
+    margin: 0;
+    font-family: BMWHelvetica_Bold, 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    text-transform: uppercase;
+    line-height: 0.82em;
+    letter-spacing: -0.0357em;
+    color: black;
+  }
+.list-group-item:first-child {
+    border-top: 6px solid transparent;
+}
+.list-group-item {
+    border-right: 6px solid transparent;
+    border-left: 6px solid transparent;
+    border-top: 3px solid transparent;
+    border-bottom: 3px solid transparent;
+    border-image: linear-gradient(to left, #00ffff, #d53a9d);
+    border-image-slice: 1;
+}
+.list-group-item:last-child {
+    border-bottom: 6px solid transparent;
+}
+.border-gradient {
+    padding: 5px 5px;
+    border-right: 5px solid transparent;
+    border-left: 5px solid transparent;
+    border-top: 5px solid transparent;
+    border-bottom: 5px solid transparent;
+    border-image: linear-gradient(to left, #00ffff, #d53a9d);
+    border-image-slice: 1;
+}
+.card {
+    background: #fff;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    border: 0;
+    border-radius: 0;
+}
+.card header {
+    position: relative;
+    padding-top: 100px;
+    background: linear-gradient(45deg, #94d0ff, #ff6ad5);
+    overflow: hidden;
+    perspective: 400px;
+}
+.bg-primary {
+    background-image: linear-gradient(to left, #00f5f5, #d53a9d);
+}
+.article-title {
+    top: 3px;
+    padding-left: 5px;
+    margin: 0;
+    font-family: BMWHelvetica_Bold, 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 2.75em;
+    text-transform: uppercase;
+    line-height: 0.82em;
+    letter-spacing: -0.0357em;
+    color: black;
+}
+.article-subtitle {
+    font-family: BMWHelvetica_Bold, 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 0.8em;
+    text-transform: uppercase;
+    line-height: 0.82em;
+    letter-spacing: -0.0357em;
+    color: darkgray;
+}
+.article-action-button {
+    width: 24px;
+    height: 24px;
+    margin: 0 0.25rem;
+    padding: 0;
+    background: transparent;
+    border: 0;
+}
+/* .card header::before {
+    content: '';
+    position: absolute;
+    top: -5%;
+    left: -5%;
+    width: 110%;
+    height: 110%;
+    background: url("https://source.unsplash.com/featured/city") center;
+    background-size: cover;
+    mix-blend-mode: multiply;
+    animation: swing 4s alternate ease-in-out infinite;
+} */
+.card .bg-login header::before {
+    content: '';
+    position: absolute;
+    top: -5%;
+    left: -5%;
+    width: 110%;
+    height: 110%;
+    background-size: cover;
+    mix-blend-mode: multiply;
+    background: url('../bg-login.jpg') center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.card .bg-setting header::before {
+    content: '';
+    position: absolute;
+    top: -5%;
+    left: -5%;
+    width: 110%;
+    height: 110%;
+    background-size: cover;
+    mix-blend-mode: multiply;
+    background: url('../bg-setting.jpg') center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.card .vw1 header::before {
+    content: '';
+    position: absolute;
+    top: -5%;
+    left: -5%;
+    width: 110%;
+    height: 110%;
+    background-size: cover;
+    mix-blend-mode: multiply;
+    animation: swing 4s alternate ease-in-out infinite;
+    background: url('../bg/vaporwave/1.jpg') bottom;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.card .vw2 header::before {
+    content: '';
+    position: absolute;
+    top: -5%;
+    left: -5%;
+    width: 110%;
+    height: 110%;
+    background-size: cover;
+    mix-blend-mode: multiply;
+    animation: swing 4s alternate ease-in-out infinite;
+    background: url('../bg/vaporwave/2.jpg') bottom;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.card .vw3 header::before {
+    content: '';
+    position: absolute;
+    top: -5%;
+    left: -5%;
+    width: 110%;
+    height: 110%;
+    background-size: cover;
+    mix-blend-mode: multiply;
+    animation: swing 4s alternate ease-in-out infinite;
+    background: url('../bg/vaporwave/3.jpeg') bottom;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.card .vw4 header::before {
+    content: '';
+    position: absolute;
+    top: -5%;
+    left: -5%;
+    width: 110%;
+    height: 110%;
+    background-size: cover;
+    mix-blend-mode: multiply;
+    animation: swing 4s alternate ease-in-out infinite;
+    background: url('../bg/vaporwave/4.jpg') bottom;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.card .vw5 header::before {
+    content: '';
+    position: absolute;
+    top: -5%;
+    left: -5%;
+    width: 110%;
+    height: 110%;
+    background-size: cover;
+    mix-blend-mode: multiply;
+    animation: swing 4s alternate ease-in-out infinite;
+    background: url('../bg/vaporwave/5.jpeg') bottom;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.card .vw6 header::before {
+    content: '';
+    position: absolute;
+    top: -5%;
+    left: -5%;
+    width: 110%;
+    height: 110%;
+    background-size: cover;
+    mix-blend-mode: multiply;
+    animation: swing 4s alternate ease-in-out infinite;
+    background: url('../bg/vaporwave/6.jpg') bottom;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.card .vw7 header::before {
+    content: '';
+    position: absolute;
+    top: -5%;
+    left: -5%;
+    width: 110%;
+    height: 110%;
+    background-size: cover;
+    mix-blend-mode: multiply;
+    animation: swing 4s alternate ease-in-out infinite;
+    background: url('../bg/vaporwave/7.jpg') bottom;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.card .vw8 header::before {
+    content: '';
+    position: absolute;
+    top: -5%;
+    left: -5%;
+    width: 110%;
+    height: 110%;
+    background-size: cover;
+    mix-blend-mode: multiply;
+    animation: swing 4s alternate ease-in-out infinite;
+    background: url('../bg/vaporwave/8.jpg') bottom;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.card .vw9 header::before {
+    content: '';
+    position: absolute;
+    top: -5%;
+    left: -5%;
+    width: 110%;
+    height: 110%;
+    background-size: cover;
+    mix-blend-mode: multiply;
+    animation: swing 4s alternate ease-in-out infinite;
+    background: url('../bg/vaporwave/9.jpg') bottom;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.card .vw10 header::before {
+    content: '';
+    position: absolute;
+    top: -5%;
+    left: -5%;
+    width: 110%;
+    height: 110%;
+    background-size: cover;
+    mix-blend-mode: multiply;
+    animation: swing 4s alternate ease-in-out infinite;
+    background: url('../bg/vaporwave/10.jpeg') bottom;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.card header h2 {
+    position: relative;
+    top: 3px;
+    padding-left: 5px;
+    margin: 0;
+    font-family: BMWHelvetica_Bold, 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 2em;
+    text-transform: uppercase;
+    line-height: 0.82em;
+    letter-spacing: -0.0357em;
+    color: #fff;
+}
+.card header h2 span {
+    display: block;
+}
+.card header .title {
+    position: absolute;
+    top: 8px;
+    right: 5px;
+    padding: 0.5rem;
+    background: #000;
+    font-weight: bold;
+    text-transform: uppercase;
+    text-align: right;
+    color: #fff;
+}
+.card header img.profile {
+    width: 100%;
+}
+.card .desc {
+    padding: 1rem;
+    display: inline-block;
+    max-width: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    vertical-align: middle;
+}
+.card .actions {
+    display: flex;
+    padding: 0 1rem 1rem;
+}
+.card .actions button {
+    width: 24px;
+    height: 24px;
+    margin: 0 0.25rem;
+    padding: 0;
+    background: transparent;
+    border: 0;
+}
+.detail-box {
+    white-space: pre;
+}
+.text-unread-entry {
+    border-top: solid 3px white;
+}
+button:focus {
+    outline: none;
+    box-shadow: none;
+}
+.no-focus {
+    outline: none;
+    box-shadow: none;
+}
+@-moz-keyframes swing {
+    0% {
+        transform: rotateY(8deg);
+    }
+    100% {
+        transform: rotateY(-8deg);
+    }
+}
+@-webkit-keyframes swing {
+    0% {
+        transform: rotateY(8deg);
+    }
+    100% {
+        transform: rotateY(-8deg);
+    }
+}
+@-o-keyframes swing {
+    0% {
+        transform: rotateY(8deg);
+    }
+    100% {
+        transform: rotateY(-8deg);
+    }
+}
+@keyframes swing {
+    0% {
+        transform: rotateY(8deg);
+    }
+    100% {
+        transform: rotateY(-8deg);
+    }
+}

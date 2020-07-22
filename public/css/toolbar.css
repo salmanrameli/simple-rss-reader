@@ -1,0 +1,82 @@
+
+/**
+ * Enable end-of-line text truncation when text overflows
+ * the horizontal boundary of its container.
+ */
+/**
+ * Draw a checkboard in the background
+ * (useful to see the transparent part of an image)
+ */
+/** A React component holding the main application toolbar component. */
+.desktop-app-title-bar {
+  height: 22px;
+  background: linear-gradient(to bottom, #3b3f46 0%, #2b2e33 100%);
+  border-bottom: 1px solid #000;
+}
+#desktop-app-toolbar {
+  height: 50px;
+  border-bottom: 1px solid #24292e;
+  display: flex;
+  flex-direction: row;
+  flex-grow: 0;
+  flex-shrink: 0;
+  min-width: 0;
+  color: #fff;
+  background-color: #24292e; 
+}
+.toolbar-button {
+  min-width: 0;
+  position: relative; 
+  transition: 0.5s;
+}
+.toolbar-button:hover {
+  background-color: #4c4c4cb5;
+}
+.toolbar-button > button {
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 10px;
+  margin: 0;
+  overflow: hidden;
+  background-color: transparent;
+  color: #fff;
+  border: none;
+  border-right: 1px solid #000000;
+  border-left: 1px solid #000000;
+  box-shadow: none;
+  background: transparent;
+  border-radius: 0;
+  text-align: left;
+}
+.toolbar-button > button > .text {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  min-width: 0;
+  margin: 0 10px;
+  position: relative;
+}
+.toolbar-button > button:not(:disabled):hover {
+  border-color: #000000;
+}
+/**
+ * Enable end-of-line text truncation when text overflows
+ * the horizontal boundary of its container.
+ */
+/**
+ * Draw a checkboard in the background
+ * (useful to see the transparent part of an image)
+ */
+.button-component {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  padding: 0;
+  border: 1px solid #e1e4e8;
+  height: 25px;
+  color: #24292e;;
+  background-color: #fafbfc;
+  height: 100%;
+}

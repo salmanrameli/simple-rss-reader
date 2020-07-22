@@ -6,7 +6,6 @@ import { getStream, getUnreadCount } from './Constants'
 import Axios from 'axios';
 
 const { ipcRenderer } = window.require('electron')
-const date = require('date-and-time');
 
 class News extends Component {
 	constructor(props) {
@@ -43,10 +42,11 @@ class News extends Component {
 			responseType: 'application/json',
 			headers: {
 				'Authorization': `OAuth ${authCode}`
-			}
+			},
+			timeout: 10000
 		}).then((response) => {
 			let merged = [].concat.apply([], response.data.items)
-			let randomNumber = Math.floor((Math.random() * 5) + 1)
+			let randomNumber = Math.floor((Math.random() * 10) + 1)
 
 			this.setState({
 				lists: merged.map((entry, index) => {
@@ -61,6 +61,8 @@ class News extends Component {
 			this.getUnreadCount()
 		}).catch(function(error) {
 			console.log(error)
+
+			alert(error)
 		})
 	}
 
@@ -73,7 +75,8 @@ class News extends Component {
 			responseType: 'application/json',
 			headers: {
 				'Authorization': `OAuth ${authCode}`
-			}
+			},
+			timeout: 10000
 		}).then((response) => {
 			let userId = getUserId()
 
@@ -96,7 +99,8 @@ class News extends Component {
 
 	updateStory(link, id) {
 		this.state.lists.filter(story => {
-			let publishedDate = date.format(new Date(story.published), 'YYYY/MM/DD HH:mm:ss')
+			let publishedDate = new Date(story.published)
+			publishedDate = publishedDate.toLocaleString('en-GB', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' })
 
 			if(story.id === id) {
 				if(story.content && story.content.content) {

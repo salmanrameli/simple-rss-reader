@@ -1,4 +1,5 @@
-const {app, BrowserWindow, Menu} = require('electron')
+const { app, BrowserWindow, Menu } = require('electron')
+const Axios = require('axios');
 const path = require('path')
 const isDev = require("electron-is-dev");
 const ipcMain = require('electron').ipcMain
@@ -6,15 +7,23 @@ const Store = require('electron-store');
 const store = new Store();
 
 let win = null
+let loginWindow = null
+let loadingWindow = null
+let errorWindow = null
+
 let winWidth = null
 let winHeight = null
-let loginWindow = null
 let winWasResized = false
 
-let integrateWithFeedly = stringToBool(store.get('integrateWithFeedly', false))
 let unreadCount
 
-function createWindow () {
+let integrateWithFeedly = stringToBool(store.get('integrateWithFeedly', false))
+
+function init() {
+	createLoadingWindow(createWindow)
+}
+
+function createWindow() {
 	winWidth = store.get('winWidth')
 	winHeight = store.get('winHeight')
 
@@ -36,11 +45,10 @@ function createWindow () {
 		icon: path.resolve(`${__dirname}/assets/icon.png`),
 		webPreferences: {
 			webviewTag: true,
-			nodeIntegration: true
+			nodeIntegration: true,
+			enableRemoteModule: true
 		}
 	})
-
-	// win.setIcon(path.resolve(`${__dirname}/assets/icon.png`))
 
 	const menu = Menu.buildFromTemplate(menubar)
 	Menu.setApplicationMenu(menu)
@@ -53,6 +61,11 @@ function createWindow () {
 
 	win.once('ready-to-show', () => {
 		win.show()
+
+		loadingWindow.hide()
+		loadingWindow.close()
+
+		loadingWindow = null
 	})
 	  
 	win.on('closed', function () {
@@ -62,6 +75,10 @@ function createWindow () {
 		}
 
 		win = null
+
+		if(loadingWindow != null) loadingWindow = null
+
+		app.exit(0)
 	})
 
 	win.on('resize', function() {
@@ -70,6 +87,64 @@ function createWindow () {
 		let size = win.getSize()
 		winWidth = size[0]
 		winHeight = size[1]
+	})
+}
+
+function createLoadingWindow(callback) {
+	loadingWindow = new BrowserWindow({
+		width: 250, 
+		height: 250,
+		frame: false,
+		titleBarStyle: 'hidden',
+		center: true,
+		closable: false,
+		maximizable: false,
+		minimizable: false,
+	});
+
+	loadingWindow.loadURL(
+		isDev ? `file://${path.join(__dirname, '/public/loading.html')}` : `file://${path.join(__dirname, '/build/loading.html')}`
+	)
+
+	loadingWindow.show()
+
+	Axios({
+		method: 'get',
+		url: `https://dog.ceo/api/breeds/image/random`,
+		responseType: 'application/json',
+		timeout: 10000,
+	}).then(response => {
+		createWindow()
+	}).catch(function(error) {
+		createErrorWindow()
+	})
+}
+
+function createErrorWindow() {
+	errorWindow = new BrowserWindow({
+		width: 800, 
+		height: 275,
+		frame: false,
+		titleBarStyle: 'hidden',
+		center: true,
+		maximizable: false,
+		minimizable: false,
+		resizable: false
+	});
+
+	errorWindow.loadURL(
+		isDev ? `file://${path.join(__dirname, '/public/error.html')}` : `file://${path.join(__dirname, '/build/error.html')}`
+	)
+
+	errorWindow.show()
+
+	loadingWindow.hide()
+	loadingWindow.close()
+
+	errorWindow.on('closed', function () {
+		errorWindow = null
+
+		app.exit(0)
 	})
 }
 
@@ -101,48 +176,44 @@ function setBadge(num) {
 	}
 }
 
-app.on('ready', createWindow)
+app.on('ready', init)
 
 app.on('window-all-closed', function () {
-	if (process.platform !== 'darwin') app.quit()
+	app.exit(0)
 })
   
 app.on('activate', function () {
-	if (win === null) createWindow()
-})
-
-ipcMain.on('asynchronous-message', (event, arg) => {
-	let integrationState = store.get('integrateWithFeedly')
-
-	switch(integrationState) {
-		case false:
-			event.sender.send('asynchronous-reply', 'not integrated')
-			break
-		case true:
-			event.sender.send('asynchronous-reply', 'integrated')
-			break
-		default:
-			event.sender.send('asynchronous-reply', 'init')
-			break
-	}
+	if(loadingWindow === null && win === null) createLoadingWindow()
 })
 
 ipcMain.on('feedly-integration', (event, arg) => {
-	app.relaunch()
-
-	app.exit(0)
+	win.reload()
 })
 
 ipcMain.on('refresh', (event, arg) => {
-	app.relaunch()
+	if(process.platform === 'darwin') {
+		let dock = app.dock
 	
-	app.exit(0)
+		dock.setBadge('')
+	}
+	
+	win.loadURL(
+		isDev ? "http://localhost:8080" : `file://${path.join(__dirname, '/build/index.html')}`
+	)
 })
 
 ipcMain.on('unread-count', (event, arg) => {
 	unreadCount = arg
 
 	setBadge(unreadCount)
+})
+
+ipcMain.on('reset-unread-count', (event, arg) => {
+	if(process.platform === 'darwin') {
+		let dock = app.dock
+	
+		dock.setBadge('')
+	}
 })
 
 ipcMain.on('increase-unread-count', (event, arg) => {
@@ -237,7 +308,7 @@ let menubar = [
 	  ]
 	},
 	{
-	  label: 'help',
+	  label: 'Help',
 	  submenu: [
 		{ role: 'about' },
 		{
