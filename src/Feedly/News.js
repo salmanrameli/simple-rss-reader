@@ -182,22 +182,34 @@ class News extends Component {
 
 	render() {
 		return(
-			<div className="row">
-				<Lists 
-					lists = {this.state.lists}
-					loadStory = {this.updateStory}
-					onRemove = {this.removeItem}
-					removeUnreadEntryBadge = {this.removeUnreadEntryBadge}
-					markAsUnread = {this.markAsUnread}
-					markAsRead = {this.markAsRead}
-				/>
-				<Article 
-					title = {this.state.story_title}
-					author = {this.state.story_author}
-					date = {this.state.story_date}
-					story = {this.state.active_story}
-					link = {this.state.story_link}
-				/>
+			<div>
+				{this.state.lists.length > 0 ? 
+					<div className="row">
+						<Lists 
+							lists = {this.state.lists}
+							loadStory = {this.updateStory}
+							onRemove = {this.removeItem}
+							removeUnreadEntryBadge = {this.removeUnreadEntryBadge}
+							markAsUnread = {this.markAsUnread}
+							markAsRead = {this.markAsRead}
+						/>
+						<Article 
+							title = {this.state.story_title}
+							author = {this.state.story_author}
+							date = {this.state.story_date}
+							story = {this.state.active_story}
+							link = {this.state.story_link}
+						/>
+					</div>
+					:
+					<div className="row">
+						<div className="col-12" style={{ height: '100vh' }}>
+							<div className="no-articles-left">
+								<h1 style={{ 'color': 'lightgrey', 'textAlign': 'center'}}>There are no unread articles left</h1>
+							</div>
+						</div>
+					</div>
+				}
 			</div>
 		)
 	}

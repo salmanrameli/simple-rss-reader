@@ -49,7 +49,14 @@ html, body {
   p {
     margin: 0 0 10px;
   }
+  small {
+    width: 100%;
+  }
   small::before {
+    content: "\A";
+    white-space: pre;
+  }
+  small::after {
     content: "\A";
     white-space: pre;
   }
@@ -202,10 +209,6 @@ html, body {
     content: "\A";
     white-space: pre;
   }
-  /* em::before {
-    content: "\A";
-    white-space: pre;
-  } */
   .mt-10 {
     margin-top: 10px;
   }
@@ -221,14 +224,6 @@ html, body {
   hr {
     display: none;
   }
-  /* figure figcaption::after {
-    content: "\A";
-    white-space: pre;
-  }
-  figure figcaption em::after {
-    content: "\A";
-    white-space: pre;
-  } */
   p em::before {
     display: none;
   }
@@ -243,4 +238,10 @@ html, body {
     background-color: transparent;
     color: #fff;
     border-right: black;
+}
+.no-articles-left {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
 }
