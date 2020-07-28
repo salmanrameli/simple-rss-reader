@@ -93,7 +93,7 @@ class Article extends Component {
 								</span>
 							</h2>
 						</div>
-						<div className="row col-md-12 text-justify mb-3 pr-4 pl-4">
+						<div className="row col-md-12 text-justify mb-3 pr-4 pl-4 news-content">
 							{ReactHtmlParser(this.state.story)}
 						</div>
 					</div>

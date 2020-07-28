@@ -48,6 +48,7 @@ html, body {
   }
   p {
     margin: 0 0 10px;
+    width: 100%;
   }
   small {
     width: 100%;
@@ -252,5 +253,8 @@ figure {
   margin: 1rem 0 1rem 0;
 }
 figure img {
+  width: 100%;
+}
+.news-content div {
   width: 100%;
 }
