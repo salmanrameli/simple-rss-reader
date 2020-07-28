@@ -119,9 +119,7 @@ html, body {
     padding-right: 10px
   }
   .row .col-md-12 img {
-    height: 90%;
-    width: 90%;
-    margin-bottom: 15px
+    width: 100%;
   }
   .row .col-md-12 h1 {
     margin: 10px 0 5px 0
@@ -205,10 +203,6 @@ html, body {
     content: "\A";
     white-space: pre;
   }
-  strong::after {
-    content: "\A";
-    white-space: pre;
-  }
   .mt-10 {
     margin-top: 10px;
   }
@@ -244,4 +238,19 @@ html, body {
   justify-content: center;
   align-items: center;
   height: 100%;
+}
+a[href*="//"] {
+  pointer-events: none;
+  color: #212529;
+}
+video {
+  width: 100%;
+  margin-bottom: 15px;
+}
+figure {
+  width: 100%;
+  margin: 1rem 0 1rem 0;
+}
+figure img {
+  width: 100%;
 }

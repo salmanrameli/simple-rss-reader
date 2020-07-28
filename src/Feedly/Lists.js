@@ -211,7 +211,7 @@ class Lists extends Component {
 										</div>
 										<div className="col-12 col-md-6 col-lg-6 col-xl-6">
 											<div className="desc float-right">
-												<div className="actions float-right">
+												<div className="actions float-right mr-2">
 													{item.unread === true ?
 														<button type="button" onClick={(e) => this.handleMarkAsRead(e, item.canonicalUrl, item.id, false, true)} title="Mark article as read" className="pl-2 no-focus">
 															<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">

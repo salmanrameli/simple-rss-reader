@@ -27,6 +27,7 @@
 }
 .list-group-item:last-child {
     border-bottom: 6px solid transparent;
+    margin-bottom: 9px;
 }
 .border-gradient {
     padding: 5px 5px;
@@ -36,6 +37,7 @@
     border-bottom: 5px solid transparent;
     border-image: linear-gradient(to left, #00ffff, #d53a9d);
     border-image-slice: 1;
+    margin-bottom: 15px;
 }
 .card {
     background: #fff;
@@ -82,18 +84,6 @@
     background: transparent;
     border: 0;
 }
-/* .card header::before {
-    content: '';
-    position: absolute;
-    top: -5%;
-    left: -5%;
-    width: 110%;
-    height: 110%;
-    background: url("https://source.unsplash.com/featured/city") center;
-    background-size: cover;
-    mix-blend-mode: multiply;
-    animation: swing 4s alternate ease-in-out infinite;
-} */
 .card .bg-login header::before {
     content: '';
     position: absolute;
@@ -300,7 +290,6 @@
 }
 .card .actions {
     display: flex;
-    padding: 0 1rem 1rem;
 }
 .card .actions button {
     width: 24px;
