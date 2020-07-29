@@ -55,7 +55,7 @@
     perspective: 400px;
 }
 .bg-primary {
-    background-image: linear-gradient(to left, #00f5f5, #d53a9d);
+    background-image: linear-gradient(to left, cyan, #d53a9d);
 }
 .article-title {
     top: 3px;
