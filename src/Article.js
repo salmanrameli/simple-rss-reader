@@ -72,9 +72,9 @@ class Article extends Component {
 	render() {
 		return (
 			this.state.display === 'loaded' ?
-				<div className="col-md-9 no-padding-left no-padding-right scrollable pt-3 pr-3 pb-3 pl-3 font-monospace">
-					<div className="col-md-12 border-gradient">
-						<div className="pb-2 mt-4 mb-2">
+				<div className="col-md-9 scrollable pt-3 pr-3 pb-3 pl-3 font-monospace">
+					<div className="col-md-12 border-gradient pl-4">
+						<div className="mt-4 mb-4">
 							<h2 className="clear-before article-title mb-3">
 								{this.state.title}<br></br>
 								<span className="article-subtitle">
@@ -93,7 +93,7 @@ class Article extends Component {
 								</span>
 							</h2>
 						</div>
-						<div className="row col-md-12 text-justify mb-3 pr-4 pl-4 news-content">
+						<div className="row col-md-12 text-justify mb-3 pl-2 pr-0 news-content">
 							{ReactHtmlParser(this.state.story)}
 						</div>
 					</div>
