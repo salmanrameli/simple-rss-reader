@@ -258,3 +258,10 @@ figure img {
 .news-content div {
   width: 100%;
 }
+.twitter-tweet {
+  font-style: italic;
+}
+iframe[src*="//"] {
+  width: 100%;
+  height: 500px;
+}
