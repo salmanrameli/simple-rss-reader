@@ -90,8 +90,8 @@ class FeedlyRoot extends Component {
 	render() {
 		return (
 			<Router>
-				<div className="row frameless-padding draggable" style={{ backgroundColor: '#202429', paddingRight: '15px', paddingLeft: '15px' }}>
-					<div className="col-md-12 no-padding-right no-padding-left draggable">
+				<div className="row frameless-padding" style={{ backgroundColor: '#202429', paddingRight: '15px', paddingLeft: '15px' }}>
+					<div className="col-md-12 no-padding-right no-padding-left">
 						<div id="desktop-app-toolbar">
 							<NavLink to="/News" id="newsButton" className="toolbar-button push-pull-button" activeClassName="bg-primary" style={{ color: 'white' }} title="Feeds">
 								<button className="button-component" type="button" title="Feeds">
