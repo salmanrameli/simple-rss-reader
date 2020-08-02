@@ -92,14 +92,15 @@ function createWindow() {
 
 function createLoadingWindow(callback) {
 	loadingWindow = new BrowserWindow({
-		width: 250, 
-		height: 250,
+		width: 330, 
+		height: 400,
 		frame: false,
 		titleBarStyle: 'hidden',
 		center: true,
 		closable: false,
 		maximizable: false,
 		minimizable: false,
+		resizable: false
 	});
 
 	loadingWindow.loadURL(

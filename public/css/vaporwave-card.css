@@ -1,8 +1,8 @@
 @font-face {
     font-family: BMWHelvetica_Bold;
     src: url('../fonts/BMWHelvetica-Bold.otf')
-  }
-  .feedly-integration {
+}
+.feedly-integration {
     font-size: 4em;
     font-family: BMWHelvetica_Bold;
     top: 3px;
@@ -13,7 +13,7 @@
     line-height: 0.82em;
     letter-spacing: -0.0357em;
     color: black;
-  }
+}
 .list-group-item:first-child {
     border-top: 6px solid transparent;
 }
