@@ -14,214 +14,217 @@ html, body {
     overflow: hidden;
     font-family: NotoSans_JP_Light, 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   }
-  .container-fluid {
-    padding-right: 0;
-    padding-left: 0;
-  }
-  .active {
-    background-color: #4c4c4cb5;
-    color: black;
-  }
-  .text a:hover {
-    text-decoration: none;
-  }
-  #desktop-app-toolbar a:hover {
-    text-decoration: none;
-  }
-  .font-monospace {
-    font-family: IBM_Plex_Mono, monospace;
-  }
-  img {
-    display: block;
-    margin: 0 auto;
-  }
-  img::after {
-    content: "\A";
-    white-space: pre;
-  }
-  p::before {
-    content: "\A";
-    white-space: pre;
-  }
-  p.badge::before {
-    display: none;
-  }
-  p {
-    margin: 0 0 10px;
-    width: 100%;
-  }
-  small {
-    width: 100%;
-  }
-  small::before {
-    content: "\A";
-    white-space: pre;
-  }
-  small::after {
-    content: "\A";
-    white-space: pre;
-  }
-  small.remove-style::before {
-    display: none;
-  }
-  .remove-style {
-    margin: 10px 0 15px 0;
-  }
-  .no-padding-left {
-    padding-left: 0px;
-  }
-  .no-padding-right {
-    padding-right: 0px;
-  }
-  .no-padding {
-    padding-left: 0px;
-    padding-right: 0px;
-  }
-  .scrollable {
-    height: 93vh;
-    overflow-y: scroll;
-  }
-  .full-size {
-    min-height: 95vh;
-    min-width: 100vh;
-  }
-  .centered {
-    margin: auto;
-    width: 50%;
-  }
-  .centered-img {
-    display: block;
-    margin: 0 auto;
-  }
-  .badge {
-    display: inline-block;
-    max-width: 200px;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-    vertical-align: middle;
-  }
-  .with-padding {
-    padding: 10px 10px 10px 10px
-  }
-  .toolbar-padding {
-    padding: 8px 10px 8px 10px
-  }
-  .padding-top {
-    padding-top: 10px
-  }
-  .padding-bottom {
-    padding-bottom: 10px;
-  }
-  .padding-left {
-    padding-left: 10px
-  }
-  .padding-right {
-    padding-right: 10px
-  }
-  .row .col-md-12 img {
-    width: 100%;
-  }
-  .row .col-md-12 h1 {
-    margin: 10px 0 5px 0
-  }
-  .row .col-md-12 h2 {
-    margin: 10px -10px 5px -15px
-  }
-  .row .col-md-12 h3 {
-    margin: 10px 0 5px 0
-  }
-  .row .col-md-12 h4 {
-    margin: 10px 0 5px 0
-  }
-  .overflow {
-    overflow: hidden;
-  }
-  .working-center-image {
-    position: relative;
-    top: 50%;
-    transform: translateY(-50%);
-  }
-  .webview {
-    min-width: 75vw;
-    min-height: 100vh;
-  }
-  .list-group-item {
-    margin: 0 0 0 0;
-    padding: 0 0 0 0;
-  }
-  .frameless-padding {
-    padding-top: 0
-  }
-  .btn:focus, .btn:active {
-    outline: none !important;
-    box-shadow: none !important;
-  }
-  .draggable {
-    -webkit-app-region: drag;
-  }
-  .background {
-    background-image: url("../bg.jpg");
-    background-repeat: no-repeat;
-    background-position: 50% 50%;
-    background-size: cover;
-  }
-  .bg1 {
-    background-image: url("../bg/memphis/bg1.png")
-  }
-  .bg2 {
-    background-image: url("../bg/memphis/bg2.png")
-  }
-  .bg3 {
-    background-image: url("../bg/memphis/bg3.jpg")
-  }
-  .bg4 {
-    background-image: url("../bg/memphis/bg4.jpg")
-  }
-  .bg5 {
-    background-image: url("../bg/memphis/bg5.jpg")
-  }
-  h1::after {
-    content: "\A";
-    white-space: pre;
-  }
-  h2::before {
-    content: "\A";
-    white-space: pre;
-  }
-  h2.clear-before::before {
-    display: none;
-  }
-  h2::after {
-    content: "\A";
-    white-space: pre;
-  }
-  h3::before {
-    content: "\A";
-    white-space: pre;
-  }
-  h3::after {
-    content: "\A";
-    white-space: pre;
-  }
-  .mt-10 {
-    margin-top: 10px;
-  }
-  .mb-15 {
-    margin-bottom: 15px;
-  }
-  .cursor-pointer {
-    cursor: pointer;
-  }
-  q {
-    display: none;
-  }
-  hr {
-    display: none;
-  }
-  p em::before {
-    display: none;
-  }
+.container-fluid {
+  padding-right: 0;
+  padding-left: 0;
+}
+.active {
+  background-color: #4c4c4cb5;
+  color: black;
+}
+.text a:hover {
+  text-decoration: none;
+}
+#desktop-app-toolbar a:hover {
+  text-decoration: none;
+}
+.font-monospace {
+  font-family: IBM_Plex_Mono, monospace;
+}
+img {
+  display: block;
+  margin: 0 auto;
+}
+img::after {
+  content: "\A";
+  white-space: pre;
+}
+p::before {
+  content: "\A";
+  white-space: pre;
+}
+p.badge::before {
+  display: none;
+}
+p {
+  margin: 0 0 10px;
+  width: 100%;
+}
+small {
+  width: 100%;
+}
+small::before {
+  content: "\A";
+  white-space: pre;
+}
+small::after {
+  content: "\A";
+  white-space: pre;
+}
+small.remove-style::before {
+  display: none;
+}
+.remove-style {
+  margin: 10px 0 15px 0;
+}
+.no-padding-left {
+  padding-left: 0px;
+}
+.no-padding-right {
+  padding-right: 0px;
+}
+.no-padding {
+  padding-left: 0px;
+  padding-right: 0px;
+}
+.scrollable {
+  height: 93vh;
+  overflow-y: scroll;
+}
+.full-size {
+  min-height: 95vh;
+  min-width: 100vh;
+}
+.centered {
+  margin: auto;
+  width: 50%;
+}
+.centered-img {
+  display: block;
+  margin: 0 auto;
+}
+.badge {
+  display: inline-block;
+  max-width: 200px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  vertical-align: middle;
+}
+.with-padding {
+  padding: 10px 10px 10px 10px
+}
+.toolbar-padding {
+  padding: 8px 10px 8px 10px
+}
+.padding-top {
+  padding-top: 10px
+}
+.padding-bottom {
+  padding-bottom: 10px;
+}
+.padding-left {
+  padding-left: 10px
+}
+.padding-right {
+  padding-right: 10px
+}
+.row .col-md-12 img {
+  width: 100%;
+}
+.row .col-md-12 h1 {
+  margin: 10px 0 5px 0
+}
+.row .col-md-12 h2 {
+  margin: 10px -10px 5px -15px
+}
+.row .col-md-12 .news-content h2 {
+  margin: 10px 0
+}
+.row .col-md-12 h3 {
+  margin: 10px 0 5px 0
+}
+.row .col-md-12 h4 {
+  margin: 10px 0 5px 0
+}
+.overflow {
+  overflow: hidden;
+}
+.working-center-image {
+  position: relative;
+  top: 50%;
+  transform: translateY(-50%);
+}
+.webview {
+  min-width: 75vw;
+  min-height: 100vh;
+}
+.list-group-item {
+  margin: 0 0 0 0;
+  padding: 0 0 0 0;
+}
+.frameless-padding {
+  padding-top: 0
+}
+.btn:focus, .btn:active {
+  outline: none !important;
+  box-shadow: none !important;
+}
+.draggable {
+  -webkit-app-region: drag;
+}
+.background {
+  background-image: url("../bg.jpg");
+  background-repeat: no-repeat;
+  background-position: 50% 50%;
+  background-size: cover;
+}
+.bg1 {
+  background-image: url("../bg/memphis/bg1.png")
+}
+.bg2 {
+  background-image: url("../bg/memphis/bg2.png")
+}
+.bg3 {
+  background-image: url("../bg/memphis/bg3.jpg")
+}
+.bg4 {
+  background-image: url("../bg/memphis/bg4.jpg")
+}
+.bg5 {
+  background-image: url("../bg/memphis/bg5.jpg")
+}
+h1::after {
+  content: "\A";
+  white-space: pre;
+}
+h2::before {
+  content: "\A";
+  white-space: pre;
+}
+h2.clear-before::before {
+  display: none;
+}
+h2::after {
+  content: "\A";
+  white-space: pre;
+}
+h3::before {
+  content: "\A";
+  white-space: pre;
+}
+h3::after {
+  content: "\A";
+  white-space: pre;
+}
+.mt-10 {
+  margin-top: 10px;
+}
+.mb-15 {
+  margin-bottom: 15px;
+}
+.cursor-pointer {
+  cursor: pointer;
+}
+q {
+  display: none;
+}
+hr {
+  display: none;
+}
+p em::before {
+  display: none;
+}
   .toolbar-button > button {
     position: relative;
     display: flex;
