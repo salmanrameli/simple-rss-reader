@@ -182,15 +182,20 @@ class Lists extends Component {
 				{this.state.lists.map(item => (
 					<div className={`list-group-item`} key={item.id} >
 						<div className={`card ${this.state.activeLink === item.id ? "text-white bg-primary" : item.unread === true ? 'text-dark' : 'text-secondary'}`}>
-							<div className={`${ item.indexKey % 10 === 0 ? 'vw1' : 
-												item.indexKey % 10 === 1 ? 'vw2' : 
-												item.indexKey % 10 === 2 ? 'vw3' : 
-												item.indexKey % 10 === 3 ? 'vw4' :
-												item.indexKey % 10 === 4 ? 'vw5' :
-												item.indexKey % 10 === 5 ? 'vw6' :
-												item.indexKey % 10 === 6 ? 'vw7' : 
-												item.indexKey % 10 === 7 ? 'vw8' :
-												item.indexKey % 10 === 8 ? 'vw9' : 'vw10'}`}>
+							<div className={`${ item.indexKey % 14 === 0 ? 'vw1' : 
+												item.indexKey % 14 === 1 ? 'vw2' : 
+												item.indexKey % 14 === 2 ? 'vw3' : 
+												item.indexKey % 14 === 3 ? 'vw4' :
+												item.indexKey % 14 === 4 ? 'vw5' :
+												item.indexKey % 14 === 5 ? 'vw6' :
+												item.indexKey % 14 === 6 ? 'vw7' : 
+												item.indexKey % 14 === 7 ? 'vw8' :
+												item.indexKey % 14 === 8 ? 'vw9' :
+												item.indexKey % 14 === 9 ? 'vw10' :
+												item.indexKey % 14 === 10 ? 'vw11' :
+												item.indexKey % 14 === 11 ? 'vw12' :
+												item.indexKey % 14 === 12 ? 'vw13' :
+												item.indexKey % 14 === 13 ? 'vw14' : 'vw15'}`}>
 								<div style={ this.state.activeLink === item.id ? {color: 'white'} : {color: 'black', opacity: 1} } className="cursor-pointer">
 									<header onClick={(e) => this.handleMarkAsRead(e, item.canonicalUrl, item.id, true, item.unread)}>
 										<h2><span>{item.title}</span></h2>
