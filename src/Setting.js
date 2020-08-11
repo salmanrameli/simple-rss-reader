@@ -206,10 +206,9 @@ class Setting extends React.Component {
 											<a href="javascript:void(0);" 
 												onClick={() => this.openInBrowser(url)}><span class="align-middle">{url}</span>
 											</a>
-											<button className="btn btn-danger float-right" 
-													onClick={(e) => this.deleteFeedUrl(e, url)}>
-														<i className="fa fa-trash-o"></i> Delete
-												</button>
+											<button className="btn btn-danger float-right" onClick={(e) => this.deleteFeedUrl(e, url)}>
+													<i className="fa fa-trash-o"></i> Delete
+											</button>
 										</td>
 									</tr>
 								))}

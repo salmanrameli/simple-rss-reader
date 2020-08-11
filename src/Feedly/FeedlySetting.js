@@ -152,8 +152,6 @@ class FeedlySetting extends Component {
                                     </div>
                                 </div>
                             </header>
-                            <div className="pt-0 pr-3 pl-3">
-                            </div>
                         </div>
                     </div>
                 </div>

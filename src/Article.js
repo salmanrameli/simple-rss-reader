@@ -72,7 +72,7 @@ class Article extends Component {
 	render() {
 		return (
 			this.state.display === 'loaded' ?
-				<div className="col-md-9 scrollable pt-3 pr-3 pb-3 pl-3 font-monospace">
+				<div className="col-md-9 scrollable pt-3 pr-3 pb-3 pl-3">
 					<div className="col-md-12 border-gradient pl-4">
 						<div className="mt-4 mb-4">
 							<h2 className="clear-before article-title mb-3">
