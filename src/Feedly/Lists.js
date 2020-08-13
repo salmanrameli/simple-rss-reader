@@ -182,20 +182,20 @@ class Lists extends Component {
 				{this.state.lists.map(item => (
 					<div className={`list-group-item`} key={item.id} >
 						<div className={`card ${this.state.activeLink === item.id ? "text-white bg-primary" : item.unread === true ? 'text-dark' : 'text-secondary'}`}>
-							<div className={`${ item.indexKey % 14 === 0 ? 'vw1' : 
-												item.indexKey % 14 === 1 ? 'vw2' : 
-												item.indexKey % 14 === 2 ? 'vw3' : 
-												item.indexKey % 14 === 3 ? 'vw4' :
-												item.indexKey % 14 === 4 ? 'vw5' :
-												item.indexKey % 14 === 5 ? 'vw6' :
-												item.indexKey % 14 === 6 ? 'vw7' : 
-												item.indexKey % 14 === 7 ? 'vw8' :
-												item.indexKey % 14 === 8 ? 'vw9' :
-												item.indexKey % 14 === 9 ? 'vw10' :
-												item.indexKey % 14 === 10 ? 'vw11' :
-												item.indexKey % 14 === 11 ? 'vw12' :
-												item.indexKey % 14 === 12 ? 'vw13' :
-												item.indexKey % 14 === 13 ? 'vw14' : 'vw15'}`}>
+							<div className={`${ item.indexKey % 15 === 0 ? 'vw1' : 
+												item.indexKey % 15 === 1 ? 'vw2' : 
+												item.indexKey % 15 === 2 ? 'vw3' : 
+												item.indexKey % 15 === 3 ? 'vw4' :
+												item.indexKey % 15 === 4 ? 'vw5' :
+												item.indexKey % 15 === 5 ? 'vw6' :
+												item.indexKey % 15 === 6 ? 'vw7' : 
+												item.indexKey % 15 === 7 ? 'vw8' :
+												item.indexKey % 15 === 8 ? 'vw9' :
+												item.indexKey % 15 === 9 ? 'vw10' :
+												item.indexKey % 15 === 10 ? 'vw11' :
+												item.indexKey % 15 === 11 ? 'vw12' :
+												item.indexKey % 15 === 12 ? 'vw13' :
+												item.indexKey % 15 === 13 ? 'vw14' : 'vw15'}`}>
 								<div style={ this.state.activeLink === item.id ? {color: 'white'} : {color: 'black', opacity: 1} } className="cursor-pointer">
 									<header onClick={(e) => this.handleMarkAsRead(e, item.canonicalUrl, item.id, true, item.unread)}>
 										<h2><span>{item.title}</span></h2>
@@ -208,6 +208,25 @@ class Lists extends Component {
 												:
 												""
 											}
+										</div>
+										<div className="engagement">
+											<div className="detail-box">
+												{item.engagement > 500 ?
+													<div className="d-inline-block">
+														<svg width="24" height="24" xmlns="http://www.w3.org/2000/svg" fill-rule="evenodd" clip-rule="evenodd" style={{ marginTop: '-5px' }}><path style={{ fill: 'red' }} d="M8.625 0c.61 7.189-5.625 9.664-5.625 15.996 0 4.301 3.069 7.972 9 8.004 5.931.032 9-4.414 9-8.956 0-4.141-2.062-8.046-5.952-10.474.924 2.607-.306 4.988-1.501 5.808.07-3.337-1.125-8.289-4.922-10.378zm4.711 13c3.755 3.989 1.449 9-1.567 9-1.835 0-2.779-1.265-2.769-2.577.019-2.433 2.737-2.435 4.336-6.423z"/></svg>
+														<svg width="24" height="24" xmlns="http://www.w3.org/2000/svg" fill-rule="evenodd" clip-rule="evenodd" style={{ marginTop: '-5px' }}><path style={{ fill: 'red' }} d="M8.625 0c.61 7.189-5.625 9.664-5.625 15.996 0 4.301 3.069 7.972 9 8.004 5.931.032 9-4.414 9-8.956 0-4.141-2.062-8.046-5.952-10.474.924 2.607-.306 4.988-1.501 5.808.07-3.337-1.125-8.289-4.922-10.378zm4.711 13c3.755 3.989 1.449 9-1.567 9-1.835 0-2.779-1.265-2.769-2.577.019-2.433 2.737-2.435 4.336-6.423z"/></svg>
+													</div>
+													:
+													item.engagement > 200 ?
+														<svg width="24" height="24" xmlns="http://www.w3.org/2000/svg" fill-rule="evenodd" clip-rule="evenodd" style={{ marginTop: '-5px' }}><path style={{ fill: 'red' }} d="M8.625 0c.61 7.189-5.625 9.664-5.625 15.996 0 4.301 3.069 7.972 9 8.004 5.931.032 9-4.414 9-8.956 0-4.141-2.062-8.046-5.952-10.474.924 2.607-.306 4.988-1.501 5.808.07-3.337-1.125-8.289-4.922-10.378zm4.711 13c3.755 3.989 1.449 9-1.567 9-1.835 0-2.779-1.265-2.769-2.577.019-2.433 2.737-2.435 4.336-6.423z"/></svg>
+														:
+														item.engagement > 100 ?
+															<svg width="24" height="24" xmlns="http://www.w3.org/2000/svg" fill-rule="evenodd" clip-rule="evenodd" style={{ marginTop: '-5px' }}><path style={{ fill: 'orange' }} d="M8.625 0c.61 7.189-5.625 9.664-5.625 15.996 0 4.301 3.069 7.972 9 8.004 5.931.032 9-4.414 9-8.956 0-4.141-2.062-8.046-5.952-10.474.924 2.607-.306 4.988-1.501 5.808.07-3.337-1.125-8.289-4.922-10.378zm4.711 13c3.755 3.989 1.449 9-1.567 9-1.835 0-2.779-1.265-2.769-2.577.019-2.433 2.737-2.435 4.336-6.423z"/></svg>
+															:
+															<svg width="24" height="24" xmlns="http://www.w3.org/2000/svg" fill-rule="evenodd" clip-rule="evenodd" style={{ marginTop: '-5px' }}><path style={{ fill: 'white' }} d="M8.625 0c.61 7.189-5.625 9.664-5.625 15.996 0 4.301 3.069 7.972 9 8.004 5.931.032 9-4.414 9-8.956 0-4.141-2.062-8.046-5.952-10.474.924 2.607-.306 4.988-1.501 5.808.07-3.337-1.125-8.289-4.922-10.378zm4.711 13c3.755 3.989 1.449 9-1.567 9-1.835 0-2.779-1.265-2.769-2.577.019-2.433 2.737-2.435 4.336-6.423z"/></svg>
+												}
+												&nbsp; {item.engagement}
+											</div>
 										</div>
 									</header>
 									<div className="row">

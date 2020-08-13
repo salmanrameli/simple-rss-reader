@@ -38,6 +38,7 @@ img::after {
 }
 .news-content {
   font-family: SF_Pro_Display;
+  font-size: 17px;
 }
 .news-content p::before {
   content: "\A";
