@@ -265,6 +265,9 @@ figure img {
 .twitter-tweet {
   font-style: italic;
 }
+blockquote p {
+  font-style: italic;
+}
 iframe[src*="//"] {
   width: 100%;
   height: 500px;
