@@ -47,13 +47,6 @@
     border: 0;
     border-radius: 0;
 }
-.card header {
-    position: relative;
-    padding-top: 100px;
-    background: linear-gradient(45deg, #94d0ff, #ff6ad5);
-    overflow: hidden;
-    perspective: 400px;
-}
 .bg-primary {
     background-image: linear-gradient(to left, cyan, #d53a9d);
 }
@@ -320,9 +313,16 @@
     background-repeat: no-repeat;
     background-size: cover;
 }
+.card header {
+    position: relative;
+    padding-top: 100px;
+    background: linear-gradient(45deg, #94d0ff, #ff6ad5);
+    overflow: hidden;
+    perspective: 400px;
+}
 .card header h2 {
     position: relative;
-    top: 3px;
+    top: 18px;
     padding-left: 5px;
     margin: 0;
     font-family: BMWHelvetica_Bold, 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -383,8 +383,12 @@
 .detail-box {
     white-space: pre;
 }
-.text-unread-entry {
-    border-top: solid 3px white;
+.barrier {
+    display: block;
+    background-color: white;
+    margin-top: 1.5px;
+    margin-bottom: 1.5px;
+    height: 2px;
 }
 button:focus {
     outline: none;
