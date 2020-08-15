@@ -120,8 +120,9 @@ small.remove-style::before {
 .padding-right {
   padding-right: 10px
 }
-.row .col-md-12 img {
+.news-content img {
   width: 100%;
+  margin-bottom: 15px;
 }
 .row .col-md-12 h1 {
   margin: 10px 0 5px 0
