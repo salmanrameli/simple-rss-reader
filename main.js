@@ -92,9 +92,9 @@ function createWindow() {
 
 function createLoadingWindow(callback) {
 	loadingWindow = new BrowserWindow({
-		width: 330, 
-		height: 400,
-		transparent: true,
+		width: 300, 
+		height: 350,
+		...(process.platform === 'darwin' ? {transparent: true} : {transparent: false}),
 		frame: false,
 		titleBarStyle: 'hidden',
 		center: true,
