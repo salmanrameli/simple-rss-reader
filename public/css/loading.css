@@ -1,6 +1,9 @@
 @font-face {
-    font-family: NotoSans_JP_Light;
-    src: url('../fonts/NotoSansJP-Light.otf')
+    font-family: BMWHelvetica_Bold;
+    src: url('../fonts/BMWHelvetica-Bold.otf')
+}
+body {
+    background-color: transparent;
 }
 .center-content {
     display: flex;
@@ -35,5 +38,9 @@
     animation-direction: forward;
 }
 .loading-text {
-    font-family: NotoSans_JP_Light;
+    font-family: BMWHelvetica_Bold;
+    color:black; 
+    text-align: center;
+    line-height: 0.82em;
+    letter-spacing: -0.0357em;
 }

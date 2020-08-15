@@ -94,6 +94,7 @@ function createLoadingWindow(callback) {
 	loadingWindow = new BrowserWindow({
 		width: 330, 
 		height: 400,
+		transparent: true,
 		frame: false,
 		titleBarStyle: 'hidden',
 		center: true,
