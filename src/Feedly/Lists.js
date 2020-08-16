@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Axios from 'axios';
+import Engagement from './Engagement';
 import { getAuthCode } from './UserDetails'
 import { markers } from './Constants'
 
@@ -180,29 +181,45 @@ class Lists extends Component {
 		return (
 			<div className="col-md-3 scrollable no-padding-right" >
 				{this.state.lists.map(item => (
-					<div className={`list-group-item`} key={item.id} >
+					<div className="list-group-item" key={item.id} >
 						<div className={`card ${this.state.activeLink === item.id ? "text-white bg-primary" : item.unread === true ? 'text-dark' : 'text-secondary'}`}>
-							<div className={`${ item.indexKey % 10 === 0 ? 'vw1' : 
-												item.indexKey % 10 === 1 ? 'vw2' : 
-												item.indexKey % 10 === 2 ? 'vw3' : 
-												item.indexKey % 10 === 3 ? 'vw4' :
-												item.indexKey % 10 === 4 ? 'vw5' :
-												item.indexKey % 10 === 5 ? 'vw6' :
-												item.indexKey % 10 === 6 ? 'vw7' : 
-												item.indexKey % 10 === 7 ? 'vw8' :
-												item.indexKey % 10 === 8 ? 'vw9' : 'vw10'}`}>
+							<div className={`${ item.indexKey % 15 === 0 ? 'vw1' : 
+												item.indexKey % 15 === 1 ? 'vw2' : 
+												item.indexKey % 15 === 2 ? 'vw3' : 
+												item.indexKey % 15 === 3 ? 'vw4' :
+												item.indexKey % 15 === 4 ? 'vw5' :
+												item.indexKey % 15 === 5 ? 'vw6' :
+												item.indexKey % 15 === 6 ? 'vw7' : 
+												item.indexKey % 15 === 7 ? 'vw8' :
+												item.indexKey % 15 === 8 ? 'vw9' :
+												item.indexKey % 15 === 9 ? 'vw10' :
+												item.indexKey % 15 === 10 ? 'vw11' :
+												item.indexKey % 15 === 11 ? 'vw12' :
+												item.indexKey % 15 === 12 ? 'vw13' :
+												item.indexKey % 15 === 13 ? 'vw14' : 'vw15'}`}>
 								<div style={ this.state.activeLink === item.id ? {color: 'white'} : {color: 'black', opacity: 1} } className="cursor-pointer">
 									<header onClick={(e) => this.handleMarkAsRead(e, item.canonicalUrl, item.id, true, item.unread)}>
-										<h2><span>{item.title}</span></h2>
-										<div className="title">
+										<h2>
+											<span>{item.title}</span>
+										</h2>
+										<div className="title" title="Article's website origin">
 											<div className="detail-box">
 												{item.origin.title}
 											</div>
 											{item.unread === true ?
-												<span className="text-unread-entry">Unread entry</span>
+												<div>
+													<hr className="barrier" />
+													<span>Unread entry</span>
+												</div>
 												:
 												""
 											}
+										</div>
+										<div className="engagement" title="Engagement shows how popular the article is">
+											<div className="detail-box">
+												<Engagement engagement={item.engagement} />
+												&nbsp; {item.engagement}
+											</div>
 										</div>
 									</header>
 									<div className="row">
@@ -211,7 +228,7 @@ class Lists extends Component {
 										</div>
 										<div className="col-12 col-md-6 col-lg-6 col-xl-6">
 											<div className="desc float-right">
-												<div className="actions float-right">
+												<div className="actions float-right mr-2">
 													{item.unread === true ?
 														<button type="button" onClick={(e) => this.handleMarkAsRead(e, item.canonicalUrl, item.id, false, true)} title="Mark article as read" className="pl-2 no-focus">
 															<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">

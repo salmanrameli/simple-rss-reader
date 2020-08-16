@@ -2,97 +2,20 @@
 <html>
     <head>
         <title>Loading</title>
-        <style>
-            body {
-                font-family: Inconsolata, Arial, Helvetica, sans-serif;
-            }
-            .spinner {
-                margin:0px auto 0px auto;
-                width:100px;
-                height:100px;
-                position:relative;
-                text-align:center;
-                -webkit-animation:rotate 2s infinite linear;
-                -moz-animation:rotate 2s infinite linear;
-                -ms-animation:rotate 2s infinite linear;
-                -o-animation:rotate 2s infinite linear;
-                animation:rotate 2s infinite linear
-            }
-            .dot1, .dot2, .dot3 {
-                width:40%;
-                height:40%;
-                display:inline-block;
-                position:absolute;
-                border-radius:100%;
-                -webkit-animation:bounce 3s infinite ease-in-out;
-                -moz-animation:bounce 3s infinite ease-in-out;
-                -ms-animation:bounce 3s infinite ease-in-out;
-                -o-animation:bounce 3s infinite ease-in-out;
-                animation:bounce 3s infinite ease-in-out
-            }
-            .dot1 {
-                background-color:#E74C3C;
-                top:0;
-                left:0
-            }
-            .dot2 {
-                background-color:#3498DB;
-                top:0;
-                right:0;
-                -webkit-animation-delay:-1s;
-                -moz-animation-delay:-1s;
-                -ms-animation-delay:-1s;
-                -o-animation-delay:-1s;
-                animation-delay:-1s
-            }
-            .dot3 {
-                background-color:#F1C40F;
-                top:auto;
-                bottom:0;
-                left:30px;
-                -webkit-animation-delay:-2s;
-                -moz-animation-delay:-2s;
-                -ms-animation-delay:-2s;
-                -o-animation-delay:-2s;
-                animation-delay:-2s
-            }
-            @-webkit-keyframes rotate { 100%{-webkit-transform:rotate(360deg)} }
-            @keyframes rotate{ 
-                100% {
-                    transform:rotate(360deg);
-                    -webkit-transform:rotate(360deg);
-                    -moz-transform:rotate(360deg);
-                    -ms-transform:rotate(360deg);
-                    -o-transform:rotate(360deg)}
-            }
-            @-webkit-keyframes bounce {
-                0%,100%{-webkit-transform:scale(0)}
-                50%{-webkit-transform:scale(1)}
-            } 
-            @keyframes bounce {0%, 
-                100% {transform:scale(0);-webkit-transform:scale(0);-moz-transform:scale(0);-ms-transform:scale(0);-o-transform:scale(0)}
-                50% {transform:scale(1);-webkit-transform:scale(1);-moz-transform:scale(1);-ms-transform:scale(1);-o-transform:scale(1)}
-            }
-            #container {
-                display: flex;
-                justify-content: center;
-                align-items: center;
-            }
-            .centered {
-                position: absolute;
-                top: 50%;
-                left: 50%;
-                transform: translateX(-50%) translateY(-50%);
-            }
-        </style>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" />
+        <link rel="stylesheet" href="./css/loading.css" />
     </head>
     <body>
-        <div id="container">
-            <div class="centered">
-                <div class="spinner">
-                    <div class="dot1"></div>
-                    <div class="dot2"></div>
-                    <div class="dot3"></div>
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-12" style="height: 100vh;">
+                    <div class="center-content">
+                        <div class="row w-100">
+                            <div class="col-12">
+                                <div class="app-icon bounce pr-5" style="height: 256px;"></div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>

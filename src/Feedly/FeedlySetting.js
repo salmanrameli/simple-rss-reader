@@ -95,18 +95,23 @@ class FeedlySetting extends Component {
                 <div className="col-md-12" style={{ minHeight: '100vh'}}>
                     <div className="card">
                         <div className="bg-setting">
-                            <header>
-                                <h2 style={{ fontSize: '4em' }}><span>Application</span><span>Setting</span></h2>
+                            <header style={{ height: '100vh' }}>
+                                <h2 style={{ fontSize: '4em', marginLeft: '15px' }}>
+                                    <span>Application</span>
+                                    <span>Setting</span>
+                                </h2>
                                 <div className="title">
-                                    <span className="en">Setting</span>
+                                    <form onSubmit={this.logout}>
+                                        <button type="submit" className="btn btn-link text-white" style={{ padding: '3px' }}>
+                                            LOGOUT&nbsp;&nbsp;
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" style={{ paddingBottom: '4px' }}><path style={{ fill: 'white' }} d="M16 9v-4l8 7-8 7v-4h-8v-6h8zm-16-7v20h14v-2h-12v-16h12v-2h-14z"/></svg>
+                                        </button>
+                                    </form>
                                 </div>
-                            </header>
-                            <div className="pt-5 pr-5 pl-5">
-                                <div className="row">
-                                    <div className="col-4">
-                                        <div className="border-gradient" style={{ height: '100%', padding: '15px' }}>
-                                            <p><i>Feedly categories to stream</i></p>
-                                            <br></br>
+                                <div className="row ml-3 mr-3">
+                                    <div className="col-6">
+                                        <div className="card-feedly-setting">
+                                            <p><b>Feedly categories to stream</b></p>
                                             <form>
                                                 <div className="form-check">
                                                     <input className="form-check-input" type="radio" name="exampleRadios" id="all" value="all" checked={this.state.activeCategory === "all"} onChange={e => this.handleCategoryToStreamChange(e)} />
@@ -125,8 +130,8 @@ class FeedlySetting extends Component {
                                             </form>
                                         </div>
                                     </div>
-                                    <div className="col-4">
-                                        <div className="border-gradient" style={{ height: '100%', padding: '15px' }}>
+                                    <div className="col-6">
+                                        <div className="card-feedly-setting">
                                             <form id="windowSizeSetting" onSubmit={this.handleWindowSizeSetting}>
                                                 <div className="form-row">
                                                     <div className="form-group col-md-6">
@@ -138,22 +143,15 @@ class FeedlySetting extends Component {
                                                         <input className="form-control form-control-lg" type="text" name="height" placeholder={this.state.winHeight} />
                                                     </div>
                                                     <div className="form-group col-12">
-                                                        <p><i>Please reopen window to see the changes</i></p>
+                                                        <p><b>Please reopen window to see the changes</b></p>
                                                     </div>
-                                                    <button className="btn btn-success float-right" type="submit"><i className="fa fa-bookmark"></i> Save</button>
+                                                    <button className="btn btn-outline-success btn-block" type="submit"><i className="fas fa-check"></i> Save</button>
                                                 </div>
                                             </form>
                                         </div>
                                     </div>
-                                    <div className="col-4">
-                                        <div className="border-gradient" style={{ height: '100%', padding: '15px' }}>
-                                            <form onSubmit={this.logout}>
-                                                <button type="submit" className="btn btn-outline-danger btn-block">Logout from Feedly &nbsp;<i className="fas fa-sign-out-alt"></i></button>
-                                            </form>
-                                        </div>
-                                    </div>
                                 </div>
-                            </div>
+                            </header>
                         </div>
                     </div>
                 </div>

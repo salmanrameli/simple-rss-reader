@@ -1,7 +1,7 @@
 {
   "name": "RSS",
   "description": "Simple RSS reader utilising Electron and ReactJS with partial Feedly support",
-  "version": "4.0.0",
+  "version": "4.1.0",
   "private": true,
   "main": "main.js",
   "homepage": "./",
@@ -38,7 +38,7 @@
       "category": "public.app-category.utilities"
     },
     "linux": {
-      "icon": "assets/icon.png",
+      "icon": "assets/icon_1024x1024x32.png",
       "executableName": "Simple RSS Reader",
       "target": [
         "deb",
@@ -57,14 +57,14 @@
     "electron-store": "^5.2.0",
     "feedparser": "^2.2.10",
     "jsonfile": "^6.0.1",
-    "lodash": "^4.17.19",
+    "lodash": "^4.17.20",
     "lodash.template": "^4.5.0",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-electron-web-view": "^2.0.1",
     "react-html-parser": "^2.0.2",
     "react-router-dom": "^5.2.0",
-    "react-scripts": "3.4.1",
+    "react-scripts": "^3.4.3",
     "react-spinners": "^0.9.0",
     "string-to-stream": "^3.0.1"
   },
