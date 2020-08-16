@@ -19,6 +19,7 @@ Click [here](https://feedly.com/v3/auth/dev) to get Feedly developer access toke
 
 ## Screenshots
 #### Feedly Mode
+![Feedly Login](https://raw.githubusercontent.com/salmanrameli/simple-rss-reader/master/Feedly%20Login.png)
 
 ![Feedly Article](https://raw.githubusercontent.com/salmanrameli/simple-rss-reader/master/Feedly%20Article.png)
 
@@ -31,8 +32,6 @@ Click [here](https://feedly.com/v3/auth/dev) to get Feedly developer access toke
 ![Article](https://raw.githubusercontent.com/salmanrameli/simple-rss-reader/master/Article.png)
 
 ![Setting](https://raw.githubusercontent.com/salmanrameli/simple-rss-reader/master/Setting.png)
-
-![Feedly Login](https://raw.githubusercontent.com/salmanrameli/simple-rss-reader/master/Feedly%20Login.png)
 
 ## Available Scripts
 
