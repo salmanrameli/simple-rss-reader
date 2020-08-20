@@ -1,17 +1,8 @@
 import React, { Component } from 'react';
 import ReactHtmlParser from 'react-html-parser';
-import { css } from '@emotion/core';
-import { BarLoader } from 'react-spinners';
 
 const { shell } = window.require('electron')
 const WebView = require('react-electron-web-view');
-
-const override = css`
-	display: block;
-	margin-left: auto;
-  	margin-right: auto;
-	width: 15%;
-`;
 
 class Article extends Component {
 	constructor(props) {
@@ -104,7 +95,6 @@ class Article extends Component {
 					:
 					<div className="col-md-9 centered">
 						<div className="centered-img">
-							<BarLoader css={override} color={'#36D7B7'} sizeUnit={"px"} size={15} loading={this.state.isLoading} />
 							<h1 style={{ 'color': 'lightgrey', 'textAlign': 'center'}}>Article will be shown here</h1>
 						</div>
 					</div>
