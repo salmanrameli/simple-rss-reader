@@ -183,20 +183,25 @@ class Lists extends Component {
 				{this.state.lists.map(item => (
 					<div className="list-group-item" key={item.id} >
 						<div className={`card ${this.state.activeLink === item.id ? "text-white bg-primary" : item.unread === true ? 'text-dark' : 'text-secondary'}`}>
-							<div className={`${ item.indexKey % 15 === 0 ? 'vw1' : 
-												item.indexKey % 15 === 1 ? 'vw2' : 
-												item.indexKey % 15 === 2 ? 'vw3' : 
-												item.indexKey % 15 === 3 ? 'vw4' :
-												item.indexKey % 15 === 4 ? 'vw5' :
-												item.indexKey % 15 === 5 ? 'vw6' :
-												item.indexKey % 15 === 6 ? 'vw7' : 
-												item.indexKey % 15 === 7 ? 'vw8' :
-												item.indexKey % 15 === 8 ? 'vw9' :
-												item.indexKey % 15 === 9 ? 'vw10' :
-												item.indexKey % 15 === 10 ? 'vw11' :
-												item.indexKey % 15 === 11 ? 'vw12' :
-												item.indexKey % 15 === 12 ? 'vw13' :
-												item.indexKey % 15 === 13 ? 'vw14' : 'vw15'}`}>
+							<div className={`${ item.indexKey % 20 === 0 ? 'vw1' : 
+												item.indexKey % 20 === 1 ? 'vw2' : 
+												item.indexKey % 20 === 2 ? 'vw3' : 
+												item.indexKey % 20 === 3 ? 'vw4' :
+												item.indexKey % 20 === 4 ? 'vw5' :
+												item.indexKey % 20 === 5 ? 'vw6' :
+												item.indexKey % 20 === 6 ? 'vw7' : 
+												item.indexKey % 20 === 7 ? 'vw8' :
+												item.indexKey % 20 === 8 ? 'vw9' :
+												item.indexKey % 20 === 9 ? 'vw10' :
+												item.indexKey % 20 === 10 ? 'vw11' :
+												item.indexKey % 20 === 11 ? 'vw12' :
+												item.indexKey % 20 === 12 ? 'vw13' :
+												item.indexKey % 20 === 13 ? 'vw14' :
+												item.indexKey % 20 === 14 ? 'vw15' :
+												item.indexKey % 20 === 15 ? 'vw16' :
+												item.indexKey % 20 === 16 ? 'vw17' :
+												item.indexKey % 20 === 17 ? 'vw18' :
+												item.indexKey % 20 === 18 ? 'vw19' : 'vw20'}`}>
 								<div style={ this.state.activeLink === item.id ? {color: 'white'} : {color: 'black', opacity: 1} } className="cursor-pointer">
 									<header onClick={(e) => this.handleMarkAsRead(e, item.canonicalUrl, item.id, true, item.unread)}>
 										<h2>

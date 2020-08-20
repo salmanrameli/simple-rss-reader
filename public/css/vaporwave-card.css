@@ -313,6 +313,76 @@
     background-repeat: no-repeat;
     background-size: cover;
 }
+.card .vw16 header::before {
+    content: '';
+    position: absolute;
+    top: -5%;
+    left: -5%;
+    width: 110%;
+    height: 110%;
+    background-size: cover;
+    mix-blend-mode: multiply;
+    animation: swing 4s alternate ease-in-out infinite;
+    background: url('../bg/vaporwave/16.jpg') bottom;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.card .vw17 header::before {
+    content: '';
+    position: absolute;
+    top: -5%;
+    left: -5%;
+    width: 110%;
+    height: 110%;
+    background-size: cover;
+    mix-blend-mode: multiply;
+    animation: swing 4s alternate ease-in-out infinite;
+    background: url('../bg/vaporwave/17.jpg') bottom;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.card .vw18 header::before {
+    content: '';
+    position: absolute;
+    top: -5%;
+    left: -5%;
+    width: 110%;
+    height: 110%;
+    background-size: cover;
+    mix-blend-mode: multiply;
+    animation: swing 4s alternate ease-in-out infinite;
+    background: url('../bg/vaporwave/18.jpg') bottom;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.card .vw19 header::before {
+    content: '';
+    position: absolute;
+    top: -5%;
+    left: -5%;
+    width: 110%;
+    height: 110%;
+    background-size: cover;
+    mix-blend-mode: multiply;
+    animation: swing 4s alternate ease-in-out infinite;
+    background: url('../bg/vaporwave/19.jpg') bottom;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.card .vw20 header::before {
+    content: '';
+    position: absolute;
+    top: -5%;
+    left: -5%;
+    width: 110%;
+    height: 110%;
+    background-size: cover;
+    mix-blend-mode: multiply;
+    animation: swing 4s alternate ease-in-out infinite;
+    background: url('../bg/vaporwave/20.jpg') bottom;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
 .card header {
     position: relative;
     padding-top: 100px;
