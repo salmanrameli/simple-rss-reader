@@ -38,7 +38,7 @@
       "category": "public.app-category.utilities"
     },
     "linux": {
-      "icon": "assets/icon_1024x1024x32.png",
+      "icon": "assets/icon_512x512x32.png",
       "executableName": "Simple RSS Reader",
       "target": [
         "deb",

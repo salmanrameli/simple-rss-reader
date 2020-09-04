@@ -42,7 +42,7 @@ function createWindow() {
 		'minHeight': 600,
 		show: false,
 		titleBarStyle: 'hidden',
-		icon: path.join(__dirname, '/assets/icon_1024x1024x32.png'),
+		icon: path.join(__dirname, '/assets/icon_512x512x32.png'),
 		webPreferences: {
 			webviewTag: true,
 			nodeIntegration: true,

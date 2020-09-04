@@ -174,7 +174,7 @@ class Lists extends Component {
 	}
 
 	async openInBrowser(url) {
-		await shell.openExternal(url)
+		shell.openExternal(url)
 	}
 	
 	render() {
