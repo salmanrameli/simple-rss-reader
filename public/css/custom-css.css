@@ -218,6 +218,9 @@ h3::after {
 .cursor-pointer {
   cursor: pointer;
 }
+.cursor-default {
+  cursor: default;
+}
 q {
   display: none;
 }

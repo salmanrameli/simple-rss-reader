@@ -468,6 +468,36 @@ button:focus {
     outline: none;
     box-shadow: none;
 }
+.fill-white {
+    fill: white;
+}
+.fill-black {
+    fill: black;
+}
+.checkmark-icon svg path:hover {
+    fill: limegreen;
+    stroke-opacity: 1;
+}
+.crossmark-icon svg path:hover {
+    fill: red;
+    stroke-opacity: 1;
+}
+.browser-icon svg path.fill-black:hover {
+    fill:  rgba(73,143,226,0.80);
+    stroke-opacity: 1;
+}
+.browser-icon svg path.fill-white:hover {
+    fill: black;
+    stroke-opacity: 1;
+}
+.url-icon svg path.fill-black:hover {
+    fill: rgba(73,143,226,0.80);
+    stroke-opacity: 1;
+}
+.url-icon svg path.fill-white:hover {
+    fill: black;
+    stroke-opacity: 1;
+}
 @-moz-keyframes swing {
     0% {
         transform: rotateY(8deg);

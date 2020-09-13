@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="https://raw.githubusercontent.com/salmanrameli/simple-rss-reader/master/assets/icon_1024x1024x32.png" height="256">
+  <img src="https://raw.githubusercontent.com/salmanrameli/simple-rss-reader/master/assets/icon.png" height="256">
   <h1 align="center">Simple RSS Reader</h1>
 </p>
 
