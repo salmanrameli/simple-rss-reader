@@ -42,7 +42,7 @@ function createWindow() {
 		'minHeight': 600,
 		show: false,
 		titleBarStyle: 'hidden',
-		icon: path.join(__dirname, '/assets/icon_512x512x32.png'),
+		icon: path.join(__dirname, '/assets/icon.png'),
 		webPreferences: {
 			webviewTag: true,
 			nodeIntegration: true,
@@ -112,7 +112,7 @@ function createLoadingWindow(callback) {
 
 	Axios({
 		method: 'get',
-		url: `https://dog.ceo/api/breeds/image/random`,
+		url: `https://www.google.com`,
 		responseType: 'application/json',
 		timeout: 10000,
 	}).then(response => {
