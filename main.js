@@ -126,7 +126,7 @@ function createErrorWindow() {
 	errorWindow = new BrowserWindow({
 		width: 800, 
 		height: 275,
-		frame: false,
+		frame: true,
 		titleBarStyle: 'hidden',
 		center: true,
 		maximizable: false,

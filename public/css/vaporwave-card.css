@@ -390,6 +390,13 @@
     overflow: hidden;
     perspective: 400px;
 }
+.card .bg-login header {
+    position: relative;
+    padding-top: 0;
+    background: linear-gradient(45deg, #94d0ff, #ff6ad5);
+    overflow: hidden;
+    perspective: 400px;
+}
 .card header h2 {
     position: relative;
     top: 18px;
