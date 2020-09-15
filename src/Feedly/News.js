@@ -46,7 +46,7 @@ class News extends Component {
 			timeout: 10000
 		}).then((response) => {
 			let merged = [].concat.apply([], response.data.items)
-			let randomNumber = Math.floor((Math.random() * 20) + 1)
+			let randomNumber = Math.floor((Math.random() * 24) + 1)
 
 			this.setState({
 				lists: merged.map((entry, index) => {

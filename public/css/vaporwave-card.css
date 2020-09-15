@@ -383,6 +383,62 @@
     background-repeat: no-repeat;
     background-size: cover;
 }
+.card .vw21 header::before {
+    content: '';
+    position: absolute;
+    top: -5%;
+    left: -5%;
+    width: 110%;
+    height: 110%;
+    background-size: cover;
+    mix-blend-mode: multiply;
+    animation: swing 4s alternate ease-in-out infinite;
+    background: url('../bg/vaporwave/21.jpg') bottom;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.card .vw22 header::before {
+    content: '';
+    position: absolute;
+    top: -5%;
+    left: -5%;
+    width: 110%;
+    height: 110%;
+    background-size: cover;
+    mix-blend-mode: multiply;
+    animation: swing 4s alternate ease-in-out infinite;
+    background: url('../bg/vaporwave/22.jpg') bottom;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.card .vw23 header::before {
+    content: '';
+    position: absolute;
+    top: -5%;
+    left: -5%;
+    width: 110%;
+    height: 110%;
+    background-size: cover;
+    mix-blend-mode: multiply;
+    animation: swing 4s alternate ease-in-out infinite;
+    background: url('../bg/vaporwave/23.jpg') bottom;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.card .vw24 header::before {
+    content: '';
+    position: absolute;
+    top: -5%;
+    left: -5%;
+    width: 110%;
+    height: 110%;
+    background-size: cover;
+    mix-blend-mode: multiply;
+    animation: swing 4s alternate ease-in-out infinite;
+    background: url('../bg/vaporwave/24.jpg') bottom;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
 .card header {
     position: relative;
     padding-top: 100px;
