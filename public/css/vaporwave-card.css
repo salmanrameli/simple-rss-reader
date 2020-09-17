@@ -225,7 +225,7 @@
     background-size: cover;
     mix-blend-mode: multiply;
     animation: swing 4s alternate ease-in-out infinite;
-    background: url('../bg/vaporwave/9.jpeg') bottom;
+    background: url('../bg/vaporwave/9.jpg') bottom;
     background-repeat: no-repeat;
     background-size: cover;
 }
@@ -436,6 +436,20 @@
     mix-blend-mode: multiply;
     animation: swing 4s alternate ease-in-out infinite;
     background: url('../bg/vaporwave/24.jpg') bottom;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.card .vw25 header::before {
+    content: '';
+    position: absolute;
+    top: -5%;
+    left: -5%;
+    width: 110%;
+    height: 110%;
+    background-size: cover;
+    mix-blend-mode: multiply;
+    animation: swing 4s alternate ease-in-out infinite;
+    background: url('../bg/vaporwave/25.jpg') bottom;
     background-repeat: no-repeat;
     background-size: cover;
 }
