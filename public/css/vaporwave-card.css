@@ -103,7 +103,7 @@
     background-repeat: no-repeat;
     background-size: cover;
 }
-.card .vw1 header::before {
+.card .vw0 header::before {
     content: '';
     position: absolute;
     top: -5%;
@@ -117,7 +117,7 @@
     background-repeat: no-repeat;
     background-size: cover;
 }
-.card .vw2 header::before {
+.card .vw1 header::before {
     content: '';
     position: absolute;
     top: -5%;
@@ -131,7 +131,7 @@
     background-repeat: no-repeat;
     background-size: cover;
 }
-.card .vw3 header::before {
+.card .vw2 header::before {
     content: '';
     position: absolute;
     top: -5%;
@@ -145,7 +145,7 @@
     background-repeat: no-repeat;
     background-size: cover;
 }
-.card .vw4 header::before {
+.card .vw3 header::before {
     content: '';
     position: absolute;
     top: -5%;
@@ -159,7 +159,7 @@
     background-repeat: no-repeat;
     background-size: cover;
 }
-.card .vw5 header::before {
+.card .vw4 header::before {
     content: '';
     position: absolute;
     top: -5%;
@@ -173,7 +173,7 @@
     background-repeat: no-repeat;
     background-size: cover;
 }
-.card .vw6 header::before {
+.card .vw5 header::before {
     content: '';
     position: absolute;
     top: -5%;
@@ -187,7 +187,7 @@
     background-repeat: no-repeat;
     background-size: cover;
 }
-.card .vw7 header::before {
+.card .vw6 header::before {
     content: '';
     position: absolute;
     top: -5%;
@@ -201,7 +201,7 @@
     background-repeat: no-repeat;
     background-size: cover;
 }
-.card .vw8 header::before {
+.card .vw7 header::before {
     content: '';
     position: absolute;
     top: -5%;
@@ -215,7 +215,7 @@
     background-repeat: no-repeat;
     background-size: cover;
 }
-.card .vw9 header::before {
+.card .vw8 header::before {
     content: '';
     position: absolute;
     top: -5%;
@@ -229,7 +229,7 @@
     background-repeat: no-repeat;
     background-size: cover;
 }
-.card .vw10 header::before {
+.card .vw9 header::before {
     content: '';
     position: absolute;
     top: -5%;
@@ -243,7 +243,7 @@
     background-repeat: no-repeat;
     background-size: cover;
 }
-.card .vw11 header::before {
+.card .vw10 header::before {
     content: '';
     position: absolute;
     top: -5%;
@@ -257,7 +257,7 @@
     background-repeat: no-repeat;
     background-size: cover;
 }
-.card .vw12 header::before {
+.card .vw11 header::before {
     content: '';
     position: absolute;
     top: -5%;
@@ -271,7 +271,7 @@
     background-repeat: no-repeat;
     background-size: cover;
 }
-.card .vw13 header::before {
+.card .vw12 header::before {
     content: '';
     position: absolute;
     top: -5%;
@@ -285,7 +285,7 @@
     background-repeat: no-repeat;
     background-size: cover;
 }
-.card .vw14 header::before {
+.card .vw13 header::before {
     content: '';
     position: absolute;
     top: -5%;
@@ -299,7 +299,7 @@
     background-repeat: no-repeat;
     background-size: cover;
 }
-.card .vw15 header::before {
+.card .vw14 header::before {
     content: '';
     position: absolute;
     top: -5%;
@@ -313,7 +313,7 @@
     background-repeat: no-repeat;
     background-size: cover;
 }
-.card .vw16 header::before {
+.card .vw15 header::before {
     content: '';
     position: absolute;
     top: -5%;
@@ -327,7 +327,7 @@
     background-repeat: no-repeat;
     background-size: cover;
 }
-.card .vw17 header::before {
+.card .vw16 header::before {
     content: '';
     position: absolute;
     top: -5%;
@@ -341,7 +341,7 @@
     background-repeat: no-repeat;
     background-size: cover;
 }
-.card .vw18 header::before {
+.card .vw17 header::before {
     content: '';
     position: absolute;
     top: -5%;
@@ -355,7 +355,7 @@
     background-repeat: no-repeat;
     background-size: cover;
 }
-.card .vw19 header::before {
+.card .vw18 header::before {
     content: '';
     position: absolute;
     top: -5%;
@@ -369,7 +369,7 @@
     background-repeat: no-repeat;
     background-size: cover;
 }
-.card .vw20 header::before {
+.card .vw19 header::before {
     content: '';
     position: absolute;
     top: -5%;
@@ -383,7 +383,7 @@
     background-repeat: no-repeat;
     background-size: cover;
 }
-.card .vw21 header::before {
+.card .vw20 header::before {
     content: '';
     position: absolute;
     top: -5%;
@@ -397,7 +397,7 @@
     background-repeat: no-repeat;
     background-size: cover;
 }
-.card .vw22 header::before {
+.card .vw21 header::before {
     content: '';
     position: absolute;
     top: -5%;
@@ -411,7 +411,7 @@
     background-repeat: no-repeat;
     background-size: cover;
 }
-.card .vw23 header::before {
+.card .vw22 header::before {
     content: '';
     position: absolute;
     top: -5%;
@@ -425,7 +425,7 @@
     background-repeat: no-repeat;
     background-size: cover;
 }
-.card .vw24 header::before {
+.card .vw23 header::before {
     content: '';
     position: absolute;
     top: -5%;
@@ -439,7 +439,7 @@
     background-repeat: no-repeat;
     background-size: cover;
 }
-.card .vw25 header::before {
+.card .vw24 header::before {
     content: '';
     position: absolute;
     top: -5%;
