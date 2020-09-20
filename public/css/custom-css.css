@@ -36,7 +36,7 @@ html, body {
   padding-top: 0;
   padding-bottom: 0;
 }
-.col-md-3 .card-columns .card:last-child {
+.col-md-3 .card-columns:last-child {
   margin-bottom: 50px;
 }
 .col-md-12 .card-columns .card {
@@ -315,4 +315,7 @@ iframe[src*="//"] {
   background-color: black;
   z-index: 1;
   bottom: 0;
+}
+.border-black {
+  border: 2px solid black;
 }
