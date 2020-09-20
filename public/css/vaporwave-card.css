@@ -463,6 +463,21 @@
 .card header h2 span {
     display: block;
 }
+.card header h3 {
+    position: relative;
+    top: 18px;
+    padding-left: 5px;
+    margin: 0;
+    font-family: BMWHelvetica_Bold, 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 1.7em;
+    text-transform: uppercase;
+    line-height: 0.82em;
+    letter-spacing: -0.0357em;
+    color: #fff;
+}
+.card header h3 span {
+    word-break: break-all;
+}
 .card-columns h2 {
     font-family: BMWHelvetica_Bold, 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     font-size: 1.5em;
@@ -578,7 +593,7 @@ button:focus {
     stroke-opacity: 1;
 }
 .browser-icon svg path.fill-white:hover {
-    fill: black;
+    fill: red;
     stroke-opacity: 1;
 }
 .url-icon svg path.fill-black:hover {
@@ -586,7 +601,7 @@ button:focus {
     stroke-opacity: 1;
 }
 .url-icon svg path.fill-white:hover {
-    fill: black;
+    fill: red;
     stroke-opacity: 1;
 }
 @-moz-keyframes swing {
