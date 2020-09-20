@@ -67,7 +67,8 @@ class Article extends Component {
 					<div className="col-md-12 border-gradient pl-4">
 						<div className="mt-4 mb-4">
 							<h2 className="clear-before article-title mb-3">
-								{this.state.title}<br></br>
+								{this.state.title}
+								<br />
 								<span className="article-subtitle">
 									By {this.state.author} on {this.state.date}.&nbsp;
 									<button type="button" title="View Article" className="article-action-button no-focus" onClick={() => this.handleClick(this.state.link)}>

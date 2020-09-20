@@ -13,10 +13,37 @@ html, body {
     padding: 0;
     overflow: hidden;
     font-family: NotoSans_JP_Light, 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  }
+}
 .container-fluid {
   padding-right: 0;
   padding-left: 0;
+}
+.card-columns {
+  column-gap: 0;
+}
+.card-columns .card {
+  margin-bottom: -5px;
+}
+.col-md-3 .card-columns {
+  column-count: 1
+}
+.col-md-12 .card-columns {
+  column-count: 4;
+}
+.col-md-3 .card-columns .card {
+  padding-left: 0;
+  padding-right: 0;
+  padding-top: 0;
+  padding-bottom: 0;
+}
+.col-md-3 .card-columns .card:last-child {
+  margin-bottom: 50px;
+}
+.col-md-12 .card-columns .card {
+  padding-left: 0;
+  padding-right: 0;
+  padding-top: 0;
+  padding-bottom: 0;
 }
 .active {
   background-color: #4c4c4cb5;
@@ -128,7 +155,7 @@ small.remove-style::before {
   margin: 10px 0 5px 0
 }
 .row .col-md-12 h2 {
-  margin: 10px 17px 5px -15px
+  margin: 10px 17px 5px 0px
 }
 .row .col-md-12 .news-content h2 {
   margin: 10px 0
@@ -283,4 +310,9 @@ iframe[src*="//"] {
   color: white;
   text-transform: uppercase;
   opacity: 0.85;
+}
+.button-expand {
+  background-color: black;
+  z-index: 1;
+  bottom: 0;
 }

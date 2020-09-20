@@ -20,7 +20,8 @@ class Lists extends Component {
 			oldId: '',
 			oldReadId: '',
 			isUnreadOnly: '',
-			articleMarkedAsUnread: false
+			articleMarkedAsUnread: false,
+			isExpanded: ''
 		}
 
 		this.stringToBool = this.stringToBool.bind(this)
@@ -29,6 +30,7 @@ class Lists extends Component {
 		this.markAsRead = this.markAsRead.bind(this)
 		this.handleMarkAsRead = this.handleMarkAsRead.bind(this)
 		this.handleMarkAsUnread = this.handleMarkAsUnread.bind(this)
+		this.handleMaximizeButton = this.handleMaximizeButton.bind(this)
 		this.copyUrl = this.copyUrl.bind(this)
 		this.openInBrowser = this.openInBrowser.bind(this)
 	}
@@ -38,7 +40,8 @@ class Lists extends Component {
 			oldId: '',
 			oldReadId: '',
 			isUnreadOnly: store.get('isUnreadOnly', false),
-			articleMarkedAsUnread: false
+			articleMarkedAsUnread: false,
+			isExpanded: true
 		})
 	}
 
@@ -158,6 +161,10 @@ class Lists extends Component {
 			})
 		}
 
+		this.setState({
+			isExpanded: false
+		})
+
 		this.markAsRead(id, flag, isUnread)
 	}
 
@@ -167,6 +174,12 @@ class Lists extends Component {
 		})
 
 		this.markAsUnread(id)
+	}
+
+	handleMaximizeButton() {
+		this.setState({
+			isExpanded: true
+		})
 	}
 
 	copyUrl(url) {
@@ -179,10 +192,17 @@ class Lists extends Component {
 	
 	render() {
 		return (
-			<div className="col-md-3 scrollable no-padding-right" >
-				{this.state.lists.map(item => (
-					<div className="list-group-item" key={item.id} >
-						<div className={`card ${this.state.activeLink === item.id ? "text-white bg-primary" : item.unread === true ? 'text-dark' : 'text-secondary'}`}>
+			<div className={`${this.state.isExpanded ? "col-md-12" : "col-md-3"} px-0 scrollable`}>
+				<div className="card-columns">
+					<div className={`position-fixed button-expand ${this.state.isExpanded ? "d-none" : ""}`}>
+						<button type="button" className="btn btn-link no-focus p-0" title="Maximize list" onClick={(e) => this.handleMaximizeButton()}>
+							<svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24">
+								<path style={{ fill: 'white' }} d="M8.465 16.95l2.828 3.05h-7.293v-7.293l3.051 2.829 8.484-8.486-2.828-3.05h7.293v7.292l-3.051-2.828z"/>
+							</svg>
+						</button>				
+					</div>
+					{this.state.lists.map(item => (
+						<div className={`card ${this.state.activeLink === item.id ? "text-white bg-primary" : item.unread === true ? 'text-dark' : 'text-secondary'} mx-0`} key={item.id}>
 							<div className={`vw${item.indexKey % 25}`}>
 								<div style={ this.state.activeLink === item.id ? {color: 'white'} : {color: 'black', opacity: 1} } className="cursor-default">
 									<header onClick={(e) => this.handleMarkAsRead(e, item.canonicalUrl, item.id, true, item.unread)} className="cursor-pointer">
@@ -246,8 +266,8 @@ class Lists extends Component {
 								</div>
 							</div>
 						</div>
-					</div>
-				))}
+					))}
+				</div>
 			</div>
 		);
 	}

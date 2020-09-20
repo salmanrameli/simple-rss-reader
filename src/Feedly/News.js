@@ -182,7 +182,7 @@ class News extends Component {
 
 	render() {
 		return(
-			<div>
+			<div style={{ paddingRight: '15px', paddingLeft: '15px'}}>
 				{this.state.lists.length > 0 ? 
 					<div className="row">
 						<Lists 
