@@ -127,7 +127,11 @@ class Lists extends Component {
 				return this.props.markAsRead(id)
 			}
 		}).then(_ => {
-			this.setListViewMode(openArticle)
+			if(openArticle) {
+				this.setState({
+					isExpanded: false
+				})
+			}
 		}).catch(error => console.log(error))
 	}
 

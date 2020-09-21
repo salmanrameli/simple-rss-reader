@@ -168,9 +168,13 @@ small.remove-style::before {
 .row .col-md-12 .news-content h2 {
   margin: 10px 0
 }
+.row .col-md-3 h3 {
+  margin: 10px 0 5px;
+  width: 70%;
+}
 .row .col-md-12 h3 {
   margin: 10px 0 5px;
-  width: 80%;
+  width: 60%;
 }
 .row .col-md-12 h4 {
   margin: 10px 0 5px;
