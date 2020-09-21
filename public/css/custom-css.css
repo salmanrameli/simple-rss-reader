@@ -37,7 +37,7 @@ html, body {
   padding-bottom: 0;
 }
 .col-md-3 .card-columns:last-child {
-  margin-bottom: 50px;
+  margin-bottom: 59px;
 }
 .col-md-12 .card-columns .card {
   padding-left: 0;
@@ -161,10 +161,11 @@ small.remove-style::before {
   margin: 10px 0
 }
 .row .col-md-12 h3 {
-  margin: 10px 0 5px 0
+  margin: 10px 0 5px;
+  width: 80%;
 }
 .row .col-md-12 h4 {
-  margin: 10px 0 5px 0
+  margin: 10px 0 5px;
 }
 .overflow {
   overflow: hidden;
@@ -315,6 +316,7 @@ iframe[src*="//"] {
   background-color: black;
   z-index: 1;
   bottom: 0;
+  /* width: calc(25% - 15px); */
 }
 .border-black {
   border: 2.5px solid black;

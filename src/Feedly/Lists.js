@@ -30,6 +30,7 @@ class Lists extends Component {
 		this.markAsRead = this.markAsRead.bind(this)
 		this.handleMarkAsRead = this.handleMarkAsRead.bind(this)
 		this.handleMarkAsUnread = this.handleMarkAsUnread.bind(this)
+		this.setListViewMode = this.setListViewMode.bind(this)
 		this.handleMaximizeButton = this.handleMaximizeButton.bind(this)
 		this.copyUrl = this.copyUrl.bind(this)
 		this.openInBrowser = this.openInBrowser.bind(this)
@@ -47,7 +48,8 @@ class Lists extends Component {
 
 	static getDerivedStateFromProps(props, state) {
 		return {
-			lists: props.lists
+			lists: props.lists,
+			isExpanded: state.isExpanded
 		}
 	}
 
@@ -63,7 +65,7 @@ class Lists extends Component {
 		return this.props.removeUnreadEntryBadge(id)
 	}
 
-	async markAsRead(id, flag, isUnread) {
+	async markAsRead(id, flag, isUnread, openArticle) {
 		const authCode = getAuthCode()
 
 		let arrayOfReadEntry = new Array(String(id))
@@ -124,10 +126,12 @@ class Lists extends Component {
 
 				return this.props.markAsRead(id)
 			}
+		}).then(_ => {
+			this.setListViewMode(openArticle)
 		}).catch(error => console.log(error))
 	}
 
-	async markAsUnread(id) {
+	async markAsUnread(id, openArticle) {
 		const authCode = getAuthCode()
 
 		let arrayOfUnreadEntry = new Array(String(id))
@@ -149,10 +153,14 @@ class Lists extends Component {
 			ipcRenderer.send('increase-unread-count')
 
 			return this.props.markAsUnread(id)
+		}).then(_ => {
+			this.setState({
+				isExpanded: true
+			})
 		}).catch(error => console.log(error))
 	}
 
-	handleMarkAsRead = (event, link, id, flag, isUnread) => {
+	handleMarkAsRead = (event, link, id, flag, isUnread, openArticle) => {
 		if(flag) {
 			this.props.loadStory(link, id);
 
@@ -161,19 +169,29 @@ class Lists extends Component {
 			})
 		}
 
-		this.setState({
-			isExpanded: false
-		})
-
-		this.markAsRead(id, flag, isUnread)
+		this.markAsRead(id, flag, isUnread, openArticle)
 	}
 
-	handleMarkAsUnread = (event, id) => {
+	handleMarkAsUnread = (event, id, openArticle) => {
 		this.setState({
 			articleMarkedAsUnread: true
 		})
 
-		this.markAsUnread(id)
+		this.markAsUnread(id, openArticle)
+	}
+
+	setListViewMode(openArticle) {
+		let isExpanded = this.state.isExpanded
+
+		if(isExpanded && !openArticle) {
+			this.setState({
+				isExpanded: true
+			})
+		} else {
+			this.setState({
+				isExpanded: false
+			})
+		}
 	}
 
 	handleMaximizeButton() {
@@ -207,25 +225,25 @@ class Lists extends Component {
 								<div className={`card ${this.state.activeLink === item.id ? "text-white bg-primary" : item.unread === true ? 'text-dark' : 'text-secondary'} mx-0`} key={item.id}>
 									<div className={`vw${item.indexKey % 25}`}>
 										<div style={ this.state.activeLink === item.id ? {color: 'white'} : {color: 'black', opacity: 1} } className="cursor-default">
-											<header onClick={(e) => this.handleMarkAsRead(e, item.canonicalUrl, item.id, true, item.unread)} className="cursor-pointer">
+											<header onClick={(e) => this.handleMarkAsRead(e, item.canonicalUrl, item.id, true, item.unread, true)} className="cursor-pointer">
 												<h2>
 													<span>{item.title}</span>
 												</h2>
 												<div className="row">
-													<div className="col-12" onClick={(e) => this.handleMarkAsRead(e, item.canonicalUrl, item.id, true, item.unread)}>
+													<div className="col-12">
 														<div className="desc pb-2 text-white" title={item.author}>{item.author}</div>
 													</div>
 													<div className="col-12">
 														<div className="desc px-0 py-3 w-100">
 															<div className="actions">
 																{item.unread === true ?
-																	<button type="button" onClick={(e) => this.handleMarkAsRead(e, item.canonicalUrl, item.id, false, true)} title="Mark article as read" className="no-focus checkmark-icon m-auto">
+																	<button type="button" onClick={(e) => this.handleMarkAsRead(e, item.canonicalUrl, item.id, false, true, false)} title="Mark article as read" className="no-focus checkmark-icon m-auto">
 																		<svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24">
 																			<path className="fill-white" d="M20.285 2l-11.285 11.567-5.286-5.011-3.714 3.716 9 8.728 15-15.285z"/>
 																		</svg>
 																	</button>
 																	:	
-																	<button type="button" onClick={(e) => this.handleMarkAsUnread(e, item.id)} title="Mark article as unread" className="no-focus crossmark-icon m-auto">
+																	<button type="button" onClick={(e) => this.handleMarkAsUnread(e, item.id, false)} title="Mark article as unread" className="no-focus crossmark-icon m-auto">
 																		<svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24">
 																			<path className="fill-white" d="M24 20.188l-8.315-8.209 8.2-8.282-3.697-3.697-8.212 8.318-8.31-8.203-3.666 3.666 8.321 8.24-8.206 8.313 3.666 3.666 8.237-8.318 8.285 8.203z" />
 																		</svg>
@@ -273,25 +291,25 @@ class Lists extends Component {
 									<div className={`card ${this.state.activeLink === item.id ? "text-white bg-primary" : item.unread === true ? 'text-dark' : 'text-secondary'} mx-0`} key={item.id}>
 										<div className={`vw${item.indexKey % 25}`}>
 											<div style={ this.state.activeLink === item.id ? {color: 'white'} : {color: 'black', opacity: 1} } className="cursor-default">
-												<header onClick={(e) => this.handleMarkAsRead(e, item.canonicalUrl, item.id, true, item.unread)} className="cursor-pointer">
+												<header onClick={(e) => this.handleMarkAsRead(e, item.canonicalUrl, item.id, true, item.unread, true)} className="cursor-pointer faded-background">
 													<h3>
 														<span>{item.title}</span>
 													</h3>
 													<div className="row mt-4">
-														<div className="col-12 col-md-6 col-lg-6 col-xl-6 text-white" onClick={(e) => this.handleMarkAsRead(e, item.canonicalUrl, item.id, true, item.unread)}>
+														<div className="col-12 col-md-6 col-lg-6 col-xl-6 text-white">
 															<div className="desc" title={item.author}>{item.author}</div>
 														</div>
 														<div className="col-12 col-md-6 col-lg-6 col-xl-6">
 															<div className="desc float-right">
 																<div className="actions float-right mr-2">
 																	{item.unread === true ?
-																		<button type="button" onClick={(e) => this.handleMarkAsRead(e, item.canonicalUrl, item.id, false, true)} title="Mark article as read" className="pl-2 no-focus checkmark-icon">
+																		<button type="button" onClick={(e) => this.handleMarkAsRead(e, item.canonicalUrl, item.id, false, true, false)} title="Mark article as read" className="pl-2 no-focus checkmark-icon">
 																			<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
 																				<path className="fill-white" d="M20.285 2l-11.285 11.567-5.286-5.011-3.714 3.716 9 8.728 15-15.285z"/>
 																			</svg>
 																		</button>
 																		:	
-																		<button type="button" onClick={(e) => this.handleMarkAsUnread(e, item.id)} title="Mark article as unread" className="pl-2 crossmark-icon">
+																		<button type="button" onClick={(e) => this.handleMarkAsUnread(e, item.id, false)} title="Mark article as unread" className="pl-2 crossmark-icon">
 																			<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
 																				<path className="fill-white" d="M24 20.188l-8.315-8.209 8.2-8.282-3.697-3.697-8.212 8.318-8.31-8.203-3.666 3.666 8.321 8.24-8.206 8.313 3.666 3.666 8.237-8.318 8.285 8.203z" />
 																			</svg>
@@ -335,7 +353,7 @@ class Lists extends Component {
 										</div>
 									</div>
 									:
-									<div className={`card cursor-pointer px-1 pb-0 pt-5 ${this.state.activeLink === item.id ? "text-white bg-primary" : item.unread === true ? 'text-dark' : 'text-secondary'}`} onClick={(e) => this.handleMarkAsRead(e, item.canonicalUrl, item.id, true, item.unread)}>
+									<div className={`card cursor-pointer px-1 pb-0 pt-5 ${this.state.activeLink === item.id ? "text-white bg-primary" : item.unread === true ? 'text-dark' : 'text-secondary'}`} onClick={(e) => this.handleMarkAsRead(e, item.canonicalUrl, item.id, true, item.unread, true)}>
 										<div className="mb-0 p-0 card-body">
 											<div className="title" title="Article's website origin">
 												<div className="detail-box">
@@ -359,20 +377,20 @@ class Lists extends Component {
 											<h2 className="pl-1 pr-5 mr-5">{item.title}</h2>
 											<footer className="blockquote-footer">
 												<div className="row">
-													<div className="col-12 col-md-7" onClick={(e) => this.handleMarkAsRead(e, item.canonicalUrl, item.id, true, item.unread)}>
+													<div className="col-12 col-md-7">
 														<div className="desc" title={item.author}>{item.author}</div>
 													</div>
 													<div className="col-12 col-md-5 mx-0">
 														<div className="desc float-right pl-0">
 															<div className="actions float-right mr-2">
 																{item.unread === true ?
-																	<button type="button" onClick={(e) => this.handleMarkAsRead(e, item.canonicalUrl, item.id, false, true)} title="Mark article as read" className="btn btn-link pl-2 no-focus checkmark-icon">
+																	<button type="button" onClick={(e) => this.handleMarkAsRead(e, item.canonicalUrl, item.id, false, true, false)} title="Mark article as read" className="btn btn-link pl-2 no-focus checkmark-icon">
 																		<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
 																			<path className={`${this.state.activeLink === item.id ? "fill-white" : "fill-black"}`} d="M20.285 2l-11.285 11.567-5.286-5.011-3.714 3.716 9 8.728 15-15.285z"/>
 																		</svg>
 																	</button>
 																	:	
-																	<button type="button" onClick={(e) => this.handleMarkAsUnread(e, item.id)} title="Mark article as unread" className="btn btn-link pl-2 crossmark-icon">
+																	<button type="button" onClick={(e) => this.handleMarkAsUnread(e, item.id, false)} title="Mark article as unread" className="btn btn-link pl-2 crossmark-icon">
 																		<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
 																			<path className={`${this.state.activeLink === item.id ? "fill-white" : "fill-black"}`} d="M24 20.188l-8.315-8.209 8.2-8.282-3.697-3.697-8.212 8.318-8.31-8.203-3.666 3.666 8.321 8.24-8.206 8.313 3.666 3.666 8.237-8.318 8.285 8.203z" />
 																		</svg>
