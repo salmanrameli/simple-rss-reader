@@ -27,9 +27,17 @@ html, body {
 .col-md-3 .card-columns {
   column-count: 1
 }
-.col-md-12 .card-columns {
-  column-count: 4;
+@media (max-width: 1399) {
+  .col-md-12 .card-columns {
+    column-count: 3;
+  }
 }
+@media (min-width: 1400px) {
+  .col-md-12 .card-columns {
+    column-count: 4;
+  }
+}
+
 .col-md-3 .card-columns .card {
   padding-left: 0;
   padding-right: 0;
