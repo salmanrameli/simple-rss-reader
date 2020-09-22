@@ -46,7 +46,7 @@ class News extends Component {
 			timeout: 10000
 		}).then((response) => {
 			let merged = [].concat.apply([], response.data.items)
-			let randomNumber = Math.floor((Math.random() * 25) + 1)
+			let randomNumber = Math.floor((Math.random() * 30) + 1)
 
 			this.setState({
 				lists: merged.map((entry, index) => {
@@ -184,7 +184,7 @@ class News extends Component {
 		return(
 			<div style={{ paddingRight: '15px', paddingLeft: '15px'}}>
 				{this.state.lists.length > 0 ? 
-					<div className="row">
+					<div className="row" style={{ backgroundColor: '#080808' }}>
 						<Lists 
 							lists = {this.state.lists}
 							loadStory = {this.updateStory}

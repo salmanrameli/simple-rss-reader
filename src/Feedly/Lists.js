@@ -227,7 +227,7 @@ class Lists extends Component {
 						<div className="border-black">
 							{item.engagement >= 250 ?
 								<div className={`card ${this.state.activeLink === item.id ? "text-white bg-primary" : item.unread === true ? 'text-dark' : 'text-secondary'} mx-0`} key={item.id}>
-									<div className={`vw${item.indexKey % 25}`}>
+									<div className={`vw${item.indexKey % 30}`}>
 										<div style={ this.state.activeLink === item.id ? {color: 'white'} : {color: 'black', opacity: 1} } className="cursor-default">
 											<header onClick={(e) => this.handleMarkAsRead(e, item.canonicalUrl, item.id, true, item.unread, true)} className="cursor-pointer">
 												<h2>
