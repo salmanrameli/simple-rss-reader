@@ -20,6 +20,7 @@ html, body {
 }
 .card-columns {
   column-gap: 0;
+  background-color: #080808;
 }
 .card-columns .card {
   margin-bottom: -5px;
@@ -37,7 +38,9 @@ html, body {
     column-count: 4;
   }
 }
-
+.col-md-3 .card-columns {
+  padding-bottom: inherit;
+}
 .col-md-3 .card-columns .card {
   padding-left: 0;
   padding-right: 0;
@@ -46,6 +49,9 @@ html, body {
 }
 .col-md-3 .card-columns:last-child {
   margin-bottom: 59px;
+}
+.col-md-12 .card-columns {
+  padding-bottom: 12px;
 }
 .col-md-12 .card-columns .card {
   padding-left: 0;
@@ -330,6 +336,23 @@ iframe[src*="//"] {
   bottom: 0;
   /* width: calc(25% - 15px); */
 }
-.border-black {
+.col-md-3 .border-black {
+  border-top: 2px solid black;
+  border-bottom: 2px solid black;
+  border-left: 4px solid black;
+  border-right: 4px solid black;
+}
+.col-md-3 .border-black:last-child {
+  border-bottom: 4px solid black;
+}
+.col-md-12 .border-black {
   border: 2.5px solid black;
+}
+.col-md-12 .border-black:last-child {
+  border-bottom: 4px solid black;
+}
+.blockquote-footer {
+  font-size: 90%;
+  color: black;
+  font-weight: bolder;
 }

@@ -235,7 +235,7 @@ class Lists extends Component {
 												</h2>
 												<div className="row">
 													<div className="col-12">
-														<div className="desc pb-2 text-white" title={item.author}>{item.author}</div>
+														<div className="desc pb-2 text-white text-large" title={item.author}>{item.author}</div>
 													</div>
 													<div className="col-12">
 														<div className="desc px-0 py-3 w-100">
@@ -378,11 +378,11 @@ class Lists extends Component {
 													&nbsp; {item.engagement}
 												</div>
 											</div>
-											<h2 className="pl-1 pr-5 mr-5">{item.title}</h2>
-											<footer className="blockquote-footer">
+											<h2 className="pt-1 pl-1 pr-5 mr-5">{item.title}</h2>
+											<footer>
 												<div className="row">
 													<div className="col-12 col-md-7">
-														<div className="desc" title={item.author}>{item.author}</div>
+														<div className="desc blockquote-footer" title={item.author}>{item.author}</div>
 													</div>
 													<div className="col-12 col-md-5 mx-0">
 														<div className="desc float-right pl-0">
