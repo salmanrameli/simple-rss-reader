@@ -378,7 +378,7 @@ class Lists extends Component {
 													&nbsp; {item.engagement}
 												</div>
 											</div>
-											<h2 className="pt-1 pl-1 pr-5 mr-5">{item.title}</h2>
+											<h2 className="pt-3 pl-1 pr-5 mr-5">{item.title}</h2>
 											<footer>
 												<div className="row">
 													<div className="col-12 col-md-7">
