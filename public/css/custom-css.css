@@ -38,6 +38,11 @@ html, body {
     column-count: 4;
   }
 }
+@media (min-width: 1900px) {
+  .col-md-12 .card-columns {
+    column-count: 5;
+  }
+}
 .col-md-3 .card-columns {
   padding-bottom: inherit;
 }
