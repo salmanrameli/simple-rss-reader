@@ -613,6 +613,7 @@
     text-overflow: ellipsis;
     white-space: nowrap;
     vertical-align: middle;
+    font-family: SF_Pro_Display;
 }
 .card-columns .card.bg-primary .desc {
     color: white;
