@@ -84,12 +84,6 @@ class Lists extends Component {
 			},
 			timeout: 10000
 		}).then(response => {
-			if(openArticle) {
-				this.setState({
-					isExpanded: false
-				})
-			}
-			
 			if(isUnread === true) ipcRenderer.send('decrease-unread-count')
 
 			let isUnreadOnly = this.stringToBool(this.state.isUnreadOnly)
@@ -169,6 +163,12 @@ class Lists extends Component {
 
 			this.setState({
 				activeLink: id
+			})
+		}
+
+		if(openArticle) {
+			this.setState({
+				isExpanded: false
 			})
 		}
 
