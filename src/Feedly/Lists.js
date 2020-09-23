@@ -84,8 +84,13 @@ class Lists extends Component {
 			},
 			timeout: 10000
 		}).then(response => {
-			if(isUnread === true)
-				ipcRenderer.send('decrease-unread-count')
+			if(openArticle) {
+				this.setState({
+					isExpanded: false
+				})
+			}
+			
+			if(isUnread === true) ipcRenderer.send('decrease-unread-count')
 
 			let isUnreadOnly = this.stringToBool(this.state.isUnreadOnly)
 
@@ -126,12 +131,6 @@ class Lists extends Component {
 
 				return this.props.markAsRead(id)
 			}
-		}).then(_ => {
-			if(openArticle) {
-				this.setState({
-					isExpanded: false
-				})
-			}
 		}).catch(error => console.log(error))
 	}
 
@@ -156,11 +155,11 @@ class Lists extends Component {
 		}).then(response => {
 			ipcRenderer.send('increase-unread-count')
 
-			return this.props.markAsUnread(id)
-		}).then(_ => {
 			this.setState({
 				isExpanded: true
 			})
+
+			return this.props.markAsUnread(id)
 		}).catch(error => console.log(error))
 	}
 
