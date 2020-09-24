@@ -500,7 +500,7 @@
     background-size: cover;
 }
 .card header:hover {
-    animation: swing 4s alternate ease-in-out infinite;
+    animation: swing 1s alternate ease-in-out infinite;
 }
 .card header.faded-background::before {
     opacity: 0.5;
