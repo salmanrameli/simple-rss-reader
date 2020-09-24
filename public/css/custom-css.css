@@ -327,19 +327,22 @@ iframe[src*="//"] {
   /* width: calc(25% - 15px); */
 }
 .col-md-3 .border-black {
-  border-top: 2px solid black;
-  border-bottom: 2px solid black;
-  border-left: 4px solid black;
-  border-right: 4px solid black;
+  border-top: 3px solid black;
+  border-bottom: 3px solid black;
+  border-left: 6px solid black;
+  border-right: 6px solid black;
 }
 .col-md-3 .border-black:last-child {
-  border-bottom: 4px solid black;
+  border-bottom: 6px solid black;
 }
 .col-md-12 .border-black {
-  border: 2.5px solid black;
+  border: 2px solid black;
 }
 .col-md-12 .border-black:last-child {
   border-bottom: 4px solid black;
+}
+.col-md-12 .border-black:only-child {
+  border-top: 0;
 }
 .blockquote-footer {
   font-size: 90%;
