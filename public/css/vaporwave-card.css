@@ -499,6 +499,9 @@
     background-repeat: no-repeat;
     background-size: cover;
 }
+.card header:hover {
+    animation: swing 4s alternate ease-in-out infinite;
+}
 .card header.faded-background::before {
     opacity: 0.5;
 }
@@ -530,9 +533,11 @@
     line-height: 0.82em;
     letter-spacing: -0.0357em;
     color: #fff;
+    word-break: break-word;
 }
 .card header h2 span {
     display: block;
+    word-break: break-word;
 }
 .card header h3 {
     position: relative;
@@ -556,7 +561,7 @@
     line-height: 0.88em;
     letter-spacing: -0.0357em;
     padding-top: 30px;
-    width: 70%;
+    word-break: break-word;
 }
 .card-columns .card .card-body .title {
     position: absolute;
