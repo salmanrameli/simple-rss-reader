@@ -158,16 +158,11 @@ class Lists extends Component {
 	}
 
 	handleMarkAsRead = (event, link, id, flag, isUnread, openArticle) => {
-		if(flag) {
+		if(flag && openArticle) {
 			this.props.loadStory(link, id);
-
+	
 			this.setState({
-				activeLink: id
-			})
-		}
-
-		if(openArticle) {
-			this.setState({
+				activeLink: id,
 				isExpanded: false
 			})
 		}
@@ -215,21 +210,25 @@ class Lists extends Component {
 		return (
 			<div className={`${this.state.isExpanded ? "col-md-12" : "col-md-3"} px-0 scrollable`}>
 				<div className="card-columns">
-					<div className={`position-fixed button-expand ${this.state.isExpanded ? "d-none" : ""}`}>
+					{this.state.isExpanded ?
+						""
+					:
+					<div className={"position-fixed button-expand"}>
 						<button type="button" className="btn btn-link no-focus p-0" title="Maximize list" onClick={(e) => this.handleMaximizeButton()}>
 							<svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24">
 								<path style={{ fill: 'white' }} d="M8.465 16.95l2.828 3.05h-7.293v-7.293l3.051 2.829 8.484-8.486-2.828-3.05h7.293v7.292l-3.051-2.828z"/>
 							</svg>
 						</button>				
 					</div>
+					}
 					{this.state.lists.map(item => (
 						<div className="border-black">
 							{item.engagement >= 250 ?
 								<div className={`card ${this.state.activeLink === item.id ? "text-white bg-primary" : item.unread === true ? 'text-dark' : 'text-secondary'} mx-0`} key={item.id}>
 									<div className={`vw${item.indexKey % 30}`}>
 										<div style={ this.state.activeLink === item.id ? {color: 'white'} : {color: 'black', opacity: 1} } className="cursor-default">
-											<header onClick={(e) => this.handleMarkAsRead(e, item.canonicalUrl, item.id, true, item.unread, true)} className="cursor-pointer">
-												<h2>
+											<header>
+												<h2 onClick={(e) => this.handleMarkAsRead(e, item.canonicalUrl, item.id, true, item.unread, true)} className="cursor-pointer">
 													<span>{item.title}</span>
 												</h2>
 												<div className="row">
@@ -294,8 +293,8 @@ class Lists extends Component {
 									<div className={`card ${this.state.activeLink === item.id ? "text-white bg-primary" : item.unread === true ? 'text-dark' : 'text-secondary'} mx-0`} key={item.id}>
 										<div className={`vw${item.indexKey % 25}`}>
 											<div style={ this.state.activeLink === item.id ? {color: 'white'} : {color: 'black', opacity: 1} } className="cursor-default">
-												<header onClick={(e) => this.handleMarkAsRead(e, item.canonicalUrl, item.id, true, item.unread, true)} className="cursor-pointer faded-background">
-													<h3>
+												<header className="cursor-pointer faded-background">
+													<h3 onClick={(e) => this.handleMarkAsRead(e, item.canonicalUrl, item.id, true, item.unread, true)}>
 														<span>{item.title}</span>
 													</h3>
 													<div className="row mt-4">
@@ -356,28 +355,30 @@ class Lists extends Component {
 										</div>
 									</div>
 									:
-									<div className={`card cursor-pointer px-1 pb-0 pt-5 ${this.state.activeLink === item.id ? "text-white bg-primary" : item.unread === true ? 'text-dark' : 'text-secondary'}`} onClick={(e) => this.handleMarkAsRead(e, item.canonicalUrl, item.id, true, item.unread, true)}>
+									<div className={`card cursor-pointer px-1 pb-0 pt-5 ${this.state.activeLink === item.id ? "text-white bg-primary" : item.unread === true ? 'text-dark' : 'text-secondary'}`}>
 										<div className="mb-0 p-0 card-body">
-											<div className="title" title="Article's website origin">
-												<div className="detail-box">
-													{item.origin.title}
-												</div>
-												{item.unread === true ?
-													<div>
-														<hr className="barrier" />
-														<span>Unread entry</span>
+											<div onClick={(e) => this.handleMarkAsRead(e, item.canonicalUrl, item.id, true, item.unread, true)}>
+												<div className="title" title="Article's website origin">
+													<div className="detail-box">
+														{item.origin.title}
 													</div>
-													:
-													""
-												}
-											</div>
-											<div className="engagement mb-2" title="Engagement metric shows how popular the article with Feedly readers">
-												<div className="detail-box">
-													<Engagement engagement={item.engagement} />
-													&nbsp; {item.engagement}
+													{item.unread === true ?
+														<div>
+															<hr className="barrier" />
+															<span>Unread entry</span>
+														</div>
+														:
+														""
+													}
 												</div>
+												<div className="engagement mb-2" title="Engagement metric shows how popular the article with Feedly readers">
+													<div className="detail-box">
+														<Engagement engagement={item.engagement} />
+														&nbsp; {item.engagement}
+													</div>
+												</div>
+												<h2 className="pt-3 pl-1 pr-5 mr-5">{item.title}</h2>
 											</div>
-											<h2 className="pt-3 pl-1 pr-5 mr-5">{item.title}</h2>
 											<footer>
 												<div className="row">
 													<div className="col-12 col-md-7">
