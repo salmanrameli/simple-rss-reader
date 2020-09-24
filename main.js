@@ -236,10 +236,11 @@ let menubar = [
 			click: () => openAboutWindow({
 				icon_path: path.join(__dirname, '/public/icon.png'),
 				product_name: 'Simple RSS Reader',
-				copyright: 'Copyright (c) 2020 Salman Rameli',
+				copyright: 'Copyright © 2020 Salman Rameli',
 				homepage: 'https://github.com/salmanrameli/simple-rss-reader',
 				description: 'Simple RSS reader with partial Feedly support.',
 				use_version_info: true,
+				css_path: path.join(__dirname, '/public/css/about-app.css'),
 				win_options: {
 					resizable: false,
 					minimizable: false,
@@ -344,10 +345,11 @@ let menubar = [
 				click: () => openAboutWindow({
 					icon_path: path.join(__dirname, '/public/icon.png'),
 					product_name: 'Simple RSS Reader',
-					copyright: 'Copyright (c) 2020 Salman Rameli',
+					copyright: 'Copyright © 2020 Salman Rameli',
 					homepage: 'https://github.com/salmanrameli/simple-rss-reader',
 					description: 'Simple RSS reader with partial Feedly support.',
 					use_version_info: true,
+					css_path: path.join(__dirname, '/public/css/about-app.css'),
 					win_options: {
 						resizable: false,
 						minimizable: false,

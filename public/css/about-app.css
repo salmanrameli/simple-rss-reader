@@ -1,0 +1,18 @@
+@font-face {
+    font-family: SF_Pro_Display;
+    src: url('../fonts/SF-Pro-Display-Regular.otf')
+}
+body {
+    background-color: white;
+    font-family: SF_Pro_Display;
+}
+.title.clickable {
+    margin-top: 20px;
+}
+.description {
+    font-weight: 400;
+}
+.copyright {
+    font-size: 14px;
+    color: darkgray;
+}
