@@ -229,6 +229,16 @@ class Lists extends Component {
 										<div style={ this.state.activeLink === item.id ? {color: 'white'} : {color: 'black', opacity: 1} } className="cursor-default">
 											<header>
 												<h2 onClick={(e) => this.handleMarkAsRead(e, item.canonicalUrl, item.id, true, item.unread, true)} className="cursor-pointer">
+													{item.memes !== undefined ? 
+														<p className="memes-label">
+															<svg xmlns="http://www.w3.org/2000/svg" width="36" height="24" viewBox="0 0 24 24">
+																<path style={{ fill: 'white' }} d="M24 3.875l-6 1.221 1.716 1.708-5.351 5.358-3.001-3.002-7.336 7.242 1.41 1.418 5.922-5.834 2.991 2.993 6.781-6.762 1.667 1.66 1.201-6.002zm0 16.125v2h-24v-20h2v18h22z"/>
+															</svg>
+															&nbsp; {item.memes[0].label}
+														</p>
+														: 
+														""
+													}
 													<span>{item.title}</span>
 												</h2>
 												<div className="row">
@@ -267,7 +277,11 @@ class Lists extends Component {
 												</div>
 												<div className="title" title="Article's website origin">
 													<div className="detail-box">
-														{item.origin.title}
+														{item.webfeeds !== undefined ? 
+															<img src={item.webfeeds.wordmark} className="article-origin-logo" />
+															:
+															item.origin.title
+														}
 													</div>
 													{item.unread === true ?
 														<div>
@@ -295,6 +309,16 @@ class Lists extends Component {
 											<div style={ this.state.activeLink === item.id ? {color: 'white'} : {color: 'black', opacity: 1} } className="cursor-default">
 												<header className="cursor-pointer faded-background">
 													<h3 onClick={(e) => this.handleMarkAsRead(e, item.canonicalUrl, item.id, true, item.unread, true)}>
+														{item.memes !== undefined ? 
+															<p className="memes-label">
+																<svg xmlns="http://www.w3.org/2000/svg" width="36" height="24" viewBox="0 0 24 24">
+																	<path style={{ fill: 'white' }} d="M24 3.875l-6 1.221 1.716 1.708-5.351 5.358-3.001-3.002-7.336 7.242 1.41 1.418 5.922-5.834 2.991 2.993 6.781-6.762 1.667 1.66 1.201-6.002zm0 16.125v2h-24v-20h2v18h22z"/>
+																</svg>
+																&nbsp; {item.memes[0].label}
+															</p>
+															: 
+															""
+														}
 														<span>{item.title}</span>
 													</h3>
 													<div className="row mt-4">
@@ -333,7 +357,11 @@ class Lists extends Component {
 													</div>
 													<div className="title" title="Article's website origin">
 														<div className="detail-box">
-															{item.origin.title}
+															{item.webfeeds !== undefined ? 
+																<img src={item.webfeeds.wordmark} className="article-origin-logo" />
+																:
+																item.origin.title
+															}
 														</div>
 														{item.unread === true ?
 															<div>
@@ -360,7 +388,11 @@ class Lists extends Component {
 											<div onClick={(e) => this.handleMarkAsRead(e, item.canonicalUrl, item.id, true, item.unread, true)}>
 												<div className="title" title="Article's website origin">
 													<div className="detail-box">
-														{item.origin.title}
+														{item.webfeeds !== undefined ? 
+															<img src={item.webfeeds.wordmark} className="article-origin-logo" />
+															:
+															item.origin.title
+														}
 													</div>
 													{item.unread === true ?
 														<div>
@@ -377,7 +409,19 @@ class Lists extends Component {
 														&nbsp; {item.engagement}
 													</div>
 												</div>
-												<h2 className="pt-3 pl-1 pr-5 mr-5">{item.title}</h2>
+												<h2 className="pt-3 pl-1 pr-5 mr-5">
+													{item.memes !== undefined ? 
+														<p className="memes-label">
+															<svg xmlns="http://www.w3.org/2000/svg" width="36" height="24" viewBox="0 0 24 24">
+																<path style={{ fill: 'white' }} d="M24 3.875l-6 1.221 1.716 1.708-5.351 5.358-3.001-3.002-7.336 7.242 1.41 1.418 5.922-5.834 2.991 2.993 6.781-6.762 1.667 1.66 1.201-6.002zm0 16.125v2h-24v-20h2v18h22z"/>
+															</svg>
+															&nbsp; {item.memes[0].label}
+														</p>
+														: 
+														""
+													}
+													{item.title}
+												</h2>
 											</div>
 											<footer>
 												<div className="row">

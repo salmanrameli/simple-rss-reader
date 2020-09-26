@@ -499,7 +499,7 @@
     background-repeat: no-repeat;
     background-size: cover;
 }
-.card header:hover {
+.card-columns .card header:hover {
     animation: swing 1s alternate ease-in-out infinite;
 }
 .card header.faded-background::before {
@@ -636,6 +636,15 @@
 }
 .detail-box {
     white-space: pre;
+}
+.article-origin-logo {
+    max-width: 120px;
+    padding-bottom: 5px;
+}
+.memes-label {
+    font-size: 16px;
+    font-family: NotoSans_JP_Light;
+    margin-bottom: 10px;
 }
 .barrier {
     display: block;
