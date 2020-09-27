@@ -243,7 +243,7 @@ class Lists extends Component {
 												</h2>
 												<div className="row">
 													<div className="col-12">
-														<div className="desc pb-2 text-white text-large" title={item.author}>{item.author}</div>
+														<div className="desc pb-2 text-white blockquote-footer text-large" title={item.author}>{item.author}</div>
 													</div>
 													<div className="col-12">
 														<div className="desc px-0 py-3 w-100">
@@ -277,8 +277,14 @@ class Lists extends Component {
 												</div>
 												<div className="title" title="Article's website origin">
 													<div className="detail-box">
-														{item.webfeeds !== undefined ? 
-															<img src={item.webfeeds.wordmark} className="article-origin-logo" />
+														{item.webfeeds !== undefined ?
+															item.webfeeds.wordmark !== undefined ?
+																<img src={item.webfeeds.wordmark} alt={item.origin.title} className="article-origin-logo" />
+																:
+																item.webfeeds.logo !== undefined ?
+																	<img src={item.webfeeds.logo} alt={item.origin.title} className="article-origin-logo" />
+																	:
+																	item.origin.title
 															:
 															item.origin.title
 														}
@@ -323,7 +329,7 @@ class Lists extends Component {
 													</h3>
 													<div className="row mt-4">
 														<div className="col-12 col-md-6 col-lg-6 col-xl-6 text-white">
-															<div className="desc" title={item.author}>{item.author}</div>
+															<div className="desc blockquote-footer text-white" title={item.author}>{item.author}</div>
 														</div>
 														<div className="col-12 col-md-6 col-lg-6 col-xl-6">
 															<div className="desc float-right">
@@ -357,8 +363,14 @@ class Lists extends Component {
 													</div>
 													<div className="title" title="Article's website origin">
 														<div className="detail-box">
-															{item.webfeeds !== undefined ? 
-																<img src={item.webfeeds.wordmark} className="article-origin-logo" />
+															{item.webfeeds !== undefined ?
+																item.webfeeds.wordmark !== undefined ?
+																	<img src={item.webfeeds.wordmark} alt={item.origin.title} className="article-origin-logo" />
+																	:
+																	item.webfeeds.logo !== undefined ?
+																		<img src={item.webfeeds.logo} alt={item.origin.title} className="article-origin-logo" />
+																		:
+																		item.origin.title
 																:
 																item.origin.title
 															}
@@ -389,7 +401,7 @@ class Lists extends Component {
 												<div className="title" title="Article's website origin">
 													<div className="detail-box">
 														{item.webfeeds !== undefined ? 
-															<img src={item.webfeeds.wordmark} className="article-origin-logo" />
+															<img src={item.webfeeds.wordmark} alt={item.origin.title} className="article-origin-logo" />
 															:
 															item.origin.title
 														}
