@@ -157,9 +157,9 @@ class Lists extends Component {
 		}).catch(error => console.log(error))
 	}
 
-	handleMarkAsRead = (event, link, id, flag, isUnread, openArticle) => {
+	handleMarkAsRead = (event, link, id, flag, isUnread, openArticle, icon) => {
 		if(flag && openArticle) {
-			this.props.loadStory(link, id);
+			this.props.loadStory(link, id, icon);
 	
 			this.setState({
 				activeLink: id,
@@ -228,7 +228,7 @@ class Lists extends Component {
 									<div className={`vw${item.indexKey % 30}`}>
 										<div style={ this.state.activeLink === item.id ? {color: 'white'} : {color: 'black', opacity: 1} } className="cursor-default">
 											<header>
-												<h2 onClick={(e) => this.handleMarkAsRead(e, item.canonicalUrl, item.id, true, item.unread, true)} className="cursor-pointer">
+												<h2 onClick={(e) => this.handleMarkAsRead(e, item.canonicalUrl, item.id, true, item.unread, true, item.webfeeds.wordmark !== undefined ? item.webfeeds.wordmark : item.webfeeds.logo !== undefined ? item.webfeeds.logo : null)} className="cursor-pointer">
 													{item.memes !== undefined ? 
 														<p className="memes-label">
 															<svg xmlns="http://www.w3.org/2000/svg" width="36" height="24" viewBox="0 0 24 24">
@@ -249,7 +249,7 @@ class Lists extends Component {
 														<div className="desc px-0 py-3 w-100">
 															<div className="actions">
 																{item.unread === true ?
-																	<button type="button" onClick={(e) => this.handleMarkAsRead(e, item.canonicalUrl, item.id, false, true, false)} title="Mark article as read" className="no-focus checkmark-icon m-auto">
+																	<button type="button" onClick={(e) => this.handleMarkAsRead(e, item.canonicalUrl, item.id, false, true, false, item.webfeeds.wordmark !== undefined ? item.webfeeds.wordmark : item.webfeeds.logo !== undefined ? item.webfeeds.logo : null)} title="Mark article as read" className="no-focus checkmark-icon m-auto">
 																		<svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24">
 																			<path className="fill-white" d="M20.285 2l-11.285 11.567-5.286-5.011-3.714 3.716 9 8.728 15-15.285z"/>
 																		</svg>
@@ -314,7 +314,7 @@ class Lists extends Component {
 										<div className={`vw${item.indexKey % 25}`}>
 											<div style={ this.state.activeLink === item.id ? {color: 'white'} : {color: 'black', opacity: 1} } className="cursor-default">
 												<header className="cursor-pointer faded-background">
-													<h3 onClick={(e) => this.handleMarkAsRead(e, item.canonicalUrl, item.id, true, item.unread, true)}>
+													<h3 onClick={(e) => this.handleMarkAsRead(e, item.canonicalUrl, item.id, true, item.unread, true, item.webfeeds.wordmark !== undefined ? item.webfeeds.wordmark : item.webfeeds.logo !== undefined ? item.webfeeds.logo : null)}>
 														{item.memes !== undefined ? 
 															<p className="memes-label">
 																<svg xmlns="http://www.w3.org/2000/svg" width="36" height="24" viewBox="0 0 24 24">
@@ -335,7 +335,7 @@ class Lists extends Component {
 															<div className="desc float-right">
 																<div className="actions float-right mr-2">
 																	{item.unread === true ?
-																		<button type="button" onClick={(e) => this.handleMarkAsRead(e, item.canonicalUrl, item.id, false, true, false)} title="Mark article as read" className="pl-2 no-focus checkmark-icon">
+																		<button type="button" onClick={(e) => this.handleMarkAsRead(e, item.canonicalUrl, item.id, false, true, false, item.webfeeds.wordmark !== undefined ? item.webfeeds.wordmark : item.webfeeds.logo !== undefined ? item.webfeeds.logo : null)} title="Mark article as read" className="pl-2 no-focus checkmark-icon">
 																			<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
 																				<path className="fill-white" d="M20.285 2l-11.285 11.567-5.286-5.011-3.714 3.716 9 8.728 15-15.285z"/>
 																			</svg>
@@ -397,7 +397,7 @@ class Lists extends Component {
 									:
 									<div className={`card cursor-pointer px-1 pb-0 pt-5 ${this.state.activeLink === item.id ? "text-white bg-primary" : item.unread === true ? 'text-dark' : 'text-secondary'}`}>
 										<div className="mb-0 p-0 card-body">
-											<div onClick={(e) => this.handleMarkAsRead(e, item.canonicalUrl, item.id, true, item.unread, true)}>
+											<div onClick={(e) => this.handleMarkAsRead(e, item.canonicalUrl, item.id, true, item.unread, true, item.webfeeds.wordmark !== undefined ? item.webfeeds.wordmark : item.webfeeds.logo !== undefined ? item.webfeeds.logo : null)}>
 												<div className="title" title="Article's website origin">
 													<div className="detail-box">
 														{item.webfeeds !== undefined ? 
@@ -444,7 +444,7 @@ class Lists extends Component {
 														<div className="desc float-right pl-0">
 															<div className="actions float-right mr-2">
 																{item.unread === true ?
-																	<button type="button" onClick={(e) => this.handleMarkAsRead(e, item.canonicalUrl, item.id, false, true, false)} title="Mark article as read" className="btn btn-link pl-2 no-focus checkmark-icon">
+																	<button type="button" onClick={(e) => this.handleMarkAsRead(e, item.canonicalUrl, item.id, false, true, false, item.webfeeds.wordmark !== undefined ? item.webfeeds.wordmark : item.webfeeds.logo !== undefined ? item.webfeeds.logo : null)} title="Mark article as read" className="btn btn-link pl-2 no-focus checkmark-icon">
 																		<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
 																			<path className={`${this.state.activeLink === item.id ? "fill-white" : "fill-black"}`} d="M20.285 2l-11.285 11.567-5.286-5.011-3.714 3.716 9 8.728 15-15.285z"/>
 																		</svg>

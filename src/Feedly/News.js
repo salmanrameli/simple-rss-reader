@@ -17,7 +17,8 @@ class News extends Component {
 			story_author: '',
 			story_date: '',
 			story_link: '',
-			active_story: ''
+			active_story: '',
+			icon: ''
 		}
 
 		this.start = this.start.bind(this)
@@ -97,7 +98,7 @@ class News extends Component {
 		})
 	}
 
-	updateStory(link, id) {
+	updateStory(link, id, icon) {
 		this.state.lists.filter(story => {
 			let publishedDate = new Date(story.published)
 			publishedDate = publishedDate.toLocaleString('en-GB', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' })
@@ -109,7 +110,8 @@ class News extends Component {
 						story_author: story.author,
 						story_date: publishedDate,
 						active_story: story.content.content,
-						story_link: link
+						story_link: link,
+						icon: icon
 					});
 				} else if(story.summary && story.summary.content) {
 					this.setState({
@@ -117,7 +119,8 @@ class News extends Component {
 						story_author: story.author,
 						story_date: publishedDate,
 						active_story: story.summary.content,
-						story_link: link
+						story_link: link,
+						icon: icon
 					});
 				}
 			}
@@ -199,6 +202,7 @@ class News extends Component {
 							date = {this.state.story_date}
 							story = {this.state.active_story}
 							link = {this.state.story_link}
+							icon = {this.state.icon}
 						/>
 					</div>
 					:
