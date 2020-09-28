@@ -400,8 +400,14 @@ class Lists extends Component {
 											<div onClick={(e) => this.handleMarkAsRead(e, item.canonicalUrl, item.id, true, item.unread, true, item.webfeeds.wordmark !== undefined ? item.webfeeds.wordmark : item.webfeeds.logo !== undefined ? item.webfeeds.logo : null)}>
 												<div className="title" title="Article's website origin">
 													<div className="detail-box">
-														{item.webfeeds !== undefined ? 
-															<img src={item.webfeeds.wordmark} alt={item.origin.title} className="article-origin-logo" />
+														{item.webfeeds !== undefined ?
+															item.webfeeds.wordmark !== undefined ?
+																<img src={item.webfeeds.wordmark} alt={item.origin.title} className="article-origin-logo" />
+																:
+																item.webfeeds.logo !== undefined ?
+																	<img src={item.webfeeds.logo} alt={item.origin.title} className="article-origin-logo" />
+																	:
+																	item.origin.title
 															:
 															item.origin.title
 														}
