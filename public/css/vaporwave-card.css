@@ -35,7 +35,7 @@
     border-left: 5px solid transparent;
     border-top: 5px solid transparent;
     border-bottom: 5px solid transparent;
-    border-image: linear-gradient(to left, #00ffff, #d53a9d);
+    border-image: linear-gradient(90deg, rgba(238,174,202,1) 0%, rgba(148,187,233,1) 100%);
     border-image-slice: 1;
     margin-bottom: 15px;
 }
@@ -48,7 +48,13 @@
     border-radius: 0;
 }
 .bg-primary {
-    background-image: linear-gradient(to left, cyan, #d53a9d);
+    background-image: linear-gradient(-135deg, rgba(238,174,202,1) 0%, rgba(148,187,233,1) 100%);
+    /* background: radial-gradient(circle at 50% 0,rgba(252,90,113,1), transparent 70.71%),
+                radial-gradient(circle at 93.3% 75%, rgba(0,124,244,1), rgba(0,255,0,0) 70.71%),
+                radial-gradient(circle at 6.7% 75%, rgba(0,241,238,1), transparent 70.71%); */
+}
+.card.text-white.bg-primary {
+    margin-bottom: -5px;
 }
 .article-title {
     top: 3px;
@@ -103,6 +109,19 @@
     background-repeat: no-repeat;
     background-size: cover;
 }
+.card .vw0 header::before {
+    content: '';
+    position: absolute;
+    top: -5%;
+    left: -5%;
+    width: 110%;
+    height: 110%;
+    mix-blend-mode: multiply;
+    /* animation: swing 4s alternate ease-in-out infinite; */
+    background: url('../bg/vaporwave/1.jpg') bottom;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
 .card .vw1 header::before {
     content: '';
     position: absolute;
@@ -110,10 +129,9 @@
     left: -5%;
     width: 110%;
     height: 110%;
-    background-size: cover;
     mix-blend-mode: multiply;
-    animation: swing 4s alternate ease-in-out infinite;
-    background: url('../bg/vaporwave/1.jpg') bottom;
+    /* animation: swing 4s alternate ease-in-out infinite; */
+    background: url('../bg/vaporwave/2.jpg') bottom;
     background-repeat: no-repeat;
     background-size: cover;
 }
@@ -124,10 +142,9 @@
     left: -5%;
     width: 110%;
     height: 110%;
-    background-size: cover;
     mix-blend-mode: multiply;
-    animation: swing 4s alternate ease-in-out infinite;
-    background: url('../bg/vaporwave/2.jpg') bottom;
+    /* animation: swing 4s alternate ease-in-out infinite; */
+    background: url('../bg/vaporwave/3.jpeg') bottom;
     background-repeat: no-repeat;
     background-size: cover;
 }
@@ -138,10 +155,9 @@
     left: -5%;
     width: 110%;
     height: 110%;
-    background-size: cover;
     mix-blend-mode: multiply;
-    animation: swing 4s alternate ease-in-out infinite;
-    background: url('../bg/vaporwave/3.jpeg') bottom;
+    /* animation: swing 4s alternate ease-in-out infinite; */
+    background: url('../bg/vaporwave/4.jpg') bottom;
     background-repeat: no-repeat;
     background-size: cover;
 }
@@ -152,10 +168,9 @@
     left: -5%;
     width: 110%;
     height: 110%;
-    background-size: cover;
     mix-blend-mode: multiply;
-    animation: swing 4s alternate ease-in-out infinite;
-    background: url('../bg/vaporwave/4.jpg') bottom;
+    /* animation: swing 4s alternate ease-in-out infinite; */
+    background: url('../bg/vaporwave/5.jpg') bottom;
     background-repeat: no-repeat;
     background-size: cover;
 }
@@ -166,10 +181,9 @@
     left: -5%;
     width: 110%;
     height: 110%;
-    background-size: cover;
     mix-blend-mode: multiply;
-    animation: swing 4s alternate ease-in-out infinite;
-    background: url('../bg/vaporwave/5.jpg') bottom;
+    /* animation: swing 4s alternate ease-in-out infinite; */
+    background: url('../bg/vaporwave/6.jpg') bottom;
     background-repeat: no-repeat;
     background-size: cover;
 }
@@ -180,10 +194,9 @@
     left: -5%;
     width: 110%;
     height: 110%;
-    background-size: cover;
     mix-blend-mode: multiply;
-    animation: swing 4s alternate ease-in-out infinite;
-    background: url('../bg/vaporwave/6.jpg') bottom;
+    /* animation: swing 4s alternate ease-in-out infinite; */
+    background: url('../bg/vaporwave/7.jpg') bottom;
     background-repeat: no-repeat;
     background-size: cover;
 }
@@ -194,10 +207,9 @@
     left: -5%;
     width: 110%;
     height: 110%;
-    background-size: cover;
     mix-blend-mode: multiply;
-    animation: swing 4s alternate ease-in-out infinite;
-    background: url('../bg/vaporwave/7.jpg') bottom;
+    /* animation: swing 4s alternate ease-in-out infinite; */
+    background: url('../bg/vaporwave/8.jpg') bottom;
     background-repeat: no-repeat;
     background-size: cover;
 }
@@ -208,10 +220,9 @@
     left: -5%;
     width: 110%;
     height: 110%;
-    background-size: cover;
     mix-blend-mode: multiply;
-    animation: swing 4s alternate ease-in-out infinite;
-    background: url('../bg/vaporwave/8.jpg') bottom;
+    /* animation: swing 4s alternate ease-in-out infinite; */
+    background: url('../bg/vaporwave/9.jpg') bottom;
     background-repeat: no-repeat;
     background-size: cover;
 }
@@ -222,10 +233,9 @@
     left: -5%;
     width: 110%;
     height: 110%;
-    background-size: cover;
     mix-blend-mode: multiply;
-    animation: swing 4s alternate ease-in-out infinite;
-    background: url('../bg/vaporwave/9.jpeg') bottom;
+    /* animation: swing 4s alternate ease-in-out infinite; */
+    background: url('../bg/vaporwave/10.jpg') bottom;
     background-repeat: no-repeat;
     background-size: cover;
 }
@@ -236,10 +246,9 @@
     left: -5%;
     width: 110%;
     height: 110%;
-    background-size: cover;
     mix-blend-mode: multiply;
-    animation: swing 4s alternate ease-in-out infinite;
-    background: url('../bg/vaporwave/10.jpg') bottom;
+    /* animation: swing 4s alternate ease-in-out infinite; */
+    background: url('../bg/vaporwave/11.jpg') bottom;
     background-repeat: no-repeat;
     background-size: cover;
 }
@@ -250,10 +259,9 @@
     left: -5%;
     width: 110%;
     height: 110%;
-    background-size: cover;
     mix-blend-mode: multiply;
-    animation: swing 4s alternate ease-in-out infinite;
-    background: url('../bg/vaporwave/11.jpg') bottom;
+    /* animation: swing 4s alternate ease-in-out infinite; */
+    background: url('../bg/vaporwave/12.jpg') bottom;
     background-repeat: no-repeat;
     background-size: cover;
 }
@@ -264,10 +272,9 @@
     left: -5%;
     width: 110%;
     height: 110%;
-    background-size: cover;
     mix-blend-mode: multiply;
-    animation: swing 4s alternate ease-in-out infinite;
-    background: url('../bg/vaporwave/12.jpg') bottom;
+    /* animation: swing 4s alternate ease-in-out infinite; */
+    background: url('../bg/vaporwave/13.jpg') bottom;
     background-repeat: no-repeat;
     background-size: cover;
 }
@@ -278,10 +285,9 @@
     left: -5%;
     width: 110%;
     height: 110%;
-    background-size: cover;
     mix-blend-mode: multiply;
-    animation: swing 4s alternate ease-in-out infinite;
-    background: url('../bg/vaporwave/13.jpg') bottom;
+    /* animation: swing 4s alternate ease-in-out infinite; */
+    background: url('../bg/vaporwave/14.jpg') bottom;
     background-repeat: no-repeat;
     background-size: cover;
 }
@@ -292,10 +298,9 @@
     left: -5%;
     width: 110%;
     height: 110%;
-    background-size: cover;
     mix-blend-mode: multiply;
-    animation: swing 4s alternate ease-in-out infinite;
-    background: url('../bg/vaporwave/14.jpg') bottom;
+    /* animation: swing 4s alternate ease-in-out infinite; */
+    background: url('../bg/vaporwave/15.jpg') bottom;
     background-repeat: no-repeat;
     background-size: cover;
 }
@@ -306,16 +311,213 @@
     left: -5%;
     width: 110%;
     height: 110%;
-    background-size: cover;
     mix-blend-mode: multiply;
-    animation: swing 4s alternate ease-in-out infinite;
-    background: url('../bg/vaporwave/15.jpg') bottom;
+    /* animation: swing 4s alternate ease-in-out infinite; */
+    background: url('../bg/vaporwave/16.jpg') bottom;
     background-repeat: no-repeat;
     background-size: cover;
+}
+.card .vw16 header::before {
+    content: '';
+    position: absolute;
+    top: -5%;
+    left: -5%;
+    width: 110%;
+    height: 110%;
+    mix-blend-mode: multiply;
+    /* animation: swing 4s alternate ease-in-out infinite; */
+    background: url('../bg/vaporwave/17.jpg') bottom;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.card .vw17 header::before {
+    content: '';
+    position: absolute;
+    top: -5%;
+    left: -5%;
+    width: 110%;
+    height: 110%;
+    mix-blend-mode: multiply;
+    /* animation: swing 4s alternate ease-in-out infinite; */
+    background: url('../bg/vaporwave/18.jpg') bottom;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.card .vw18 header::before {
+    content: '';
+    position: absolute;
+    top: -5%;
+    left: -5%;
+    width: 110%;
+    height: 110%;
+    mix-blend-mode: multiply;
+    /* animation: swing 4s alternate ease-in-out infinite; */
+    background: url('../bg/vaporwave/19.jpg') bottom;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.card .vw19 header::before {
+    content: '';
+    position: absolute;
+    top: -5%;
+    left: -5%;
+    width: 110%;
+    height: 110%;
+    mix-blend-mode: multiply;
+    /* animation: swing 4s alternate ease-in-out infinite; */
+    background: url('../bg/vaporwave/20.jpg') bottom;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.card .vw20 header::before {
+    content: '';
+    position: absolute;
+    top: -5%;
+    left: -5%;
+    width: 110%;
+    height: 110%;
+    mix-blend-mode: multiply;
+    /* animation: swing 4s alternate ease-in-out infinite; */
+    background: url('../bg/vaporwave/21.jpg') bottom;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.card .vw21 header::before {
+    content: '';
+    position: absolute;
+    top: -5%;
+    left: -5%;
+    width: 110%;
+    height: 110%;
+    mix-blend-mode: multiply;
+    /* animation: swing 4s alternate ease-in-out infinite; */
+    background: url('../bg/vaporwave/22.jpg') bottom;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.card .vw22 header::before {
+    content: '';
+    position: absolute;
+    top: -5%;
+    left: -5%;
+    width: 110%;
+    height: 110%;
+    mix-blend-mode: multiply;
+    /* animation: swing 4s alternate ease-in-out infinite; */
+    background: url('../bg/vaporwave/23.jpg') bottom;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.card .vw23 header::before {
+    content: '';
+    position: absolute;
+    top: -5%;
+    left: -5%;
+    width: 110%;
+    height: 110%;
+    mix-blend-mode: multiply;
+    /* animation: swing 4s alternate ease-in-out infinite; */
+    background: url('../bg/vaporwave/24.jpg') bottom;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.card .vw24 header::before {
+    content: '';
+    position: absolute;
+    top: -5%;
+    left: -5%;
+    width: 110%;
+    height: 110%;
+    mix-blend-mode: multiply;
+    /* animation: swing 4s alternate ease-in-out infinite; */
+    background: url('../bg/vaporwave/25.jpg') bottom;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.card .vw25 header::before {
+    content: '';
+    position: absolute;
+    top: -5%;
+    left: -5%;
+    width: 110%;
+    height: 110%;
+    mix-blend-mode: multiply;
+    /* animation: swing 4s alternate ease-in-out infinite; */
+    background: url('../bg/vaporwave/26.jpg') bottom;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.card .vw26 header::before {
+    content: '';
+    position: absolute;
+    top: -5%;
+    left: -5%;
+    width: 110%;
+    height: 110%;
+    mix-blend-mode: multiply;
+    /* animation: swing 4s alternate ease-in-out infinite; */
+    background: url('../bg/vaporwave/27.jpg') bottom;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.card .vw27 header::before {
+    content: '';
+    position: absolute;
+    top: -5%;
+    left: -5%;
+    width: 110%;
+    height: 110%;
+    mix-blend-mode: multiply;
+    /* animation: swing 4s alternate ease-in-out infinite; */
+    background: url('../bg/vaporwave/28.jpg') bottom;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.card .vw28 header::before {
+    content: '';
+    position: absolute;
+    top: -5%;
+    left: -5%;
+    width: 110%;
+    height: 110%;
+    mix-blend-mode: multiply;
+    /* animation: swing 4s alternate ease-in-out infinite; */
+    background: url('../bg/vaporwave/29.jpg') bottom;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.card .vw29 header::before {
+    content: '';
+    position: absolute;
+    top: -5%;
+    left: -5%;
+    width: 110%;
+    height: 110%;
+    mix-blend-mode: multiply;
+    /* animation: swing 4s alternate ease-in-out infinite; */
+    background: url('../bg/vaporwave/30.jpg') bottom;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.card-columns .card header:hover {
+    animation: swing 1s alternate ease-in-out infinite;
+}
+.card header.faded-background::before {
+    opacity: 0.5;
+}
+.card.bg-primary header::before {
+    animation: swing 4s alternate ease-in-out infinite;
 }
 .card header {
     position: relative;
     padding-top: 100px;
+    background: linear-gradient(45deg, #94d0ff, #ff6ad5);
+    overflow: hidden;
+    perspective: 400px;
+}
+.card .bg-login header {
+    position: relative;
+    padding-top: 0;
     background: linear-gradient(45deg, #94d0ff, #ff6ad5);
     overflow: hidden;
     perspective: 400px;
@@ -326,14 +528,62 @@
     padding-left: 5px;
     margin: 0;
     font-family: BMWHelvetica_Bold, 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    font-size: 2em;
+    font-size: 2.5em;
+    text-transform: uppercase;
+    line-height: 0.82em;
+    letter-spacing: -0.0357em;
+    color: #fff;
+    word-break: break-word;
+}
+.card header h2 span {
+    display: block;
+    word-break: break-word;
+}
+.card header h3 {
+    position: relative;
+    top: 18px;
+    padding-left: 5px;
+    margin: 0;
+    font-family: BMWHelvetica_Bold, 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 1.7em;
     text-transform: uppercase;
     line-height: 0.82em;
     letter-spacing: -0.0357em;
     color: #fff;
 }
-.card header h2 span {
-    display: block;
+.card header h3 span {
+    word-break: break-word;
+}
+.card-columns h2 {
+    font-family: BMWHelvetica_Bold, 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 1.5em;
+    text-transform: uppercase;
+    line-height: 0.88em;
+    letter-spacing: -0.0357em;
+    padding-top: 30px;
+    word-break: break-word;
+}
+.card-columns .card .card-body .title {
+    position: absolute;
+    top: 8px;
+    right: 5px;
+    padding: 0.5rem;
+    background: #000;
+    font-weight: bold;
+    text-transform: uppercase;
+    text-align: right;
+    color: #fff;
+}
+.card-columns .card .card-body .engagement {
+    position: absolute;
+    top: 8px;
+    left: 5px;
+    padding: 0.5rem;
+    background: #000;
+    font-weight: bold;
+    text-transform: uppercase;
+    text-align: right;
+    color: #fff;
 }
 .card header .title {
     position: absolute;
@@ -368,6 +618,10 @@
     text-overflow: ellipsis;
     white-space: nowrap;
     vertical-align: middle;
+    font-family: SF_Pro_Display;
+}
+.card-columns .card.bg-primary .desc {
+    color: white;
 }
 .card .actions {
     display: flex;
@@ -383,6 +637,15 @@
 .detail-box {
     white-space: pre;
 }
+.article-origin-logo {
+    max-width: 120px;
+    max-height: 25px;
+}
+.memes-label {
+    font-size: 16px;
+    font-family: NotoSans_JP_Light;
+    margin-bottom: 10px;
+}
 .barrier {
     display: block;
     background-color: white;
@@ -397,6 +660,39 @@ button:focus {
 .no-focus {
     outline: none;
     box-shadow: none;
+}
+.fill-white {
+    fill: white;
+}
+.fill-black {
+    fill: black;
+}
+.text-large {
+    font-size: 20px;
+}
+.checkmark-icon svg path:hover {
+    fill: limegreen;
+    stroke-opacity: 1;
+}
+.crossmark-icon svg path:hover {
+    fill: red;
+    stroke-opacity: 1;
+}
+.browser-icon svg path.fill-black:hover {
+    fill:  rgba(73,143,226,0.80);
+    stroke-opacity: 1;
+}
+.browser-icon svg path.fill-white:hover {
+    fill: khaki;
+    stroke-opacity: 1;
+}
+.url-icon svg path.fill-black:hover {
+    fill: rgba(73,143,226,0.80);
+    stroke-opacity: 1;
+}
+.url-icon svg path.fill-white:hover {
+    fill: khaki;
+    stroke-opacity: 1;
 }
 @-moz-keyframes swing {
     0% {

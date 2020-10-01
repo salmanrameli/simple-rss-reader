@@ -121,6 +121,7 @@ class News extends Component {
 					date = {this.state.story_date}
 					story = {this.state.active_story}
 					link = {this.state.story_link}
+					icon = {null}
 				/>
 			</div>
 		)

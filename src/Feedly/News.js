@@ -17,7 +17,8 @@ class News extends Component {
 			story_author: '',
 			story_date: '',
 			story_link: '',
-			active_story: ''
+			active_story: '',
+			icon: ''
 		}
 
 		this.start = this.start.bind(this)
@@ -46,7 +47,7 @@ class News extends Component {
 			timeout: 10000
 		}).then((response) => {
 			let merged = [].concat.apply([], response.data.items)
-			let randomNumber = Math.floor((Math.random() * 15) + 1)
+			let randomNumber = Math.floor((Math.random() * 30) + 1)
 
 			this.setState({
 				lists: merged.map((entry, index) => {
@@ -97,7 +98,7 @@ class News extends Component {
 		})
 	}
 
-	updateStory(link, id) {
+	updateStory(link, id, icon) {
 		this.state.lists.filter(story => {
 			let publishedDate = new Date(story.published)
 			publishedDate = publishedDate.toLocaleString('en-GB', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' })
@@ -109,7 +110,8 @@ class News extends Component {
 						story_author: story.author,
 						story_date: publishedDate,
 						active_story: story.content.content,
-						story_link: link
+						story_link: link,
+						icon: icon
 					});
 				} else if(story.summary && story.summary.content) {
 					this.setState({
@@ -117,7 +119,8 @@ class News extends Component {
 						story_author: story.author,
 						story_date: publishedDate,
 						active_story: story.summary.content,
-						story_link: link
+						story_link: link,
+						icon: icon
 					});
 				}
 			}
@@ -182,9 +185,9 @@ class News extends Component {
 
 	render() {
 		return(
-			<div>
+			<div style={{ paddingRight: '15px', paddingLeft: '15px'}}>
 				{this.state.lists.length > 0 ? 
-					<div className="row">
+					<div className="row" style={{ backgroundColor: '#080808' }}>
 						<Lists 
 							lists = {this.state.lists}
 							loadStory = {this.updateStory}
@@ -199,6 +202,7 @@ class News extends Component {
 							date = {this.state.story_date}
 							story = {this.state.active_story}
 							link = {this.state.story_link}
+							icon = {this.state.icon}
 						/>
 					</div>
 					:

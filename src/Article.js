@@ -1,17 +1,8 @@
 import React, { Component } from 'react';
 import ReactHtmlParser from 'react-html-parser';
-import { css } from '@emotion/core';
-import { BarLoader } from 'react-spinners';
 
 const { shell } = window.require('electron')
 const WebView = require('react-electron-web-view');
-
-const override = css`
-	display: block;
-	margin-left: auto;
-  	margin-right: auto;
-	width: 15%;
-`;
 
 class Article extends Component {
 	constructor(props) {
@@ -23,6 +14,7 @@ class Article extends Component {
 			date: props.date,
 			story: props.story,
 			link: props.link,
+			icon: props.icon,
 			display: 'init',
 			url: '',
 			isLoading: false
@@ -40,6 +32,7 @@ class Article extends Component {
 			date: nextProps.date,
 			story: nextProps.story,
 			link: nextProps.link,
+			icon: nextProps.icon,
 			display: 'init'
 		});
 
@@ -72,11 +65,20 @@ class Article extends Component {
 	render() {
 		return (
 			this.state.display === 'loaded' ?
-				<div className="col-md-9 scrollable pt-3 pr-3 pb-3 pl-3">
+				<div className="col-md-9 scrollable pt-3 pr-3 pb-3 pl-3 bg-light">
 					<div className="col-md-12 border-gradient pl-4">
 						<div className="mt-4 mb-4">
+							{this.state.icon !== null ?
+								<div>
+									<img src={this.state.icon} alt="article-origin-logo" className="article-origin-logo float-left" />
+									<br />
+								</div>
+								:
+								""
+							}
 							<h2 className="clear-before article-title mb-3">
-								{this.state.title}<br></br>
+								{this.state.title}
+								<br />
 								<span className="article-subtitle">
 									By {this.state.author} on {this.state.date}.&nbsp;
 									<button type="button" title="View Article" className="article-action-button no-focus" onClick={() => this.handleClick(this.state.link)}>
@@ -104,7 +106,6 @@ class Article extends Component {
 					:
 					<div className="col-md-9 centered">
 						<div className="centered-img">
-							<BarLoader css={override} color={'#36D7B7'} sizeUnit={"px"} size={15} loading={this.state.isLoading} />
 							<h1 style={{ 'color': 'lightgrey', 'textAlign': 'center'}}>Article will be shown here</h1>
 						</div>
 					</div>

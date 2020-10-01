@@ -4,6 +4,7 @@ const path = require('path')
 const isDev = require("electron-is-dev");
 const ipcMain = require('electron').ipcMain
 const Store = require('electron-store');
+const { default: openAboutWindow } = require('electron-about-window');
 const store = new Store();
 
 let win = null
@@ -42,7 +43,7 @@ function createWindow() {
 		'minHeight': 600,
 		show: false,
 		titleBarStyle: 'hidden',
-		icon: path.join(__dirname, '/assets/icon_1024x1024x32.png'),
+		icon: path.join(__dirname, '/assets/icon.png'),
 		webPreferences: {
 			webviewTag: true,
 			nodeIntegration: true,
@@ -112,7 +113,7 @@ function createLoadingWindow(callback) {
 
 	Axios({
 		method: 'get',
-		url: `https://dog.ceo/api/breeds/image/random`,
+		url: `https://www.google.com`,
 		responseType: 'application/json',
 		timeout: 10000,
 	}).then(response => {
@@ -126,7 +127,7 @@ function createErrorWindow() {
 	errorWindow = new BrowserWindow({
 		width: 800, 
 		height: 275,
-		frame: false,
+		frame: true,
 		titleBarStyle: 'hidden',
 		center: true,
 		maximizable: false,
@@ -230,7 +231,25 @@ let menubar = [
 	...(process.platform === 'darwin' ? [{
 	  label: "Simple RSS Reader",
 	  submenu: [
-		{ role: 'about' },      
+		{ 
+			label: 'About Simple RSS Reader',
+			click: () => openAboutWindow({
+				icon_path: path.join(__dirname, '/public/icon.png'),
+				product_name: 'Simple RSS Reader',
+				copyright: 'Copyright © 2020 Salman Rameli',
+				homepage: 'https://github.com/salmanrameli/simple-rss-reader',
+				description: 'Simple RSS reader with partial Feedly support.',
+				use_version_info: true,
+				css_path: path.join(__dirname, '/public/css/about-app.css'),
+				win_options: {
+					resizable: false,
+					minimizable: false,
+					maximizable: false,
+					fullscreenable: false,
+					center: true
+				}
+			})
+		},      
 		{ type: 'separator' },
 		{ role: 'services' },
 		{ type: 'separator' },
@@ -312,14 +331,42 @@ let menubar = [
 	{
 	  label: 'Help',
 	  submenu: [
-		{ role: 'about' },
-		{
-		  label: 'Learn More',
-		  click: async () => {
-			const { shell } = require('electron')
-			await shell.openExternal('https://electronjs.org')
-		  }
-		}
+		...(process.platform === 'darwin' ? [
+			{
+				label: 'Learn More',
+				click: async () => {
+				  const { shell } = require('electron')
+				  await shell.openExternal('https://electronjs.org')
+				}
+			  }
+			] : [
+			{ 
+				label: 'About Simple RSS Reader',
+				click: () => openAboutWindow({
+					icon_path: path.join(__dirname, '/public/icon.png'),
+					product_name: 'Simple RSS Reader',
+					copyright: 'Copyright © 2020 Salman Rameli',
+					homepage: 'https://github.com/salmanrameli/simple-rss-reader',
+					description: 'Simple RSS reader with partial Feedly support.',
+					use_version_info: true,
+					css_path: path.join(__dirname, '/public/css/about-app.css'),
+					win_options: {
+						resizable: false,
+						minimizable: false,
+						maximizable: false,
+						fullscreenable: false,
+						center: true
+					}
+				})
+			},
+			{
+				label: 'Learn More',
+				click: async () => {
+				  const { shell } = require('electron')
+				  await shell.openExternal('https://electronjs.org')
+				}
+			  }
+		])
 	  ]
 	}
 ]
