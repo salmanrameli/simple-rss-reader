@@ -67,7 +67,7 @@ class Article extends Component {
 			this.state.display === 'loaded' ?
 				<div className="col-md-9 scrollable pt-3 pr-3 pb-3 pl-3 bg-light">
 					<div className="col-md-12 border-gradient pl-4">
-						<div className="mt-4 mb-4">
+						<div className="mt-4 mb-4" style={{ marginLeft: '-15px' }}>
 							{this.state.icon !== null ?
 								<div>
 									<img src={this.state.icon} alt="article-origin-logo" className="article-origin-logo float-left" />

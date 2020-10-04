@@ -384,7 +384,7 @@
     height: 110%;
     mix-blend-mode: multiply;
     /* animation: swing 4s alternate ease-in-out infinite; */
-    background: url('../bg/vaporwave/21.jpg') bottom;
+    background: url('../bg/vaporwave/21.jpg') top;
     background-repeat: no-repeat;
     background-size: cover;
 }
@@ -512,7 +512,7 @@
     opacity: 0.5;
 }
 .card.bg-primary header::before {
-    animation: swing 4s alternate ease-in-out infinite;
+    background: none;
 }
 .card header {
     position: relative;
