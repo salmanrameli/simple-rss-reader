@@ -51,9 +51,13 @@ class News extends Component {
 
 			this.setState({
 				lists: merged.map((entry, index) => {
+					let publishedDate = new Date(entry.published)
+					publishedDate = publishedDate.toLocaleString('en-GB', { year: 'numeric', month: 'long', day: 'numeric' })
+
 					return {
 						...entry,
 						articleIsUnread: true,
+						publishedDate: publishedDate,
 						indexKey: parseInt(index + randomNumber, 10)
 					}
 				})

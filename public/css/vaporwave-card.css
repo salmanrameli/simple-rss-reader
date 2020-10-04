@@ -53,8 +53,14 @@
                 radial-gradient(circle at 93.3% 75%, rgba(0,124,244,1), rgba(0,255,0,0) 70.71%),
                 radial-gradient(circle at 6.7% 75%, rgba(0,241,238,1), transparent 70.71%); */
 }
+.bg-black {
+    background-color: black;
+}
 .card.text-white.bg-primary {
     margin-bottom: -5px;
+}
+.text-white .blockquote-footer {
+    color: white;
 }
 .article-title {
     top: 3px;
@@ -669,6 +675,11 @@ button:focus {
 }
 .text-large {
     font-size: 20px;
+}
+.publish-date {
+    font-size: 14px;
+    color: white;
+    font-family: NotoSans_JP_Light;
 }
 .checkmark-icon svg path:hover {
     fill: limegreen;
