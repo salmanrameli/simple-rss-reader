@@ -531,7 +531,7 @@ class Lists extends Component {
 														}
 														{item.title}
 														<br />
-														<span className="publish-date text-dark">{item.publishedDate}</span>
+														<span className={`publish-date ${this.state.activeLink === item.id ? "text-white" : "text-dark"}`}>{item.publishedDate}</span>
 													</h2>
 												</div>
 												<footer>
