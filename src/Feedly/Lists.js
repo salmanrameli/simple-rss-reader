@@ -240,14 +240,14 @@ class Lists extends Component {
 														""
 													}
 													<span>{item.title}</span>
-													<span className="publish-date">{item.publishedDate}</span>
+												<span className="publish-date">{item.publishedDate}&nbsp;&nbsp;/&nbsp;&nbsp;{item.publishedTimeDiff}</span>
 												</h2>
 												<div className="row">
 													<div className="col-12">
 														<div className="desc pb-2 text-white blockquote-footer text-large" title={item.author}>{item.author}</div>
 													</div>
 													<div className="col-12">
-														<div className="desc px-0 py-3 w-100">
+														<div className="desc px-0 py-4 w-100">
 															<div className="actions">
 																{item.unread === true ?
 																	<button type="button" onClick={(e) => this.handleMarkAsRead(e, item.canonicalUrl, item.id, false, true, false, item.webfeeds ? item.webfeeds.wordmark !== undefined ? item.webfeeds.wordmark : item.webfeeds.logo !== undefined ? item.webfeeds.logo : null : null)} title="Mark article as read" className="no-focus checkmark-icon m-auto">
@@ -328,7 +328,7 @@ class Lists extends Component {
 														}
 														<span>{item.title}</span>
 														<br />
-														<span className="publish-date">{item.publishedDate}</span>
+														<span className="publish-date">{item.publishedDate}&nbsp;&nbsp;/&nbsp;&nbsp;{item.publishedTimeDiff}</span>
 													</h3>
 													<div className="row mt-4">
 														<div className="col-12 col-md-6 col-lg-6 col-xl-6 text-white">
@@ -444,7 +444,7 @@ class Lists extends Component {
 														}
 														{item.title}
 														<br />
-														<span className="publish-date text-white">{item.publishedDate}</span>
+														<span className="publish-date text-white">{item.publishedDate}&nbsp;&nbsp;/&nbsp;&nbsp;{item.publishedTimeDiff}</span>
 													</h2>
 												</div>
 												<footer>
@@ -531,7 +531,7 @@ class Lists extends Component {
 														}
 														{item.title}
 														<br />
-														<span className={`publish-date ${this.state.activeLink === item.id ? "text-white" : "text-dark"}`}>{item.publishedDate}</span>
+														<span className={`publish-date ${this.state.activeLink === item.id ? "text-white" : "text-dark"}`}>{item.publishedDate}&nbsp;&nbsp;/&nbsp;&nbsp;{item.publishedTimeDiff}</span>
 													</h2>
 												</div>
 												<footer>

@@ -22,6 +22,7 @@ class News extends Component {
 		}
 
 		this.start = this.start.bind(this)
+		this.calculateTimeDiff = this.calculateTimeDiff.bind(this)
 		this.getUnreadCount = this.getUnreadCount.bind(this)
 		this.updateStory = this.updateStory.bind(this)
 		this.removeUnreadEntryBadge = this.removeUnreadEntryBadge.bind(this)
@@ -32,6 +33,36 @@ class News extends Component {
 
 	componentDidMount() {
 		this.start()
+	}
+
+	calculateTimeDiff(publishedTime) {
+		var d = Math.abs(publishedTime - Date.now()) / 1000;                       // delta
+		var r = {};                                                                // result
+		var s = {                                                                  // structure
+			year: 31536000,
+			month: 2592000,
+			week: 604800, // uncomment row to ignore
+			day: 86400,   // feel free to add your own row
+			hour: 3600,
+			minute: 60,
+			second: 1
+		};
+
+		Object.keys(s).forEach(function(key){
+			r[key] = Math.floor(d / s[key]);
+			d -= r[key] * s[key];
+		});
+
+		if(r.day > 0) {
+			if(r.day === 1) return r.day + " day ago"
+			else return r.day + " days ago"
+		} else if(r.hour > 0) {
+			if(r.hour === 1) return r.hour + " hour ago"
+			else return r.hour + " hours ago"
+		} else {
+			if(r.minute === 1) return r.minute + " minute ago"
+			else return r.minute + " minutes ago"
+		}
 	}
 
 	start() {
@@ -52,12 +83,14 @@ class News extends Component {
 			this.setState({
 				lists: merged.map((entry, index) => {
 					let publishedDate = new Date(entry.published)
+					let publishedTimeDiff = this.calculateTimeDiff(publishedDate)
 					publishedDate = publishedDate.toLocaleString('en-GB', { year: 'numeric', month: 'long', day: 'numeric' })
 
 					return {
 						...entry,
 						articleIsUnread: true,
 						publishedDate: publishedDate,
+						publishedTimeDiff: publishedTimeDiff,
 						indexKey: parseInt(index + randomNumber, 10)
 					}
 				})
