@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Axios from 'axios';
+import CardXl from './Card/CardXl'
 import CardLg from './Card/CardLg'
 import CardMd from './Card/CardMd'
 import CardSmBlack from './Card/CardSmBlack'
@@ -214,36 +215,44 @@ class Lists extends Component {
 					}
 					{this.state.lists.map(item => (
 						<div className="border-black">
-							{item.engagement >= 250 ?
-								<CardLg
+							{item.engagement >= 2500 ?
+								<CardXl
 									item = {item}
 									activeLink = {this.state.activeLink}
 									handleMarkAsRead = {this.handleMarkAsRead}
 									handleMarkAsUnread = {this.handleMarkAsUnread}
 								/>
 								:
-								item.engagement > 100 ?
-									<CardMd
+								item.engagement > 250 ?
+									<CardLg
 										item = {item}
 										activeLink = {this.state.activeLink}
 										handleMarkAsRead = {this.handleMarkAsRead}
 										handleMarkAsUnread = {this.handleMarkAsUnread}
 									/>
 									:
-									item.indexKey % 2 === 0 ?
-										<CardSmBlack
+									item.engagement > 100 ?
+										<CardMd
 											item = {item}
 											activeLink = {this.state.activeLink}
 											handleMarkAsRead = {this.handleMarkAsRead}
 											handleMarkAsUnread = {this.handleMarkAsUnread}
 										/>
 										:
-										<CardSmWhite
-											item = {item}
-											activeLink = {this.state.activeLink}
-											handleMarkAsRead = {this.handleMarkAsRead}
-											handleMarkAsUnread = {this.handleMarkAsUnread}
-										/>
+										item.indexKey % 2 === 0 ?
+											<CardSmBlack
+												item = {item}
+												activeLink = {this.state.activeLink}
+												handleMarkAsRead = {this.handleMarkAsRead}
+												handleMarkAsUnread = {this.handleMarkAsUnread}
+											/>
+											:
+											<CardSmWhite
+												item = {item}
+												activeLink = {this.state.activeLink}
+												handleMarkAsRead = {this.handleMarkAsRead}
+												handleMarkAsUnread = {this.handleMarkAsUnread}
+											/>
 							}
 						</div>
 					))}
