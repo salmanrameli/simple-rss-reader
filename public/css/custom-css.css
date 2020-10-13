@@ -28,6 +28,11 @@ html, body {
 .col-md-3 .card-columns {
   column-count: 1
 }
+@media (max-width: 999) {
+  .col-md-12 .card-columns {
+    column-count: 2;
+  }
+}
 @media (max-width: 1399) {
   .col-md-12 .card-columns {
     column-count: 3;
