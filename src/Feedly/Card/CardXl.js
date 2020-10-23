@@ -44,11 +44,11 @@ class CardXl extends Component {
 
     render() {
         return(
-            <div className={`card card-xl cursor-pointer text-white ${this.state.activeLink === this.state.item.id ? "bg-red" : "bg-black"}`} key={this.state.item.id}>
+            <div className={`card card-xl cursor-pointer text-white ${this.state.activeLink === this.state.item.id ? "bg-primary" : "bg-red"}`} key={this.state.item.id}>
                 <div style={ this.state.activeLink === this.state.item.id ? {color: 'white'} : {color: 'black', opacity: 1} } className="cursor-default">
                     <header>
                         <h2 onClick={(e) => this.handleMarkAsRead(e, this.state.item.canonicalUrl, this.state.item.id, true, this.state.item.unread, true, this.state.item.webfeeds ? this.state.item.webfeeds.wordmark !== undefined ? this.state.item.webfeeds.wordmark : this.state.item.webfeeds.logo !== undefined ? this.state.item.webfeeds.logo : null : null)} className="cursor-pointer text-justify py-0 my-0 w-100">
-                            <span style={{ backgroundColor: 'red' }} className="p-2">
+                            <span className="p-2">
                                 {this.state.item.memes !== undefined ? 
                                     <span className="memes-label">
                                         <svg xmlns="http://www.w3.org/2000/svg" width="36" height="24" viewBox="0 0 24 24">
@@ -60,11 +60,12 @@ class CardXl extends Component {
                                     ""
                                 }
                                 {this.state.item.title}
+                                &nbsp;
                                 <span className="desc p-0 text-white blockquote-footer text-large" title={this.state.item.author}>{this.state.item.author}</span>
                             </span>
                             <span className="publish-date ml-3">{this.state.item.publishedDate}&nbsp;&nbsp;/&nbsp;&nbsp;{this.state.item.publishedTimeDiff}</span>
                         </h2>
-                        <div className="row">
+                        <div className="row" style={{ marginTop: '-30px' }}>
                             <div className="col-12">
                                 <div className="desc px-0 py-4 w-100">
                                     <div className="actions">
