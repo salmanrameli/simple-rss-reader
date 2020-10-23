@@ -62,7 +62,7 @@ class CardLg extends Component {
                                 <span>{this.state.item.title}</span>
                             <span className="publish-date">{this.state.item.publishedDate}&nbsp;&nbsp;/&nbsp;&nbsp;{this.state.item.publishedTimeDiff}</span>
                             </h2>
-                            <div className="row">
+                            <div className="row" style={{ marginTop: '-30px' }}>
                                 <div className="col-12">
                                     <div className="desc pb-2 text-white blockquote-footer text-large" title={this.state.item.author}>{this.state.item.author}</div>
                                 </div>
