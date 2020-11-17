@@ -49,7 +49,7 @@ class CardMd extends Component {
                     <div style={ this.state.activeLink === this.state.item.id ? {color: 'white'} : {color: 'black', opacity: 1} } className="cursor-default">
                         <header className="cursor-pointer faded-background">
                             <h3 onClick={(e) => this.handleMarkAsRead(e, this.state.item.canonicalUrl, this.state.item.id, true, this.state.item.unread, true,this.state.item.webfeeds ? this.state.item.webfeeds.wordmark !== undefined ? this.state.item.webfeeds.wordmark : this.state.item.webfeeds.logo !== undefined ? this.state.item.webfeeds.logo : null : null)}>
-                                {this.state.item.memes !== undefined ? 
+                                {this.state.item.memes && this.state.item.memes[0] && this.state.item.memes[0].label ? 
                                     <p className="memes-label">
                                         <svg xmlns="http://www.w3.org/2000/svg" width="36" height="24" viewBox="0 0 24 24">
                                             <path style={{ fill: 'white' }} d="M24 3.875l-6 1.221 1.716 1.708-5.351 5.358-3.001-3.002-7.336 7.242 1.41 1.418 5.922-5.834 2.991 2.993 6.781-6.762 1.667 1.66 1.201-6.002zm0 16.125v2h-24v-20h2v18h22z"/>
