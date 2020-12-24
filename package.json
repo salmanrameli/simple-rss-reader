@@ -51,7 +51,7 @@
     "axios": "^0.19.2",
     "bluebird": "^3.7.2",
     "cross-env": "^7.0.2",
-    "date-and-time": "^0.13.1",
+    "date-and-time": "^0.14.2",
     "electron-about-window": "^1.13.4",
     "electron-is-dev": "^1.2.0",
     "electron-store": "^5.2.0",
