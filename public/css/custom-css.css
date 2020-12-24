@@ -175,12 +175,12 @@ small.remove-style::before {
   width: 100%;
   margin-bottom: 15px;
 }
-.row .col-md-12 h1 {
+/* .row .col-md-12 h1 {
   margin: 10px 0 5px 0
 }
 .row .col-md-12 h2 {
   margin: 10px 17px 5px 0px
-}
+} */
 .row .col-md-12 .news-content h2 {
   margin: 10px 0
 }

@@ -75,7 +75,7 @@ class News extends Component {
 			headers: {
 				'Authorization': `OAuth ${authCode}`
 			},
-			timeout: 10000
+			timeout: 30000
 		}).then((response) => {
 			let merged = [].concat.apply([], response.data.items)
 			let randomNumber = Math.floor((Math.random() * 30) + 1)

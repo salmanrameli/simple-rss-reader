@@ -1,0 +1,314 @@
+.grid-layout {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+    grid-gap: 10px;
+    grid-auto-rows: minmax(180px, auto);
+    grid-auto-flow: dense;
+    padding: 10px 10px 20px;
+}
+.grid-item {
+    position: relative;
+    padding: 1rem;
+    font-size: 14px;
+    font-weight: bold;
+    text-transform: uppercase;
+    border-radius: 5px;
+}
+.grid-item button {
+    background-color: transparent;
+    border: none;
+}
+.title-lg {
+    position: relative;
+    top: 2rem;
+    margin: 0;
+    font-family: BMWHelvetica_Bold, 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 1.5em;
+    text-transform: uppercase;
+    line-height: 0.82em;
+    letter-spacing: -0.0357em;
+    /* color: #fff; */
+    word-break: break-word;
+    display: block;
+    word-break: break-word;
+}
+.title-md {
+    position: relative;
+    top: 2rem;
+    margin: 0;
+    font-family: BMWHelvetica_Bold, 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 1.25em;
+    text-transform: uppercase;
+    line-height: 0.82em;
+    letter-spacing: -0.0357em;
+    /* color: #fff; */
+    word-break: break-word;
+    display: block;
+    word-break: break-word;
+}
+.title-sm {
+    position: relative;
+    top: 2rem;
+    margin: 0;
+    font-family: BMWHelvetica_Bold, 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 1em;
+    text-transform: uppercase;
+    line-height: 0.82em;
+    letter-spacing: -0.0357em;
+    /* color: #fff; */
+    word-break: break-word;
+    display: block;
+    word-break: break-word;
+}
+.publish-date {
+    font-size: 14px;
+    /* color: white; */
+    font-family: NotoSans_JP_Light;
+}
+.title {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    padding: 0.5rem;
+    background: #000;
+    font-weight: bold;
+    text-transform: uppercase;
+    text-align: right;
+    color: #fff;
+}
+.engagement {
+    position: absolute;
+    top: 1rem;
+    left: 1rem;
+    padding: 0.5rem;
+    background: #000;
+    font-weight: bold;
+    text-transform: uppercase;
+    text-align: right;
+    color: #fff;
+}
+.desc {
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    max-width: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    vertical-align: middle;
+    font-family: SF_Pro_Display;
+}
+.align-item-center-vertical {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+}
+.actions {
+    position: absolute;
+    bottom: 1rem;
+}
+.info-and-actions {
+    position: absolute;
+    width: 100%;
+    bottom: 0;
+}
+.span-32 .actions button {
+    width: 33%;
+}
+.bg-primary .desc {
+    color: white;
+}
+.text-large {
+    font-size: 20px;
+}
+.fill-white {
+    fill: white;
+}
+.fill-black {
+    fill: black;
+}
+.barrier {
+    display: block;
+    background-color: white;
+    margin-top: 1.5px;
+    margin-bottom: 1.5px;
+    height: 2px;
+}
+.no-focus {
+    outline: none;
+    box-shadow: none;
+}
+.checkmark-icon svg path:hover {
+    fill: limegreen;
+    stroke-opacity: 1;
+}
+.crossmark-icon svg path:hover {
+    fill: red;
+    stroke-opacity: 1;
+}
+.browser-icon svg path.fill-black:hover {
+    fill:  rgba(73,143,226,0.80);
+    stroke-opacity: 1;
+}
+.browser-icon svg path.fill-white:hover {
+    fill: khaki;
+    stroke-opacity: 1;
+}
+.url-icon svg path.fill-black:hover {
+    fill: rgba(73,143,226,0.80);
+    stroke-opacity: 1;
+}
+.url-icon svg path.fill-white:hover {
+    fill: khaki;
+    stroke-opacity: 1;
+}
+.span-12 {
+    grid-column-end: span 1;
+    grid-row-end: span 2;
+}
+.span-13 {
+    grid-column-end: span 1;
+    grid-row-end: span 3;
+}
+.span-21 {
+    grid-column-end: span 2;
+    grid-row-end: span 1;
+}
+.span-22 {
+    grid-column-end: span 2;
+    grid-row-end: span 2;
+}
+.span-31 {
+    grid-column-end: span 3;
+    grid-row-end: span 1;
+}
+.span-32 {
+    grid-column-end: span 3;
+    grid-row-end: span 2;
+}
+.span-33 {
+    grid-column-end: span 3;
+    grid-row-end: span 3;
+}
+
+.vw0 {
+    background: -webkit-linear-gradient(45deg, rgba(148, 208, 255, 0.9), rgba(255, 106, 213, 0.4)), url('../bg/vaporwave/1.jpg') no-repeat bottom;
+    background-size: cover;
+}
+.vw1 {
+    background: -webkit-linear-gradient(45deg, rgba(148, 208, 255, 0.9), rgba(255, 106, 213, 0.4)), url('../bg/vaporwave/2.jpg') no-repeat bottom;
+    background-size: cover;
+}
+.vw2 {
+    background: -webkit-linear-gradient(45deg, rgba(148, 208, 255, 0.9), rgba(255, 106, 213, 0.4)), url('../bg/vaporwave/3.jpg') no-repeat bottom;
+    background-size: cover;
+}
+.vw3 {
+    background: -webkit-linear-gradient(45deg, rgba(148, 208, 255, 0.9), rgba(255, 106, 213, 0.4)), url('../bg/vaporwave/4.jpg') no-repeat bottom;
+    background-size: cover;
+}
+.vw4 {
+    background: -webkit-linear-gradient(45deg, rgba(148, 208, 255, 0.9), rgba(255, 106, 213, 0.4)), url('../bg/vaporwave/5.jpg') no-repeat bottom;
+    background-size: cover;
+}
+.vw5 {
+    background: -webkit-linear-gradient(45deg, rgba(148, 208, 255, 0.9), rgba(255, 106, 213, 0.4)), url('../bg/vaporwave/6.jpg') no-repeat bottom;
+    background-size: cover;
+}
+.vw6 {
+    background: -webkit-linear-gradient(45deg, rgba(148, 208, 255, 0.9), rgba(255, 106, 213, 0.4)), url('../bg/vaporwave/7.jpg') no-repeat bottom;
+    background-size: cover;
+}
+.vw7 {
+    background: -webkit-linear-gradient(45deg, rgba(148, 208, 255, 0.9), rgba(255, 106, 213, 0.4)), url('../bg/vaporwave/8.jpg') no-repeat bottom;
+    background-size: cover;
+}
+.vw8 {
+    background: -webkit-linear-gradient(45deg, rgba(148, 208, 255, 0.9), rgba(255, 106, 213, 0.4)), url('../bg/vaporwave/9.jpg') no-repeat bottom;
+    background-size: cover;
+}
+.vw9 {
+    background: -webkit-linear-gradient(45deg, rgba(148, 208, 255, 0.9), rgba(255, 106, 213, 0.4)), url('../bg/vaporwave/10.jpg') no-repeat bottom;
+    background-size: cover;
+}
+.vw10 {
+    background: -webkit-linear-gradient(45deg, rgba(148, 208, 255, 0.9), rgba(255, 106, 213, 0.4)), url('../bg/vaporwave/11.jpg') no-repeat bottom;
+    background-size: cover;
+}
+.vw11 {
+    background: -webkit-linear-gradient(45deg, rgba(148, 208, 255, 0.9), rgba(255, 106, 213, 0.4)), url('../bg/vaporwave/12.jpg') no-repeat bottom;
+    background-size: cover;
+}
+.vw12 {
+    background: -webkit-linear-gradient(45deg, rgba(148, 208, 255, 0.9), rgba(255, 106, 213, 0.4)), url('../bg/vaporwave/13.jpg') no-repeat bottom;
+    background-size: cover;
+}
+.vw13 {
+    background: -webkit-linear-gradient(45deg, rgba(148, 208, 255, 0.9), rgba(255, 106, 213, 0.4)), url('../bg/vaporwave/14.jpg') no-repeat bottom;
+    background-size: cover;
+}
+.vw14 {
+    background: -webkit-linear-gradient(45deg, rgba(148, 208, 255, 0.9), rgba(255, 106, 213, 0.4)), url('../bg/vaporwave/15.jpg') no-repeat bottom;
+    background-size: cover;
+}
+.vw15 {
+    background: -webkit-linear-gradient(45deg, rgba(148, 208, 255, 0.9), rgba(255, 106, 213, 0.4)), url('../bg/vaporwave/16.jpg') no-repeat bottom;
+    background-size: cover;
+}
+.vw16 {
+    background: -webkit-linear-gradient(45deg, rgba(148, 208, 255, 0.9), rgba(255, 106, 213, 0.4)), url('../bg/vaporwave/17.jpg') no-repeat bottom;
+    background-size: cover;
+}
+.vw17 {
+    background: -webkit-linear-gradient(45deg, rgba(148, 208, 255, 0.9), rgba(255, 106, 213, 0.4)), url('../bg/vaporwave/18.jpg') no-repeat bottom;
+    background-size: cover;
+}
+.vw18 {
+    background: -webkit-linear-gradient(45deg, rgba(148, 208, 255, 0.9), rgba(255, 106, 213, 0.4)), url('../bg/vaporwave/19.jpg') no-repeat bottom;
+    background-size: cover;
+}
+.vw19 {
+    background: -webkit-linear-gradient(45deg, rgba(148, 208, 255, 0.9), rgba(255, 106, 213, 0.4)), url('../bg/vaporwave/20.jpg') no-repeat bottom;
+    background-size: cover;
+}
+.vw20 {
+    background: -webkit-linear-gradient(45deg, rgba(148, 208, 255, 0.9), rgba(255, 106, 213, 0.4)), url('../bg/vaporwave/21.jpg') no-repeat bottom;
+    background-size: cover;
+}
+.vw21 {
+    background: -webkit-linear-gradient(45deg, rgba(148, 208, 255, 0.9), rgba(255, 106, 213, 0.4)), url('../bg/vaporwave/22.jpg') no-repeat bottom;
+    background-size: cover;
+}
+.vw22 {
+    background: -webkit-linear-gradient(45deg, rgba(148, 208, 255, 0.9), rgba(255, 106, 213, 0.4)), url('../bg/vaporwave/23.jpg') no-repeat bottom;
+    background-size: cover;
+}
+.vw23 {
+    background: -webkit-linear-gradient(45deg, rgba(148, 208, 255, 0.9), rgba(255, 106, 213, 0.4)), url('../bg/vaporwave/24.jpg') no-repeat bottom;
+    background-size: cover;
+}
+.vw24 {
+    background: -webkit-linear-gradient(45deg, rgba(148, 208, 255, 0.9), rgba(255, 106, 213, 0.4)), url('../bg/vaporwave/25.jpg') no-repeat bottom;
+    background-size: cover;
+}
+.vw25 {
+    background: -webkit-linear-gradient(45deg, rgba(148, 208, 255, 0.9), rgba(255, 106, 213, 0.4)), url('../bg/vaporwave/26.jpg') no-repeat bottom;
+    background-size: cover;
+}
+.vw26 {
+    background: -webkit-linear-gradient(45deg, rgba(148, 208, 255, 0.9), rgba(255, 106, 213, 0.4)), url('../bg/vaporwave/27.jpg') no-repeat bottom;
+    background-size: cover;
+}
+.vw27 {
+    background: -webkit-linear-gradient(45deg, rgba(148, 208, 255, 0.9), rgba(255, 106, 213, 0.4)), url('../bg/vaporwave/28.jpg') no-repeat bottom;
+    background-size: cover;
+}
+.vw28 {
+    background: -webkit-linear-gradient(45deg, rgba(148, 208, 255, 0.9), rgba(255, 106, 213, 0.4)), url('../bg/vaporwave/29.jpg') no-repeat bottom;
+    background-size: cover;
+}
+.vw29 {
+    background: -webkit-linear-gradient(45deg, rgba(148, 208, 255, 0.9), rgba(255, 106, 213, 0.4)), url('../bg/vaporwave/30.jpg') no-repeat bottom;
+    background-size: cover;
+}

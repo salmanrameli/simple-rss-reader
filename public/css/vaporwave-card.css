@@ -687,7 +687,10 @@ button:focus {
     outline: none;
     box-shadow: none;
 }
-.fill-white {
+.bg-white .fill-white {
+    fill: black;
+}
+.bg-black .fill-white {
     fill: white;
 }
 .fill-black {
@@ -698,7 +701,7 @@ button:focus {
 }
 .publish-date {
     font-size: 14px;
-    color: white;
+    /* color: white; */
     font-family: NotoSans_JP_Light;
 }
 .checkmark-icon svg path:hover {

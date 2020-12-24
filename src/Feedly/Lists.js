@@ -201,7 +201,7 @@ class Lists extends Component {
 	render() {
 		return (
 			<div className={`${this.state.isExpanded ? "col-md-12" : "col-md-3"} px-0 scrollable`}>
-				<div className="card-columns">
+				<div className="grid-layout">
 					{this.state.isExpanded ?
 						""
 						:
@@ -214,47 +214,44 @@ class Lists extends Component {
 						</div>
 					}
 					{this.state.lists.map(item => (
-						<div className="border-black">
-							{item.engagement >= 2500 ?
-								<CardXl
+						item.engagement >= 2500 ?
+							<CardXl
+								item = {item}
+								activeLink = {this.state.activeLink}
+								handleMarkAsRead = {this.handleMarkAsRead}
+								handleMarkAsUnread = {this.handleMarkAsUnread}
+							/>
+							:
+							item.engagement > 250 ?
+								<CardLg
 									item = {item}
 									activeLink = {this.state.activeLink}
 									handleMarkAsRead = {this.handleMarkAsRead}
 									handleMarkAsUnread = {this.handleMarkAsUnread}
 								/>
 								:
-								item.engagement > 250 ?
-									<CardLg
+								item.engagement > 100 ?
+									<CardMd
 										item = {item}
 										activeLink = {this.state.activeLink}
 										handleMarkAsRead = {this.handleMarkAsRead}
 										handleMarkAsUnread = {this.handleMarkAsUnread}
 									/>
 									:
-									item.engagement > 100 ?
-										<CardMd
+									item.indexKey % 2 === 0 ?
+										<CardSmBlack
 											item = {item}
 											activeLink = {this.state.activeLink}
 											handleMarkAsRead = {this.handleMarkAsRead}
 											handleMarkAsUnread = {this.handleMarkAsUnread}
 										/>
 										:
-										item.indexKey % 2 === 0 ?
-											<CardSmBlack
-												item = {item}
-												activeLink = {this.state.activeLink}
-												handleMarkAsRead = {this.handleMarkAsRead}
-												handleMarkAsUnread = {this.handleMarkAsUnread}
-											/>
-											:
-											<CardSmWhite
-												item = {item}
-												activeLink = {this.state.activeLink}
-												handleMarkAsRead = {this.handleMarkAsRead}
-												handleMarkAsUnread = {this.handleMarkAsUnread}
-											/>
-							}
-						</div>
+										<CardSmWhite
+											item = {item}
+											activeLink = {this.state.activeLink}
+											handleMarkAsRead = {this.handleMarkAsRead}
+											handleMarkAsUnread = {this.handleMarkAsUnread}
+										/>
 					))}
 				</div>
 			</div>

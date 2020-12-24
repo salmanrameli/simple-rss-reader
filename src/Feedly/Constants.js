@@ -4,7 +4,7 @@ const isDev = window.require("electron-is-dev");
 const Store = window.require('electron-store');
 const store = new Store();
 
-const cors = "https://cors-anywhere.herokuapp.com/"
+const cors = "http://192.168.100.7:8079/"
 
 function getProfile() {
     if(isDev)
