@@ -76,7 +76,7 @@ class CardSmWhite extends Component {
                                 &nbsp; {this.state.item.engagement}
                             </div>
                         </div>
-                        <h2 className="pt-3 pl-1 pr-5">
+                        <h2>
                             {this.state.item.memes && this.state.item.memes[0] && this.state.item.memes[0].label ? 
                                 <p className="memes-label">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="36" height="24" viewBox="0 0 24 24">
@@ -95,7 +95,7 @@ class CardSmWhite extends Component {
                     <footer>
                         <div className="row">
                             <div className="col-12 col-md-7">
-                                <div className="desc blockquote-footer" title={this.state.item.author}>{this.state.item.author}</div>
+                                <div className="desc blockquote-footer pl-0" title={this.state.item.author}>{this.state.item.author}</div>
                             </div>
                             <div className="col-12 col-md-5 mx-0">
                                 <div className="desc float-right pl-0">
