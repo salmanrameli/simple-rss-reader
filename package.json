@@ -48,7 +48,7 @@
     }
   },
   "dependencies": {
-    "axios": "^0.19.2",
+    "axios": "^0.21.1",
     "bluebird": "^3.7.2",
     "cross-env": "^7.0.2",
     "date-and-time": "^0.13.1",
