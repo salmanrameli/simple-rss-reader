@@ -65,7 +65,7 @@ class CardMd extends Component {
                             </h3>
                             <div className="row mt-4">
                                 <div className="col-12 col-md-6 col-lg-6 col-xl-6 text-white">
-                                    <div className="desc blockquote-footer text-white" title={this.state.item.author}>{this.state.item.author}</div>
+                                    <div className="desc blockquote-footer text-white pl-2" title={this.state.item.author}>{this.state.item.author}</div>
                                 </div>
                                 <div className="col-12 col-md-6 col-lg-6 col-xl-6">
                                     <div className="desc float-right">

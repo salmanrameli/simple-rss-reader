@@ -64,7 +64,7 @@ class CardLg extends Component {
                             </h2>
                             <div className="row" style={{ marginTop: '-30px' }}>
                                 <div className="col-12">
-                                    <div className="desc pb-2 text-white blockquote-footer text-large" title={this.state.item.author}>{this.state.item.author}</div>
+                                    <div className="desc pb-2 text-white blockquote-footer text-large pl-2" title={this.state.item.author}>{this.state.item.author}</div>
                                 </div>
                                 <div className="col-12">
                                     <div className="desc px-0 py-4 w-100">
