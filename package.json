@@ -1,7 +1,7 @@
 {
   "name": "RSS",
   "description": "Simple RSS reader utilising Electron and ReactJS with partial Feedly support",
-  "version": "5.2",
+  "version": "5.1.1",
   "private": true,
   "main": "main.js",
   "homepage": "./",
@@ -12,7 +12,7 @@
   "build": {
     "appId": "com.salmanrameli.simple-rss-reader",
     "productName": "Simple RSS Reader",
-    "copyright": "Copyright © 2021 ${author}",
+    "copyright": "Copyright © 2020 ${author}",
     "asar": false,
     "extends": null,
     "files": [
